@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Twitter, Phone, Mail } from 'lucide-react';
 import logo from '@/assets/logo.png';
 
 const footerLinks = {
@@ -38,9 +38,26 @@ export const Footer = () => {
               <img src={logo} alt="RCW Innovation Inc Logo" className="h-10 w-10 object-contain" />
               <span className="text-lg font-bold">RCW Innovation</span>
             </a>
-            <p className="text-sm text-muted-foreground mb-6">
+            <p className="text-sm text-muted-foreground mb-4">
               Expertos en diseño y desarrollo de páginas web en español para negocios en Calgary, Alberta.
             </p>
+            {/* Contact info */}
+            <div className="space-y-2 mb-6">
+              <a 
+                href="tel:+15878961997" 
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Phone className="w-4 h-4" />
+                +1 (587) 896-1997
+              </a>
+              <a 
+                href="mailto:info@rcwinnovation.com" 
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+                info@rcwinnovation.com
+              </a>
+            </div>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
                 <a

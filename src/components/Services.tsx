@@ -3,42 +3,55 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Palette, Rocket, Building2, Globe, Code, Smartphone } from 'lucide-react';
 
+import serviceWebDesign from '@/assets/service-web-design.jpg';
+import serviceLandingPage from '@/assets/service-landing-page.jpg';
+import serviceCorporate from '@/assets/service-corporate.jpg';
+import serviceSeo from '@/assets/service-seo.jpg';
+import serviceDevelopment from '@/assets/service-development.jpg';
+import serviceMobile from '@/assets/service-mobile.jpg';
+
 const services = [
   {
     icon: Palette,
     title: 'Diseño Web Profesional',
     description: 'Creamos sitios web únicos y personalizados que reflejan la identidad de tu marca con un diseño moderno y atractivo.',
     features: ['UI/UX Premium', 'Responsive Design', 'Optimizado para conversión'],
+    image: serviceWebDesign,
   },
   {
     icon: Rocket,
     title: 'Landing Pages de Alta Conversión',
     description: 'Diseño de landing pages optimizadas para maximizar tus conversiones y generar más leads para tu negocio en Calgary.',
     features: ['A/B Testing', 'CTA Optimizados', 'Velocidad máxima'],
+    image: serviceLandingPage,
   },
   {
     icon: Building2,
     title: 'Sitios Web Corporativos',
     description: 'Desarrollamos sitios web corporativos profesionales que transmiten confianza y profesionalismo a tus clientes.',
     features: ['Multi-página', 'CMS Integrado', 'SEO Incluido'],
+    image: serviceCorporate,
   },
   {
     icon: Globe,
     title: 'SEO y Posicionamiento',
     description: 'Optimización para buscadores que te ayudará a aparecer en los primeros resultados de Google en Calgary.',
     features: ['SEO On-page', 'Velocidad web', 'Schema Markup'],
+    image: serviceSeo,
   },
   {
     icon: Code,
     title: 'Desarrollo a Medida',
     description: 'Soluciones personalizadas con las últimas tecnologías para necesidades específicas de tu negocio.',
     features: ['React/Next.js', 'APIs Integradas', 'Escalabilidad'],
+    image: serviceDevelopment,
   },
   {
     icon: Smartphone,
     title: 'Diseño Mobile-First',
     description: 'Diseños optimizados primero para móvil, garantizando una experiencia perfecta en todos los dispositivos.',
     features: ['Responsive', 'Touch-friendly', 'PWA Ready'],
+    image: serviceMobile,
   },
 ];
 
@@ -97,15 +110,25 @@ export const Services = () => {
           animate={isInView ? 'visible' : 'hidden'}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {services.map((service, index) => (
+          {services.map((service) => (
             <motion.article
               key={service.title}
               variants={itemVariants}
-              className="card-premium group cursor-pointer"
+              className="card-premium group cursor-pointer overflow-hidden"
             >
-              {/* Icon */}
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
-                <service.icon className="w-7 h-7 text-primary" />
+              {/* Image */}
+              <div className="relative h-40 -mx-6 -mt-6 mb-6 overflow-hidden">
+                <img 
+                  src={service.image} 
+                  alt={service.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
+                {/* Icon overlay */}
+                <div className="absolute bottom-4 left-4 w-12 h-12 rounded-xl bg-primary/20 backdrop-blur-sm flex items-center justify-center border border-primary/30">
+                  <service.icon className="w-6 h-6 text-primary" />
+                </div>
               </div>
 
               {/* Content */}

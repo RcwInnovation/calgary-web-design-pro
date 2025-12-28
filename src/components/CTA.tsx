@@ -30,7 +30,7 @@ export const CTA = ({ onOpenDiagnostic }: CTAProps) => {
               Empieza hoy
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">
-              Solicita tu Asesoría
+              Agenda tu asesoría estratégica
             </h2>
             <p className="text-muted-foreground text-lg mb-8">
               Da el primer paso hacia una presencia digital profesional. Agenda una consulta gratuita 
@@ -40,13 +40,13 @@ export const CTA = ({ onOpenDiagnostic }: CTAProps) => {
             {/* Contact Info */}
             <div className="space-y-4 mb-8">
               <a
-                href="tel:+14035551234"
+                href="tel:+15878961997"
                 className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                   <Phone className="w-5 h-5 text-primary" />
                 </div>
-                <span>+1 (403) 555-1234</span>
+                <span>+1 (587) 896-1997</span>
               </a>
               <a
                 href="mailto:info@rcwinnovation.com"
@@ -68,12 +68,12 @@ export const CTA = ({ onOpenDiagnostic }: CTAProps) => {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="https://wa.me/14035551234?text=Hola%2C%20me%20interesa%20una%20consulta%20gratuita%20para%20mi%20sitio%20web"
+                href="https://wa.me/15878961997?text=Hola%2C%20me%20interesa%20una%20asesor%C3%ADa%20estrat%C3%A9gica%20para%20mi%20sitio%20web"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-gold flex items-center justify-center gap-2"
               >
-                Solicita tu consulta gratuita
+                Agenda tu asesoría estratégica
                 <ArrowRight className="w-5 h-5" />
               </a>
               <button
@@ -81,7 +81,7 @@ export const CTA = ({ onOpenDiagnostic }: CTAProps) => {
                 className="btn-glass flex items-center justify-center gap-2"
               >
                 <Zap className="w-5 h-5 text-primary" />
-                Generar diagnóstico
+                Generar Diagnóstico 5.0
               </button>
             </div>
           </motion.div>
@@ -93,7 +93,7 @@ export const CTA = ({ onOpenDiagnostic }: CTAProps) => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="glass-strong rounded-3xl p-8 lg:p-10"
           >
-            <h3 className="text-2xl font-bold mb-6">¿Qué incluye la consulta gratuita?</h3>
+            <h3 className="text-2xl font-bold mb-6">¿Qué incluye el diagnóstico?</h3>
             <ul className="space-y-4">
               {[
                 'Análisis de tu situación actual online',
@@ -115,6 +115,13 @@ export const CTA = ({ onOpenDiagnostic }: CTAProps) => {
               <p className="text-sm text-muted-foreground">
                 <strong className="text-foreground">100% sin compromiso.</strong> No tienes que pagar nada 
                 para obtener nuestra opinión profesional sobre tu proyecto.
+              </p>
+            </div>
+
+            {/* Closing phrase */}
+            <div className="mt-6 pt-6 border-t border-border/30">
+              <p className="text-center text-foreground font-medium italic">
+                "Si estás aquí, no es casualidad. El siguiente paso define tu crecimiento."
               </p>
             </div>
           </motion.div>
