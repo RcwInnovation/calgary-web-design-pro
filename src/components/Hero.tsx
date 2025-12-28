@@ -62,7 +62,7 @@ export const Hero = ({ onOpenDiagnostic }: HeroProps) => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
           >
             <a href="#contacto" className="btn-gold flex items-center gap-2 text-lg">
-              Solicita tu consulta gratuita
+              Agenda tu asesoría estratégica
               <ArrowRight className="w-5 h-5" />
             </a>
             <button
@@ -70,7 +70,7 @@ export const Hero = ({ onOpenDiagnostic }: HeroProps) => {
               className="btn-glass flex items-center gap-2"
             >
               <Zap className="w-5 h-5 text-primary" />
-              Generar diagnóstico
+              Generar Diagnóstico 5.0
             </button>
           </motion.div>
 

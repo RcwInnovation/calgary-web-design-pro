@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Zap, Send, Check } from 'lucide-react';
+import { X, Zap, Send, AlertCircle } from 'lucide-react';
 import { z } from 'zod';
 
 const diagnosticSchema = z.object({
@@ -74,6 +74,7 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
       const diagnosticData = {
         ...validatedData,
         timestamp: new Date().toISOString(),
+        destinationEmail: 'rcwluna@gmail.com',
       };
       localStorage.setItem('rcw_diagnostic', JSON.stringify(diagnosticData));
       
@@ -118,7 +119,7 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
                   <Zap className="w-5 h-5 text-primary-foreground" />
                 </div>
                 <div>
-                  <h2 className="text-lg font-bold text-primary-foreground">Generar Diagnóstico</h2>
+                  <h2 className="text-lg font-bold text-primary-foreground">Generar Diagnóstico 5.0</h2>
                   <p className="text-sm text-primary-foreground/70">Análisis personalizado de tu proyecto</p>
                 </div>
               </div>
@@ -189,7 +190,7 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
                   className={`w-full bg-muted rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 ${
                     errors.telefono ? 'ring-2 ring-destructive' : ''
                   }`}
-                  placeholder="+1 (403) 555-1234"
+                  placeholder="+1 (587) 896-1997"
                 />
                 {errors.telefono && (
                   <p className="text-xs text-destructive mt-1">{errors.telefono}</p>
@@ -299,6 +300,16 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
                   className="w-full bg-muted rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
                   placeholder="Cuéntanos más sobre tu proyecto..."
                 />
+              </div>
+
+              {/* Note before submit */}
+              <div className="p-4 rounded-xl bg-accent/10 border border-accent/20 flex gap-3">
+                <AlertCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <p className="text-sm text-muted-foreground">
+                  <strong className="text-foreground">Importante:</strong> Al hacer clic en "Enviar y continuar al pago", 
+                  serás redirigido a nuestra plataforma segura de pago. Tu información será enviada a nuestro equipo para 
+                  contactarte y preparar tu diagnóstico personalizado.
+                </p>
               </div>
 
               {/* Submit */}
