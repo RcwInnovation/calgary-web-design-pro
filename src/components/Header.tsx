@@ -11,7 +11,11 @@ const navLinks = [
   { href: '#contacto', label: 'Contacto' },
 ];
 
-export const Header = () => {
+interface HeaderProps {
+  onOpenConsultation?: () => void;
+}
+
+export const Header = ({ onOpenConsultation }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -22,6 +26,14 @@ export const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNavClick = (href: string) => {
+    setIsMobileMenuOpen(false);
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <header
@@ -50,15 +62,15 @@ export const Header = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          {navLinks.map((link, index) => (
+          {navLinks.map((link) => (
             <li key={link.href}>
-              <a
-                href={link.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-300 relative group text-sm font-medium"
+              <button
+                onClick={() => handleNavClick(link.href)}
+                className="text-muted-foreground hover:text-foreground transition-colors duration-300 relative group text-sm font-medium bg-transparent border-none cursor-pointer"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-              </a>
+              </button>
             </li>
           ))}
         </motion.ul>
@@ -70,9 +82,9 @@ export const Header = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <a href="#contacto" className="btn-primary text-sm">
-            Consulta Gratuita
-          </a>
+          <button onClick={onOpenConsultation} className="btn-primary text-sm">
+            Agenda tu Asesoría
+          </button>
         </motion.div>
 
         {/* Mobile Menu Button */}
@@ -98,26 +110,27 @@ export const Header = () => {
               <ul className="flex flex-col py-6 px-4">
                 {navLinks.map((link, index) => (
                   <li key={link.href}>
-                    <motion.a
-                      href={link.href}
-                      className="block py-3 text-muted-foreground hover:text-foreground transition-colors border-b border-border/30"
-                      onClick={() => setIsMobileMenuOpen(false)}
+                    <motion.button
+                      onClick={() => handleNavClick(link.href)}
+                      className="block w-full text-left py-3 text-muted-foreground hover:text-foreground transition-colors border-b border-border/30 bg-transparent cursor-pointer"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
                     >
                       {link.label}
-                    </motion.a>
+                    </motion.button>
                   </li>
                 ))}
                 <li className="pt-4">
-                  <a
-                    href="#contacto"
-                    className="btn-primary block text-center"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                  <button
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      onOpenConsultation?.();
+                    }}
+                    className="btn-primary block text-center w-full"
                   >
-                    Consulta Gratuita
-                  </a>
+                    Agenda tu Asesoría
+                  </button>
                 </li>
               </ul>
             </motion.div>

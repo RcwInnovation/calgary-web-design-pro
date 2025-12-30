@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
+import { Clients } from '@/components/Clients';
 import { Services } from '@/components/Services';
 import { WhyUs } from '@/components/WhyUs';
 import { Process } from '@/components/Process';
@@ -11,10 +12,12 @@ import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { Chatbot } from '@/components/Chatbot';
 import { DiagnosticModal } from '@/components/DiagnosticModal';
+import { ConsultationModal } from '@/components/ConsultationModal';
 import { SchemaMarkup } from '@/components/SchemaMarkup';
 
 const Index = () => {
   const [isDiagnosticOpen, setIsDiagnosticOpen] = useState(false);
+  const [isConsultationOpen, setIsConsultationOpen] = useState(false);
 
   return (
     <>
@@ -51,10 +54,11 @@ const Index = () => {
       <SchemaMarkup />
 
       <div className="min-h-screen bg-background text-foreground">
-        <Header />
+        <Header onOpenConsultation={() => setIsConsultationOpen(true)} />
         
         <main>
           <Hero onOpenDiagnostic={() => setIsDiagnosticOpen(true)} />
+          <Clients />
           <Services />
           <WhyUs />
           <Process />
@@ -72,6 +76,10 @@ const Index = () => {
         <DiagnosticModal 
           isOpen={isDiagnosticOpen} 
           onClose={() => setIsDiagnosticOpen(false)} 
+        />
+        <ConsultationModal 
+          isOpen={isConsultationOpen} 
+          onClose={() => setIsConsultationOpen(false)} 
         />
       </div>
     </>
