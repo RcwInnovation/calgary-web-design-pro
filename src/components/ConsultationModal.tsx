@@ -45,15 +45,28 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
 
     // Build WhatsApp message
     const message = encodeURIComponent(
-      `¡Hola! Soy ${formData.name} y estoy interesado en sus servicios.\n\n` +
+      `Hola, quiero agendar una asesoría estratégica para mi proyecto web.\n\n` +
+      `👤 Nombre: ${formData.name}\n` +
       `📧 Email: ${formData.email || 'No proporcionado'}\n` +
       `📱 Teléfono: ${formData.phone}\n` +
       `🏢 Negocio: ${formData.business || 'No especificado'}\n` +
-      `💡 Interés: ${formData.interest}\n\n` +
-      `Me gustaría agendar una asesoría estratégica.`
+      `💡 Interés: ${formData.interest}`
     );
 
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+    // Use intent:// for Android, whatsapp:// for iOS, fallback to wa.me for desktop
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    
+    let whatsappUrl: string;
+    if (isMobile) {
+      if (isAndroid) {
+        whatsappUrl = `intent://send?phone=${WHATSAPP_NUMBER}&text=${message}#Intent;scheme=whatsapp;package=com.whatsapp;end`;
+      } else {
+        whatsappUrl = `whatsapp://send?phone=${WHATSAPP_NUMBER}&text=${message}`;
+      }
+    } else {
+      whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+    }
 
     // Save to localStorage
     localStorage.setItem('rcw_consultation_data', JSON.stringify({
