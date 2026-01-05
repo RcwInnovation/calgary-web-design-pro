@@ -59,7 +59,7 @@ const Index = () => {
         <main>
           <Hero onOpenDiagnostic={() => setIsDiagnosticOpen(true)} />
           <Clients />
-          <Services />
+          <Services onOpenConsultation={() => setIsConsultationOpen(true)} onOpenDiagnostic={() => setIsDiagnosticOpen(true)} />
           <WhyUs />
           <Process />
           <FAQ />

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { Palette, Rocket, Building2, Globe, Code, Smartphone, X, CheckCircle, MessageCircle, Calendar } from 'lucide-react';
+import { Palette, Rocket, Building2, Globe, Code, Smartphone, CheckCircle, Calendar, Zap } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -135,20 +135,15 @@ const itemVariants = {
   },
 };
 
-export const Services = () => {
+interface ServicesProps {
+  onOpenConsultation: () => void;
+  onOpenDiagnostic: () => void;
+}
+
+export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
-
-  const handleWhatsApp = (serviceTitle: string) => {
-    const message = encodeURIComponent(`Hola, me interesa el servicio de ${serviceTitle}. ¿Podrían darme más información?`);
-    window.open(`https://wa.me/15878961997?text=${message}`, '_blank');
-  };
-
-  const handleSchedule = () => {
-    const message = encodeURIComponent(`Hola, me gustaría agendar una asesoría para conocer más sobre sus servicios.`);
-    window.open(`https://wa.me/15878961997?text=${message}`, '_blank');
-  };
 
   return (
     <section id="servicios" className="section relative overflow-hidden">
@@ -291,19 +286,25 @@ export const Services = () => {
                 {/* CTAs */}
                 <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-border">
                   <Button 
-                    onClick={() => handleWhatsApp(selectedService.title)}
-                    className="flex-1 btn-primary gap-2"
-                  >
-                    <MessageCircle className="w-5 h-5" />
-                    Consultar por WhatsApp
-                  </Button>
-                  <Button 
-                    onClick={handleSchedule}
-                    variant="outline"
-                    className="flex-1 gap-2 border-accent text-accent hover:bg-accent hover:text-background"
+                    onClick={() => {
+                      setSelectedService(null);
+                      onOpenConsultation();
+                    }}
+                    className="flex-1 btn-gold gap-2"
                   >
                     <Calendar className="w-5 h-5" />
-                    Agendar Asesoría
+                    Agenda tu asesoría estratégica
+                  </Button>
+                  <Button 
+                    onClick={() => {
+                      setSelectedService(null);
+                      onOpenDiagnostic();
+                    }}
+                    variant="outline"
+                    className="flex-1 gap-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                  >
+                    <Zap className="w-5 h-5" />
+                    Generar Diagnóstico 5.0
                   </Button>
                 </div>
               </div>
