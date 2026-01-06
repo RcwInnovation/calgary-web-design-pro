@@ -4,6 +4,8 @@ import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
 import { Clients } from '@/components/Clients';
 import { Services } from '@/components/Services';
+import { Metrics } from '@/components/Metrics';
+import { Projects } from '@/components/Projects';
 import { WhyUs } from '@/components/WhyUs';
 import { Process } from '@/components/Process';
 import { FAQ } from '@/components/FAQ';
@@ -23,28 +25,28 @@ const Index = () => {
     <>
       <Helmet>
         <html lang="es" />
-        <title>Empresa de Diseño Web en Calgary – Páginas Web y Landing Pages en Español</title>
+        <title>Diseño de Páginas Web en Calgary | RCW Innovation Canadá</title>
         <meta 
           name="description" 
-          content="Somos especialistas en diseño y desarrollo de páginas web, landing pages y sitios corporativos en español en Calgary. Diseños innovadores, soporte local y resultados profesionales." 
+          content="Líder en desarrollo web en Calgary y Colombia. Servicios de software a medida, automatización con IA, diseño web profesional y transformación digital con visión global e innovación." 
         />
-        <meta name="keywords" content="diseño web Calgary, creación de páginas web Calgary, empresa de diseño web en Calgary, landing pages Calgary, sitios web corporativos Calgary, desarrollo web profesional Calgary, diseño de páginas web en español en Calgary, mejor empresa de diseño web para hispanos en Calgary" />
+        <meta name="keywords" content="diseño web Calgary, marketing digital Calgary, desarrollo de software Calgary, automatización con IA, ERP CRM Calgary, transformación digital, RCW Innovation, páginas web Calgary, landing pages Calgary, agentes IA Calgary" />
         <meta name="author" content="RCW Innovation Inc" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://rcwinnovation.com" />
+        <link rel="canonical" href="https://www.rcwinnovation.com/" />
         
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Empresa de Diseño Web en Calgary – RCW Innovation" />
-        <meta property="og:description" content="Especialistas en diseño web en español en Calgary. Landing pages, sitios corporativos y desarrollo web profesional." />
-        <meta property="og:url" content="https://rcwinnovation.com" />
+        <meta property="og:title" content="Diseño de Páginas Web en Calgary | RCW Innovation Canadá" />
+        <meta property="og:description" content="Líder en desarrollo web, software a medida y automatización con IA en Calgary. Transformación digital con visión global e innovación." />
+        <meta property="og:url" content="https://www.rcwinnovation.com/" />
         <meta property="og:locale" content="es_CA" />
         <meta property="og:site_name" content="RCW Innovation Inc" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Diseño Web en Calgary - RCW Innovation" />
-        <meta name="twitter:description" content="Diseño y desarrollo de páginas web en español para negocios en Calgary." />
+        <meta name="twitter:title" content="Diseño de Páginas Web en Calgary | RCW Innovation" />
+        <meta name="twitter:description" content="Desarrollo web, software a medida y automatización con IA en Calgary. Transformación digital con visión global." />
         
         {/* Viewport */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -57,9 +59,14 @@ const Index = () => {
         <Header onOpenConsultation={() => setIsConsultationOpen(true)} />
         
         <main>
-          <Hero onOpenDiagnostic={() => setIsDiagnosticOpen(true)} />
+          <Hero 
+            onOpenDiagnostic={() => setIsDiagnosticOpen(true)} 
+            onOpenConsultation={() => setIsConsultationOpen(true)}
+          />
           <Clients />
           <Services onOpenConsultation={() => setIsConsultationOpen(true)} onOpenDiagnostic={() => setIsDiagnosticOpen(true)} />
+          <Metrics />
+          <Projects />
           <WhyUs />
           <Process />
           <FAQ />

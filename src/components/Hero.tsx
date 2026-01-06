@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Zap, Shield } from 'lucide-react';
+import { ArrowRight, Sparkles, Zap, Shield, Lightbulb, Target, TrendingUp } from 'lucide-react';
 
 interface HeroProps {
   onOpenDiagnostic: () => void;
+  onOpenConsultation: () => void;
 }
 
-export const Hero = ({ onOpenDiagnostic }: HeroProps) => {
+export const Hero = ({ onOpenDiagnostic, onOpenConsultation }: HeroProps) => {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       {/* Background Effects */}
@@ -17,7 +18,7 @@ export const Hero = ({ onOpenDiagnostic }: HeroProps) => {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:100px_100px]" />
 
       <div className="container-custom relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -27,7 +28,7 @@ export const Hero = ({ onOpenDiagnostic }: HeroProps) => {
           >
             <Sparkles className="w-4 h-4 text-accent" />
             <span className="text-sm text-muted-foreground">
-              Expertos en diseño web para hispanos en Calgary
+              Innovación, Ingeniería y Automatización 5.0
             </span>
           </motion.div>
 
@@ -38,9 +39,9 @@ export const Hero = ({ onOpenDiagnostic }: HeroProps) => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6"
           >
-            Diseño y desarrollo de{' '}
-            <span className="text-gradient-blue">páginas web</span>
-            {' '}en Calgary
+            Impulsamos la innovación, el{' '}
+            <span className="text-gradient-blue">diseño web</span>
+            {' '}y la automatización inteligente en Calgary
           </motion.h1>
 
           {/* Subtitle */}
@@ -48,10 +49,10 @@ export const Hero = ({ onOpenDiagnostic }: HeroProps) => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto"
+            className="text-lg md:text-xl text-muted-foreground mb-10 max-w-3xl mx-auto"
           >
-            Creamos páginas web, landing pages y sitios corporativos que convierten visitantes en clientes. 
-            Diseño innovador, soporte local y resultados profesionales en español.
+            Diseñamos soluciones de ingeniería, IA y automatización 5.0 para transformar tus procesos 
+            en resultados y potenciar la innovación empresarial en Calgary, Alberta y Canadá.
           </motion.p>
 
           {/* CTAs */}
@@ -61,37 +62,57 @@ export const Hero = ({ onOpenDiagnostic }: HeroProps) => {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
           >
-            <a href="#contacto" className="btn-gold flex items-center gap-2 text-lg">
-              Agenda tu asesoría estratégica
+            <button
+              onClick={onOpenConsultation}
+              className="btn-gold flex items-center gap-2 text-lg"
+            >
+              Solicitar Asesoría
               <ArrowRight className="w-5 h-5" />
-            </a>
+            </button>
             <button
               onClick={onOpenDiagnostic}
               className="btn-glass flex items-center gap-2"
             >
               <Zap className="w-5 h-5 text-primary" />
-              Generar Diagnóstico 5.0
+              Consultoría 5.0
             </button>
           </motion.div>
 
-          {/* Trust Indicators */}
+          {/* Value Proposition Cards */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="flex flex-wrap items-center justify-center gap-8 text-sm text-muted-foreground"
+            className="grid md:grid-cols-3 gap-6 mt-12"
           >
-            <div className="flex items-center gap-2">
-              <Shield className="w-5 h-5 text-primary" />
-              <span>100% Satisfacción garantizada</span>
+            <div className="glass p-6 rounded-2xl text-left hover:border-primary/30 transition-all duration-300">
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <Lightbulb className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="font-semibold mb-2">Innovación</h3>
+              <p className="text-sm text-muted-foreground">
+                Tecnología de vanguardia, arquitecturas modernas y agentes de IA que aprenden de tus datos.
+              </p>
             </div>
-            <div className="flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-accent" />
-              <span>Diseño premium incluido</span>
+            
+            <div className="glass p-6 rounded-2xl text-left hover:border-accent/30 transition-all duration-300">
+              <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                <Target className="w-6 h-6 text-accent" />
+              </div>
+              <h3 className="font-semibold mb-2">Estrategia</h3>
+              <p className="text-sm text-muted-foreground">
+                Detectamos oportunidades, creamos roadmaps accionables y maximizamos tu retorno de inversión.
+              </p>
             </div>
-            <div className="flex items-center gap-2">
-              <Zap className="w-5 h-5 text-primary" />
-              <span>Entrega en 2-4 semanas</span>
+            
+            <div className="glass p-6 rounded-2xl text-left hover:border-primary/30 transition-all duration-300">
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <TrendingUp className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="font-semibold mb-2">Resultados</h3>
+              <p className="text-sm text-muted-foreground">
+                KPIs claros, optimización continua y entregables que impactan ventas, procesos y experiencia.
+              </p>
             </div>
           </motion.div>
         </div>

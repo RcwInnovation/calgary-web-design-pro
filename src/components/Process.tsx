@@ -1,38 +1,33 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { MessageSquare, Lightbulb, Palette, Code2, Rocket, HeartHandshake } from 'lucide-react';
+import { Search, Palette, Code2, Rocket, TrendingUp } from 'lucide-react';
 
 const steps = [
   {
-    icon: MessageSquare,
-    title: 'Consulta Inicial',
-    description: 'Analizamos tus necesidades, objetivos y visión para tu proyecto.',
-  },
-  {
-    icon: Lightbulb,
-    title: 'Estrategia',
-    description: 'Desarrollamos un plan personalizado con estructura y funcionalidades.',
+    icon: Search,
+    title: 'Descubrimiento',
+    description: 'Definición de objetivos, audiencias y métricas. Diagnóstico de oportunidades.',
   },
   {
     icon: Palette,
     title: 'Diseño',
-    description: 'Creamos mockups y prototipos para tu aprobación antes de desarrollar.',
+    description: 'UX/UI premium, arquitectura técnica y roadmap de entregas.',
   },
   {
     icon: Code2,
     title: 'Desarrollo',
-    description: 'Construimos tu sitio con código limpio y las mejores tecnologías.',
+    description: 'Implementación ágil con seguridad y pruebas automatizadas.',
   },
   {
     icon: Rocket,
-    title: 'Lanzamiento',
-    description: 'Publicamos tu sitio optimizado y te capacitamos para usarlo.',
+    title: 'Implementación',
+    description: 'Despliegue escalable, monitoreo y entrenamiento de equipos.',
   },
   {
-    icon: HeartHandshake,
-    title: 'Soporte',
-    description: 'Te acompañamos con mantenimiento y actualizaciones continuas.',
+    icon: TrendingUp,
+    title: 'Optimización',
+    description: 'Medición de KPIs e iteración para crecimiento sostenido.',
   },
 ];
 
@@ -59,7 +54,7 @@ export const Process = () => {
             Nuestro proceso
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Un proceso transparente y eficiente para llevar tu proyecto desde la idea hasta el éxito.
+            Un proceso transparente y eficiente que garantiza resultados medibles en cada etapa.
           </p>
         </motion.div>
 
@@ -68,7 +63,7 @@ export const Process = () => {
           {/* Connection Line - Desktop */}
           <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-accent to-primary -translate-y-1/2" />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4">
             {steps.map((step, index) => (
               <motion.div
                 key={step.title}
