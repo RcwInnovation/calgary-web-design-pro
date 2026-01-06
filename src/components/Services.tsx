@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { 
   Code2, 
   Share2, 
@@ -10,18 +10,8 @@ import {
   CreditCard, 
   Globe, 
   GraduationCap,
-  CheckCircle, 
-  Calendar, 
-  Zap,
-  ExternalLink
+  ArrowRight
 } from 'lucide-react';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
 import serviceWebDesign from '@/assets/service-web-design.jpg';
@@ -40,15 +30,7 @@ const services = [
     features: ['Arquitecturas modulares', 'APIs seguras', 'Dashboards intuitivos'],
     image: serviceDevelopment,
     imageAlt: 'Desarrollo de software a medida en Calgary - plataformas escalables y MVPs',
-    fullDescription: 'Creamos soluciones de software personalizadas que se adaptan perfectamente a las necesidades de tu negocio. Desde MVPs hasta plataformas empresariales completas.',
-    benefits: [
-      'Escalabilidad garantizada',
-      'Seguridad de nivel empresarial',
-      'Experiencia de usuario optimizada',
-      'Código limpio y documentado',
-      'Integraciones con sistemas existentes',
-      'Soporte y mantenimiento continuo'
-    ],
+    href: '/servicios/software-medida',
   },
   {
     icon: Share2,
@@ -58,15 +40,7 @@ const services = [
     features: ['Identidad visual', 'Marketing orgánico', 'Campañas de pago'],
     image: serviceLandingPage,
     imageAlt: 'Branding y marketing en redes sociales Calgary',
-    fullDescription: 'Desarrollamos tu marca desde cero o la potenciamos con estrategias de contenido y publicidad que generan resultados medibles.',
-    benefits: [
-      'Posicionamiento de marca sólido',
-      'Mayor conversión y fidelización',
-      'Guías de estilo completas',
-      'Estrategia de contenido',
-      'Gestión de redes sociales',
-      'Campañas publicitarias optimizadas'
-    ],
+    href: '/servicios/branding-redes',
   },
   {
     icon: Bot,
@@ -76,15 +50,7 @@ const services = [
     features: ['Workflows inteligentes', 'Integración CRM/ERP', 'Atención 24/7'],
     image: serviceSeo,
     imageAlt: 'Automatización con inteligencia artificial Calgary',
-    fullDescription: 'Implementamos flujos de trabajo automatizados que reducen costos operativos y mejoran la experiencia del cliente con atención disponible las 24 horas.',
-    benefits: [
-      'Atención 24/7 sin fricciones',
-      'Reducción significativa de costos',
-      'Visibilidad total de operaciones',
-      'Integración con sistemas existentes',
-      'Escalabilidad automática',
-      'Reportes y analíticas en tiempo real'
-    ],
+    href: '/servicios/automatizaciones-ia',
   },
   {
     icon: Brain,
@@ -94,15 +60,7 @@ const services = [
     features: ['Agentes conversacionales', 'Aprendizaje continuo', 'Integración backend'],
     image: serviceCorporate,
     imageAlt: 'Desarrollo de agentes de inteligencia artificial Calgary',
-    fullDescription: 'Creamos agentes de IA personalizados que entienden tu negocio, responden preguntas y automatizan tareas complejas.',
-    benefits: [
-      'Respuesta instantánea a consultas',
-      'Integración total con tus sistemas',
-      'Mejora continua con machine learning',
-      'Personalización total',
-      'Escalable según demanda',
-      'Analytics de conversaciones'
-    ],
+    href: '/servicios/agentes-ia',
   },
   {
     icon: Database,
@@ -112,15 +70,7 @@ const services = [
     features: ['ERP/CRM personalizado', 'Dashboards en tiempo real', 'Automatización'],
     image: serviceDevelopment,
     imageAlt: 'Sistemas de gestión ERP CRM Calgary',
-    fullDescription: 'Implementamos sistemas de gestión empresarial que centralizan tus operaciones y te dan control total sobre tu negocio.',
-    benefits: [
-      'Procesos estandarizados',
-      'Datos en tiempo real',
-      'Escalamiento controlado',
-      'Permisos por roles',
-      'Integración con herramientas existentes',
-      'Capacitación incluida'
-    ],
+    href: '/servicios/sistemas-gestion',
   },
   {
     icon: CreditCard,
@@ -130,15 +80,7 @@ const services = [
     features: ['QR/NFC integrado', 'vCard automática', 'Analytics de contactos'],
     image: serviceLandingPage,
     imageAlt: 'Tarjeta digital profesional NFC Calgary',
-    fullDescription: 'Moderniza tu networking con tarjetas digitales que impresionan y te permiten hacer seguimiento de cada contacto.',
-    benefits: [
-      'Compartir con un toque',
-      'Seguimiento analítico de contactos',
-      'Diseño 100% personalizable',
-      'Actualización en tiempo real',
-      'Compatible con todos los dispositivos',
-      'Integración con CRM'
-    ],
+    href: '/servicios/tarjeta-digital',
   },
   {
     icon: Globe,
@@ -148,17 +90,7 @@ const services = [
     features: ['SEO desde arquitectura', 'E-commerce seguro', 'Apps móviles/PWA'],
     image: serviceWebDesign,
     imageAlt: 'Diseño web y aplicaciones móviles Calgary',
-    fullDescription: 'Creamos presencias digitales que convierten visitantes en clientes, con tecnología de punta y optimización para buscadores.',
-    benefits: [
-      'SEO técnico desde la arquitectura',
-      'E-commerce seguro y escalable',
-      'Progressive Web Apps (PWA)',
-      'Diseño responsive premium',
-      'Velocidad de carga optimizada',
-      'Analíticas integradas'
-    ],
-    isLink: true,
-    linkTo: '/',
+    href: '/servicios/diseno-web-app',
   },
   {
     icon: GraduationCap,
@@ -168,15 +100,7 @@ const services = [
     features: ['Planes personalizados', 'Workshops prácticos', 'Seguimiento continuo'],
     image: serviceMobile,
     imageAlt: 'Mentoría y capacitación empresarial Calgary',
-    fullDescription: 'Capacitamos a tu equipo en las últimas tecnologías y metodologías para que puedan aprovechar al máximo las herramientas digitales.',
-    benefits: [
-      'Planes 100% personalizados',
-      'Workshops prácticos con casos reales',
-      'Seguimiento y soporte post-capacitación',
-      'Certificación incluida',
-      'Material de apoyo digital',
-      'Sesiones grabadas disponibles'
-    ],
+    href: '/servicios/mentoria-capacitacion',
   },
 ];
 
@@ -207,17 +131,6 @@ interface ServicesProps {
 export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
-
-  const handleServiceClick = (service: typeof services[0]) => {
-    if (service.isLink) {
-      // If it's the web design service, it already links to current page
-      // In future, this could navigate to a dedicated page
-      setSelectedService(service);
-    } else {
-      setSelectedService(service);
-    }
-  };
 
   return (
     <section id="servicios" className="section relative overflow-hidden">
@@ -256,138 +169,50 @@ export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps
               key={service.title}
               variants={itemVariants}
               className="card-premium group cursor-pointer overflow-hidden"
-              onClick={() => handleServiceClick(service)}
             >
-              {/* Tag */}
-              <div className="mb-4">
-                <span className="inline-block px-3 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full">
-                  {service.tag}
-                </span>
-              </div>
+              <Link to={service.href} className="block h-full">
+                {/* Tag */}
+                <div className="mb-4">
+                  <span className="inline-block px-3 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full">
+                    {service.tag}
+                  </span>
+                </div>
 
-              {/* Icon */}
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                <service.icon className="w-7 h-7 text-primary" />
-              </div>
+                {/* Icon */}
+                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  <service.icon className="w-7 h-7 text-primary" />
+                </div>
 
-              {/* Content */}
-              <h3 className="text-lg font-semibold mb-3 group-hover:text-primary transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
-                {service.description}
-              </p>
+                {/* Content */}
+                <h3 className="text-lg font-semibold mb-3 group-hover:text-primary transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
+                  {service.description}
+                </p>
 
-              {/* Features */}
-              <ul className="space-y-1.5 mb-4">
-                {service.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <div className="w-1 h-1 rounded-full bg-accent" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+                {/* Features */}
+                <ul className="space-y-1.5 mb-4">
+                  {service.features.map((feature) => (
+                    <li key={feature} className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <div className="w-1 h-1 rounded-full bg-accent" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
 
-              {/* Click indicator */}
-              <div className="pt-4 border-t border-border/50">
-                <span className="text-sm text-primary group-hover:underline flex items-center gap-1">
-                  {service.isLink ? (
-                    <>
-                      Ver página <ExternalLink className="w-3 h-3" />
-                    </>
-                  ) : (
-                    'Asesoría 5.0 →'
-                  )}
-                </span>
-              </div>
+                {/* Click indicator */}
+                <div className="pt-4 border-t border-border/50">
+                  <span className="text-sm text-primary group-hover:underline flex items-center gap-1">
+                    Ver más detalles
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
+              </Link>
             </motion.article>
           ))}
         </motion.div>
       </div>
-
-      {/* Service Detail Modal */}
-      <Dialog open={!!selectedService} onOpenChange={() => setSelectedService(null)} modal>
-        <DialogContent className="max-w-[95vw] sm:max-w-2xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto bg-card border-border p-0 sm:p-6">
-          {selectedService && (
-            <>
-              <DialogHeader className="p-4 sm:p-0">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center">
-                    <selectedService.icon className="w-7 h-7 text-primary" />
-                  </div>
-                  <div>
-                    <span className="inline-block px-3 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full mb-2">
-                      {selectedService.tag}
-                    </span>
-                    <DialogTitle className="text-xl sm:text-2xl font-bold text-foreground">
-                      {selectedService.title}
-                    </DialogTitle>
-                  </div>
-                </div>
-              </DialogHeader>
-
-              <div className="px-4 sm:px-0">
-                <div className="space-y-4 sm:space-y-6">
-                  {/* Full Description */}
-                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                    {selectedService.fullDescription}
-                  </p>
-
-                  {/* Benefits */}
-                  <div>
-                    <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-foreground">Beneficios clave</h4>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
-                      {selectedService.benefits.map((benefit, index) => (
-                        <li key={index} className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground">
-                          <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-accent flex-shrink-0 mt-0.5" />
-                          {benefit}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Features Pills */}
-                  <div className="flex flex-wrap gap-2">
-                    {selectedService.features.map((feature) => (
-                      <span 
-                        key={feature} 
-                        className="px-2 sm:px-3 py-1 text-xs sm:text-sm bg-primary/10 text-primary rounded-full border border-primary/20"
-                      >
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* CTAs */}
-                  <div className="flex flex-col gap-3 pt-4 border-t border-border pb-4 sm:pb-0">
-                    <Button 
-                      onClick={() => {
-                        setSelectedService(null);
-                        onOpenConsultation();
-                      }}
-                      className="w-full btn-gold gap-2 text-sm sm:text-base py-5 sm:py-6"
-                    >
-                      <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
-                      Asesoría 5.0
-                    </Button>
-                    <Button 
-                      onClick={() => {
-                        setSelectedService(null);
-                        onOpenDiagnostic();
-                      }}
-                      variant="outline"
-                      className="w-full gap-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground text-sm sm:text-base py-5 sm:py-6"
-                    >
-                      <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
-                      Consultoría 5.0
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
     </section>
   );
 };
