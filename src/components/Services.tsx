@@ -235,12 +235,12 @@ export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps
       </div>
 
       {/* Service Detail Modal */}
-      <Dialog open={!!selectedService} onOpenChange={() => setSelectedService(null)}>
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-card border-border">
+      <Dialog open={!!selectedService} onOpenChange={() => setSelectedService(null)} modal>
+        <DialogContent className="max-w-[95vw] sm:max-w-2xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto bg-card border-border p-0 sm:p-6">
           {selectedService && (
             <>
-              <DialogHeader>
-                <div className="relative h-48 -mx-6 -mt-6 mb-4 overflow-hidden rounded-t-lg">
+              <DialogHeader className="p-0">
+                <div className="relative h-40 sm:h-48 overflow-hidden rounded-t-lg sm:-mx-6 sm:-mt-6 mb-4">
                   <img 
                     src={selectedService.image} 
                     alt={selectedService.imageAlt}
@@ -248,29 +248,31 @@ export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
                   <div className="absolute bottom-4 left-4 flex items-center gap-3">
-                    <div className="w-14 h-14 rounded-xl bg-primary/20 backdrop-blur-sm flex items-center justify-center border border-primary/30">
-                      <selectedService.icon className="w-7 h-7 text-primary" />
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/20 backdrop-blur-sm flex items-center justify-center border border-primary/30">
+                      <selectedService.icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary" />
                     </div>
                   </div>
                 </div>
-                <DialogTitle className="text-2xl font-bold text-foreground">
+                <DialogTitle className="text-xl sm:text-2xl font-bold text-foreground px-4 sm:px-0">
                   {selectedService.title}
                 </DialogTitle>
               </DialogHeader>
 
-              <div className="space-y-6">
+              <div className="px-4 sm:px-0">
+
+              <div className="space-y-4 sm:space-y-6">
                 {/* Full Description */}
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                   {selectedService.fullDescription}
                 </p>
 
                 {/* Benefits */}
                 <div>
-                  <h4 className="text-lg font-semibold mb-4 text-foreground">¿Qué incluye?</h4>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-foreground">¿Qué incluye?</h4>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                     {selectedService.benefits.map((benefit, index) => (
-                      <li key={index} className="flex items-start gap-2 text-sm text-muted-foreground">
-                        <CheckCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                      <li key={index} className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground">
+                        <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-accent flex-shrink-0 mt-0.5" />
                         {benefit}
                       </li>
                     ))}
@@ -282,7 +284,7 @@ export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps
                   {selectedService.features.map((feature) => (
                     <span 
                       key={feature} 
-                      className="px-3 py-1 text-sm bg-primary/10 text-primary rounded-full border border-primary/20"
+                      className="px-2 sm:px-3 py-1 text-xs sm:text-sm bg-primary/10 text-primary rounded-full border border-primary/20"
                     >
                       {feature}
                     </span>
@@ -290,15 +292,15 @@ export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps
                 </div>
 
                 {/* CTAs */}
-                <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-border">
+                <div className="flex flex-col gap-3 pt-4 border-t border-border pb-4 sm:pb-0">
                   <Button 
                     onClick={() => {
                       setSelectedService(null);
                       onOpenConsultation();
                     }}
-                    className="flex-1 btn-gold gap-2"
+                    className="w-full btn-gold gap-2 text-sm sm:text-base py-5 sm:py-6"
                   >
-                    <Calendar className="w-5 h-5" />
+                    <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
                     Agenda tu asesoría estratégica
                   </Button>
                   <Button 
@@ -307,12 +309,13 @@ export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps
                       onOpenDiagnostic();
                     }}
                     variant="outline"
-                    className="flex-1 gap-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                    className="w-full gap-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground text-sm sm:text-base py-5 sm:py-6"
                   >
-                    <Zap className="w-5 h-5" />
+                    <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
                     Generar Diagnóstico 5.0
                   </Button>
                 </div>
+              </div>
               </div>
             </>
           )}

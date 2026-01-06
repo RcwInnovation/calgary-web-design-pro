@@ -101,7 +101,7 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-background/80 backdrop-blur-sm"
           onClick={onClose}
         >
           <motion.div
@@ -109,11 +109,11 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.2 }}
-            className="w-full max-w-lg glass-strong rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
+            className="w-full max-w-lg glass-strong rounded-2xl overflow-hidden max-h-[95vh] sm:max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-primary to-primary/80 p-6 flex items-center justify-between">
+            <div className="bg-gradient-to-r from-primary to-primary/80 p-4 sm:p-6 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-primary-foreground/20 flex items-center justify-center">
                   <Zap className="w-5 h-5 text-primary-foreground" />
@@ -133,7 +133,7 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="p-6 space-y-5">
+            <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4 sm:space-y-5">
               {/* Nombre */}
               <div>
                 <label htmlFor="nombre" className="block text-sm font-medium mb-2">
