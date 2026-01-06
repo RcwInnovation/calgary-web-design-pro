@@ -1,48 +1,29 @@
 export const SchemaMarkup = () => {
-  const localBusinessSchema = {
+  const professionalServiceSchema = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://rcwinnovation.com/#organization",
-    "name": "RCW Innovation Inc",
-    "alternateName": "RCW Innovation",
-    "description": "Empresa de diseño y desarrollo de páginas web en Calgary especializada en la comunidad hispana. Ofrecemos diseño web profesional, landing pages y sitios corporativos en español.",
-    "url": "https://rcwinnovation.com",
-    "telephone": "+1-403-555-1234",
-    "email": "info@rcwinnovation.com",
+    "@type": "ProfessionalService",
+    "name": "RCW Innovation",
+    "url": "https://rcwinnovation.com/diseno-web-calgary",
+    "description": "Servicios de diseño web en español en Calgary. Creamos páginas web profesionales, landing pages de conversión y sitios corporativos optimizados para Google.",
+    "areaServed": [
+      { "@type": "City", "name": "Calgary" },
+      { "@type": "AdministrativeArea", "name": "Alberta" },
+      { "@type": "Country", "name": "CA" }
+    ],
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Calgary",
-      "addressRegion": "Alberta",
+      "addressRegion": "AB",
       "addressCountry": "CA"
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "51.0447",
-      "longitude": "-114.0719"
-    },
-    "areaServed": {
-      "@type": "City",
-      "name": "Calgary",
-      "containedInPlace": {
-        "@type": "AdministrativeArea",
-        "name": "Alberta"
-      }
-    },
-    "serviceType": [
-      "Diseño web",
-      "Desarrollo web",
-      "Landing pages",
-      "Sitios web corporativos",
-      "SEO local"
-    ],
-    "priceRange": "$$",
-    "openingHours": "Mo-Fr 09:00-18:00",
     "sameAs": [
-      "https://www.facebook.com/rcwinnovation",
-      "https://www.instagram.com/rcwinnovation",
-      "https://www.linkedin.com/company/rcwinnovation"
-    ],
-    "image": "https://rcwinnovation.com/logo.png"
+      "https://www.facebook.com/rcwinnovationai/",
+      "https://www.instagram.com/rcwinnovationai_/",
+      "https://share.google/xUcKvRUSis6kFdoYs",
+      "https://www.linkedin.com/company/rcwinnovation",
+      "https://www.youtube.com/@rcwinnovationai",
+      "https://www.tiktok.com/@rcwinnovationai"
+    ]
   };
 
   const faqSchema = {
@@ -156,7 +137,7 @@ export const SchemaMarkup = () => {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
       />
       <script
         type="application/ld+json"
