@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '@/assets/logo.png';
 
 const navLinks = [
-  { href: '#servicios', label: 'Servicios' },
-  { href: '#por-que-nosotros', label: '¿Por qué elegirnos?' },
-  { href: '#proceso', label: 'Proceso' },
-  { href: '#faq', label: 'FAQ' },
-  { href: '#contacto', label: 'Contacto' },
+  { href: '/#servicios', label: 'Servicios' },
+  { href: '/#proyectos', label: 'Proyectos' },
+  { href: '/#por-que-nosotros', label: '¿Por qué elegirnos?' },
+  { href: '/#proceso', label: 'Proceso' },
+  { href: '/#faq', label: 'FAQ' },
+  { href: '/#contacto', label: 'Contacto' },
 ];
 
 interface HeaderProps {
@@ -18,6 +20,8 @@ interface HeaderProps {
 export const Header = ({ onOpenConsultation }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,9 +33,18 @@ export const Header = ({ onOpenConsultation }: HeaderProps) => {
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    
+    // Check if we're on the home page
+    if (location.pathname === '/') {
+      // If on home page, just scroll to section
+      const sectionId = href.replace('/#', '#');
+      const element = document.querySelector(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // If on another page, navigate to home first then scroll
+      navigate(href);
     }
   };
 
@@ -42,18 +55,21 @@ export const Header = ({ onOpenConsultation }: HeaderProps) => {
       }`}
     >
       <nav className="container-custom flex items-center justify-between" aria-label="Navegación principal">
-        <motion.a
-          href="#"
-          className="flex items-center gap-3 group"
+        <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <img src={logo} alt="RCW Innovation Inc Logo" className="h-12 w-12 object-contain" />
-          <span className="text-xl font-bold hidden sm:block group-hover:text-gradient-blue transition-all">
-            RCW Innovation
-          </span>
-        </motion.a>
+          <Link
+            to="/"
+            className="flex items-center gap-3 group"
+          >
+            <img src={logo} alt="RCW Innovation Inc Logo" className="h-12 w-12 object-contain" />
+            <span className="text-xl font-bold hidden sm:block group-hover:text-gradient-blue transition-all">
+              RCW Innovation
+            </span>
+          </Link>
+        </motion.div>
 
         {/* Desktop Navigation */}
         <motion.ul
