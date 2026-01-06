@@ -24,6 +24,7 @@ const services = [
     description: 'Creamos sitios web únicos y personalizados que reflejan la identidad de tu marca con un diseño moderno y atractivo.',
     features: ['UI/UX Premium', 'Responsive Design', 'Optimizado para conversión'],
     image: serviceWebDesign,
+    imageAlt: 'Diseño web profesional en Calgary - RCW Innovation creando sitios web modernos y atractivos',
     fullDescription: 'Nuestro equipo de diseñadores expertos crea sitios web que no solo se ven increíbles, sino que también convierten visitantes en clientes. Utilizamos las últimas tendencias en diseño y tecnología para crear experiencias digitales memorables.',
     benefits: [
       'Diseño personalizado 100% único',
@@ -40,6 +41,7 @@ const services = [
     description: 'Diseño de landing pages optimizadas para maximizar tus conversiones y generar más leads para tu negocio en Calgary.',
     features: ['A/B Testing', 'CTA Optimizados', 'Velocidad máxima'],
     image: serviceLandingPage,
+    imageAlt: 'Landing pages de alta conversión en Calgary - páginas optimizadas para generar leads',
     fullDescription: 'Las landing pages son esenciales para campañas de marketing efectivas. Diseñamos páginas enfocadas en un solo objetivo: convertir visitantes en leads o clientes, con copy persuasivo y diseño estratégico.',
     benefits: [
       'Tasas de conversión superiores al promedio',
@@ -56,6 +58,7 @@ const services = [
     description: 'Desarrollamos sitios web corporativos profesionales que transmiten confianza y profesionalismo a tus clientes.',
     features: ['Multi-página', 'CMS Integrado', 'SEO Incluido'],
     image: serviceCorporate,
+    imageAlt: 'Desarrollo de sitios web corporativos en Calgary - presencia digital profesional para empresas',
     fullDescription: 'Tu sitio web corporativo es la cara digital de tu empresa. Creamos presencias online que reflejan el profesionalismo y los valores de tu marca, con todas las funcionalidades que necesitas para crecer.',
     benefits: [
       'Múltiples páginas y secciones',
@@ -72,6 +75,7 @@ const services = [
     description: 'Optimización para buscadores que te ayudará a aparecer en los primeros resultados de Google en Calgary.',
     features: ['SEO On-page', 'Velocidad web', 'Schema Markup'],
     image: serviceSeo,
+    imageAlt: 'Servicio de SEO y posicionamiento web en Calgary - aparecer en Google primeros resultados',
     fullDescription: 'El SEO es fundamental para que tus clientes potenciales te encuentren. Implementamos estrategias de posicionamiento que aumentan tu visibilidad orgánica y te posicionan como líder en tu industria.',
     benefits: [
       'Auditoría SEO completa',
@@ -88,6 +92,7 @@ const services = [
     description: 'Soluciones personalizadas con las últimas tecnologías para necesidades específicas de tu negocio.',
     features: ['React/Next.js', 'APIs Integradas', 'Escalabilidad'],
     image: serviceDevelopment,
+    imageAlt: 'Desarrollo web a medida en Calgary - soluciones personalizadas con React y tecnologías modernas',
     fullDescription: 'Cuando necesitas algo más que un sitio web estándar, nuestro equipo de desarrollo crea soluciones a medida. Desde aplicaciones web hasta integraciones complejas, hacemos realidad tus ideas.',
     benefits: [
       'Código limpio y documentado',
@@ -104,6 +109,7 @@ const services = [
     description: 'Diseños optimizados primero para móvil, garantizando una experiencia perfecta en todos los dispositivos.',
     features: ['Responsive', 'Touch-friendly', 'PWA Ready'],
     image: serviceMobile,
+    imageAlt: 'Diseño mobile-first en Calgary - páginas web responsive optimizadas para dispositivos móviles',
     fullDescription: 'Más del 60% del tráfico web viene de dispositivos móviles. Nuestro enfoque mobile-first garantiza que tu sitio se vea y funcione perfectamente en cualquier pantalla.',
     benefits: [
       'Diseño responsive adaptativo',
@@ -188,7 +194,7 @@ export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps
               <div className="relative h-40 -mx-6 -mt-6 mb-6 overflow-hidden">
                 <img 
                   src={service.image} 
-                  alt={service.title}
+                  alt={service.imageAlt}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
                 />
@@ -237,7 +243,7 @@ export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps
                 <div className="relative h-48 -mx-6 -mt-6 mb-4 overflow-hidden rounded-t-lg">
                   <img 
                     src={selectedService.image} 
-                    alt={selectedService.title}
+                    alt={selectedService.imageAlt}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
