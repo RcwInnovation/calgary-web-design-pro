@@ -95,7 +95,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -111,14 +111,14 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
 
           {/* Modal */}
           <motion.div
-            className="relative w-full max-w-md glass-strong rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
+            className="relative w-full max-w-md glass-strong rounded-2xl overflow-hidden max-h-[95vh] sm:max-h-[90vh] overflow-y-auto"
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
           >
             {/* Header */}
-            <div className="relative p-6 pb-4 border-b border-border/30">
+            <div className="relative p-4 sm:p-6 pb-4 border-b border-border/30">
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-accent to-primary" />
               
               <button
@@ -138,7 +138,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="p-6 space-y-4">
+            <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-3 sm:space-y-4">
               {/* Name */}
               <div className="space-y-2">
                 <Label htmlFor="name" className="flex items-center gap-2 text-sm">
