@@ -306,13 +306,13 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
               <div className="p-4 rounded-xl bg-accent/10 border border-accent/20 space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium text-foreground">Diagnóstico 5.0</span>
-                  <span className="text-lg font-bold text-accent">$97 CAD</span>
+                  <span className="text-lg font-bold text-accent">$150 CAD</span>
                 </div>
                 <div className="flex gap-3">
                   <AlertCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                   <p className="text-sm text-muted-foreground">
                     <strong className="text-foreground">Importante:</strong> Al hacer clic en "Enviar y continuar al pago", 
-                    serás redirigido a nuestra plataforma segura de Stripe para completar el pago de <strong className="text-accent">$97 CAD</strong>. 
+                    serás redirigido a nuestra plataforma segura de Stripe para completar el pago de <strong className="text-accent">$150 CAD</strong>. 
                     Una vez confirmado, nuestro equipo te contactará para preparar tu diagnóstico personalizado.
                   </p>
                 </div>
