@@ -3,12 +3,13 @@ export const SchemaMarkup = () => {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "RCW Innovation",
-    "url": "https://rcwinnovation.com/diseno-web-calgary",
-    "description": "Servicios de diseño web en español en Calgary. Creamos páginas web profesionales, landing pages de conversión y sitios corporativos optimizados para Google.",
+    "url": "https://www.rcwinnovation.com/",
+    "description": "Líder en desarrollo web en Calgary y Colombia. Servicios de software a medida, automatización con IA, diseño web profesional y transformación digital con visión global e innovación.",
     "areaServed": [
       { "@type": "City", "name": "Calgary" },
       { "@type": "AdministrativeArea", "name": "Alberta" },
-      { "@type": "Country", "name": "CA" }
+      { "@type": "Country", "name": "CA" },
+      { "@type": "Country", "name": "CO" }
     ],
     "address": {
       "@type": "PostalAddress",
@@ -32,58 +33,58 @@ export const SchemaMarkup = () => {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "¿Cuánto cuesta un sitio web profesional en Calgary?",
+        "name": "¿Cuál es la diferencia entre Asesoría 5.0 y Consultoría 5.0?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Nuestros proyectos comienzan desde $1,500 CAD para landing pages y desde $3,000 CAD para sitios web corporativos completos. El precio final depende de las funcionalidades específicas que necesites. Ofrecemos una consulta gratuita para darte un presupuesto personalizado."
+          "text": "La Asesoría 5.0 son sesiones rápidas (30-90 días) enfocadas en diagnóstico y plan de acción inmediato. La Consultoría 5.0 es un proyecto integral que incluye roadmap completo, implementación y optimización continua."
         }
       },
       {
         "@type": "Question",
-        "name": "¿Cuánto tiempo toma desarrollar un sitio web?",
+        "name": "¿Cómo pueden ayudar a mi negocio?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Una landing page puede estar lista en 1-2 semanas. Un sitio web corporativo completo generalmente toma 3-4 semanas. Proyectos más complejos con funcionalidades personalizadas pueden tomar 6-8 semanas."
+          "text": "Unimos tecnología, automatización y estrategia para eliminar tareas repetitivas, fortalecer tu marca y convertir más leads en clientes."
         }
       },
       {
         "@type": "Question",
-        "name": "¿Ofrecen diseño web en español en Calgary?",
+        "name": "¿Se integran con sistemas existentes?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sí, somos especialistas en diseño web para la comunidad hispana en Calgary. Toda nuestra comunicación y soporte es en español, y podemos crear tu sitio web bilingüe (español/inglés) para alcanzar más clientes."
+          "text": "Sí, nos integramos con CRM, ERP y otras suites como Kommo, HubSpot, Odoo, Zoho y SAP. Nuestro enfoque es potenciar lo que ya funciona."
         }
       },
       {
         "@type": "Question",
-        "name": "¿Qué incluye el servicio de diseño web?",
+        "name": "¿Cuánto tiempo toma ver resultados?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Incluye diseño personalizado, desarrollo responsive, optimización SEO básica, integración con Google Analytics, formularios de contacto, hosting por el primer año, SSL/seguridad, y capacitación para que puedas actualizar tu contenido."
+          "text": "Prometemos quick wins en 2-3 semanas, un MVP funcional en 4-8 semanas y despliegues completos en 8-12 semanas."
         }
       },
       {
         "@type": "Question",
-        "name": "¿Pueden ayudarme con SEO para aparecer en Google?",
+        "name": "¿Cómo manejan la seguridad de la información?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Absolutamente. Todos nuestros sitios incluyen SEO on-page básico. También ofrecemos servicios de SEO avanzado y posicionamiento local para que aparezcas en búsquedas como 'tu servicio + Calgary'."
+          "text": "Usamos NDA, cifrado de datos, control de acceso estricto y nunca utilizamos los datos de clientes para entrenar modelos sin permiso expreso."
         }
       },
       {
         "@type": "Question",
-        "name": "¿Trabajan con negocios pequeños o solo empresas grandes?",
+        "name": "¿Quién es dueño del código al finalizar?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Trabajamos con negocios de todos los tamaños. De hecho, nos especializamos en ayudar a pequeñas y medianas empresas hispanas en Calgary a establecer su presencia digital profesional."
+          "text": "El cliente conserva la propiedad total del proyecto y todo el código desarrollado. La empresa retiene únicamente la autoría técnica y metodológica."
         }
       },
       {
         "@type": "Question",
-        "name": "¿Ofrecen garantía de satisfacción?",
+        "name": "¿Qué los diferencia de otras agencias?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sí, ofrecemos garantía de satisfacción del 100%. Trabajamos contigo hasta que estés completamente satisfecho con tu sitio web. Además, incluimos 30 días de ajustes gratuitos después del lanzamiento."
+          "text": "No vendemos servicios, diseñamos sistemas que generan resultados reales. Combinamos branding, tecnología de punta e innovación con un enfoque 100% orientado a métricas."
         }
       }
     ]
@@ -92,7 +93,7 @@ export const SchemaMarkup = () => {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "serviceType": "Diseño y Desarrollo Web",
+    "serviceType": "Desarrollo Web y Automatización con IA",
     "provider": {
       "@type": "LocalBusiness",
       "name": "RCW Innovation Inc"
@@ -103,30 +104,62 @@ export const SchemaMarkup = () => {
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "Servicios de Diseño Web",
+      "name": "Servicios de Innovación Digital",
       "itemListElement": [
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Landing Pages",
-            "description": "Diseño de landing pages de alta conversión optimizadas para generar leads"
+            "name": "Diseño de Software a la Medida",
+            "description": "Desarrollo de MVPs y plataformas escalables con arquitecturas modulares y APIs seguras"
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Sitios Web Corporativos",
-            "description": "Desarrollo de sitios web profesionales y corporativos"
+            "name": "Branding y Redes Sociales",
+            "description": "Construcción de identidad visual y contenidos de alto impacto"
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "SEO Local",
-            "description": "Optimización para buscadores con enfoque en Calgary"
+            "name": "Automatizaciones con IA",
+            "description": "Workflows inteligentes para atención, ventas y operaciones"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Creación de Agentes IA",
+            "description": "Agentes conversacionales y de back-end que aprenden de los datos empresariales"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Sistemas de Gestión ERP/CRM",
+            "description": "Diseño e implementación de sistemas con dashboards y automatización"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Diseño Web y Apps Móviles",
+            "description": "Sitios orientados a conversión con SEO técnico y apps PWA"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Mentoría y Capacitación",
+            "description": "Programas sobre IA, productividad, automatización, UX y analítica"
           }
         }
       ]

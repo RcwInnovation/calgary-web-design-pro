@@ -5,36 +5,40 @@ import { ChevronDown } from 'lucide-react';
 
 const faqs = [
   {
-    question: '¿Cuánto cuesta un sitio web profesional en Calgary?',
-    answer: 'Nuestros proyectos comienzan desde $1,500 CAD para landing pages y desde $3,000 CAD para sitios web corporativos completos. El precio final depende de las funcionalidades específicas que necesites. Ofrecemos una consulta gratuita para darte un presupuesto personalizado.',
+    question: '¿Cuál es la diferencia entre Asesoría 5.0 y Consultoría 5.0?',
+    answer: 'La Asesoría 5.0 son sesiones rápidas (30-90 días) enfocadas en diagnóstico y plan de acción inmediato. La Consultoría 5.0 es un proyecto integral que incluye roadmap completo, implementación y optimización continua.',
   },
   {
-    question: '¿Cuánto tiempo toma desarrollar un sitio web?',
-    answer: 'Una landing page puede estar lista en 1-2 semanas. Un sitio web corporativo completo generalmente toma 3-4 semanas. Proyectos más complejos con funcionalidades personalizadas pueden tomar 6-8 semanas.',
+    question: '¿Cómo pueden ayudar a mi negocio?',
+    answer: 'Unimos tecnología, automatización y estrategia para eliminar tareas repetitivas, fortalecer tu marca y convertir más leads en clientes. Todo respaldado por métricas y resultados medibles.',
   },
   {
-    question: '¿Ofrecen diseño web en español en Calgary?',
-    answer: 'Sí, somos especialistas en diseño web para la comunidad hispana en Calgary. Toda nuestra comunicación y soporte es en español, y podemos crear tu sitio web bilingüe (español/inglés) para alcanzar más clientes.',
+    question: '¿Se integran con sistemas existentes?',
+    answer: 'Sí, nos integramos con CRM, ERP y otras suites como Kommo, HubSpot, Odoo, Zoho y SAP. Nuestro enfoque es potenciar lo que ya funciona, no reemplazarlo.',
   },
   {
-    question: '¿Qué incluye el servicio de diseño web?',
-    answer: 'Incluye diseño personalizado, desarrollo responsive, optimización SEO básica, integración con Google Analytics, formularios de contacto, hosting por el primer año, SSL/seguridad, y capacitación para que puedas actualizar tu contenido.',
+    question: '¿Cuánto tiempo toma ver resultados?',
+    answer: 'Prometemos "quick wins" en 2-3 semanas, un MVP funcional en 4-8 semanas y despliegues completos en 8-12 semanas, dependiendo de la complejidad del proyecto.',
   },
   {
-    question: '¿Pueden ayudarme con SEO para aparecer en Google?',
-    answer: 'Absolutamente. Todos nuestros sitios incluyen SEO on-page básico. También ofrecemos servicios de SEO avanzado y posicionamiento local para que aparezcas en búsquedas como "tu servicio + Calgary".',
+    question: '¿Cómo manejan la seguridad de la información?',
+    answer: 'Usamos NDA, cifrado de datos, control de acceso estricto y nunca utilizamos los datos de clientes para entrenar modelos sin permiso expreso.',
   },
   {
-    question: '¿Qué pasa después de que mi sitio esté listo?',
-    answer: 'Te capacitamos para que puedas hacer cambios básicos tú mismo. También ofrecemos planes de mantenimiento mensual que incluyen actualizaciones, copias de seguridad, seguridad y soporte prioritario.',
+    question: '¿Cuáles son las opciones de inversión y pago?',
+    answer: 'Ofrecemos proyectos por hitos o "retainers" mensuales, con opciones de financiamiento disponibles para proyectos de mayor envergadura.',
   },
   {
-    question: '¿Trabajan con negocios pequeños o solo empresas grandes?',
-    answer: 'Trabajamos con negocios de todos los tamaños. De hecho, nos especializamos en ayudar a pequeñas y medianas empresas hispanas en Calgary a establecer su presencia digital profesional.',
+    question: '¿Quién es dueño del código al finalizar?',
+    answer: 'El cliente conserva la propiedad total del proyecto y todo el código desarrollado. La empresa retiene únicamente la autoría técnica y metodológica.',
   },
   {
-    question: '¿Ofrecen garantía de satisfacción?',
-    answer: 'Sí, ofrecemos garantía de satisfacción del 100%. Trabajamos contigo hasta que estés completamente satisfecho con tu sitio web. Además, incluimos 30 días de ajustes gratuitos después del lanzamiento.',
+    question: '¿Qué los diferencia de otras agencias?',
+    answer: 'No vendemos servicios, diseñamos sistemas que generan resultados reales. Combinamos branding, tecnología de punta e innovación con un enfoque 100% orientado a métricas.',
+  },
+  {
+    question: '¿Cómo puedo empezar?',
+    answer: 'Agenda una Asesoría o Consultoría 5.0 gratuita. Analizaremos tus objetivos, identificaremos oportunidades y crearemos un roadmap personalizado para tu negocio.',
   },
 ];
 
@@ -57,7 +61,7 @@ export const FAQ = () => {
             Resuelve tus dudas
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">
-            Preguntas frecuentes sobre diseño web en español
+            Preguntas frecuentes
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Respuestas claras a las preguntas más comunes sobre nuestros servicios.
