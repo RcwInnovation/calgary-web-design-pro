@@ -10,7 +10,7 @@ import {
   Share2,
   Bot
 } from 'lucide-react';
-import serviceMobile from '@/assets/service-mobile.jpg';
+import serviceMentoringTraining from '@/assets/service-mentoring-training.jpg';
 
 const MentoriaCapacitacion = () => {
   return (
@@ -20,8 +20,8 @@ const MentoriaCapacitacion = () => {
       metaDescription="Programas de mentoría y capacitación en tecnología, IA y transformación digital. Mejora las habilidades de tu equipo en Calgary, en español."
       keywords="mentoría Calgary, capacitación empresarial Calgary, cursos IA Calgary, upskilling digital, formación equipos Calgary, capacitación español Calgary"
       canonicalUrl="https://www.rcwinnovation.com/mentoria-capacitacion-digital-calgary"
-      heroImage={serviceMobile}
-      heroImageAlt="Mentoría y capacitación empresarial en Calgary - RCW Innovation"
+      heroImage={serviceMentoringTraining}
+      heroImageAlt="Mentoría y capacitación empresarial en Calgary - Equipo profesional en sala de conferencias con pantalla digital aprendiendo innovación tecnológica"
       tag="Upskilling"
       icon={GraduationCap}
       shortDescription="Programas 1:1 y para equipos sobre IA, productividad, automatización, UX y analítica para potenciar las capacidades de tu equipo."

@@ -11,7 +11,7 @@ import {
   Code2,
   Headphones
 } from 'lucide-react';
-import serviceSeo from '@/assets/service-seo.jpg';
+import serviceAutomationAi from '@/assets/service-automation-ai.jpg';
 
 const AutomatizacionesIA = () => {
   return (
@@ -21,8 +21,8 @@ const AutomatizacionesIA = () => {
       metaDescription="Optimiza tus procesos con automatización e inteligencia artificial en Calgary. Reduce costos y tiempos de forma inteligente. Atención en español."
       keywords="automatización IA Calgary, workflows inteligentes Calgary, automatización empresarial, integración CRM ERP, reducción costos operativos, automatización procesos Calgary"
       canonicalUrl="https://www.rcwinnovation.com/automatizaciones-ia-operaciones-calgary"
-      heroImage={serviceSeo}
-      heroImageAlt="Automatizaciones con IA para operaciones en Calgary - RCW Innovation"
+      heroImage={serviceAutomationAi}
+      heroImageAlt="Automatización de procesos con inteligencia artificial en Calgary - Robots industriales y workflows inteligentes con redes neuronales holográficas"
       tag="Operación"
       icon={Bot}
       shortDescription="Workflows inteligentes para atención, ventas y operaciones, integrados con CRM/ERP para transformar tu eficiencia operativa."

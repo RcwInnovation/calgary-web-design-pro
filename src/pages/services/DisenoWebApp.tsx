@@ -10,7 +10,7 @@ import {
   GraduationCap,
   Bot
 } from 'lucide-react';
-import serviceWebDesign from '@/assets/service-web-design.jpg';
+import serviceWebAppDesign from '@/assets/service-web-app-design.jpg';
 
 const DisenoWebApp = () => {
   return (
@@ -20,8 +20,8 @@ const DisenoWebApp = () => {
       metaDescription="Creamos sitios web y aplicaciones móviles profesionales y responsivas en Calgary, con experiencia de usuario excelente e integraciones avanzadas."
       keywords="diseño web Calgary, desarrollo web Calgary, aplicaciones móviles Calgary, PWA Calgary, e-commerce Calgary, páginas web profesionales Calgary"
       canonicalUrl="https://www.rcwinnovation.com/diseno-web-app-movil-calgary"
-      heroImage={serviceWebDesign}
-      heroImageAlt="Diseño web y aplicaciones móviles en Calgary - RCW Innovation"
+      heroImage={serviceWebAppDesign}
+      heroImageAlt="Diseño web profesional y aplicaciones móviles en Calgary - Laptop y smartphone mostrando interfaces UI/UX modernas con wireframes y elementos de diseño"
       tag="Web Pro"
       icon={Globe}
       shortDescription="Sitios orientados a conversión con SEO técnico, e-commerce seguro y apps PWA que convierten visitantes en clientes."
