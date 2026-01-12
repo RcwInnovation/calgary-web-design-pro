@@ -7,6 +7,8 @@ import { Services } from '@/components/Services';
 import { Metrics } from '@/components/Metrics';
 import { Projects } from '@/components/Projects';
 import { WhyUs } from '@/components/WhyUs';
+import { AboutUs } from '@/components/AboutUs';
+import { JoinTeam } from '@/components/JoinTeam';
 import { Process } from '@/components/Process';
 import { FAQ } from '@/components/FAQ';
 import { CTA } from '@/components/CTA';
@@ -68,6 +70,8 @@ const Index = () => {
           <Metrics />
           <Projects />
           <WhyUs />
+          <AboutUs />
+          <JoinTeam />
           <Process />
           <FAQ />
           <CTA onOpenDiagnostic={() => setIsDiagnosticOpen(true)} />
