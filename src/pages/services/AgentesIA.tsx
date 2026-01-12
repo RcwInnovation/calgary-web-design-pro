@@ -10,7 +10,7 @@ import {
   Database,
   Code2
 } from 'lucide-react';
-import serviceCorporate from '@/assets/service-corporate.jpg';
+import serviceAgentsAi from '@/assets/service-agents-ai.jpg';
 
 const AgentesIA = () => {
   return (
@@ -20,8 +20,8 @@ const AgentesIA = () => {
       metaDescription="Desarrollamos agentes de IA conversacional en Calgary para soporte al cliente, automatización de ventas y asistencia 24/7."
       keywords="agentes IA Calgary, chatbots Calgary, IA conversacional, asistentes virtuales Calgary, atención 24/7 Calgary, desarrollo chatbot empresarial"
       canonicalUrl="https://www.rcwinnovation.com/creacion-agentes-ia-inteligencia-calgary"
-      heroImage={serviceCorporate}
-      heroImageAlt="Agentes de IA y chatbots en Calgary - RCW Innovation"
+      heroImage={serviceAgentsAi}
+      heroImageAlt="Desarrollo de agentes de inteligencia artificial y chatbots en Calgary - Cerebro neural con burbujas de conversación representando asistentes virtuales 24/7"
       tag="Inteligencia"
       icon={Brain}
       shortDescription="Desarrollo de agentes conversacionales y de back-end que aprenden de tus datos empresariales para automatizar tareas complejas."

@@ -10,7 +10,7 @@ import {
   Database,
   Code2
 } from 'lucide-react';
-import serviceCorporate from '@/assets/service-corporate.jpg';
+import serviceAgentsAi from '@/assets/service-agents-ai.jpg';
 
 const AgentesIAAvanzados = () => {
   return (
@@ -20,8 +20,8 @@ const AgentesIAAvanzados = () => {
       metaDescription="Revoluciona tu negocio con agentes de IA avanzados. Chatbots conversacionales, automatización inteligente, análisis predictivo y más. Planes para Pymes y grandes empresas."
       keywords="agentes IA avanzados Calgary, chatbots empresariales Calgary, machine learning Calgary, análisis predictivo, automatización inteligente, IA negocios Calgary"
       canonicalUrl="https://www.rcwinnovation.com/agentes-ia-avanzados-calgary"
-      heroImage={serviceCorporate}
-      heroImageAlt="Agentes de IA avanzados para negocios en Calgary - RCW Innovation"
+      heroImage={serviceAgentsAi}
+      heroImageAlt="Agentes de inteligencia artificial avanzados para negocios en Calgary - Cerebro neural con conversaciones de chatbot representando IA conversacional empresarial"
       tag="IA Avanzada"
       icon={Brain}
       shortDescription="Agentes de IA desarrollados en Canadá y Colombia, capaces de potenciar la atención al cliente, la eficiencia operativa y el análisis de datos."

@@ -9,7 +9,7 @@ import {
   Globe,
   Code2
 } from 'lucide-react';
-import serviceLandingPage from '@/assets/service-landing-page.jpg';
+import serviceDigitalCard from '@/assets/service-digital-card.jpg';
 
 const TarjetaDigital = () => {
   return (
@@ -19,8 +19,8 @@ const TarjetaDigital = () => {
       metaDescription="Tarjetas digitales con diseño premium, QR optimizado y enlaces a tus redes. Actualiza tus datos en tiempo real y comparte tu información al instante."
       keywords="tarjeta digital Calgary, tarjeta NFC Calgary, tarjeta QR negocios, networking digital, tarjeta profesional Calgary, tarjeta smart negocios"
       canonicalUrl="https://www.rcwinnovation.com/tarjeta-digital-profesional-calgary"
-      heroImage={serviceLandingPage}
-      heroImageAlt="Tarjeta digital profesional con QR en Calgary - RCW Innovation"
+      heroImage={serviceDigitalCard}
+      heroImageAlt="Tarjeta digital profesional con QR y NFC en Calgary - Tarjetas de metal premium con chip NFC dorado y smartphone escaneando código QR"
       tag="Smart"
       icon={CreditCard}
       shortDescription="Tarjeta digital con QR/NFC, vCard y analíticas para networking profesional que impresiona y convierte contactos en oportunidades."

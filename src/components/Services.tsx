@@ -14,12 +14,14 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-import serviceWebDesign from '@/assets/service-web-design.jpg';
-import serviceLandingPage from '@/assets/service-landing-page.jpg';
-import serviceCorporate from '@/assets/service-corporate.jpg';
-import serviceSeo from '@/assets/service-seo.jpg';
-import serviceDevelopment from '@/assets/service-development.jpg';
-import serviceMobile from '@/assets/service-mobile.jpg';
+import serviceSoftwareCustom from '@/assets/service-software-custom.jpg';
+import serviceBrandingSocial from '@/assets/service-branding-social.jpg';
+import serviceAutomationAi from '@/assets/service-automation-ai.jpg';
+import serviceAgentsAi from '@/assets/service-agents-ai.jpg';
+import serviceErpSystems from '@/assets/service-erp-systems.jpg';
+import serviceDigitalCard from '@/assets/service-digital-card.jpg';
+import serviceWebAppDesign from '@/assets/service-web-app-design.jpg';
+import serviceMentoringTraining from '@/assets/service-mentoring-training.jpg';
 
 const services = [
   {
@@ -28,8 +30,8 @@ const services = [
     tag: 'Premium',
     description: 'Desarrollo de MVPs y plataformas escalables con arquitecturas modulares, APIs seguras y dashboards intuitivos.',
     features: ['Arquitecturas modulares', 'APIs seguras', 'Dashboards intuitivos'],
-    image: serviceDevelopment,
-    imageAlt: 'Desarrollo de software a medida en Calgary - plataformas escalables y MVPs',
+    image: serviceSoftwareCustom,
+    imageAlt: 'Desarrollo de software a medida premium en Calgary - Equipo de desarrolladores creando plataformas escalables y MVPs con tecnología de vanguardia',
     href: '/diseno-software-medida-premium-calgary',
   },
   {
@@ -38,8 +40,8 @@ const services = [
     tag: 'Estrategia',
     description: 'Construcción de identidad visual y contenidos de alto impacto. Combinamos marketing orgánico y de pago.',
     features: ['Identidad visual', 'Marketing orgánico', 'Campañas de pago'],
-    image: serviceLandingPage,
-    imageAlt: 'Branding y marketing en redes sociales Calgary',
+    image: serviceBrandingSocial,
+    imageAlt: 'Branding y estrategia de redes sociales en Calgary - Diseño de identidad visual y marketing digital para negocios latinos',
     href: '/branding-estrategia-redes-sociales-calgary',
   },
   {
@@ -48,8 +50,8 @@ const services = [
     tag: 'Operación',
     description: 'Workflows inteligentes para atención, ventas y operaciones, integrados con CRM/ERP.',
     features: ['Workflows inteligentes', 'Integración CRM/ERP', 'Atención 24/7'],
-    image: serviceSeo,
-    imageAlt: 'Automatización con inteligencia artificial Calgary',
+    image: serviceAutomationAi,
+    imageAlt: 'Automatización de procesos con inteligencia artificial en Calgary - Workflows inteligentes y robots que optimizan operaciones empresariales',
     href: '/automatizaciones-ia-operaciones-calgary',
   },
   {
@@ -58,8 +60,8 @@ const services = [
     tag: 'Inteligencia',
     description: 'Desarrollo de agentes conversacionales y de back-end que aprenden de tus datos empresariales.',
     features: ['Agentes conversacionales', 'Aprendizaje continuo', 'Integración backend'],
-    image: serviceCorporate,
-    imageAlt: 'Desarrollo de agentes de inteligencia artificial Calgary',
+    image: serviceAgentsAi,
+    imageAlt: 'Desarrollo de agentes de inteligencia artificial y chatbots en Calgary - Asistentes virtuales conversacionales para atención al cliente 24/7',
     href: '/creacion-agentes-ia-inteligencia-calgary',
   },
   {
@@ -68,8 +70,8 @@ const services = [
     tag: 'Operaciones',
     description: 'Diseño e implementación de ERP/CRM/SGC con dashboards y automatización.',
     features: ['ERP/CRM personalizado', 'Dashboards en tiempo real', 'Automatización'],
-    image: serviceDevelopment,
-    imageAlt: 'Sistemas de gestión ERP CRM Calgary',
+    image: serviceErpSystems,
+    imageAlt: 'Sistemas de gestión ERP y CRM en Calgary - Dashboards en tiempo real y analíticas empresariales para toma de decisiones',
     href: '/sistemas-gestion-operaciones-calgary',
   },
   {
@@ -78,8 +80,8 @@ const services = [
     tag: 'Smart',
     description: 'Tarjeta digital con QR/NFC, vCard y analíticas para networking profesional.',
     features: ['QR/NFC integrado', 'vCard automática', 'Analytics de contactos'],
-    image: serviceLandingPage,
-    imageAlt: 'Tarjeta digital profesional NFC Calgary',
+    image: serviceDigitalCard,
+    imageAlt: 'Tarjeta digital profesional con QR y NFC en Calgary - Networking moderno con tarjeta de metal premium y código QR inteligente',
     href: '/tarjeta-digital-profesional-calgary',
   },
   {
@@ -88,8 +90,8 @@ const services = [
     tag: 'Web Pro',
     description: 'Sitios orientados a conversión con SEO técnico, e-commerce y apps PWA.',
     features: ['SEO desde arquitectura', 'E-commerce seguro', 'Apps móviles/PWA'],
-    image: serviceWebDesign,
-    imageAlt: 'Diseño web y aplicaciones móviles Calgary',
+    image: serviceWebAppDesign,
+    imageAlt: 'Diseño web profesional y aplicaciones móviles en Calgary - Desarrollo de sitios responsivos y apps PWA con UX/UI moderno',
     href: '/diseno-web-app-movil-calgary',
   },
   {
@@ -98,8 +100,8 @@ const services = [
     tag: 'Upskilling',
     description: 'Programas 1:1 y para equipos sobre IA, productividad, automatización, UX y analítica.',
     features: ['Planes personalizados', 'Workshops prácticos', 'Seguimiento continuo'],
-    image: serviceMobile,
-    imageAlt: 'Mentoría y capacitación empresarial Calgary',
+    image: serviceMentoringTraining,
+    imageAlt: 'Mentoría y capacitación empresarial en Calgary - Talleres de innovación digital y formación de equipos en tecnología e IA',
     href: '/mentoria-capacitacion-digital-calgary',
   },
 ];

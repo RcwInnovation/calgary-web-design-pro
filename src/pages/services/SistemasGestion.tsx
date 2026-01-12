@@ -10,7 +10,7 @@ import {
   Code2,
   Brain
 } from 'lucide-react';
-import serviceDevelopment from '@/assets/service-development.jpg';
+import serviceErpSystems from '@/assets/service-erp-systems.jpg';
 
 const SistemasGestion = () => {
   return (
@@ -20,8 +20,8 @@ const SistemasGestion = () => {
       metaDescription="Implementamos sistemas de gestión y ERPs a medida en Calgary, integrando procesos y datos para aumentar la productividad."
       keywords="sistemas gestión Calgary, ERP Calgary, CRM Calgary, software empresarial Calgary, dashboards tiempo real, gestión empresarial Calgary"
       canonicalUrl="https://www.rcwinnovation.com/sistemas-gestion-operaciones-calgary"
-      heroImage={serviceDevelopment}
-      heroImageAlt="Sistemas de gestión ERP CRM en Calgary - RCW Innovation"
+      heroImage={serviceErpSystems}
+      heroImageAlt="Sistemas de gestión ERP y CRM en Calgary - Dashboard empresarial con analíticas en tiempo real, gráficas y métricas de rendimiento"
       tag="Operaciones"
       icon={Database}
       shortDescription="Diseño e implementación de ERP/CRM/SGC con dashboards en tiempo real y automatización para controlar cada aspecto de tu negocio."

@@ -10,7 +10,7 @@ import {
   Database,
   Brain
 } from 'lucide-react';
-import serviceDevelopment from '@/assets/service-development.jpg';
+import serviceSoftwareCustom from '@/assets/service-software-custom.jpg';
 
 const SoftwareAMedida = () => {
   return (
@@ -20,8 +20,8 @@ const SoftwareAMedida = () => {
       metaDescription="Creamos software a medida premium en Calgary con IA y soluciones escalables, adaptadas a tu negocio. Atención en español y diagnóstico gratuito."
       keywords="diseño software Calgary, software a medida Calgary, desarrollo software premium, MVP desarrollo Calgary, IA software Calgary, software empresarial Calgary"
       canonicalUrl="https://www.rcwinnovation.com/diseno-software-medida-premium-calgary"
-      heroImage={serviceDevelopment}
-      heroImageAlt="Diseño de software a medida premium en Calgary - RCW Innovation"
+      heroImage={serviceSoftwareCustom}
+      heroImageAlt="Desarrollo de software a medida premium en Calgary - Equipo de desarrolladores creando plataformas escalables con arquitectura modular e IA integrada"
       tag="Premium"
       icon={Code2}
       shortDescription="Desarrollo de MVPs y plataformas escalables con arquitecturas modulares, IA integrada y dashboards intuitivos para impulsar tu negocio."
