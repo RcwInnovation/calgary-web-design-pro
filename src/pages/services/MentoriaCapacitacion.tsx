@@ -15,16 +15,20 @@ import serviceMobile from '@/assets/service-mobile.jpg';
 const MentoriaCapacitacion = () => {
   return (
     <ServicePageLayout
-      title="Mentoría & Capacitación"
-      metaTitle="Mentoría y Capacitación Empresarial Calgary | RCW Innovation"
-      metaDescription="Programas 1:1 y para equipos sobre IA, productividad, automatización, UX y analítica. Capacitación empresarial en Calgary."
-      keywords="capacitación empresarial Calgary, mentoría negocios Calgary, cursos IA Calgary, capacitación equipos, upskilling Calgary, formación digital Calgary"
+      title="Mentoría y capacitación para empresas que quieren liderar la innovación digital"
+      metaTitle="Mentoría y Capacitación en Innovación Digital en Calgary | RCW Innovation"
+      metaDescription="Programas de mentoría y capacitación en tecnología, IA y transformación digital. Mejora las habilidades de tu equipo en Calgary, en español."
+      keywords="mentoría Calgary, capacitación empresarial Calgary, cursos IA Calgary, upskilling digital, formación equipos Calgary, capacitación español Calgary"
+      canonicalUrl="https://www.rcwinnovation.com/mentoria-capacitacion-digital-calgary"
       heroImage={serviceMobile}
       heroImageAlt="Mentoría y capacitación empresarial en Calgary - RCW Innovation"
       tag="Upskilling"
       icon={GraduationCap}
       shortDescription="Programas 1:1 y para equipos sobre IA, productividad, automatización, UX y analítica para potenciar las capacidades de tu equipo."
-      longDescription="Capacitamos a tu equipo en las últimas tecnologías y metodologías para que puedan aprovechar al máximo las herramientas digitales. Nuestros programas de mentoría combinan teoría con práctica inmediata, permitiendo que los participantes apliquen lo aprendido directamente en sus proyectos reales desde la primera sesión."
+      problemTitle="Problema: brecha en habilidades digitales"
+      problemDescription="Sin formación continua, es difícil adaptarse a nuevas tecnologías. Tu equipo puede quedar rezagado frente a la competencia, afectando la productividad y la capacidad de innovar."
+      solutionTitle="Solución: programas de upskilling a medida"
+      solutionDescription="Identificamos necesidades y diseñamos programas de capacitación y mentoría. Impartimos talleres, sesiones individuales y coaching en español, cubriendo IA, automatización, sistemas, gestión y nuevas tendencias tecnológicas."
       features={[
         {
           title: 'Programas Personalizados',
@@ -38,7 +42,7 @@ const MentoriaCapacitacion = () => {
         },
         {
           title: 'Workshops Prácticos',
-          description: 'Talleres interactivos donde los participantes trabajan en proyectos reales.',
+          description: 'Talleres interactivos donde los participantes trabajan en proyectos reales de su empresa.',
           icon: BookOpen,
         },
         {
@@ -57,16 +61,18 @@ const MentoriaCapacitacion = () => {
           icon: Award,
         },
       ]}
+      benefitsTitle="Beneficios de nuestros programas"
       benefits={[
-        'Planes 100% personalizados según tus objetivos',
-        'Workshops prácticos con casos reales de tu industria',
-        'Seguimiento y soporte post-capacitación',
-        'Certificación incluida para participantes',
+        'Mejora de productividad y competitividad',
+        'Equipo actualizado y motivado',
+        'Capacitación práctica y aplicable inmediatamente',
+        'Certificados internos y seguimiento',
         'Material de apoyo digital descargable',
         'Sesiones grabadas disponibles por 6 meses',
         'Aplicación inmediata en proyectos reales',
         'Métricas de progreso y evaluación de impacto',
       ]}
+      ctaText="Reserva tu sesión de mentoría o capacitación"
       processSteps={[
         {
           title: 'Diagnóstico de Necesidades',

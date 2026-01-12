@@ -2,10 +2,10 @@ import { ServicePageLayout } from '@/components/ServicePageLayout';
 import { 
   Brain, 
   MessageSquare, 
-  Cpu, 
-  RefreshCw, 
-  Link2, 
-  Shield,
+  Clock, 
+  DollarSign, 
+  Users, 
+  TrendingUp,
   Bot,
   Database,
   Code2
@@ -15,58 +15,64 @@ import serviceCorporate from '@/assets/service-corporate.jpg';
 const AgentesIA = () => {
   return (
     <ServicePageLayout
-      title="Creación de Agentes IA"
-      metaTitle="Desarrollo de Agentes de IA Calgary | RCW Innovation"
-      metaDescription="Desarrollo de agentes conversacionales y de back-end que aprenden de tus datos empresariales. Inteligencia artificial personalizada en Calgary."
-      keywords="agentes IA Calgary, chatbots inteligentes Calgary, IA conversacional, machine learning Calgary, asistentes virtuales, desarrollo IA Calgary"
+      title="Agentes de inteligencia artificial y chatbots en Calgary para atención 24/7"
+      metaTitle="Creación de Agentes de IA y Chatbots en Calgary | RCW Innovation"
+      metaDescription="Desarrollamos agentes de IA conversacional en Calgary para soporte al cliente, automatización de ventas y asistencia 24/7."
+      keywords="agentes IA Calgary, chatbots Calgary, IA conversacional, asistentes virtuales Calgary, atención 24/7 Calgary, desarrollo chatbot empresarial"
+      canonicalUrl="https://www.rcwinnovation.com/creacion-agentes-ia-inteligencia-calgary"
       heroImage={serviceCorporate}
-      heroImageAlt="Desarrollo de agentes de inteligencia artificial en Calgary - RCW Innovation"
+      heroImageAlt="Agentes de IA y chatbots en Calgary - RCW Innovation"
       tag="Inteligencia"
       icon={Brain}
       shortDescription="Desarrollo de agentes conversacionales y de back-end que aprenden de tus datos empresariales para automatizar tareas complejas."
-      longDescription="Creamos agentes de inteligencia artificial personalizados que entienden profundamente tu negocio, responden preguntas complejas y automatizan tareas que antes requerían intervención humana. Nuestros agentes aprenden continuamente de las interacciones para mejorar su precisión y efectividad, convirtiéndose en un activo estratégico para tu empresa."
+      problemTitle="Problema: atención al cliente saturada"
+      problemDescription="Los equipos humanos no pueden atender todas las consultas de manera inmediata, lo que afecta la experiencia del cliente y la reputación del negocio. Clientes frustrados por tiempos de espera largos y respuestas inconsistentes."
+      solutionTitle="Solución: asistentes inteligentes personalizados"
+      solutionDescription="Diseñamos chatbots y agentes conversacionales adaptados a tu industria. Integran FAQs, reservas, pagos y base de conocimientos. Soportan español e inglés y se integran con tus sistemas (CRM, e-commerce) para respuestas instantáneas y precisas."
       features={[
         {
-          title: 'Agentes Conversacionales',
-          description: 'Chatbots avanzados que mantienen conversaciones naturales y resuelven consultas complejas.',
-          icon: MessageSquare,
+          title: 'Respuestas Instantáneas',
+          description: 'Atención inmediata a consultas en cualquier momento del día, los 7 días de la semana.',
+          icon: Clock,
         },
         {
-          title: 'Procesamiento de Lenguaje',
-          description: 'Comprensión avanzada del lenguaje natural para interpretar intenciones y contexto.',
-          icon: Cpu,
+          title: 'Reducción de Costos',
+          description: 'Disminuye significativamente los costos de atención al cliente sin sacrificar calidad.',
+          icon: DollarSign,
+        },
+        {
+          title: 'Mejor Experiencia',
+          description: 'Usuarios satisfechos con respuestas rápidas, precisas y personalizadas.',
+          icon: Users,
+        },
+        {
+          title: 'Escalabilidad',
+          description: 'Atiende miles de conversaciones simultáneas sin contratar más personal.',
+          icon: TrendingUp,
         },
         {
           title: 'Aprendizaje Continuo',
           description: 'Algoritmos que mejoran automáticamente basándose en las interacciones y feedback.',
-          icon: RefreshCw,
-        },
-        {
-          title: 'Integración Backend',
-          description: 'Conexión directa con tus bases de datos, APIs y sistemas para acciones en tiempo real.',
-          icon: Link2,
-        },
-        {
-          title: 'Seguridad de Datos',
-          description: 'Protección de información sensible con cifrado y controles de acceso estrictos.',
-          icon: Shield,
-        },
-        {
-          title: 'Personalización Total',
-          description: 'Agentes entrenados específicamente con tu conocimiento empresarial y tono de voz.',
           icon: Brain,
         },
+        {
+          title: 'Conversaciones Naturales',
+          description: 'Procesamiento de lenguaje natural para conversaciones fluidas y contextuales.',
+          icon: MessageSquare,
+        },
       ]}
+      benefitsTitle="Beneficios de implementar agentes IA"
       benefits={[
-        'Respuesta instantánea a consultas 24/7',
-        'Integración total con tus sistemas existentes',
-        'Mejora continua con machine learning',
-        'Reducción de carga en equipos de soporte',
-        'Escalabilidad ilimitada según demanda',
-        'Analytics detallados de conversaciones',
-        'Personalización del tono y conocimiento',
+        'Respuestas instantáneas en cualquier momento',
+        'Reducción de costos operativos',
+        'Mejor experiencia de usuario',
+        'Escalabilidad y aprendizaje continuo',
+        'Integración con CRM, e-commerce y sistemas existentes',
+        'Soporte en español e inglés',
         'Transferencia fluida a agentes humanos cuando es necesario',
+        'Analytics detallados de conversaciones',
       ]}
+      ctaText="Desarrolla tu agente de IA y multiplica tu capacidad de servicio"
       processSteps={[
         {
           title: 'Análisis de Conocimiento',

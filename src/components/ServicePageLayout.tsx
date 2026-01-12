@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle, Zap, Calendar, ArrowLeft } from 'lucide-react';
+import { ArrowRight, CheckCircle, Zap, Calendar, ArrowLeft, AlertTriangle, Lightbulb } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -18,22 +18,47 @@ interface ServiceFeature {
   icon: LucideIcon;
 }
 
+interface PricingPlan {
+  name: string;
+  price: string;
+  description: string;
+  features: string[];
+  capacity?: string;
+  setup?: string;
+  extraLanguage?: string;
+  highlighted?: boolean;
+}
+
 interface ServicePageLayoutProps {
   title: string;
   metaTitle: string;
   metaDescription: string;
   keywords: string;
+  canonicalUrl?: string;
   heroImage: string;
   heroImageAlt: string;
   tag: string;
   icon: LucideIcon;
   shortDescription: string;
-  longDescription: string;
+  problemTitle?: string;
+  problemDescription?: string;
+  solutionTitle?: string;
+  solutionDescription?: string;
   features: ServiceFeature[];
   benefits: string[];
+  benefitsTitle?: string;
   processSteps: { title: string; description: string }[];
   faqs: { question: string; answer: string }[];
   relatedServices: { title: string; href: string; icon: LucideIcon }[];
+  ctaText?: string;
+  pricingPlans?: PricingPlan[];
+  technologies?: string[];
+  applications?: string[];
+  introSection?: {
+    title: string;
+    description: string;
+  };
+  capabilities?: string[];
 }
 
 export const ServicePageLayout = ({
@@ -41,17 +66,28 @@ export const ServicePageLayout = ({
   metaTitle,
   metaDescription,
   keywords,
+  canonicalUrl,
   heroImage,
   heroImageAlt,
   tag,
   icon: Icon,
   shortDescription,
-  longDescription,
+  problemTitle,
+  problemDescription,
+  solutionTitle,
+  solutionDescription,
   features,
   benefits,
+  benefitsTitle = "Beneficios de trabajar con nosotros",
   processSteps,
   faqs,
   relatedServices,
+  ctaText = "Solicita tu diagnóstico gratuito en español",
+  pricingPlans,
+  technologies,
+  applications,
+  introSection,
+  capabilities,
 }: ServicePageLayoutProps) => {
   const [isDiagnosticOpen, setIsDiagnosticOpen] = useState(false);
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
@@ -66,6 +102,7 @@ export const ServicePageLayout = ({
         <meta name="keywords" content={keywords} />
         <meta name="author" content="RCW Innovation Inc" />
         <meta name="robots" content="index, follow" />
+        {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
         
         <meta property="og:type" content="website" />
         <meta property="og:title" content={metaTitle} />
@@ -166,25 +203,154 @@ export const ServicePageLayout = ({
             </div>
           </section>
 
-          {/* Long Description */}
-          <section className="py-20 bg-card/30">
-            <div className="container-custom">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="max-w-4xl mx-auto text-center"
-              >
-                <h2 className="text-3xl md:text-4xl font-bold mb-8">
-                  ¿Qué ofrecemos?
-                </h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  {longDescription}
-                </p>
-              </motion.div>
-            </div>
-          </section>
+          {/* Introduction Section (for pages with intro) */}
+          {introSection && (
+            <section className="py-20 bg-card/30">
+              <div className="container-custom">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="max-w-4xl mx-auto text-center"
+                >
+                  <h2 className="text-3xl md:text-4xl font-bold mb-8">
+                    {introSection.title}
+                  </h2>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    {introSection.description}
+                  </p>
+                </motion.div>
+              </div>
+            </section>
+          )}
+
+          {/* Problem / Solution Section */}
+          {(problemTitle || solutionTitle) && (
+            <section className="py-20 bg-card/30">
+              <div className="container-custom">
+                <div className="grid lg:grid-cols-2 gap-12">
+                  {/* Problem */}
+                  {problemTitle && (
+                    <motion.div
+                      initial={{ opacity: 0, x: -30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6 }}
+                      className="glass-strong p-8 rounded-3xl border-destructive/20"
+                    >
+                      <div className="w-14 h-14 rounded-xl bg-destructive/10 flex items-center justify-center mb-6">
+                        <AlertTriangle className="w-7 h-7 text-destructive" />
+                      </div>
+                      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-destructive">
+                        {problemTitle}
+                      </h2>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {problemDescription}
+                      </p>
+                    </motion.div>
+                  )}
+
+                  {/* Solution */}
+                  {solutionTitle && (
+                    <motion.div
+                      initial={{ opacity: 0, x: 30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: 0.2 }}
+                      className="glass-strong p-8 rounded-3xl border-accent/20"
+                    >
+                      <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
+                        <Lightbulb className="w-7 h-7 text-accent" />
+                      </div>
+                      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-accent">
+                        {solutionTitle}
+                      </h2>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {solutionDescription}
+                      </p>
+                    </motion.div>
+                  )}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* Capabilities Section (for AI pages) */}
+          {capabilities && capabilities.length > 0 && (
+            <section className="py-20">
+              <div className="container-custom">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="text-center mb-16"
+                >
+                  <span className="text-primary text-sm font-semibold tracking-wider uppercase">
+                    Capacidades
+                  </span>
+                  <h2 className="text-3xl md:text-4xl font-bold mt-4">
+                    Capacidades de IA
+                  </h2>
+                </motion.div>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {capabilities.map((capability, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      className="glass p-6 rounded-xl flex items-center gap-4"
+                    >
+                      <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
+                      <span className="font-medium">{capability}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* Applications Section */}
+          {applications && applications.length > 0 && (
+            <section className="py-20 bg-card/30">
+              <div className="container-custom">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="text-center mb-16"
+                >
+                  <span className="text-accent text-sm font-semibold tracking-wider uppercase">
+                    Aplicaciones
+                  </span>
+                  <h2 className="text-3xl md:text-4xl font-bold mt-4">
+                    Aplicaciones de IA
+                  </h2>
+                </motion.div>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {applications.map((application, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      className="glass p-6 rounded-xl flex items-center gap-4"
+                    >
+                      <Zap className="w-6 h-6 text-accent flex-shrink-0" />
+                      <span className="font-medium">{application}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
 
           {/* Features Grid */}
           <section className="py-20">
@@ -239,7 +405,7 @@ export const ServicePageLayout = ({
                     Ventajas
                   </span>
                   <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-8">
-                    Beneficios para tu negocio
+                    {benefitsTitle}
                   </h2>
                   
                   <ul className="space-y-4">
@@ -268,7 +434,7 @@ export const ServicePageLayout = ({
                 >
                   <h3 className="text-2xl font-bold mb-6">¿Listo para empezar?</h3>
                   <p className="text-muted-foreground mb-8">
-                    Agenda una sesión de asesoría gratuita y descubre cómo podemos transformar tu negocio con soluciones a medida.
+                    {ctaText}
                   </p>
                   <Button 
                     onClick={() => setIsConsultationOpen(true)}
@@ -281,6 +447,115 @@ export const ServicePageLayout = ({
               </div>
             </div>
           </section>
+
+          {/* Pricing Plans */}
+          {pricingPlans && pricingPlans.length > 0 && (
+            <section className="py-20">
+              <div className="container-custom">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="text-center mb-16"
+                >
+                  <span className="text-primary text-sm font-semibold tracking-wider uppercase">
+                    Planes
+                  </span>
+                  <h2 className="text-3xl md:text-4xl font-bold mt-4">
+                    Planes de Agentes de IA
+                  </h2>
+                </motion.div>
+
+                <div className="grid md:grid-cols-3 gap-8">
+                  {pricingPlans.map((plan, index) => (
+                    <motion.div
+                      key={plan.name}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      className={`glass-strong p-8 rounded-3xl relative ${plan.highlighted ? 'border-primary/50 ring-2 ring-primary/20' : ''}`}
+                    >
+                      {plan.highlighted && (
+                        <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-primary-foreground text-sm font-semibold rounded-full">
+                          Más Popular
+                        </div>
+                      )}
+                      <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+                      <p className="text-muted-foreground text-sm mb-4">{plan.description}</p>
+                      <div className="text-4xl font-bold text-primary mb-6">
+                        {plan.price}
+                        <span className="text-lg text-muted-foreground font-normal">/mes</span>
+                      </div>
+                      
+                      <ul className="space-y-3 mb-6">
+                        {plan.features.map((feature, i) => (
+                          <li key={i} className="flex items-start gap-2 text-sm">
+                            <CheckCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      {(plan.capacity || plan.setup || plan.extraLanguage) && (
+                        <div className="pt-4 border-t border-border/50 space-y-2 text-sm text-muted-foreground">
+                          {plan.capacity && <p><strong>Capacidad:</strong> {plan.capacity}</p>}
+                          {plan.setup && <p><strong>Configuración:</strong> {plan.setup}</p>}
+                          {plan.extraLanguage && <p><strong>Idioma extra:</strong> {plan.extraLanguage}</p>}
+                        </div>
+                      )}
+
+                      <Button 
+                        onClick={() => setIsConsultationOpen(true)}
+                        className={`w-full mt-6 ${plan.highlighted ? 'btn-gold' : ''}`}
+                        variant={plan.highlighted ? 'default' : 'outline'}
+                      >
+                        Seleccionar Plan
+                      </Button>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* Technologies */}
+          {technologies && technologies.length > 0 && (
+            <section className="py-20 bg-card/30">
+              <div className="container-custom">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="text-center mb-12"
+                >
+                  <span className="text-primary text-sm font-semibold tracking-wider uppercase">
+                    Stack Tecnológico
+                  </span>
+                  <h2 className="text-3xl md:text-4xl font-bold mt-4">
+                    Tecnologías utilizadas
+                  </h2>
+                </motion.div>
+
+                <div className="flex flex-wrap justify-center gap-4">
+                  {technologies.map((tech, index) => (
+                    <motion.span
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.05 }}
+                      className="px-6 py-3 glass rounded-full font-medium"
+                    >
+                      {tech}
+                    </motion.span>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
 
           {/* Process Steps */}
           <section className="py-20">
@@ -385,8 +660,45 @@ export const ServicePageLayout = ({
             </div>
           </section>
 
-          {/* Related Services */}
+          {/* Final CTA */}
           <section className="py-20">
+            <div className="container-custom">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="glass-strong p-12 rounded-3xl text-center max-w-4xl mx-auto"
+              >
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                  {ctaText}
+                </h2>
+                <p className="text-lg text-muted-foreground mb-8">
+                  Agenda una sesión gratuita y descubre cómo podemos transformar tu negocio con soluciones a medida.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button 
+                    onClick={() => setIsConsultationOpen(true)}
+                    className="btn-gold gap-2 text-lg py-6 px-8"
+                  >
+                    <Calendar className="w-5 h-5" />
+                    Agendar Asesoría Gratuita
+                  </Button>
+                  <Button 
+                    onClick={() => setIsDiagnosticOpen(true)}
+                    variant="outline"
+                    className="gap-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground py-6 px-8"
+                  >
+                    <Zap className="w-5 h-5" />
+                    Diagnóstico Express
+                  </Button>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Related Services */}
+          <section className="py-20 bg-card/30">
             <div className="container-custom">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -428,46 +740,9 @@ export const ServicePageLayout = ({
               </div>
             </div>
           </section>
-
-          {/* Final CTA */}
-          <section className="py-20 bg-gradient-to-b from-transparent via-primary/5 to-transparent">
-            <div className="container-custom text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                  ¿Listo para transformar tu negocio?
-                </h2>
-                <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                  Agenda una asesoría gratuita y descubre cómo podemos ayudarte a alcanzar tus objetivos.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button 
-                    onClick={() => setIsConsultationOpen(true)}
-                    className="btn-gold gap-2 text-lg py-6 px-8"
-                  >
-                    Solicitar Asesoría 5.0
-                    <ArrowRight className="w-5 h-5" />
-                  </Button>
-                  <Button 
-                    onClick={() => setIsDiagnosticOpen(true)}
-                    variant="outline"
-                    className="gap-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground py-6 px-8"
-                  >
-                    <Zap className="w-5 h-5" />
-                    Consultoría 5.0
-                  </Button>
-                </div>
-              </motion.div>
-            </div>
-          </section>
         </main>
 
         <Footer />
-
         <WhatsAppButton />
         <Chatbot />
         

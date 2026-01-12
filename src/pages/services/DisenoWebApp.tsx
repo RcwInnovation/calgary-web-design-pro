@@ -4,8 +4,8 @@ import {
   Search, 
   ShoppingCart, 
   Smartphone, 
-  Gauge, 
-  BarChart3,
+  CreditCard, 
+  Gauge,
   Share2,
   GraduationCap,
   Bot
@@ -15,16 +15,20 @@ import serviceWebDesign from '@/assets/service-web-design.jpg';
 const DisenoWebApp = () => {
   return (
     <ServicePageLayout
-      title="Diseño Web – App Móvil"
-      metaTitle="Diseño Web y Aplicaciones Móviles Calgary | RCW Innovation"
-      metaDescription="Sitios web orientados a conversión con SEO técnico, e-commerce seguro y apps PWA. Diseño web profesional y apps móviles en Calgary."
-      keywords="diseño web Calgary, desarrollo web Calgary, aplicaciones móviles Calgary, PWA Calgary, e-commerce Calgary, SEO Calgary, páginas web Calgary"
+      title="Diseño de sitios web y aplicaciones móviles para negocios en Calgary"
+      metaTitle="Diseño Web y App Móvil Profesional en Calgary | RCW Innovation"
+      metaDescription="Creamos sitios web y aplicaciones móviles profesionales y responsivas en Calgary, con experiencia de usuario excelente e integraciones avanzadas."
+      keywords="diseño web Calgary, desarrollo web Calgary, aplicaciones móviles Calgary, PWA Calgary, e-commerce Calgary, páginas web profesionales Calgary"
+      canonicalUrl="https://www.rcwinnovation.com/diseno-web-app-movil-calgary"
       heroImage={serviceWebDesign}
       heroImageAlt="Diseño web y aplicaciones móviles en Calgary - RCW Innovation"
       tag="Web Pro"
       icon={Globe}
       shortDescription="Sitios orientados a conversión con SEO técnico, e-commerce seguro y apps PWA que convierten visitantes en clientes."
-      longDescription="Creamos presencias digitales que generan resultados reales. Nuestros sitios web están diseñados desde la arquitectura para posicionar en buscadores, convertir visitantes y proporcionar experiencias memorables. Desde landing pages de alto impacto hasta tiendas e-commerce completas y Progressive Web Apps, construimos soluciones web que impulsan el crecimiento de tu negocio."
+      problemTitle="Problema: presencia digital incompleta"
+      problemDescription="Contar solo con una web o solo con una app limita la experiencia. Para competir en el mercado actual, necesitas presencia en ambos canales con coherencia visual y excelente experiencia de usuario."
+      solutionTitle="Solución: web + app mobile de alto nivel"
+      solutionDescription="Diseñamos interfaces UX/UI profesionales, desarrollamos webs responsivas y apps nativas o híbridas. Aseguramos coherencia visual, velocidades rápidas e integraciones con API y bases de datos para una experiencia impecable."
       features={[
         {
           title: 'SEO desde la Arquitectura',
@@ -47,9 +51,9 @@ const DisenoWebApp = () => {
           icon: Gauge,
         },
         {
-          title: 'Analytics Integradas',
-          description: 'Seguimiento completo del comportamiento de usuarios para optimización continua.',
-          icon: BarChart3,
+          title: 'Pagos Integrados',
+          description: 'Integración con Stripe, PayPal, Square y otras pasarelas para cobros sin fricciones.',
+          icon: CreditCard,
         },
         {
           title: 'Diseño Responsive',
@@ -57,16 +61,18 @@ const DisenoWebApp = () => {
           icon: Globe,
         },
       ]}
+      benefitsTitle="Beneficios de nuestra solución web + app"
       benefits={[
+        'Experiencia de usuario consistente en todas las plataformas',
+        'Incremento de clientes y retención',
+        'Optimización de procesos internos (pedidos, pagos, reservas)',
+        'Posicionamiento y percepción premium',
         'SEO técnico implementado desde la arquitectura',
-        'E-commerce seguro y escalable con múltiples pasarelas',
         'Progressive Web Apps (PWA) instalables',
-        'Diseño responsive premium para todos los dispositivos',
         'Velocidad de carga ultra-optimizada (Core Web Vitals)',
-        'Integración con Google Analytics y herramientas de marketing',
         'Panel de administración intuitivo (CMS)',
-        'Hosting de alta disponibilidad incluido',
       ]}
+      ctaText="Cotiza el desarrollo de tu web y app móvil en Calgary"
       processSteps={[
         {
           title: 'Estrategia y Wireframes',

@@ -4,7 +4,7 @@ import {
   LayoutDashboard, 
   Users, 
   Shield, 
-  Workflow, 
+  TrendingUp, 
   BarChart3,
   Bot,
   Code2,
@@ -15,16 +15,20 @@ import serviceDevelopment from '@/assets/service-development.jpg';
 const SistemasGestion = () => {
   return (
     <ServicePageLayout
-      title="Sistemas de Gestión"
-      metaTitle="Sistemas ERP CRM SGC Calgary | RCW Innovation"
-      metaDescription="Diseño e implementación de ERP/CRM/SGC con dashboards en tiempo real y automatización. Sistemas de gestión empresarial en Calgary."
-      keywords="ERP Calgary, CRM Calgary, sistemas gestión Calgary, software empresarial Calgary, dashboards tiempo real, gestión empresarial Calgary"
+      title="Sistemas de gestión de operaciones para empresas en Calgary"
+      metaTitle="Sistemas de Gestión de Operaciones y ERP en Calgary | RCW Innovation"
+      metaDescription="Implementamos sistemas de gestión y ERPs a medida en Calgary, integrando procesos y datos para aumentar la productividad."
+      keywords="sistemas gestión Calgary, ERP Calgary, CRM Calgary, software empresarial Calgary, dashboards tiempo real, gestión empresarial Calgary"
+      canonicalUrl="https://www.rcwinnovation.com/sistemas-gestion-operaciones-calgary"
       heroImage={serviceDevelopment}
       heroImageAlt="Sistemas de gestión ERP CRM en Calgary - RCW Innovation"
       tag="Operaciones"
       icon={Database}
       shortDescription="Diseño e implementación de ERP/CRM/SGC con dashboards en tiempo real y automatización para controlar cada aspecto de tu negocio."
-      longDescription="Implementamos sistemas de gestión empresarial que centralizan todas tus operaciones en una única plataforma inteligente. Desde la gestión de clientes (CRM) hasta la planificación de recursos (ERP), diseñamos soluciones que estandarizan procesos, proporcionan datos en tiempo real y escalan de manera controlada junto con tu negocio."
+      problemTitle="Problema: falta de visibilidad y control"
+      problemDescription="Empresas con procesos dispersos tienen información duplicada, errores frecuentes y poca capacidad de análisis. Sin datos centralizados, tomar decisiones estratégicas se convierte en un ejercicio de adivinación."
+      solutionTitle="Solución: un sistema integrado para todo tu negocio"
+      solutionDescription="Analizamos tus procesos y configuramos o desarrollamos un ERP adaptado. Conectamos áreas de ventas, inventarios, finanzas y producción. Visibilizamos métricas en dashboards en tiempo real para tomar decisiones informadas."
       features={[
         {
           title: 'Dashboards en Tiempo Real',
@@ -42,31 +46,33 @@ const SistemasGestion = () => {
           icon: Shield,
         },
         {
-          title: 'Automatización de Procesos',
-          description: 'Flujos de trabajo automáticos que eliminan tareas manuales y reducen errores.',
-          icon: Workflow,
+          title: 'Escalabilidad Controlada',
+          description: 'Sistemas que crecen contigo sin perder rendimiento ni organización.',
+          icon: TrendingUp,
         },
         {
-          title: 'Reportes y Analíticas',
-          description: 'Generación automática de reportes personalizados para toma de decisiones informadas.',
+          title: 'Reportes Automatizados',
+          description: 'Generación automática de reportes personalizados para análisis y toma de decisiones.',
           icon: BarChart3,
         },
         {
           title: 'Integración Completa',
-          description: 'Conexión con herramientas de facturación, inventario, marketing y más.',
+          description: 'Conexión con herramientas de facturación, inventario, marketing y sistemas externos.',
           icon: Database,
         },
       ]}
+      benefitsTitle="Beneficios de un sistema integrado"
       benefits={[
+        'Datos centralizados y actualizados en tiempo real',
+        'Mejora en la toma de decisiones basada en datos',
+        'Reducción de errores manuales y duplicación',
+        'Escalabilidad y personalización según tus necesidades',
         'Procesos estandarizados en toda la organización',
-        'Datos centralizados en tiempo real',
-        'Escalamiento controlado sin perder eficiencia',
-        'Reducción significativa de errores manuales',
         'Visibilidad total del negocio en un solo lugar',
-        'Toma de decisiones basada en datos',
         'Automatización de reportes recurrentes',
         'Capacitación completa para tu equipo',
       ]}
+      ctaText="Pide tu consultoría en sistemas de gestión empresariales"
       processSteps={[
         {
           title: 'Diagnóstico Organizacional',

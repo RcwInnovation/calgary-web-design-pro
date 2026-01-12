@@ -30,7 +30,7 @@ const services = [
     features: ['Arquitecturas modulares', 'APIs seguras', 'Dashboards intuitivos'],
     image: serviceDevelopment,
     imageAlt: 'Desarrollo de software a medida en Calgary - plataformas escalables y MVPs',
-    href: '/servicios/software-medida',
+    href: '/diseno-software-medida-premium-calgary',
   },
   {
     icon: Share2,
@@ -40,7 +40,7 @@ const services = [
     features: ['Identidad visual', 'Marketing orgánico', 'Campañas de pago'],
     image: serviceLandingPage,
     imageAlt: 'Branding y marketing en redes sociales Calgary',
-    href: '/servicios/branding-redes',
+    href: '/branding-estrategia-redes-sociales-calgary',
   },
   {
     icon: Bot,
@@ -50,7 +50,7 @@ const services = [
     features: ['Workflows inteligentes', 'Integración CRM/ERP', 'Atención 24/7'],
     image: serviceSeo,
     imageAlt: 'Automatización con inteligencia artificial Calgary',
-    href: '/servicios/automatizaciones-ia',
+    href: '/automatizaciones-ia-operaciones-calgary',
   },
   {
     icon: Brain,
@@ -60,7 +60,7 @@ const services = [
     features: ['Agentes conversacionales', 'Aprendizaje continuo', 'Integración backend'],
     image: serviceCorporate,
     imageAlt: 'Desarrollo de agentes de inteligencia artificial Calgary',
-    href: '/servicios/agentes-ia',
+    href: '/creacion-agentes-ia-inteligencia-calgary',
   },
   {
     icon: Database,
@@ -70,7 +70,7 @@ const services = [
     features: ['ERP/CRM personalizado', 'Dashboards en tiempo real', 'Automatización'],
     image: serviceDevelopment,
     imageAlt: 'Sistemas de gestión ERP CRM Calgary',
-    href: '/servicios/sistemas-gestion',
+    href: '/sistemas-gestion-operaciones-calgary',
   },
   {
     icon: CreditCard,
@@ -80,7 +80,7 @@ const services = [
     features: ['QR/NFC integrado', 'vCard automática', 'Analytics de contactos'],
     image: serviceLandingPage,
     imageAlt: 'Tarjeta digital profesional NFC Calgary',
-    href: '/servicios/tarjeta-digital',
+    href: '/tarjeta-digital-profesional-calgary',
   },
   {
     icon: Globe,
@@ -90,7 +90,7 @@ const services = [
     features: ['SEO desde arquitectura', 'E-commerce seguro', 'Apps móviles/PWA'],
     image: serviceWebDesign,
     imageAlt: 'Diseño web y aplicaciones móviles Calgary',
-    href: '/servicios/diseno-web-app',
+    href: '/diseno-web-app-movil-calgary',
   },
   {
     icon: GraduationCap,
@@ -100,7 +100,7 @@ const services = [
     features: ['Planes personalizados', 'Workshops prácticos', 'Seguimiento continuo'],
     image: serviceMobile,
     imageAlt: 'Mentoría y capacitación empresarial Calgary',
-    href: '/servicios/mentoria-capacitacion',
+    href: '/mentoria-capacitacion-digital-calgary',
   },
 ];
 
