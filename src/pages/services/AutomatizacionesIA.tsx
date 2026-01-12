@@ -5,26 +5,31 @@ import {
   Clock, 
   DollarSign, 
   Link2, 
-  BarChart3,
+  TrendingUp,
   Brain,
   Database,
-  Code2
+  Code2,
+  Headphones
 } from 'lucide-react';
 import serviceSeo from '@/assets/service-seo.jpg';
 
 const AutomatizacionesIA = () => {
   return (
     <ServicePageLayout
-      title="Automatizaciones con IA"
-      metaTitle="Automatización con Inteligencia Artificial Calgary | RCW Innovation"
-      metaDescription="Workflows inteligentes para atención, ventas y operaciones integrados con CRM/ERP. Automatización empresarial con IA en Calgary."
-      keywords="automatización IA Calgary, workflows inteligentes Calgary, automatización empresarial, integración CRM ERP, chatbots inteligentes, automatización procesos Calgary"
+      title="Automatizaciones con IA para operaciones empresariales en Calgary"
+      metaTitle="Automatizaciones con IA para Operaciones en Calgary | RCW Innovation"
+      metaDescription="Optimiza tus procesos con automatización e inteligencia artificial en Calgary. Reduce costos y tiempos de forma inteligente. Atención en español."
+      keywords="automatización IA Calgary, workflows inteligentes Calgary, automatización empresarial, integración CRM ERP, reducción costos operativos, automatización procesos Calgary"
+      canonicalUrl="https://www.rcwinnovation.com/automatizaciones-ia-operaciones-calgary"
       heroImage={serviceSeo}
-      heroImageAlt="Automatización con inteligencia artificial en Calgary - RCW Innovation"
+      heroImageAlt="Automatizaciones con IA para operaciones en Calgary - RCW Innovation"
       tag="Operación"
       icon={Bot}
       shortDescription="Workflows inteligentes para atención, ventas y operaciones, integrados con CRM/ERP para transformar tu eficiencia operativa."
-      longDescription="Implementamos flujos de trabajo automatizados potenciados por inteligencia artificial que reducen costos operativos, eliminan tareas repetitivas y mejoran significativamente la experiencia de tus clientes. Nuestras soluciones se integran perfectamente con tus sistemas existentes para proporcionar atención 24/7, procesamiento automático de datos y toma de decisiones inteligente."
+      problemTitle="Problema: procesos manuales y costosos"
+      problemDescription="Realizar tareas repetitivas consume tiempo y recursos. Los errores humanos generan pérdidas económicas y baja eficiencia. Equipos sobrecargados con trabajo manual que podría automatizarse, limitando su capacidad de enfocarse en tareas de alto valor."
+      solutionTitle="Solución: automatización inteligente a medida"
+      solutionDescription="Identificamos y mapeamos procesos que se pueden automatizar, implementamos flujos con IA (bots, integraciones) y optimizamos en tiempo real. Nos integramos con CRM, ERP y sistemas existentes sin interrumpir tu operación."
       features={[
         {
           title: 'Workflows Inteligentes',
@@ -47,26 +52,28 @@ const AutomatizacionesIA = () => {
           icon: Link2,
         },
         {
-          title: 'Visibilidad Completa',
-          description: 'Dashboards en tiempo real que muestran el estado de cada automatización y sus resultados.',
-          icon: BarChart3,
+          title: 'Mayor Escalabilidad',
+          description: 'Automatizaciones que crecen con tu negocio sin aumentar proporcionalmente los costos.',
+          icon: TrendingUp,
         },
         {
-          title: 'IA Adaptativa',
-          description: 'Algoritmos que aprenden de los datos y mejoran continuamente su rendimiento.',
-          icon: Bot,
+          title: 'Soporte y Capacitación',
+          description: 'Te acompañamos en todo el proceso con soporte continuo y capacitación para tu equipo.',
+          icon: Headphones,
         },
       ]}
+      benefitsTitle="Ventajas de automatizar con IA"
       benefits={[
+        'Reducción de errores y tiempos de respuesta',
+        'Menos costes operativos (hasta 60% de ahorro)',
+        'Mayor escalabilidad y productividad',
+        'Soporte y capacitación incluidos',
         'Atención al cliente 24/7 sin fricciones',
-        'Reducción de hasta 60% en costos operativos',
-        'Visibilidad total de procesos en tiempo real',
-        'Eliminación de errores humanos en tareas repetitivas',
-        'Escalabilidad automática según demanda',
         'Integración con sistemas existentes sin disrupciones',
-        'Respuestas instantáneas a consultas frecuentes',
-        'Liberación de tu equipo para tareas de alto valor',
+        'Liberación de tu equipo para tareas estratégicas',
+        'Monitoreo y alertas en tiempo real',
       ]}
+      ctaText="Solicita tu plan de automatización con IA en español"
       processSteps={[
         {
           title: 'Mapeo de Procesos',

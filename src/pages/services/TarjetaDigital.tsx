@@ -3,11 +3,10 @@ import {
   CreditCard, 
   QrCode, 
   Smartphone, 
-  BarChart3, 
-  Palette, 
+  RefreshCw, 
+  Users, 
   Share2,
   Globe,
-  GraduationCap,
   Code2
 } from 'lucide-react';
 import serviceLandingPage from '@/assets/service-landing-page.jpg';
@@ -15,58 +14,64 @@ import serviceLandingPage from '@/assets/service-landing-page.jpg';
 const TarjetaDigital = () => {
   return (
     <ServicePageLayout
-      title="Tarjeta Digital Profesional"
-      metaTitle="Tarjeta Digital Profesional NFC QR Calgary | RCW Innovation"
-      metaDescription="Tarjeta digital con QR/NFC, vCard y analíticas para networking profesional. Moderniza tu networking en Calgary con tecnología de punta."
-      keywords="tarjeta digital Calgary, tarjeta NFC Calgary, tarjeta QR negocios, networking digital, vCard digital, tarjeta profesional Calgary"
+      title="Tarjeta digital profesional con QR inteligente – networking moderno en Calgary"
+      metaTitle="Tarjeta Digital Profesional de Negocios con QR Inteligente en Calgary | RCW Innovation"
+      metaDescription="Tarjetas digitales con diseño premium, QR optimizado y enlaces a tus redes. Actualiza tus datos en tiempo real y comparte tu información al instante."
+      keywords="tarjeta digital Calgary, tarjeta NFC Calgary, tarjeta QR negocios, networking digital, tarjeta profesional Calgary, tarjeta smart negocios"
+      canonicalUrl="https://www.rcwinnovation.com/tarjeta-digital-profesional-calgary"
       heroImage={serviceLandingPage}
-      heroImageAlt="Tarjeta digital profesional NFC en Calgary - RCW Innovation"
+      heroImageAlt="Tarjeta digital profesional con QR en Calgary - RCW Innovation"
       tag="Smart"
       icon={CreditCard}
       shortDescription="Tarjeta digital con QR/NFC, vCard y analíticas para networking profesional que impresiona y convierte contactos en oportunidades."
-      longDescription="Moderniza tu networking con tarjetas digitales profesionales que destacan y generan impacto. Nuestra solución combina diseño premium con tecnología NFC/QR para compartir tu información de contacto con un simple toque, mientras obtienes analíticas detalladas de cada interacción para maximizar tus oportunidades de negocio."
+      problemTitle="Problema: tarjetas físicas que se pierden o quedan obsoletas"
+      problemDescription="Las tarjetas tradicionales se dañan o se extravían y no permiten enlaces rápidos a redes sociales ni actualización de datos. Cada vez que cambias de número, email o cargo, debes reimprimir y distribuir nuevas tarjetas."
+      solutionTitle="Solución: tarjeta digital smart"
+      solutionDescription="Diseñamos tu tarjeta digital en español, con QR mejorado (funciona sin internet), enlaces a redes, contactos y sitio web. Puedes actualizarla cuando quieras. También ofrecemos una versión física de metal con NFC integrado para máximo impacto."
       features={[
         {
-          title: 'Tecnología QR/NFC',
-          description: 'Comparte tu información con un simple escaneo o toque, compatible con todos los smartphones.',
+          title: 'QR Inteligente',
+          description: 'Código QR optimizado que funciona incluso sin conexión a internet para compartir tu información.',
           icon: QrCode,
         },
         {
           title: 'vCard Automática',
-          description: 'Los contactos se guardan directamente en el teléfono del receptor sin necesidad de escribir.',
+          description: 'Los contactos se guardan directamente en el teléfono del receptor con un solo toque.',
           icon: Smartphone,
-        },
-        {
-          title: 'Analytics de Contactos',
-          description: 'Rastrea quién escaneó tu tarjeta, cuándo y desde dónde para seguimiento efectivo.',
-          icon: BarChart3,
-        },
-        {
-          title: 'Diseño Personalizado',
-          description: 'Diseño 100% alineado con tu marca personal o empresarial para máximo impacto.',
-          icon: Palette,
-        },
-        {
-          title: 'Múltiples Perfiles',
-          description: 'Gestiona diferentes tarjetas para distintos contextos o miembros del equipo.',
-          icon: Share2,
         },
         {
           title: 'Actualización en Tiempo Real',
           description: 'Modifica tu información cuando quieras sin necesidad de reimprimir tarjetas.',
-          icon: CreditCard,
+          icon: RefreshCw,
+        },
+        {
+          title: 'Múltiples Perfiles',
+          description: 'Gestiona diferentes tarjetas para distintos contextos o miembros del equipo.',
+          icon: Users,
+        },
+        {
+          title: 'Enlaces a Redes',
+          description: 'Conecta directamente a LinkedIn, Instagram, WhatsApp, sitio web y más.',
+          icon: Share2,
+        },
+        {
+          title: 'Compatibilidad Universal',
+          description: 'Funciona perfectamente en iOS y Android sin necesidad de apps adicionales.',
+          icon: Smartphone,
         },
       ]}
+      benefitsTitle="Beneficios de la tarjeta digital smart"
       benefits={[
-        'Compartir contacto con un toque o escaneo',
-        'Seguimiento analítico de cada interacción',
-        'Diseño 100% personalizable y premium',
-        'Actualización de información en tiempo real',
-        'Compatible con todos los dispositivos móviles',
-        'Integración con CRM para seguimiento',
-        'Impresión de tarjetas físicas NFC incluida',
-        'Panel de administración para equipos',
+        'Imagen moderna y profesional que impresiona',
+        'Datos actualizables al instante desde tu celular',
+        'Mayor interacción con tus contactos',
+        'Compatibilidad en iOS y Android sin apps',
+        'Versión física en metal con NFC disponible',
+        'Analytics de escaneos y visitas',
+        'Diseño 100% personalizable con tu marca',
+        'Ilimitadas comparticiones sin costo adicional',
       ]}
+      ctaText="Pide tu tarjeta digital smart para negocios en Calgary"
       processSteps={[
         {
           title: 'Definición de Perfil',
@@ -104,7 +109,7 @@ const TarjetaDigital = () => {
         },
         {
           question: '¿La tarjeta física está incluida?',
-          answer: 'Sí, incluimos tarjetas físicas premium con chip NFC. El número de tarjetas depende del plan seleccionado.',
+          answer: 'Ofrecemos planes con tarjetas digitales únicamente y planes premium que incluyen tarjetas físicas de metal con chip NFC.',
         },
         {
           question: '¿Puedo crear tarjetas para todo mi equipo?',

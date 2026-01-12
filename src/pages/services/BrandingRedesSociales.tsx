@@ -15,16 +15,20 @@ import serviceLandingPage from '@/assets/service-landing-page.jpg';
 const BrandingRedesSociales = () => {
   return (
     <ServicePageLayout
-      title="Branding y Redes Sociales"
-      metaTitle="Branding y Marketing en Redes Sociales Calgary | RCW Innovation"
-      metaDescription="Construcción de identidad visual y contenidos de alto impacto. Marketing orgánico y de pago para posicionar tu marca en Calgary y Canadá."
-      keywords="branding Calgary, marketing redes sociales Calgary, identidad visual Calgary, marketing digital Calgary, gestión redes sociales, campañas publicitarias Calgary"
+      title="Branding y estrategias de redes sociales para negocios latinos en Calgary"
+      metaTitle="Branding y Estrategias de Redes Sociales en Calgary | RCW Innovation"
+      metaDescription="Construye tu marca y domina las redes sociales con estrategias profesionales en Calgary. Branding, identidad y marketing digital en español."
+      keywords="branding Calgary, estrategia redes sociales Calgary, identidad visual Calgary, marketing digital Calgary, gestión redes sociales latino, community manager Calgary"
+      canonicalUrl="https://www.rcwinnovation.com/branding-estrategia-redes-sociales-calgary"
       heroImage={serviceLandingPage}
-      heroImageAlt="Branding y marketing en redes sociales en Calgary - RCW Innovation"
+      heroImageAlt="Branding y estrategias de redes sociales en Calgary - RCW Innovation"
       tag="Estrategia"
       icon={Share2}
       shortDescription="Construcción de identidad visual y contenidos de alto impacto. Combinamos marketing orgánico y de pago para posicionar tu marca."
-      longDescription="Desarrollamos tu marca desde cero o la potenciamos con estrategias de contenido y publicidad que generan resultados medibles. Nuestro enfoque integral combina diseño de identidad visual, gestión de redes sociales y campañas publicitarias optimizadas para maximizar tu presencia digital y convertir seguidores en clientes leales."
+      problemTitle="Problema: marcas que pasan desapercibidas"
+      problemDescription="Muchas empresas no tienen identidad visual clara ni estrategia digital, lo que causa poca confianza y poca recordación en sus clientes. Sin una presencia coherente y profesional, es difícil destacar en un mercado competitivo y convertir seguidores en clientes."
+      solutionTitle="Solución: identidad + estrategia social completa"
+      solutionDescription="Definimos tu imagen (logo, colores, tipografía) y creamos calendarios de contenido con storytelling y copy persuasivo. Analizamos tu audiencia y plataformas (Facebook, Instagram, LinkedIn, TikTok) para posicionar tu marca con estrategias probadas."
       features={[
         {
           title: 'Identidad Visual Completa',
@@ -57,16 +61,18 @@ const BrandingRedesSociales = () => {
           icon: Share2,
         },
       ]}
+      benefitsTitle="Beneficios de nuestra estrategia"
       benefits={[
-        'Posicionamiento de marca sólido y diferenciado',
-        'Mayor conversión y fidelización de clientes',
+        'Imagen coherente y profesional en todos los canales',
+        'Comunidad que interactúa y recomienda tu marca',
+        'Contenido planificado y optimizado para conversión',
+        'Medición y mejora continua basada en datos',
+        'Mayor recordación de marca en tu mercado',
+        'Aumento significativo de engagement y alcance',
         'Guías de estilo completas para consistencia visual',
-        'Aumento significativo de engagement en redes',
-        'Campañas publicitarias con ROI optimizado',
-        'Presencia coherente en todas las plataformas',
-        'Contenido estratégico que genera leads',
-        'Reportes mensuales con insights accionables',
+        'Estrategias adaptadas al público latino en Calgary',
       ]}
+      ctaText="Agenda tu consultoría de branding y redes en español"
       processSteps={[
         {
           title: 'Auditoría de Marca',

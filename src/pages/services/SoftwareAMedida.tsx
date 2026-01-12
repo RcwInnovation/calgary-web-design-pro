@@ -4,10 +4,10 @@ import {
   Layers, 
   Shield, 
   Gauge, 
-  Database, 
-  GitBranch,
-  Share2,
+  Link2, 
+  Headphones,
   Bot,
+  Database,
   Brain
 } from 'lucide-react';
 import serviceDevelopment from '@/assets/service-development.jpg';
@@ -15,78 +15,84 @@ import serviceDevelopment from '@/assets/service-development.jpg';
 const SoftwareAMedida = () => {
   return (
     <ServicePageLayout
-      title="Diseño de Software a la Medida"
-      metaTitle="Desarrollo de Software a Medida en Calgary | RCW Innovation"
-      metaDescription="Desarrollo de MVPs y plataformas escalables con arquitecturas modulares, APIs seguras y dashboards intuitivos. Soluciones de software personalizadas en Calgary."
-      keywords="desarrollo software Calgary, software a medida Calgary, MVP desarrollo Calgary, plataformas escalables, APIs seguras, desarrollo aplicaciones empresariales Calgary"
+      title="Diseño de software a la medida premium en Calgary para empresas innovadoras"
+      metaTitle="Diseño de Software a la Medida Premium en Calgary | RCW Innovation"
+      metaDescription="Creamos software a medida premium en Calgary con IA y soluciones escalables, adaptadas a tu negocio. Atención en español y diagnóstico gratuito."
+      keywords="diseño software Calgary, software a medida Calgary, desarrollo software premium, MVP desarrollo Calgary, IA software Calgary, software empresarial Calgary"
+      canonicalUrl="https://www.rcwinnovation.com/diseno-software-medida-premium-calgary"
       heroImage={serviceDevelopment}
-      heroImageAlt="Desarrollo de software a medida en Calgary - RCW Innovation creando plataformas escalables"
+      heroImageAlt="Diseño de software a medida premium en Calgary - RCW Innovation"
       tag="Premium"
       icon={Code2}
-      shortDescription="Desarrollo de MVPs y plataformas escalables con arquitecturas modulares, APIs seguras y dashboards intuitivos para impulsar tu negocio."
-      longDescription="Creamos soluciones de software personalizadas que se adaptan perfectamente a las necesidades únicas de tu negocio. Desde la conceptualización de MVPs hasta el desarrollo de plataformas empresariales completas, nuestro equipo de ingenieros expertos utiliza las tecnologías más avanzadas para construir productos digitales robustos, seguros y escalables que impulsan el crecimiento de tu empresa."
+      shortDescription="Desarrollo de MVPs y plataformas escalables con arquitecturas modulares, IA integrada y dashboards intuitivos para impulsar tu negocio."
+      problemTitle="Problema: el límite del software genérico"
+      problemDescription="Muchos negocios dependen de herramientas genéricas que no se ajustan a sus procesos. Esto limita su crecimiento y aumenta los costos operativos. Las soluciones estándar no pueden adaptarse a flujos de trabajo únicos ni escalar según las necesidades específicas de cada empresa."
+      solutionTitle="Solución: software a medida que impulsa tu operación"
+      solutionDescription="Nuestro equipo diseña sistemas personalizados con arquitectura escalable, IA integrada y flujos optimizados que se adaptan a tu industria. Desde la estrategia hasta la implementación, te acompañamos en español con soporte continuo y actualizaciones."
       features={[
         {
-          title: 'Arquitecturas Modulares',
-          description: 'Diseñamos sistemas con componentes independientes que facilitan el mantenimiento, la escalabilidad y las actualizaciones futuras.',
-          icon: Layers,
-        },
-        {
-          title: 'APIs Seguras',
-          description: 'Desarrollamos interfaces de programación robustas con autenticación avanzada, cifrado de datos y mejores prácticas de seguridad.',
-          icon: Shield,
-        },
-        {
-          title: 'Dashboards Intuitivos',
-          description: 'Creamos paneles de control visuales que te permiten monitorear métricas clave y tomar decisiones basadas en datos.',
+          title: 'Interfaces Intuitivas',
+          description: 'Diseñamos experiencias de usuario modernas que maximizan la productividad y minimizan la curva de aprendizaje.',
           icon: Gauge,
         },
         {
-          title: 'Bases de Datos Optimizadas',
-          description: 'Diseñamos esquemas de datos eficientes que garantizan rendimiento óptimo incluso con millones de registros.',
-          icon: Database,
+          title: 'Integraciones Seguras',
+          description: 'Conectamos con tus sistemas actuales (CRM, ERP, pasarelas de pago) con autenticación avanzada y cifrado.',
+          icon: Shield,
         },
         {
-          title: 'Control de Versiones',
-          description: 'Implementamos flujos de trabajo Git profesionales para un desarrollo colaborativo y trazabilidad completa.',
-          icon: GitBranch,
+          title: 'IA y Automatización',
+          description: 'Incorporamos inteligencia artificial para automatizar procesos repetitivos y ahorrar tiempo valioso.',
+          icon: Bot,
         },
         {
-          title: 'Código Documentado',
-          description: 'Entregamos código limpio, bien documentado y siguiendo las mejores prácticas de la industria.',
-          icon: Code2,
+          title: 'Arquitectura Escalable',
+          description: 'Diseñamos sistemas modulares que crecen contigo, desde startup hasta empresa consolidada.',
+          icon: Layers,
+        },
+        {
+          title: 'APIs Robustas',
+          description: 'Desarrollamos interfaces de programación seguras para conectar con cualquier servicio externo.',
+          icon: Link2,
+        },
+        {
+          title: 'Soporte Continuo',
+          description: 'Mantenimiento, actualizaciones y soporte técnico para garantizar el funcionamiento óptimo.',
+          icon: Headphones,
         },
       ]}
+      benefitsTitle="Beneficios de trabajar con nosotros"
       benefits={[
-        'Escalabilidad garantizada para crecer con tu negocio',
-        'Seguridad de nivel empresarial con cifrado de extremo a extremo',
-        'Experiencia de usuario optimizada para máxima conversión',
-        'Integraciones con sistemas existentes (CRM, ERP, etc.)',
-        'Soporte técnico y mantenimiento continuo',
+        'Interfaces intuitivas y experiencia de usuario moderna',
+        'Integraciones seguras con tus sistemas actuales',
+        'Inteligencia artificial y automatización para ahorrar tiempo',
+        'Soporte continuo y actualizaciones incluidas',
+        'Arquitectura escalable que crece con tu negocio',
         'Propiedad total del código fuente',
         'Documentación técnica completa',
         'Capacitación para tu equipo incluida',
       ]}
+      ctaText="Solicita tu diagnóstico de software personalizado en español"
       processSteps={[
         {
           title: 'Descubrimiento y Análisis',
-          description: 'Entendemos a fondo tus necesidades, objetivos de negocio y requerimientos técnicos para definir el alcance del proyecto.',
+          description: 'Entendemos a fondo tus necesidades, objetivos de negocio y requerimientos técnicos para definir el alcance.',
         },
         {
           title: 'Diseño de Arquitectura',
-          description: 'Creamos la arquitectura técnica, diagramas de flujo y prototipos de interfaz para validar la solución antes del desarrollo.',
+          description: 'Creamos la arquitectura técnica, diagramas de flujo y prototipos para validar la solución.',
         },
         {
           title: 'Desarrollo Ágil',
-          description: 'Implementamos el software en sprints cortos con entregas incrementales, permitiendo feedback continuo y ajustes rápidos.',
+          description: 'Implementamos en sprints cortos con entregas incrementales y feedback continuo.',
         },
         {
           title: 'Testing y QA',
-          description: 'Ejecutamos pruebas exhaustivas automatizadas y manuales para garantizar la calidad y estabilidad del producto.',
+          description: 'Pruebas exhaustivas automatizadas y manuales para garantizar calidad y estabilidad.',
         },
         {
           title: 'Despliegue y Soporte',
-          description: 'Desplegamos en infraestructura escalable y proporcionamos soporte técnico continuo con actualizaciones regulares.',
+          description: 'Desplegamos en infraestructura escalable con soporte técnico continuo.',
         },
       ]}
       faqs={[
