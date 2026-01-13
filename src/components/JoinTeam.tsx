@@ -32,26 +32,6 @@ const benefits = [
   },
 ];
 
-const openPositions = [
-  {
-    icon: Code,
-    title: 'Desarrollador Full Stack',
-    type: 'Remoto / Tiempo completo',
-    skills: ['React', 'Node.js', 'TypeScript', 'PostgreSQL'],
-  },
-  {
-    icon: Palette,
-    title: 'Diseñador UI/UX',
-    type: 'Remoto / Tiempo completo',
-    skills: ['Figma', 'Design Systems', 'Prototipado', 'User Research'],
-  },
-  {
-    icon: Briefcase,
-    title: 'Project Manager',
-    type: 'Remoto / Tiempo completo',
-    skills: ['Agile', 'Scrum', 'Liderazgo', 'Comunicación'],
-  },
-];
 
 export const JoinTeam = () => {
   const ref = useRef(null);
@@ -122,53 +102,12 @@ export const JoinTeam = () => {
           ))}
         </motion.div>
 
-        {/* Open Positions */}
+        {/* General Application CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <h3 className="text-2xl font-bold text-center mb-10">Posiciones Abiertas</h3>
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            {openPositions.map((position, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                className="bg-card/80 backdrop-blur-sm p-6 rounded-2xl border border-border/50 hover:border-primary/50 transition-all duration-300 group"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <position.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <span className="text-xs text-muted-foreground bg-muted px-3 py-1 rounded-full">
-                    {position.type}
-                  </span>
-                </div>
-                <h4 className="text-lg font-semibold mb-3">{position.title}</h4>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {position.skills.map((skill, skillIndex) => (
-                    <span
-                      key={skillIndex}
-                      className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-md"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-                <Button
-                  variant="outline"
-                  className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all"
-                  onClick={() => handleApply(position.title)}
-                >
-                  Aplicar ahora
-                  <ChevronRight className="w-4 h-4 ml-2" />
-                </Button>
-              </motion.div>
-            ))}
-          </div>
-
           {/* General Application CTA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -208,6 +147,14 @@ export const JoinTeam = () => {
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input id="email" type="email" placeholder="tu@email.com" required />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="phone">Número de teléfono</Label>
+              <Input id="phone" type="tel" placeholder="+1 (555) 123-4567" required />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="city">Ciudad</Label>
+              <Input id="city" placeholder="Ej: Calgary, Toronto, Bogotá..." required />
             </div>
             <div className="space-y-2">
               <Label htmlFor="linkedin">LinkedIn / Portafolio</Label>

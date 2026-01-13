@@ -8,9 +8,37 @@ import {
   BarChart3,
   Bot,
   Code2,
-  Brain
+  Brain,
+  Award,
+  Leaf,
+  HardHat
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 import serviceErpSystems from '@/assets/service-erp-systems.jpg';
+
+const isoStandards = [
+  {
+    icon: Award,
+    title: 'ISO 9001',
+    subtitle: 'Sistema de Gestión de Calidad',
+    description: 'Mejora continua de procesos y satisfacción del cliente mediante estándares de calidad reconocidos internacionalmente.',
+    color: 'primary',
+  },
+  {
+    icon: Leaf,
+    title: 'ISO 14001',
+    subtitle: 'Sistema de Gestión Ambiental',
+    description: 'Minimiza el impacto ambiental de tu operación y cumple con regulaciones medioambientales.',
+    color: 'accent',
+  },
+  {
+    icon: HardHat,
+    title: 'ISO 45001',
+    subtitle: 'Seguridad y Salud Ocupacional',
+    description: 'Protege a tus colaboradores con un sistema de gestión de seguridad y salud en el trabajo.',
+    color: 'primary',
+  },
+];
 
 const SistemasGestion = () => {
   return (
@@ -29,6 +57,65 @@ const SistemasGestion = () => {
       problemDescription="Procesos desorganizados, datos dispersos y riesgos en calidad y seguridad. Sin datos centralizados, tomar decisiones estratégicas se convierte en un ejercicio de adivinación."
       solutionTitle="Solución: ERP alineado a ISO y HSEQ"
       solutionDescription="RCW analiza tu operación y diseña un ERP alineado a ISO 9001 (Calidad), ISO 14001 (Medio Ambiente), ISO 45001 (Seguridad y Salud), integrando los principios HSEQ (Health, Safety, Environment, Quality)."
+      customSection={
+        <section className="py-16 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                Estándares Internacionales
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Normas ISO que implementamos
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Alineamos tu sistema de gestión con los estándares internacionales más reconocidos para garantizar calidad, seguridad y sostenibilidad.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-8">
+              {isoStandards.map((standard, index) => (
+                <motion.div
+                  key={standard.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.15 }}
+                  className="relative group"
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-br from-${standard.color}/20 to-${standard.color}/5 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500`} />
+                  <div className={`relative bg-card/80 backdrop-blur-sm p-8 rounded-3xl border border-${standard.color}/20 h-full hover:border-${standard.color}/40 transition-all duration-300`}>
+                    <div className={`w-16 h-16 bg-${standard.color}/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-${standard.color}/20 transition-colors`}>
+                      <standard.icon className={`w-8 h-8 text-${standard.color}`} />
+                    </div>
+                    <div className="mb-4">
+                      <h3 className="text-2xl font-bold text-primary">{standard.title}</h3>
+                      <p className="text-sm font-medium text-muted-foreground">{standard.subtitle}</p>
+                    </div>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {standard.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            {/* HSEQ Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="mt-12 text-center"
+            >
+              <div className="inline-flex items-center gap-4 px-8 py-4 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 rounded-2xl border border-primary/20">
+                <Shield className="w-8 h-8 text-primary" />
+                <div className="text-left">
+                  <h4 className="font-bold text-lg">Enfoque HSEQ Integrado</h4>
+                  <p className="text-sm text-muted-foreground">Health, Safety, Environment & Quality</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      }
       features={[
         {
           title: 'Dashboards en Tiempo Real',

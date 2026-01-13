@@ -36,6 +36,11 @@ const BrandingRedesSociales = () => {
           icon: Palette,
         },
         {
+          title: 'Direccionamiento Estratégico',
+          description: 'Definimos misión, visión, valores y propuesta de valor para alinear tu marca con tus objetivos de negocio.',
+          icon: Target,
+        },
+        {
           title: 'Estrategia de Contenido',
           description: 'Creamos calendarios editoriales y contenido de valor que conecta con tu audiencia y genera engagement.',
           icon: FileText,
@@ -43,17 +48,12 @@ const BrandingRedesSociales = () => {
         {
           title: 'Campañas Publicitarias',
           description: 'Diseñamos y optimizamos campañas en Meta, Google y TikTok para maximizar tu retorno de inversión.',
-          icon: Target,
+          icon: TrendingUp,
         },
         {
           title: 'Gestión de Comunidad',
           description: 'Administramos tus redes sociales con respuestas rápidas, interacción genuina y monitoreo de menciones.',
           icon: Users,
-        },
-        {
-          title: 'Análisis y Reportes',
-          description: 'Proporcionamos informes detallados con métricas clave para medir el impacto de cada acción.',
-          icon: TrendingUp,
         },
         {
           title: 'Creatividades de Alto Impacto',
@@ -64,6 +64,7 @@ const BrandingRedesSociales = () => {
       benefitsTitle="Beneficios de nuestra estrategia"
       benefits={[
         'Imagen coherente y profesional en todos los canales',
+        'Direccionamiento estratégico claro (misión, visión, valores)',
         'Comunidad que interactúa y recomienda tu marca',
         'Contenido planificado y optimizado para conversión',
         'Medición y mejora continua basada en datos',

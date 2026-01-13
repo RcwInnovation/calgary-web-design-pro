@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Target, Eye, Award, Users, Zap, Globe } from 'lucide-react';
+import { Target, Eye, Lightbulb, Award, MessageCircle, Users, Heart } from 'lucide-react';
 
 const stats = [
   { number: '10+', label: 'Años de experiencia' },
@@ -12,24 +12,29 @@ const stats = [
 
 const values = [
   {
+    icon: Lightbulb,
+    title: 'Innovación continua',
+    description: 'Siempre adoptamos lo último en IA, software y diseño para ofrecer resultados diferenciados.',
+  },
+  {
     icon: Award,
-    title: 'Excelencia',
-    description: 'Cada proyecto refleja nuestro compromiso con la calidad y la innovación.',
+    title: 'Profesionalismo y calidad',
+    description: 'Nos comprometemos con estándares altos y estrategias basadas en normativas y buenas prácticas.',
+  },
+  {
+    icon: MessageCircle,
+    title: 'Claridad y cercanía',
+    description: 'Comunicamos cada paso con transparencia y acompañamos al cliente en su idioma (español o inglés).',
   },
   {
     icon: Users,
-    title: 'Colaboración',
-    description: 'Trabajamos junto a nuestros clientes como verdaderos aliados estratégicos.',
+    title: 'Orientación al cliente',
+    description: 'Ponemos las necesidades de cada proyecto al centro, respetando su contexto y cultura.',
   },
   {
-    icon: Zap,
-    title: 'Innovación',
-    description: 'Adoptamos las últimas tecnologías para ofrecer soluciones de vanguardia.',
-  },
-  {
-    icon: Globe,
-    title: 'Visión Global',
-    description: 'Conectamos talento latinoamericano con mercados internacionales.',
+    icon: Heart,
+    title: 'Orgullo latino',
+    description: 'Celebramos nuestras raíces y trabajamos para abrir oportunidades a la comunidad hispanohablante en Canadá.',
   },
 ];
 
@@ -121,7 +126,9 @@ export const AboutUs = () => {
               <p className="text-muted-foreground leading-relaxed">
                 Ser la empresa líder en transformación digital e innovación tecnológica en América, 
                 reconocida por la excelencia en nuestros servicios y por generar un impacto positivo 
-                en el crecimiento empresarial de nuestros clientes.
+                en el crecimiento empresarial de nuestros clientes. Aspiramos a que RCW Innovation Inc 
+                sea el referente en el desarrollo de ideas innovadoras y ecosistemas digitales que 
+                transforman negocios y elevan la competitividad de nuestros clientes.
               </p>
             </div>
           </motion.div>
@@ -134,7 +141,7 @@ export const AboutUs = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <h3 className="text-2xl font-bold text-center mb-10">Nuestros Valores</h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {values.map((value, index) => (
               <motion.div
                 key={index}
