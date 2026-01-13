@@ -60,7 +60,7 @@ export const AboutUs = () => {
           <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
             Sobre Nosotros
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
             Más de <span className="text-primary">10 años</span> transformando empresas
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto">

@@ -44,10 +44,6 @@ const floatingAnimation = {
 };
 
 export const Hero = ({ onOpenDiagnostic, onOpenConsultation }: HeroProps) => {
-  const titlePart1 = "Impulsamos la innovación, el ";
-  const titleHighlight = "diseño web";
-  const titlePart2 = " y la automatización inteligente en Calgary";
-
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       {/* Animated Background Effects */}
@@ -140,38 +136,29 @@ export const Hero = ({ onOpenDiagnostic, onOpenConsultation }: HeroProps) => {
             </span>
           </motion.div>
 
-          {/* H1 Title with character animation */}
+          {/* H1 Title - Simplified animation for better mobile rendering */}
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6"
-            initial="hidden"
-            animate="visible"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            {titlePart1.split('').map((char, i) => (
-              <motion.span
-                key={`p1-${i}`}
-                custom={i}
-                variants={letterAnimation}
-                className="inline-block"
-                style={{ whiteSpace: char === ' ' ? 'pre' : 'normal' }}
-              >
-                {char}
-              </motion.span>
-            ))}
+            Impulsamos la innovación, el{' '}
             <motion.span
-              className="text-gradient-gold inline-block relative"
-              initial={{ opacity: 0, scale: 0.5 }}
+              className="text-gradient-gold inline relative"
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={{ 
                 opacity: 1, 
                 scale: 1,
                 ...glowAnimation.animate 
               }}
               transition={{ 
-                opacity: { delay: 0.8, duration: 0.5 },
-                scale: { delay: 0.8, duration: 0.5, type: 'spring' },
+                opacity: { delay: 0.5, duration: 0.5 },
+                scale: { delay: 0.5, duration: 0.5, type: 'spring' },
                 textShadow: { duration: 3, repeat: Infinity, ease: 'easeInOut' }
               }}
             >
-              {titleHighlight}
+              diseño web
               <motion.span
                 className="absolute -inset-2 bg-accent/10 rounded-lg blur-xl -z-10"
                 animate={{
@@ -179,18 +166,8 @@ export const Hero = ({ onOpenDiagnostic, onOpenConsultation }: HeroProps) => {
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
-            </motion.span>
-            {titlePart2.split('').map((char, i) => (
-              <motion.span
-                key={`p2-${i}`}
-                custom={i + titlePart1.length + titleHighlight.length}
-                variants={letterAnimation}
-                className="inline-block"
-                style={{ whiteSpace: char === ' ' ? 'pre' : 'normal' }}
-              >
-                {char}
-              </motion.span>
-            ))}
+            </motion.span>{' '}
+            y la automatización inteligente en Calgary
           </motion.h1>
 
           {/* Subtitle */}

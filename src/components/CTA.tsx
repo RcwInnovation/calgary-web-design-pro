@@ -29,7 +29,7 @@ export const CTA = ({ onOpenDiagnostic }: CTAProps) => {
             <span className="text-accent text-sm font-semibold tracking-wider uppercase">
               Empieza hoy
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">
               Agenda tu asesoría estratégica
             </h2>
             <p className="text-muted-foreground text-lg mb-8">
