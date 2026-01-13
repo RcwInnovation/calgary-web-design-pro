@@ -17,7 +17,7 @@ const AgentesIAAvanzados = () => {
     <ServicePageLayout
       title="Agentes de inteligencia artificial avanzados para negocios en Calgary"
       metaTitle="Agentes de IA para Negocios en Calgary | RCW Innovation"
-      metaDescription="Revoluciona tu negocio con agentes de IA avanzados. Chatbots conversacionales, automatización inteligente, análisis predictivo y más. Planes para Pymes y grandes empresas."
+      metaDescription="Revoluciona tu negocio con agentes de IA avanzados. Chatbots, automatización, análisis predictivo y planes Starter, Growth y Enterprise."
       keywords="agentes IA avanzados Calgary, chatbots empresariales Calgary, machine learning Calgary, análisis predictivo, automatización inteligente, IA negocios Calgary"
       canonicalUrl="https://www.rcwinnovation.com/agentes-ia-avanzados-calgary"
       heroImage={serviceAgentsAi}
@@ -88,7 +88,7 @@ const AgentesIAAvanzados = () => {
         'Dashboard ejecutivo con métricas clave',
         'Consultoría continua incluida',
       ]}
-      ctaText="Comienza con tu agente de IA hoy mismo – Diagnóstico Express gratuito"
+      ctaText="Empezar con mi agente de IA (Diagnóstico Express o Auditoría Pro)"
       pricingPlans={[
         {
           name: 'Plan Starter Business',

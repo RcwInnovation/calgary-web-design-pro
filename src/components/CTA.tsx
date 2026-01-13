@@ -33,7 +33,7 @@ export const CTA = ({ onOpenDiagnostic }: CTAProps) => {
               Agenda tu asesoría estratégica
             </h2>
             <p className="text-muted-foreground text-lg mb-8">
-              Da el primer paso hacia una presencia digital profesional. Agenda una consulta gratuita 
+              Da el primer paso hacia una presencia digital profesional. Agenda una consulta 
               y descubre cómo podemos ayudarte a crecer tu negocio en Calgary.
             </p>
 

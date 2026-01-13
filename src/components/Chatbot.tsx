@@ -10,11 +10,11 @@ interface Message {
 
 const siteInfo = {
   servicios: 'Ofrecemos diseño web profesional, landing pages de alta conversión, sitios web corporativos, SEO y posicionamiento local, desarrollo a medida, y diseño mobile-first. Todos nuestros proyectos incluyen diseño responsive, optimización SEO básica, y soporte en español.',
-  precios: 'Nuestros proyectos comienzan desde $1,500 CAD para landing pages y desde $3,000 CAD para sitios web corporativos completos. El precio final depende de las funcionalidades específicas. Ofrecemos una consulta gratuita para darte un presupuesto personalizado.',
+  precios: 'Nuestros proyectos comienzan desde $1,500 CAD para landing pages y desde $3,000 CAD para sitios web corporativos completos. El precio final depende de las funcionalidades específicas. Ofrecemos una consulta para darte un presupuesto personalizado.',
   tiempo: 'Una landing page puede estar lista en 1-2 semanas. Un sitio web corporativo generalmente toma 3-4 semanas. Proyectos más complejos pueden tomar 6-8 semanas.',
-  contacto: 'Puedes contactarnos por WhatsApp al +1 (403) 555-1234, por email a info@rcwinnovation.com, o solicitar una consulta gratuita directamente en nuestra web. Estamos ubicados en Calgary, Alberta.',
+  contacto: 'Puedes contactarnos por WhatsApp al +1 (587) 896-1997, por email a info@rcwinnovation.com, o solicitar una consulta directamente en nuestra web. Estamos ubicados en Calgary, Alberta.',
   empresa: 'RCW Innovation Inc es una empresa de diseño y desarrollo web en Calgary especializada en la comunidad hispana. Ofrecemos atención 100% en español, calidad premium, entrega rápida, y soporte local.',
-  garantia: 'Ofrecemos garantía de satisfacción del 100%. Trabajamos contigo hasta que estés completamente satisfecho. Además, incluimos 30 días de ajustes gratuitos después del lanzamiento.',
+  garantia: 'Ofrecemos garantía de satisfacción del 100%. Trabajamos contigo hasta que estés completamente satisfecho. Además, incluimos 30 días de ajustes después del lanzamiento.',
   proceso: 'Nuestro proceso incluye: 1) Consulta inicial, 2) Estrategia personalizada, 3) Diseño y prototipos, 4) Desarrollo, 5) Lanzamiento, y 6) Soporte continuo.',
 };
 
@@ -53,7 +53,7 @@ const getBotResponse = (input: string): string => {
     return '¡Hola! 👋 Soy el asistente virtual de RCW Innovation. ¿En qué puedo ayudarte hoy? Puedes preguntarme sobre nuestros servicios, precios, tiempos de entrega, o cómo contactarnos.';
   }
   
-  return 'Gracias por tu mensaje. Para respuestas personalizadas, te recomiendo contactarnos directamente por WhatsApp o solicitar una consulta gratuita. ¿Te gustaría saber sobre nuestros servicios, precios o tiempos de entrega?';
+  return 'Gracias por tu mensaje. Para respuestas personalizadas, te recomiendo contactarnos directamente por WhatsApp o solicitar una consulta. ¿Te gustaría saber sobre nuestros servicios, precios o tiempos de entrega?';
 };
 
 export const Chatbot = () => {

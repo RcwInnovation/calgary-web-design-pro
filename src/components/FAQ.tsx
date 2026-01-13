@@ -38,7 +38,7 @@ const faqs = [
   },
   {
     question: '¿Cómo puedo empezar?',
-    answer: 'Agenda una Asesoría o Consultoría 5.0 gratuita. Analizaremos tus objetivos, identificaremos oportunidades y crearemos un roadmap personalizado para tu negocio.',
+    answer: 'Agenda una Asesoría o Consultoría 5.0. Analizaremos tus objetivos, identificaremos oportunidades y crearemos un roadmap personalizado para tu negocio.',
   },
 ];
 

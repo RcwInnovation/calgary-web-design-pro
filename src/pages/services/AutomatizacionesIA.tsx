@@ -18,7 +18,7 @@ const AutomatizacionesIA = () => {
     <ServicePageLayout
       title="Automatizaciones con IA para operaciones empresariales en Calgary"
       metaTitle="Automatizaciones con IA para Operaciones en Calgary | RCW Innovation"
-      metaDescription="Optimiza tus procesos con automatización e inteligencia artificial en Calgary. Reduce costos y tiempos de forma inteligente. Atención en español."
+      metaDescription="Optimiza procesos con IA y automatización en Calgary. Reduce costos y tiempos. Atención en español."
       keywords="automatización IA Calgary, workflows inteligentes Calgary, automatización empresarial, integración CRM ERP, reducción costos operativos, automatización procesos Calgary"
       canonicalUrl="https://www.rcwinnovation.com/automatizaciones-ia-operaciones-calgary"
       heroImage={serviceAutomationAi}

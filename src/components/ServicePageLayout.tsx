@@ -440,7 +440,7 @@ export const ServicePageLayout = ({
                     onClick={() => setIsConsultationOpen(true)}
                     className="w-full btn-gold gap-2 py-6"
                   >
-                    Agendar Asesoría Gratuita
+                    Agendar Asesoría
                     <ArrowRight className="w-5 h-5" />
                   </Button>
                 </motion.div>
@@ -674,7 +674,7 @@ export const ServicePageLayout = ({
                   {ctaText}
                 </h2>
                 <p className="text-lg text-muted-foreground mb-8">
-                  Agenda una sesión gratuita y descubre cómo podemos transformar tu negocio con soluciones a medida.
+                  Agenda una sesión y descubre cómo podemos transformar tu negocio con soluciones a medida.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button 
@@ -682,7 +682,7 @@ export const ServicePageLayout = ({
                     className="btn-gold gap-2 text-lg py-6 px-8"
                   >
                     <Calendar className="w-5 h-5" />
-                    Agendar Asesoría Gratuita
+                    Agendar Asesoría
                   </Button>
                   <Button 
                     onClick={() => setIsDiagnosticOpen(true)}

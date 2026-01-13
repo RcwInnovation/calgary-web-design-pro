@@ -15,10 +15,10 @@ import serviceBrandingSocial from '@/assets/service-branding-social.jpg';
 const BrandingRedesSociales = () => {
   return (
     <ServicePageLayout
-      title="Branding y estrategias de redes sociales para negocios latinos en Calgary"
+      title="Branding y estrategia de redes sociales para negocios en Calgary con video y fotografía profesional"
       metaTitle="Branding y Estrategias de Redes Sociales en Calgary | RCW Innovation"
-      metaDescription="Construye tu marca y domina las redes sociales con estrategias profesionales en Calgary. Branding, identidad y marketing digital en español."
-      keywords="branding Calgary, estrategia redes sociales Calgary, identidad visual Calgary, marketing digital Calgary, gestión redes sociales latino, community manager Calgary"
+      metaDescription="Construye tu marca y domina las redes sociales en Calgary. Branding, identidad, video y fotografía para negocios latinos."
+      keywords="branding Calgary, estrategia redes sociales Calgary, identidad visual Calgary, marketing digital Calgary, gestión redes sociales latino, community manager Calgary, video fotografía Calgary"
       canonicalUrl="https://www.rcwinnovation.com/branding-estrategia-redes-sociales-calgary"
       heroImage={serviceBrandingSocial}
       heroImageAlt="Branding y estrategia de redes sociales en Calgary - Diseño de identidad visual y marketing digital con elementos de Instagram, TikTok y LinkedIn"
