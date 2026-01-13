@@ -1,47 +1,196 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Zap, Shield, Lightbulb, Target, TrendingUp } from 'lucide-react';
+import { ArrowRight, Sparkles, Zap, Lightbulb, Target, TrendingUp } from 'lucide-react';
 
 interface HeroProps {
   onOpenDiagnostic: () => void;
   onOpenConsultation: () => void;
 }
 
+// Text animation variants
+const letterAnimation = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.03,
+      duration: 0.5,
+      ease: [0.6, -0.05, 0.01, 0.99] as const,
+    },
+  }),
+};
+
+const glowAnimation = {
+  animate: {
+    textShadow: [
+      '0 0 20px rgba(212, 175, 55, 0)',
+      '0 0 40px rgba(212, 175, 55, 0.3)',
+      '0 0 60px rgba(212, 175, 55, 0.5)',
+      '0 0 40px rgba(212, 175, 55, 0.3)',
+      '0 0 20px rgba(212, 175, 55, 0)',
+    ],
+  },
+};
+
+const floatingAnimation = {
+  animate: {
+    y: [0, -10, 0],
+    transition: {
+      duration: 4,
+      repeat: Infinity,
+      ease: 'easeInOut',
+    },
+  },
+};
+
 export const Hero = ({ onOpenDiagnostic, onOpenConsultation }: HeroProps) => {
+  const titlePart1 = "Impulsamos la innovación, el ";
+  const titleHighlight = "diseño web";
+  const titlePart2 = " y la automatización inteligente en Calgary";
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-      {/* Background Effects */}
+      {/* Animated Background Effects */}
       <div className="absolute inset-0 bg-gradient-radial from-primary/10 via-transparent to-transparent" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
       
-      {/* Grid pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:100px_100px]" />
+      {/* Floating orbs with animation */}
+      <motion.div 
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.5, 0.3],
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div 
+        className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl"
+        animate={{
+          scale: [1.2, 1, 1.2],
+          opacity: [0.5, 0.3, 0.5],
+        }}
+        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary/5 to-accent/5 rounded-full blur-3xl"
+        animate={{
+          rotate: [0, 360],
+        }}
+        transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+      />
+      
+      {/* Animated grid pattern */}
+      <motion.div 
+        className="absolute inset-0 bg-[linear-gradient(rgba(212,175,55,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.03)_1px,transparent_1px)] bg-[size:100px_100px]"
+        animate={{
+          backgroundPosition: ['0px 0px', '100px 100px'],
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+      />
+
+      {/* Particle effect */}
+      {[...Array(20)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-1 h-1 bg-accent/40 rounded-full"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+          }}
+          animate={{
+            y: [0, -100, 0],
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 3 + Math.random() * 2,
+            repeat: Infinity,
+            delay: Math.random() * 2,
+            ease: 'easeInOut',
+          }}
+        />
+      ))}
 
       <div className="container-custom relative z-10">
         <div className="max-w-5xl mx-auto text-center">
-          {/* Badge */}
+          {/* Animated Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-8"
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.6, type: 'spring', stiffness: 100 }}
+            className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-8 relative overflow-hidden"
           >
-            <Sparkles className="w-4 h-4 text-accent" />
-            <span className="text-sm text-muted-foreground">
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/20 to-transparent"
+              animate={{
+                x: ['-100%', '100%'],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                repeatDelay: 3,
+              }}
+            />
+            <motion.div
+              animate={{ rotate: [0, 360] }}
+              transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+            >
+              <Sparkles className="w-4 h-4 text-accent" />
+            </motion.div>
+            <span className="text-sm text-muted-foreground relative z-10">
               Innovación, Ingeniería y Automatización 5.0
             </span>
           </motion.div>
 
-          {/* H1 Title */}
+          {/* H1 Title with character animation */}
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6"
+            initial="hidden"
+            animate="visible"
           >
-            Impulsamos la innovación, el{' '}
-            <span className="text-gradient-blue">diseño web</span>
-            {' '}y la automatización inteligente en Calgary
+            {titlePart1.split('').map((char, i) => (
+              <motion.span
+                key={`p1-${i}`}
+                custom={i}
+                variants={letterAnimation}
+                className="inline-block"
+                style={{ whiteSpace: char === ' ' ? 'pre' : 'normal' }}
+              >
+                {char}
+              </motion.span>
+            ))}
+            <motion.span
+              className="text-gradient-gold inline-block relative"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ 
+                opacity: 1, 
+                scale: 1,
+                ...glowAnimation.animate 
+              }}
+              transition={{ 
+                opacity: { delay: 0.8, duration: 0.5 },
+                scale: { delay: 0.8, duration: 0.5, type: 'spring' },
+                textShadow: { duration: 3, repeat: Infinity, ease: 'easeInOut' }
+              }}
+            >
+              {titleHighlight}
+              <motion.span
+                className="absolute -inset-2 bg-accent/10 rounded-lg blur-xl -z-10"
+                animate={{
+                  opacity: [0.3, 0.6, 0.3],
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+            </motion.span>
+            {titlePart2.split('').map((char, i) => (
+              <motion.span
+                key={`p2-${i}`}
+                custom={i + titlePart1.length + titleHighlight.length}
+                variants={letterAnimation}
+                className="inline-block"
+                style={{ whiteSpace: char === ' ' ? 'pre' : 'normal' }}
+              >
+                {char}
+              </motion.span>
+            ))}
           </motion.h1>
 
           {/* Subtitle */}
