@@ -20,20 +20,20 @@ const GoogleIcon = ({ className }: { className?: string }) => (
 
 const footerLinks = {
   servicios: [
-    { label: 'Diseño Web', href: '#servicios' },
-    { label: 'Landing Pages', href: '#servicios' },
-    { label: 'Sitios Corporativos', href: '#servicios' },
-    { label: 'SEO Local', href: '#servicios' },
+    { label: 'Software a Medida', href: '/diseno-software-medida-premium-calgary' },
+    { label: 'Diseño Web & App', href: '/diseno-web-app-movil-calgary' },
+    { label: 'Automatizaciones IA', href: '/automatizaciones-ia-operaciones-calgary' },
+    { label: 'Agentes de IA', href: '/agentes-ia-avanzados-calgary' },
   ],
   empresa: [
-    { label: 'Sobre Nosotros', href: '#por-que-nosotros' },
-    { label: 'Proceso', href: '#proceso' },
-    { label: 'FAQ', href: '#faq' },
-    { label: 'Contacto', href: '#contacto' },
+    { label: 'Sobre Nosotros', href: '/#por-que-nosotros' },
+    { label: 'Proceso', href: '/#proceso' },
+    { label: 'FAQ', href: '/#faq' },
+    { label: 'Contacto', href: '/#contacto' },
   ],
   legal: [
-    { label: 'Política de Privacidad', href: '#' },
-    { label: 'Términos de Servicio', href: '#' },
+    { label: 'Política de Privacidad', href: '/politica-privacidad' },
+    { label: 'Términos de Servicio', href: '/terminos-servicio' },
   ],
 };
 

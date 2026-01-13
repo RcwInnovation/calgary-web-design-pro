@@ -17,7 +17,7 @@ const SoftwareAMedida = () => {
     <ServicePageLayout
       title="Diseño de software a la medida premium en Calgary para empresas innovadoras"
       metaTitle="Diseño de Software a la Medida Premium en Calgary | RCW Innovation"
-      metaDescription="Creamos software a medida premium en Calgary con IA y soluciones escalables, adaptadas a tu negocio. Atención en español y diagnóstico gratuito."
+      metaDescription="Creamos software a medida en Calgary con IA y arquitectura escalable. Atención en español y diagnóstico personalizado."
       keywords="diseño software Calgary, software a medida Calgary, desarrollo software premium, MVP desarrollo Calgary, IA software Calgary, software empresarial Calgary"
       canonicalUrl="https://www.rcwinnovation.com/diseno-software-medida-premium-calgary"
       heroImage={serviceSoftwareCustom}

@@ -17,7 +17,7 @@ const AgentesIA = () => {
     <ServicePageLayout
       title="Agentes de inteligencia artificial y chatbots en Calgary para atención 24/7"
       metaTitle="Creación de Agentes de IA y Chatbots en Calgary | RCW Innovation"
-      metaDescription="Desarrollamos agentes de IA conversacional en Calgary para soporte al cliente, automatización de ventas y asistencia 24/7."
+      metaDescription="Desarrollamos agentes de IA conversacionales en Calgary para soporte al cliente, automatización y ventas. Atención en español."
       keywords="agentes IA Calgary, chatbots Calgary, IA conversacional, asistentes virtuales Calgary, atención 24/7 Calgary, desarrollo chatbot empresarial"
       canonicalUrl="https://www.rcwinnovation.com/creacion-agentes-ia-inteligencia-calgary"
       heroImage={serviceAgentsAi}

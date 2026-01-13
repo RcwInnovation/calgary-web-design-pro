@@ -17,7 +17,7 @@ const DisenoWebApp = () => {
     <ServicePageLayout
       title="Diseño de sitios web y aplicaciones móviles para negocios en Calgary"
       metaTitle="Diseño Web y App Móvil Profesional en Calgary | RCW Innovation"
-      metaDescription="Creamos sitios web y aplicaciones móviles profesionales y responsivas en Calgary, con experiencia de usuario excelente e integraciones avanzadas."
+      metaDescription="Sitios web y aplicaciones móviles profesionales en Calgary. UX/UI de alto nivel e integraciones avanzadas."
       keywords="diseño web Calgary, desarrollo web Calgary, aplicaciones móviles Calgary, PWA Calgary, e-commerce Calgary, páginas web profesionales Calgary"
       canonicalUrl="https://www.rcwinnovation.com/diseno-web-app-movil-calgary"
       heroImage={serviceWebAppDesign}

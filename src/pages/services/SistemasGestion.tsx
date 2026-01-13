@@ -15,20 +15,20 @@ import serviceErpSystems from '@/assets/service-erp-systems.jpg';
 const SistemasGestion = () => {
   return (
     <ServicePageLayout
-      title="Sistemas de gestión de operaciones para empresas en Calgary"
-      metaTitle="Sistemas de Gestión de Operaciones y ERP en Calgary | RCW Innovation"
-      metaDescription="Implementamos sistemas de gestión y ERPs a medida en Calgary, integrando procesos y datos para aumentar la productividad."
-      keywords="sistemas gestión Calgary, ERP Calgary, CRM Calgary, software empresarial Calgary, dashboards tiempo real, gestión empresarial Calgary"
+      title="Sistemas de gestión de operaciones en Calgary con estándares ISO y enfoque HSEQ"
+      metaTitle="Sistemas de Gestión y ERP con ISO y HSEQ en Calgary | RCW Innovation"
+      metaDescription="Implementamos ERPs integrados con estándares ISO (9001, 14001, 45001) y enfoque HSEQ en Calgary. Controla y optimiza tu empresa."
+      keywords="sistemas gestión Calgary, ERP Calgary, CRM Calgary, ISO 9001 Calgary, ISO 14001 Calgary, ISO 45001 Calgary, HSEQ Calgary, software empresarial Calgary"
       canonicalUrl="https://www.rcwinnovation.com/sistemas-gestion-operaciones-calgary"
       heroImage={serviceErpSystems}
       heroImageAlt="Sistemas de gestión ERP y CRM en Calgary - Dashboard empresarial con analíticas en tiempo real, gráficas y métricas de rendimiento"
       tag="Operaciones"
       icon={Database}
       shortDescription="Diseño e implementación de ERP/CRM/SGC con dashboards en tiempo real y automatización para controlar cada aspecto de tu negocio."
-      problemTitle="Problema: falta de visibilidad y control"
-      problemDescription="Empresas con procesos dispersos tienen información duplicada, errores frecuentes y poca capacidad de análisis. Sin datos centralizados, tomar decisiones estratégicas se convierte en un ejercicio de adivinación."
-      solutionTitle="Solución: un sistema integrado para todo tu negocio"
-      solutionDescription="Analizamos tus procesos y configuramos o desarrollamos un ERP adaptado. Conectamos áreas de ventas, inventarios, finanzas y producción. Visibilizamos métricas en dashboards en tiempo real para tomar decisiones informadas."
+      problemTitle="Problema: procesos desorganizados y riesgos en calidad"
+      problemDescription="Procesos desorganizados, datos dispersos y riesgos en calidad y seguridad. Sin datos centralizados, tomar decisiones estratégicas se convierte en un ejercicio de adivinación."
+      solutionTitle="Solución: ERP alineado a ISO y HSEQ"
+      solutionDescription="RCW analiza tu operación y diseña un ERP alineado a ISO 9001 (Calidad), ISO 14001 (Medio Ambiente), ISO 45001 (Seguridad y Salud), integrando los principios HSEQ (Health, Safety, Environment, Quality)."
       features={[
         {
           title: 'Dashboards en Tiempo Real',
@@ -61,18 +61,18 @@ const SistemasGestion = () => {
           icon: Database,
         },
       ]}
-      benefitsTitle="Beneficios de un sistema integrado"
+      benefitsTitle="Beneficios de un sistema integrado con ISO/HSEQ"
       benefits={[
-        'Datos centralizados y actualizados en tiempo real',
-        'Mejora en la toma de decisiones basada en datos',
-        'Reducción de errores manuales y duplicación',
-        'Escalabilidad y personalización según tus necesidades',
-        'Procesos estandarizados en toda la organización',
-        'Visibilidad total del negocio en un solo lugar',
-        'Automatización de reportes recurrentes',
+        'Visibilidad total y control de procesos',
+        'Mejora en calidad, seguridad y ambiente (HSEQ)',
+        'Reducción de errores y cumplimiento normativo',
+        'Datos centralizados para tomar decisiones',
+        'Procesos estandarizados según normas ISO',
+        'Reducción de riesgos operacionales',
+        'Automatización de reportes de cumplimiento',
         'Capacitación completa para tu equipo',
       ]}
-      ctaText="Pide tu consultoría en sistemas de gestión empresariales"
+      ctaText="Solicitar consultoría en sistemas de gestión e ISO/HSEQ"
       processSteps={[
         {
           title: 'Diagnóstico Organizacional',
