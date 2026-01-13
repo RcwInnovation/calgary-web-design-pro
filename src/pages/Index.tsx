@@ -13,7 +13,7 @@ import { Process } from '@/components/Process';
 import { FAQ } from '@/components/FAQ';
 import { CTA } from '@/components/CTA';
 import { Footer } from '@/components/Footer';
-import { WhatsAppButton } from '@/components/WhatsAppButton';
+
 import { ElevenLabsWidget } from '@/components/ElevenLabsWidget';
 import { Chatbot } from '@/components/Chatbot';
 import { DiagnosticModal } from '@/components/DiagnosticModal';
@@ -81,7 +81,6 @@ const Index = () => {
         <Footer />
 
         {/* Floating Elements */}
-        <WhatsAppButton />
         <ElevenLabsWidget />
         <Chatbot />
         

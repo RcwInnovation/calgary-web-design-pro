@@ -5,7 +5,7 @@ import { ArrowRight, CheckCircle, Zap, Calendar, ArrowLeft, AlertTriangle, Light
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { WhatsAppButton } from '@/components/WhatsAppButton';
+
 import { Chatbot } from '@/components/Chatbot';
 import { DiagnosticModal } from '@/components/DiagnosticModal';
 import { ConsultationModal } from '@/components/ConsultationModal';
@@ -748,7 +748,6 @@ export const ServicePageLayout = ({
         </main>
 
         <Footer />
-        <WhatsAppButton />
         <Chatbot />
         
         <DiagnosticModal 
