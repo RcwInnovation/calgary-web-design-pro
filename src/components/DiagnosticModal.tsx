@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, forwardRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Zap, Send, AlertCircle } from 'lucide-react';
 import { z } from 'zod';
@@ -38,7 +38,7 @@ const presupuestos = [
   'Más de $10,000 CAD',
 ];
 
-export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
+export const DiagnosticModal = forwardRef<HTMLDivElement, DiagnosticModalProps>(({ isOpen, onClose }, ref) => {
   const [formData, setFormData] = useState<DiagnosticFormData>({
     nombre: '',
     email: '',
@@ -346,4 +346,6 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
       )}
     </AnimatePresence>
   );
-};
+});
+
+DiagnosticModal.displayName = 'DiagnosticModal';
