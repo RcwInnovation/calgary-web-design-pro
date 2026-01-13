@@ -59,6 +59,7 @@ interface ServicePageLayoutProps {
     description: string;
   };
   capabilities?: string[];
+  customSection?: React.ReactNode;
 }
 
 export const ServicePageLayout = ({
@@ -82,12 +83,13 @@ export const ServicePageLayout = ({
   processSteps,
   faqs,
   relatedServices,
-  ctaText = "Solicita tu diagnóstico gratuito en español",
+  ctaText = "Solicita tu diagnóstico en español",
   pricingPlans,
   technologies,
   applications,
   introSection,
   capabilities,
+  customSection,
 }: ServicePageLayoutProps) => {
   const [isDiagnosticOpen, setIsDiagnosticOpen] = useState(false);
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
@@ -351,6 +353,9 @@ export const ServicePageLayout = ({
               </div>
             </section>
           )}
+
+          {/* Custom Section */}
+          {customSection && customSection}
 
           {/* Features Grid */}
           <section className="py-20">

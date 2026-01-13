@@ -1,9 +1,18 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Bot, ShoppingCart, LayoutDashboard, ArrowUpRight } from 'lucide-react';
+import { Bot, ShoppingCart, LayoutDashboard, ArrowUpRight, Globe, ExternalLink } from 'lucide-react';
 
 const projects = [
+  {
+    icon: Globe,
+    title: 'Servicios Latinos Canadá',
+    description: 'Primera aplicación web y marketplace de servicios para latinos en Canadá. Conectamos a la comunidad hispanohablante con profesionales y negocios locales.',
+    result: '#1',
+    resultLabel: 'marketplace latino en Canadá',
+    tags: ['Marketplace', 'Comunidad Latina', 'Web App'],
+    link: 'https://servicioslatinoscanada.com/',
+  },
   {
     icon: Bot,
     title: 'Suite de Automatización',
@@ -58,43 +67,55 @@ export const Projects = () => {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="glass-strong p-8 rounded-2xl group hover:border-primary/30 transition-all duration-300"
+              className="glass-strong p-6 rounded-2xl group hover:border-primary/30 transition-all duration-300 relative"
             >
+              {/* Link badge for featured project */}
+              {project.link && (
+                <a 
+                  href={project.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="absolute top-4 right-4 p-2 bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors"
+                >
+                  <ExternalLink className="w-4 h-4 text-primary" />
+                </a>
+              )}
+
               {/* Icon */}
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                <project.icon className="w-7 h-7 text-primary" />
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                <project.icon className="w-6 h-6 text-primary" />
               </div>
 
               {/* Title & Description */}
-              <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
+              <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
                 {project.title}
               </h3>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-muted-foreground text-sm mb-4">
                 {project.description}
               </p>
 
               {/* Result */}
-              <div className="p-4 rounded-xl bg-accent/5 border border-accent/20 mb-6">
+              <div className="p-3 rounded-xl bg-accent/5 border border-accent/20 mb-4">
                 <div className="flex items-center gap-2">
-                  <ArrowUpRight className="w-5 h-5 text-accent" />
-                  <span className="text-2xl font-bold text-accent">{project.result}</span>
+                  <ArrowUpRight className="w-4 h-4 text-accent" />
+                  <span className="text-xl font-bold text-accent">{project.result}</span>
                 </div>
-                <p className="text-sm text-muted-foreground mt-1">{project.resultLabel}</p>
+                <p className="text-xs text-muted-foreground mt-1">{project.resultLabel}</p>
               </div>
 
               {/* Tags */}
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 text-xs bg-muted/50 text-muted-foreground rounded-full"
+                    className="px-2 py-0.5 text-xs bg-muted/50 text-muted-foreground rounded-full"
                   >
                     {tag}
                   </span>
