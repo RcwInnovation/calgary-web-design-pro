@@ -1,4 +1,4 @@
-import { useState, forwardRef } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, User, Mail, Phone, Building2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -13,7 +13,7 @@ interface ConsultationModalProps {
 
 const WHATSAPP_NUMBER = '5878961997';
 
-export const ConsultationModal = forwardRef<HTMLDivElement, ConsultationModalProps>(({ isOpen, onClose }, ref) => {
+export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -261,6 +261,4 @@ export const ConsultationModal = forwardRef<HTMLDivElement, ConsultationModalPro
       )}
     </AnimatePresence>
   );
-});
-
-ConsultationModal.displayName = 'ConsultationModal';
+};
