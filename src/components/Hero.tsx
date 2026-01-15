@@ -136,25 +136,38 @@ export const Hero = ({ onOpenDiagnostic, onOpenConsultation }: HeroProps) => {
             </span>
           </motion.div>
 
-          {/* H1 Title - Simplified animation for better mobile rendering */}
+          {/* H1 Title with staggered word animation */}
           <motion.h1
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Impulsamos la innovación, el{' '}
+            {['Impulsamos', 'la', 'innovación,', 'el'].map((word, i) => (
+              <motion.span
+                key={i}
+                className="inline-block mr-[0.25em]"
+                initial={{ opacity: 0, y: 40, rotateX: -90 }}
+                animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: 0.1 + i * 0.08,
+                  ease: [0.6, -0.05, 0.01, 0.99]
+                }}
+              >
+                {word}
+              </motion.span>
+            ))}
             <motion.span
-              className="text-gradient-gold inline relative"
-              initial={{ opacity: 0, scale: 0.95 }}
+              className="text-gradient-gold inline-block relative mr-[0.25em]"
+              initial={{ opacity: 0, scale: 0.5, y: 40 }}
               animate={{ 
                 opacity: 1, 
                 scale: 1,
+                y: 0,
                 ...glowAnimation.animate 
               }}
               transition={{ 
                 opacity: { delay: 0.5, duration: 0.5 },
-                scale: { delay: 0.5, duration: 0.5, type: 'spring' },
+                scale: { delay: 0.5, duration: 0.6, type: 'spring', stiffness: 100 },
+                y: { delay: 0.5, duration: 0.5 },
                 textShadow: { duration: 3, repeat: Infinity, ease: 'easeInOut' }
               }}
             >
@@ -162,12 +175,27 @@ export const Hero = ({ onOpenDiagnostic, onOpenConsultation }: HeroProps) => {
               <motion.span
                 className="absolute -inset-2 bg-accent/10 rounded-lg blur-xl -z-10"
                 animate={{
-                  opacity: [0.3, 0.6, 0.3],
+                  opacity: [0.3, 0.8, 0.3],
+                  scale: [1, 1.1, 1],
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
-            </motion.span>{' '}
-            y la automatización inteligente en Calgary
+            </motion.span>
+            {['y', 'la', 'automatización', 'inteligente', 'en', 'Calgary'].map((word, i) => (
+              <motion.span
+                key={`p2-${i}`}
+                className="inline-block mr-[0.25em]"
+                initial={{ opacity: 0, y: 40, rotateX: -90 }}
+                animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: 0.7 + i * 0.08,
+                  ease: [0.6, -0.05, 0.01, 0.99]
+                }}
+              >
+                {word}
+              </motion.span>
+            ))}
           </motion.h1>
 
           {/* Subtitle */}
