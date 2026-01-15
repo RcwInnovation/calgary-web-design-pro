@@ -102,31 +102,51 @@ export const JoinTeam = () => {
           ))}
         </motion.div>
 
-        {/* General Application CTA */}
+        {/* Application Options */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
+          className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
         >
-          {/* General Application CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.8 }}
-            className="text-center"
-          >
-            <p className="text-muted-foreground mb-4">
-              ¿No encuentras tu posición ideal? Envíanos tu CV y te contactaremos cuando haya una oportunidad para ti.
+          {/* General Application */}
+          <div className="p-8 bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50 hover:border-primary/30 transition-all duration-300 text-center">
+            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Briefcase className="w-8 h-8 text-primary" />
+            </div>
+            <h3 className="text-xl font-semibold mb-3">Únete al equipo</h3>
+            <p className="text-muted-foreground text-sm mb-6">
+              ¿Buscas una oportunidad profesional? Envíanos tu CV y te contactaremos cuando haya una posición para ti.
+            </p>
+            <Button
+              size="lg"
+              className="w-full"
+              onClick={() => handleApply('Aplicación Profesional')}
+            >
+              Enviar aplicación
+              <ChevronRight className="w-4 h-4 ml-2" />
+            </Button>
+          </div>
+
+          {/* Volunteer Application */}
+          <div className="p-8 bg-card/50 backdrop-blur-sm rounded-2xl border border-accent/30 hover:border-accent/50 transition-all duration-300 text-center">
+            <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Users className="w-8 h-8 text-accent" />
+            </div>
+            <h3 className="text-xl font-semibold mb-3">Voluntariado</h3>
+            <p className="text-muted-foreground text-sm mb-6">
+              ¿Quieres ganar experiencia y contribuir a proyectos innovadores? Únete como voluntario y aprende con nosotros.
             </p>
             <Button
               size="lg"
               variant="outline"
-              className="border-primary/50 hover:bg-primary hover:text-primary-foreground"
-              onClick={() => handleApply('Aplicación General')}
+              className="w-full border-accent/50 hover:bg-accent hover:text-accent-foreground"
+              onClick={() => handleApply('Voluntariado')}
             >
-              Enviar aplicación espontánea
+              Aplicar como voluntario
+              <ChevronRight className="w-4 h-4 ml-2" />
             </Button>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
 
