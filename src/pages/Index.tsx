@@ -19,37 +19,61 @@ import { Chatbot } from '@/components/Chatbot';
 import { DiagnosticModal } from '@/components/DiagnosticModal';
 import { ConsultationModal } from '@/components/ConsultationModal';
 import { SchemaMarkup } from '@/components/SchemaMarkup';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Index = () => {
   const [isDiagnosticOpen, setIsDiagnosticOpen] = useState(false);
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
+  const { language, t } = useLanguage();
+
+  const seoData = {
+    es: {
+      title: 'Diseño de Páginas Web en Calgary | RCW Innovation Canadá',
+      description: 'Líder en desarrollo web en Calgary y Colombia. Servicios de software a medida, automatización con IA, diseño web profesional y transformación digital con visión global e innovación.',
+      keywords: 'diseño web Calgary, marketing digital Calgary, desarrollo de software Calgary, automatización con IA, ERP CRM Calgary, transformación digital, RCW Innovation, páginas web Calgary, landing pages Calgary, agentes IA Calgary',
+      locale: 'es_CA',
+    },
+    en: {
+      title: 'Web Design in Calgary | RCW Innovation Canada',
+      description: 'Leader in web development in Calgary and Colombia. Custom software services, AI automation, professional web design and digital transformation with global vision and innovation.',
+      keywords: 'web design Calgary, digital marketing Calgary, software development Calgary, AI automation, ERP CRM Calgary, digital transformation, RCW Innovation, websites Calgary, landing pages Calgary, AI agents Calgary',
+      locale: 'en_CA',
+    }
+  };
+
+  const currentSeo = seoData[language];
 
   return (
     <>
       <Helmet>
-        <html lang="es" />
-        <title>Diseño de Páginas Web en Calgary | RCW Innovation Canadá</title>
+        <html lang={language} />
+        <title>{currentSeo.title}</title>
         <meta 
           name="description" 
-          content="Líder en desarrollo web en Calgary y Colombia. Servicios de software a medida, automatización con IA, diseño web profesional y transformación digital con visión global e innovación." 
+          content={currentSeo.description} 
         />
-        <meta name="keywords" content="diseño web Calgary, marketing digital Calgary, desarrollo de software Calgary, automatización con IA, ERP CRM Calgary, transformación digital, RCW Innovation, páginas web Calgary, landing pages Calgary, agentes IA Calgary" />
+        <meta name="keywords" content={currentSeo.keywords} />
         <meta name="author" content="RCW Innovation Inc" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.rcwinnovation.com/" />
         
+        {/* Alternate language links for SEO */}
+        <link rel="alternate" hrefLang="es" href="https://www.rcwinnovation.com/" />
+        <link rel="alternate" hrefLang="en" href="https://www.rcwinnovation.com/" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.rcwinnovation.com/" />
+        
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Diseño de Páginas Web en Calgary | RCW Innovation Canadá" />
-        <meta property="og:description" content="Líder en desarrollo web, software a medida y automatización con IA en Calgary. Transformación digital con visión global e innovación." />
+        <meta property="og:title" content={currentSeo.title} />
+        <meta property="og:description" content={currentSeo.description} />
         <meta property="og:url" content="https://www.rcwinnovation.com/" />
-        <meta property="og:locale" content="es_CA" />
+        <meta property="og:locale" content={currentSeo.locale} />
         <meta property="og:site_name" content="RCW Innovation Inc" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Diseño de Páginas Web en Calgary | RCW Innovation" />
-        <meta name="twitter:description" content="Desarrollo web, software a medida y automatización con IA en Calgary. Transformación digital con visión global." />
+        <meta name="twitter:title" content={currentSeo.title} />
+        <meta name="twitter:description" content={currentSeo.description} />
         
         {/* Viewport */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -82,7 +106,7 @@ const Index = () => {
 
         {/* Floating Elements */}
         <ElevenLabsWidget />
-        <Chatbot />
+        <Chatbot onOpenConsultation={() => setIsConsultationOpen(true)} />
         
         {/* Modals */}
         <DiagnosticModal 
