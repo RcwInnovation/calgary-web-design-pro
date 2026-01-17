@@ -13,6 +13,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 import serviceSoftwareCustom from '@/assets/service-software-custom.jpg';
 import serviceBrandingSocial from '@/assets/service-branding-social.jpg';
@@ -23,87 +24,28 @@ import serviceDigitalCard from '@/assets/service-digital-card.jpg';
 import serviceWebAppDesign from '@/assets/service-web-app-design.jpg';
 import serviceMentoringTraining from '@/assets/service-mentoring-training.jpg';
 
-const services = [
-  {
-    icon: Code2,
-    title: 'Diseño de Software a la Medida',
-    tag: 'Premium',
-    description: 'Desarrollo de MVPs y plataformas escalables con arquitecturas modulares, APIs seguras y dashboards intuitivos.',
-    features: ['Arquitecturas modulares', 'APIs seguras', 'Dashboards intuitivos'],
-    image: serviceSoftwareCustom,
-    imageAlt: 'Desarrollo de software a medida premium en Calgary - Equipo de desarrolladores creando plataformas escalables y MVPs con tecnología de vanguardia',
-    href: '/diseno-software-medida-premium-calgary',
-  },
-  {
-    icon: Share2,
-    title: 'Branding y Redes Sociales',
-    tag: 'Estrategia',
-    description: 'Construcción de identidad visual y contenidos de alto impacto. Combinamos marketing orgánico y de pago.',
-    features: ['Identidad visual', 'Marketing orgánico', 'Campañas de pago'],
-    image: serviceBrandingSocial,
-    imageAlt: 'Branding y estrategia de redes sociales en Calgary - Diseño de identidad visual y marketing digital para negocios latinos',
-    href: '/branding-estrategia-redes-sociales-calgary',
-  },
-  {
-    icon: Bot,
-    title: 'Automatizaciones con IA',
-    tag: 'Operación',
-    description: 'Workflows inteligentes para atención, ventas y operaciones, integrados con CRM/ERP.',
-    features: ['Workflows inteligentes', 'Integración CRM/ERP', 'Atención 24/7'],
-    image: serviceAutomationAi,
-    imageAlt: 'Automatización de procesos con inteligencia artificial en Calgary - Workflows inteligentes y robots que optimizan operaciones empresariales',
-    href: '/automatizaciones-ia-operaciones-calgary',
-  },
-  {
-    icon: Brain,
-    title: 'Creación de Agentes IA',
-    tag: 'Inteligencia',
-    description: 'Desarrollo de agentes conversacionales y de back-end que aprenden de tus datos empresariales.',
-    features: ['Agentes conversacionales', 'Aprendizaje continuo', 'Integración backend'],
-    image: serviceAgentsAi,
-    imageAlt: 'Desarrollo de agentes de inteligencia artificial y chatbots en Calgary - Asistentes virtuales conversacionales para atención al cliente 24/7',
-    href: '/creacion-agentes-ia-inteligencia-calgary',
-  },
-  {
-    icon: Database,
-    title: 'Sistemas de Gestión',
-    tag: 'Operaciones',
-    description: 'Diseño e implementación de ERP/CRM/SGC con dashboards y automatización.',
-    features: ['ERP/CRM personalizado', 'Dashboards en tiempo real', 'Automatización'],
-    image: serviceErpSystems,
-    imageAlt: 'Sistemas de gestión ERP y CRM en Calgary - Dashboards en tiempo real y analíticas empresariales para toma de decisiones',
-    href: '/sistemas-gestion-operaciones-calgary',
-  },
-  {
-    icon: CreditCard,
-    title: 'Tarjeta Digital Profesional',
-    tag: 'Smart',
-    description: 'Tarjeta digital con QR/NFC, vCard y analíticas para networking profesional.',
-    features: ['QR/NFC integrado', 'vCard automática', 'Analytics de contactos'],
-    image: serviceDigitalCard,
-    imageAlt: 'Tarjeta digital profesional con QR y NFC en Calgary - Networking moderno con tarjeta de metal premium y código QR inteligente',
-    href: '/tarjeta-digital-profesional-calgary',
-  },
-  {
-    icon: Globe,
-    title: 'Diseño Web – App Móvil',
-    tag: 'Web Pro',
-    description: 'Sitios orientados a conversión con SEO técnico, e-commerce y apps PWA.',
-    features: ['SEO desde arquitectura', 'E-commerce seguro', 'Apps móviles/PWA'],
-    image: serviceWebAppDesign,
-    imageAlt: 'Diseño web profesional y aplicaciones móviles en Calgary - Desarrollo de sitios responsivos y apps PWA con UX/UI moderno',
-    href: '/diseno-web-app-movil-calgary',
-  },
-  {
-    icon: GraduationCap,
-    title: 'Mentoría & Capacitación',
-    tag: 'Upskilling',
-    description: 'Programas 1:1 y para equipos sobre IA, productividad, automatización, UX y analítica.',
-    features: ['Planes personalizados', 'Workshops prácticos', 'Seguimiento continuo'],
-    image: serviceMentoringTraining,
-    imageAlt: 'Mentoría y capacitación empresarial en Calgary - Talleres de innovación digital y formación de equipos en tecnología e IA',
-    href: '/mentoria-capacitacion-digital-calgary',
-  },
+const serviceIcons = [Code2, Share2, Bot, Brain, Database, CreditCard, Globe, GraduationCap];
+
+const serviceImages = [
+  serviceSoftwareCustom,
+  serviceBrandingSocial,
+  serviceAutomationAi,
+  serviceAgentsAi,
+  serviceErpSystems,
+  serviceDigitalCard,
+  serviceWebAppDesign,
+  serviceMentoringTraining,
+];
+
+const serviceHrefs = [
+  '/diseno-software-medida-premium-calgary',
+  '/branding-estrategia-redes-sociales-calgary',
+  '/automatizaciones-ia-operaciones-calgary',
+  '/creacion-agentes-ia-inteligencia-calgary',
+  '/sistemas-gestion-operaciones-calgary',
+  '/tarjeta-digital-profesional-calgary',
+  '/diseno-web-app-movil-calgary',
+  '/mentoria-capacitacion-digital-calgary',
 ];
 
 const containerVariants = {
@@ -133,6 +75,21 @@ interface ServicesProps {
 export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const { t, basePath, language } = useLanguage();
+
+  const services = Array.from({ length: 8 }, (_, i) => {
+    const num = i + 1;
+    return {
+      icon: serviceIcons[i],
+      title: t(`service.${num}.title`),
+      tag: t(`service.${num}.tag`),
+      description: t(`service.${num}.description`),
+      features: t(`service.${num}.features`).split(','),
+      image: serviceImages[i],
+      imageAlt: t(`service.${num}.title`) + ' - Calgary',
+      href: serviceHrefs[i],
+    };
+  });
 
   return (
     <section id="servicios" className="section relative overflow-hidden">
@@ -148,14 +105,13 @@ export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps
           className="text-center mb-16"
         >
           <span className="text-primary text-sm font-semibold tracking-wider uppercase">
-            Servicios principales
+            {t('services.badge')}
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">
-            Soluciones que impulsan tu negocio
+            {t('services.title')}
           </h2>
           <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-            Ofrecemos ocho categorías de servicio especializadas, cada una diseñada para 
-            maximizar el impacto en tu negocio con tecnología de vanguardia.
+            {t('services.subtitle')}
           </p>
         </motion.div>
 
@@ -172,7 +128,7 @@ export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps
               variants={itemVariants}
               className="card-premium group cursor-pointer overflow-hidden"
             >
-              <Link to={service.href} className="block h-full">
+              <Link to={`${basePath}${service.href}`} className="block h-full">
                 {/* Service Image */}
                 <div className="relative h-40 -mx-6 -mt-6 mb-4 overflow-hidden">
                   <img 
@@ -210,7 +166,7 @@ export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps
                 {/* Click indicator */}
                 <div className="pt-4 border-t border-border/50">
                   <span className="text-sm text-primary group-hover:underline flex items-center gap-1">
-                    Ver más detalles
+                    {t('services.viewMore')}
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </div>

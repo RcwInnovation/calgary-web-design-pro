@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -14,6 +15,7 @@ interface ConsultationModalProps {
 const WHATSAPP_NUMBER = '5878961997';
 
 export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) => {
+  const { t, language } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -23,14 +25,23 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const interestOptions = [
-    'Página web nueva',
-    'Rediseño de sitio existente',
-    'Landing page',
-    'Tienda en línea',
-    'SEO y marketing digital',
-    'Otro',
-  ];
+  const interestOptions = language === 'es' 
+    ? [
+        'Página web nueva',
+        'Rediseño de sitio existente',
+        'Landing page',
+        'Tienda en línea',
+        'SEO y marketing digital',
+        'Otro',
+      ]
+    : [
+        'New website',
+        'Existing site redesign',
+        'Landing page',
+        'Online store',
+        'SEO and digital marketing',
+        'Other',
+      ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,20 +49,17 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
 
     // Validate required fields
     if (!formData.name || !formData.phone || !formData.interest) {
-      toast.error('Por favor completa los campos requeridos');
+      toast.error(language === 'es' ? 'Por favor completa los campos requeridos' : 'Please complete the required fields');
       setIsSubmitting(false);
       return;
     }
 
     // Build WhatsApp message
-    const message = encodeURIComponent(
-      `Hola, quiero agendar una asesoría estratégica para mi proyecto web.\n\n` +
-      `👤 Nombre: ${formData.name}\n` +
-      `📧 Email: ${formData.email || 'No proporcionado'}\n` +
-      `📱 Teléfono: ${formData.phone}\n` +
-      `🏢 Negocio: ${formData.business || 'No especificado'}\n` +
-      `💡 Interés: ${formData.interest}`
-    );
+    const messageTemplate = language === 'es'
+      ? `Hola, quiero agendar una asesoría estratégica para mi proyecto web.\n\n👤 Nombre: ${formData.name}\n📧 Email: ${formData.email || 'No proporcionado'}\n📱 Teléfono: ${formData.phone}\n🏢 Negocio: ${formData.business || 'No especificado'}\n💡 Interés: ${formData.interest}`
+      : `Hello, I want to schedule a strategic consultation for my web project.\n\n👤 Name: ${formData.name}\n📧 Email: ${formData.email || 'Not provided'}\n📱 Phone: ${formData.phone}\n🏢 Business: ${formData.business || 'Not specified'}\n💡 Interest: ${formData.interest}`;
+
+    const message = encodeURIComponent(messageTemplate);
 
     // Use intent:// for Android, whatsapp:// for iOS, fallback to wa.me for desktop
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -74,7 +82,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
       submittedAt: new Date().toISOString(),
     }));
 
-    toast.success('¡Redirigiendo a WhatsApp!');
+    toast.success(language === 'es' ? '¡Redirigiendo a WhatsApp!' : 'Redirecting to WhatsApp!');
 
     setTimeout(() => {
       window.open(whatsappUrl, '_blank');
@@ -89,6 +97,23 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
       ...prev,
       [e.target.name]: e.target.value,
     }));
+  };
+
+  const labels = {
+    title: language === 'es' ? 'Asesoría' : 'Consultation',
+    subtitle: language === 'es' ? 'Completa tus datos y te contactaremos por WhatsApp' : 'Fill in your details and we will contact you via WhatsApp',
+    name: language === 'es' ? 'Nombre completo *' : 'Full name *',
+    namePlaceholder: language === 'es' ? 'Tu nombre' : 'Your name',
+    email: language === 'es' ? 'Correo electrónico' : 'Email',
+    emailPlaceholder: language === 'es' ? 'tu@email.com' : 'you@email.com',
+    phone: language === 'es' ? 'Teléfono *' : 'Phone *',
+    phonePlaceholder: '+1 (587) 000-0000',
+    business: language === 'es' ? 'Nombre del negocio' : 'Business name',
+    businessPlaceholder: language === 'es' ? 'Tu empresa o negocio' : 'Your company or business',
+    interest: language === 'es' ? '¿En qué estás interesado? *' : 'What are you interested in? *',
+    submit: language === 'es' ? 'Continuar a WhatsApp' : 'Continue to WhatsApp',
+    processing: language === 'es' ? 'Procesando...' : 'Processing...',
+    disclaimer: language === 'es' ? 'Al enviar, serás redirigido a WhatsApp para confirmar tu asesoría' : 'By submitting, you will be redirected to WhatsApp to confirm your consultation',
   };
 
   return (
@@ -124,16 +149,16 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
               <button
                 onClick={onClose}
                 className="absolute top-4 right-4 p-2 rounded-full hover:bg-muted/50 transition-colors"
-                aria-label="Cerrar modal"
+                aria-label={language === 'es' ? 'Cerrar modal' : 'Close modal'}
               >
                 <X className="w-5 h-5" />
               </button>
 
               <h2 className="text-xl md:text-2xl font-bold pr-8">
-                Agenda tu <span className="text-gradient-gold">Asesoría</span>
+                {language === 'es' ? 'Agenda tu' : 'Schedule your'} <span className="text-gradient-gold">{labels.title}</span>
               </h2>
               <p className="text-sm text-muted-foreground mt-2">
-                Completa tus datos y te contactaremos por WhatsApp
+                {labels.subtitle}
               </p>
             </div>
 
@@ -143,14 +168,14 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
               <div className="space-y-2">
                 <Label htmlFor="name" className="flex items-center gap-2 text-sm">
                   <User className="w-4 h-4 text-primary" />
-                  Nombre completo *
+                  {labels.name}
                 </Label>
                 <Input
                   id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Tu nombre"
+                  placeholder={labels.namePlaceholder}
                   required
                   className="bg-muted/30 border-border/50 focus:border-primary"
                 />
@@ -160,7 +185,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
               <div className="space-y-2">
                 <Label htmlFor="email" className="flex items-center gap-2 text-sm">
                   <Mail className="w-4 h-4 text-primary" />
-                  Correo electrónico
+                  {labels.email}
                 </Label>
                 <Input
                   id="email"
@@ -168,7 +193,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
                   type="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="tu@email.com"
+                  placeholder={labels.emailPlaceholder}
                   className="bg-muted/30 border-border/50 focus:border-primary"
                 />
               </div>
@@ -177,7 +202,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
               <div className="space-y-2">
                 <Label htmlFor="phone" className="flex items-center gap-2 text-sm">
                   <Phone className="w-4 h-4 text-primary" />
-                  Teléfono *
+                  {labels.phone}
                 </Label>
                 <Input
                   id="phone"
@@ -185,7 +210,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
                   type="tel"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="+1 (587) 000-0000"
+                  placeholder={labels.phonePlaceholder}
                   required
                   className="bg-muted/30 border-border/50 focus:border-primary"
                 />
@@ -195,21 +220,21 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
               <div className="space-y-2">
                 <Label htmlFor="business" className="flex items-center gap-2 text-sm">
                   <Building2 className="w-4 h-4 text-primary" />
-                  Nombre del negocio
+                  {labels.business}
                 </Label>
                 <Input
                   id="business"
                   name="business"
                   value={formData.business}
                   onChange={handleChange}
-                  placeholder="Tu empresa o negocio"
+                  placeholder={labels.businessPlaceholder}
                   className="bg-muted/30 border-border/50 focus:border-primary"
                 />
               </div>
 
               {/* Interest */}
               <div className="space-y-2">
-                <Label className="text-sm">¿En qué estás interesado? *</Label>
+                <Label className="text-sm">{labels.interest}</Label>
                 <div className="grid grid-cols-2 gap-2">
                   {interestOptions.map((option) => (
                     <button
@@ -242,18 +267,18 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
                     >
                       <Send className="w-5 h-5" />
                     </motion.div>
-                    Procesando...
+                    {labels.processing}
                   </span>
                 ) : (
                   <span className="flex items-center gap-2">
                     <Send className="w-5 h-5" />
-                    Continuar a WhatsApp
+                    {labels.submit}
                   </span>
                 )}
               </Button>
 
               <p className="text-xs text-center text-muted-foreground mt-4">
-                Al enviar, serás redirigido a WhatsApp para confirmar tu asesoría
+                {labels.disclaimer}
               </p>
             </form>
           </motion.div>

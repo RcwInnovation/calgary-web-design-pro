@@ -2,64 +2,33 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Users, Award, Clock, MessageSquare, Star, TrendingUp } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
-const reasons = [
-  {
-    icon: Users,
-    title: 'Atención en Español',
-    description: 'Comunicación clara y directa en tu idioma. Sin barreras, sin malentendidos.',
-  },
-  {
-    icon: Award,
-    title: 'Calidad Premium',
-    description: 'Diseños de alta gama que compiten con las mejores agencias del mercado.',
-  },
-  {
-    icon: Clock,
-    title: 'Entrega Rápida',
-    description: 'Proyectos entregados en 2-4 semanas sin sacrificar calidad.',
-  },
-  {
-    icon: MessageSquare,
-    title: 'Soporte Local',
-    description: 'Estamos en Calgary, listos para reunirnos contigo cuando lo necesites.',
-  },
-  {
-    icon: Star,
-    title: 'Experiencia Comprobada',
-    description: 'Más de 50 proyectos exitosos para empresas hispanas en Alberta.',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Resultados Medibles',
-    description: 'Enfocados en generar leads y conversiones reales para tu negocio.',
-  },
-];
-
-const testimonials = [
-  {
-    name: 'María García',
-    company: 'Restaurante El Sol',
-    text: 'RCW Innovation transformó nuestra presencia online. Ahora recibimos el doble de reservas.',
-    rating: 5,
-  },
-  {
-    name: 'Carlos Mendoza',
-    company: 'CM Construcciones',
-    text: 'Profesionales, puntuales y excelente comunicación. Nuestra web genera leads cada semana.',
-    rating: 5,
-  },
-  {
-    name: 'Ana Torres',
-    company: 'Torres Legal Services',
-    text: 'El mejor equipo de diseño web en Calgary. Atención personalizada y resultados increíbles.',
-    rating: 5,
-  },
-];
+const reasonIcons = [Users, Award, Clock, MessageSquare, Star, TrendingUp];
 
 export const WhyUs = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const { t } = useLanguage();
+
+  const reasons = Array.from({ length: 6 }, (_, i) => {
+    const num = i + 1;
+    return {
+      icon: reasonIcons[i],
+      title: t(`whyUs.reason.${num}.title`),
+      description: t(`whyUs.reason.${num}.description`),
+    };
+  });
+
+  const testimonials = Array.from({ length: 3 }, (_, i) => {
+    const num = i + 1;
+    return {
+      name: t(`whyUs.testimonial.${num}.name`),
+      company: t(`whyUs.testimonial.${num}.company`),
+      text: t(`whyUs.testimonial.${num}.text`),
+      rating: 5,
+    };
+  });
 
   return (
     <section id="por-que-nosotros" className="section relative overflow-hidden bg-card/30">
@@ -72,13 +41,13 @@ export const WhyUs = () => {
           className="text-center mb-16"
         >
           <span className="text-accent text-sm font-semibold tracking-wider uppercase">
-            Nuestra diferencia
+            {t('whyUs.badge')}
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">
-            ¿Por qué elegirnos en Calgary?
+            {t('whyUs.title')}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Somos la agencia de diseño web de confianza para la comunidad hispana en Calgary.
+            {t('whyUs.subtitle')}
           </p>
         </motion.div>
 
@@ -110,7 +79,7 @@ export const WhyUs = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <h3 className="text-2xl font-bold text-center mb-10">
-            Lo que dicen nuestros clientes
+            {t('whyUs.testimonials.title')}
           </h3>
           <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
