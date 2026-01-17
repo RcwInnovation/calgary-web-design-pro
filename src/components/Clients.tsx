@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface Client {
   id: number;
@@ -19,29 +20,15 @@ const clients: Client[] = [
 ];
 
 const LogoPlaceholder = ({ name }: { name: string }) => (
-  <svg
-    viewBox="0 0 120 40"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="w-full h-full"
-  >
+  <svg viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
     <rect width="120" height="40" rx="4" fill="currentColor" fillOpacity="0.1" />
-    <text
-      x="60"
-      y="24"
-      textAnchor="middle"
-      fill="currentColor"
-      fillOpacity="0.5"
-      fontSize="10"
-      fontWeight="500"
-    >
-      {name}
-    </text>
+    <text x="60" y="24" textAnchor="middle" fill="currentColor" fillOpacity="0.5" fontSize="10" fontWeight="500">{name}</text>
   </svg>
 );
 
 export const Clients = () => {
   const [isPaused, setIsPaused] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <section className="py-16 md:py-24 overflow-hidden border-y border-border/20">
@@ -54,49 +41,31 @@ export const Clients = () => {
           className="text-center"
         >
           <span className="text-sm text-primary font-medium tracking-wider uppercase mb-4 block">
-            Clientes que confían en nosotros
+            {t('clients.badge')}
           </span>
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Empresas que han crecido con <span className="text-gradient-blue">RCW Innovation</span>
+            {t('clients.title')} <span className="text-gradient-blue">{t('clients.titleHighlight')}</span>
           </h2>
         </motion.div>
       </div>
 
-      {/* Infinite Slider */}
-      <div
-        className="relative"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        {/* Gradient masks */}
+      <div className="relative" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
         <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
         <motion.div
           className="flex gap-8 md:gap-12"
-          animate={{
-            x: isPaused ? undefined : [0, -1920],
-          }}
-          transition={{
-            x: {
-              duration: 30,
-              repeat: Infinity,
-              ease: 'linear',
-            },
-          }}
+          animate={{ x: isPaused ? undefined : [0, -1920] }}
+          transition={{ x: { duration: 30, repeat: Infinity, ease: 'linear' } }}
         >
-          {/* Double the clients for seamless loop */}
           {[...clients, ...clients, ...clients].map((client, index) => (
             <a
               key={`${client.id}-${index}`}
               href={client.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-shrink-0 w-32 md:w-40 h-12 md:h-14 flex items-center justify-center 
-                         text-muted-foreground/60 hover:text-foreground/80 
-                         transition-all duration-300 hover:scale-110
-                         filter grayscale hover:grayscale-0"
-              aria-label={`Visitar sitio de ${client.name}`}
+              className="flex-shrink-0 w-32 md:w-40 h-12 md:h-14 flex items-center justify-center text-muted-foreground/60 hover:text-foreground/80 transition-all duration-300 hover:scale-110 filter grayscale hover:grayscale-0"
+              aria-label={`Visit ${client.name}`}
             >
               <LogoPlaceholder name={client.name} />
             </a>
@@ -104,7 +73,6 @@ export const Clients = () => {
         </motion.div>
       </div>
 
-      {/* Static grid for mobile */}
       <div className="container-custom mt-8 md:hidden">
         <div className="grid grid-cols-4 gap-4">
           {clients.map((client) => (
@@ -113,10 +81,8 @@ export const Clients = () => {
               href={client.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="h-10 flex items-center justify-center 
-                         text-muted-foreground/60 hover:text-foreground/80 
-                         transition-all duration-300"
-              aria-label={`Visitar sitio de ${client.name}`}
+              className="h-10 flex items-center justify-center text-muted-foreground/60 hover:text-foreground/80 transition-all duration-300"
+              aria-label={`Visit ${client.name}`}
             >
               <LogoPlaceholder name={client.name} />
             </a>
