@@ -15,15 +15,15 @@ export const Header = ({ onOpenConsultation }: HeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const { t } = useLanguage();
+  const { t, language, basePath } = useLanguage();
 
   const navLinks = [
-    { href: '/#servicios', label: t('nav.services') },
-    { href: '/#proyectos', label: t('nav.projects') },
-    { href: '/#por-que-nosotros', label: t('nav.whyUs') },
-    { href: '/#proceso', label: t('nav.process') },
-    { href: '/#faq', label: t('nav.faq') },
-    { href: '/#contacto', label: t('nav.contact') },
+    { href: '#servicios', label: t('nav.services') },
+    { href: '#proyectos', label: t('nav.projects') },
+    { href: '#por-que-nosotros', label: t('nav.whyUs') },
+    { href: '#proceso', label: t('nav.process') },
+    { href: '#faq', label: t('nav.faq') },
+    { href: '#contacto', label: t('nav.contact') },
   ];
 
   useEffect(() => {
@@ -34,20 +34,20 @@ export const Header = ({ onOpenConsultation }: HeaderProps) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isHomePage = location.pathname === `/${language}` || location.pathname === `/${language}/`;
+
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
     
-    // Check if we're on the home page
-    if (location.pathname === '/') {
+    if (isHomePage) {
       // If on home page, just scroll to section
-      const sectionId = href.replace('/#', '#');
-      const element = document.querySelector(sectionId);
+      const element = document.querySelector(href);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
-      // If on another page, navigate to home first then scroll
-      navigate(href);
+      // If on another page, navigate to home with hash
+      navigate(`${basePath}/${href}`);
     }
   };
 
@@ -64,7 +64,7 @@ export const Header = ({ onOpenConsultation }: HeaderProps) => {
           transition={{ duration: 0.5 }}
         >
           <Link
-            to="/"
+            to={basePath}
             className="flex items-center gap-3 group"
           >
             <img src={logo} alt="RCW Innovation Inc Logo" className="h-12 w-12 object-contain" />

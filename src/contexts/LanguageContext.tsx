@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 type Language = 'es' | 'en';
 
@@ -6,6 +7,8 @@ interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: string) => string;
+  getLocalizedPath: (path: string) => string;
+  basePath: string;
 }
 
 const translations = {
@@ -197,28 +200,84 @@ const translations = {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export const LanguageProvider = ({ children }: { children: ReactNode }) => {
+// Helper to extract language from path
+const getLanguageFromPath = (pathname: string): Language => {
+  if (pathname.startsWith('/en')) return 'en';
+  if (pathname.startsWith('/es')) return 'es';
+  return 'es'; // default
+};
+
+// Helper to get base path for current language
+const getBasePath = (lang: Language): string => {
+  return `/${lang}`;
+};
+
+interface LanguageProviderProps {
+  children: ReactNode;
+}
+
+export const LanguageProvider = ({ children }: LanguageProviderProps) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  
   const [language, setLanguageState] = useState<Language>(() => {
-    const saved = localStorage.getItem('language');
-    return (saved as Language) || 'es';
+    return getLanguageFromPath(location.pathname);
   });
 
-  const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    localStorage.setItem('language', lang);
-    document.documentElement.lang = lang;
-  };
-
+  // Sync language with URL on mount and path changes
   useEffect(() => {
-    document.documentElement.lang = language;
-  }, [language]);
+    const pathLang = getLanguageFromPath(location.pathname);
+    if (pathLang !== language) {
+      setLanguageState(pathLang);
+    }
+    document.documentElement.lang = pathLang;
+  }, [location.pathname]);
+
+  const setLanguage = (lang: Language) => {
+    if (lang === language) return;
+    
+    setLanguageState(lang);
+    document.documentElement.lang = lang;
+    localStorage.setItem('language', lang);
+    
+    // Navigate to the same page but with new language prefix
+    const currentPath = location.pathname;
+    let newPath: string;
+    
+    if (currentPath.startsWith('/es') || currentPath.startsWith('/en')) {
+      // Replace the language prefix
+      newPath = `/${lang}${currentPath.substring(3)}`;
+    } else {
+      // Add language prefix to root or other paths
+      newPath = `/${lang}${currentPath === '/' ? '' : currentPath}`;
+    }
+    
+    navigate(newPath, { replace: true });
+  };
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations['es']] || key;
   };
 
+  const getLocalizedPath = (path: string): string => {
+    // Remove any existing language prefix
+    let cleanPath = path;
+    if (path.startsWith('/es') || path.startsWith('/en')) {
+      cleanPath = path.substring(3) || '/';
+    }
+    
+    // Handle hash links for home page
+    if (cleanPath.startsWith('/#')) {
+      return `/${language}${cleanPath.substring(1)}`;
+    }
+    
+    return `/${language}${cleanPath === '/' ? '' : cleanPath}`;
+  };
+
+  const basePath = getBasePath(language);
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, getLocalizedPath, basePath }}>
       {children}
     </LanguageContext.Provider>
   );
@@ -231,3 +290,5 @@ export const useLanguage = () => {
   }
   return context;
 };
+
+export { getLanguageFromPath };
