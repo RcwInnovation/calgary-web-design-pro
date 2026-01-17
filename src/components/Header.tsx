@@ -3,15 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '@/assets/logo.png';
-
-const navLinks = [
-  { href: '/#servicios', label: 'Servicios' },
-  { href: '/#proyectos', label: 'Proyectos' },
-  { href: '/#por-que-nosotros', label: '¿Por qué elegirnos?' },
-  { href: '/#proceso', label: 'Proceso' },
-  { href: '/#faq', label: 'FAQ' },
-  { href: '/#contacto', label: 'Contacto' },
-];
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface HeaderProps {
   onOpenConsultation?: () => void;
@@ -22,6 +15,16 @@ export const Header = ({ onOpenConsultation }: HeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { t } = useLanguage();
+
+  const navLinks = [
+    { href: '/#servicios', label: t('nav.services') },
+    { href: '/#proyectos', label: t('nav.projects') },
+    { href: '/#por-que-nosotros', label: t('nav.whyUs') },
+    { href: '/#proceso', label: t('nav.process') },
+    { href: '/#faq', label: t('nav.faq') },
+    { href: '/#contacto', label: t('nav.contact') },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,27 +94,31 @@ export const Header = ({ onOpenConsultation }: HeaderProps) => {
           ))}
         </motion.ul>
 
-        {/* Desktop CTA */}
+        {/* Desktop CTA + Language Switcher */}
         <motion.div
           className="hidden lg:flex items-center gap-4"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
+          <LanguageSwitcher />
           <button onClick={onOpenConsultation} className="btn-primary text-sm">
-            Agenda tu Asesoría
+            {t('nav.cta')}
           </button>
         </motion.div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
-          aria-expanded={isMobileMenuOpen}
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile Menu Button + Language */}
+        <div className="lg:hidden flex items-center gap-3">
+          <LanguageSwitcher />
+          <button
+            className="p-2 text-foreground hover:text-primary transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+            aria-expanded={isMobileMenuOpen}
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
 
         {/* Mobile Menu */}
         <AnimatePresence>
@@ -145,7 +152,7 @@ export const Header = ({ onOpenConsultation }: HeaderProps) => {
                     }}
                     className="btn-primary block text-center w-full"
                   >
-                    Agenda tu Asesoría
+                    {t('nav.cta')}
                   </button>
                 </li>
               </ul>
