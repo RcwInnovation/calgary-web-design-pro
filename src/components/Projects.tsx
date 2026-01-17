@@ -2,46 +2,29 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Bot, ShoppingCart, LayoutDashboard, ArrowUpRight, Globe, ExternalLink } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
-const projects = [
-  {
-    icon: Globe,
-    title: 'Servicios Latinos Canadá',
-    description: 'Primera aplicación web y marketplace de servicios para latinos en Canadá. Conectamos a la comunidad hispanohablante con profesionales y negocios locales.',
-    result: '#1',
-    resultLabel: 'marketplace latino en Canadá',
-    tags: ['Marketplace', 'Comunidad Latina', 'Web App'],
-    link: 'https://servicioslatinoscanada.com/',
-  },
-  {
-    icon: Bot,
-    title: 'Suite de Automatización',
-    description: 'Para atención y ventas, integrando CRM y agentes de IA.',
-    result: '2.8×',
-    resultLabel: 'velocidad de respuesta',
-    tags: ['CRM', 'Agentes IA', 'Automatización'],
-  },
-  {
-    icon: ShoppingCart,
-    title: 'E-commerce Headless',
-    description: 'Con SEO técnico y analítica avanzada para maximizar ventas orgánicas.',
-    result: '+38%',
-    resultLabel: 'ingresos orgánicos',
-    tags: ['E-commerce', 'SEO', 'Analytics'],
-  },
-  {
-    icon: LayoutDashboard,
-    title: 'Plataforma de Gestión',
-    description: 'Con dashboards en tiempo real y permisos por rol para control total.',
-    result: '-31%',
-    resultLabel: 'tiempos operativos',
-    tags: ['Dashboard', 'ERP', 'Permisos'],
-  },
-];
+const projectIcons = [Globe, Bot, ShoppingCart, LayoutDashboard];
+const projectResults = ['#1', '2.8×', '+38%', '-31%'];
+const projectLinks = ['https://servicioslatinoscanada.com/', undefined, undefined, undefined];
 
 export const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const { t } = useLanguage();
+
+  const projects = Array.from({ length: 4 }, (_, i) => {
+    const num = i + 1;
+    return {
+      icon: projectIcons[i],
+      title: t(`project.${num}.title`),
+      description: t(`project.${num}.description`),
+      result: projectResults[i],
+      resultLabel: t(`project.${num}.resultLabel`),
+      tags: t(`project.${num}.tags`).split(','),
+      link: projectLinks[i],
+    };
+  });
 
   return (
     <section id="proyectos" className="section relative overflow-hidden">
@@ -56,13 +39,13 @@ export const Projects = () => {
           className="text-center mb-16"
         >
           <span className="text-primary text-sm font-semibold tracking-wider uppercase">
-            Casos de éxito
+            {t('projects.badge')}
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">
-            Proyectos destacados
+            {t('projects.title')}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Soluciones reales que hemos implementado para empresas que buscaban resultados tangibles.
+            {t('projects.subtitle')}
           </p>
         </motion.div>
 

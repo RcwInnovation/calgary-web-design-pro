@@ -2,37 +2,24 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { TrendingUp, Zap, DollarSign, Server } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
-const metrics = [
-  {
-    icon: TrendingUp,
-    value: '+45%',
-    label: 'Eficiencia Operativa',
-    description: 'Mejora promedio en procesos automatizados',
-  },
-  {
-    icon: Zap,
-    value: '3.2x',
-    label: 'Mejora en Conversión',
-    description: 'Incremento en tasas de conversión',
-  },
-  {
-    icon: DollarSign,
-    value: '-35%',
-    label: 'Reducción de Costos',
-    description: 'Ahorro gracias a automatización',
-  },
-  {
-    icon: Server,
-    value: '99.9%',
-    label: 'Disponibilidad',
-    description: 'Uptime en nuestras plataformas',
-  },
-];
+const metricIcons = [TrendingUp, Zap, DollarSign, Server];
 
 export const Metrics = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const { t } = useLanguage();
+
+  const metrics = Array.from({ length: 4 }, (_, i) => {
+    const num = i + 1;
+    return {
+      icon: metricIcons[i],
+      value: t(`metric.${num}.value`),
+      label: t(`metric.${num}.label`),
+      description: t(`metric.${num}.description`),
+    };
+  });
 
   return (
     <section className="py-20 relative overflow-hidden bg-card/30">
@@ -47,13 +34,13 @@ export const Metrics = () => {
           className="text-center mb-16"
         >
           <span className="text-accent text-sm font-semibold tracking-wider uppercase">
-            Resultados comprobados
+            {t('metrics.badge')}
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">
-            Beneficios medibles
+            {t('metrics.title')}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Métricas de referencia típicas de nuestros proyectos que demuestran el impacto real en los negocios.
+            {t('metrics.subtitle')}
           </p>
         </motion.div>
 

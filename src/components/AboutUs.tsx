@@ -2,45 +2,31 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Target, Eye, Lightbulb, Award, MessageCircle, Users, Heart } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
-const stats = [
-  { number: '10+', label: 'Años de experiencia' },
-  { number: '100+', label: 'Proyectos entregados' },
-  { number: '50+', label: 'Clientes satisfechos' },
-  { number: '5', label: 'Países atendidos' },
-];
-
-const values = [
-  {
-    icon: Lightbulb,
-    title: 'Innovación continua',
-    description: 'Siempre adoptamos lo último en IA, software y diseño para ofrecer resultados diferenciados.',
-  },
-  {
-    icon: Award,
-    title: 'Profesionalismo y calidad',
-    description: 'Nos comprometemos con estándares altos y estrategias basadas en normativas y buenas prácticas.',
-  },
-  {
-    icon: MessageCircle,
-    title: 'Claridad y cercanía',
-    description: 'Comunicamos cada paso con transparencia y acompañamos al cliente en su idioma (español o inglés).',
-  },
-  {
-    icon: Users,
-    title: 'Orientación al cliente',
-    description: 'Ponemos las necesidades de cada proyecto al centro, respetando su contexto y cultura.',
-  },
-  {
-    icon: Heart,
-    title: 'Orgullo latino',
-    description: 'Celebramos nuestras raíces y trabajamos para abrir oportunidades a la comunidad hispanohablante en Canadá.',
-  },
-];
+const valueIcons = [Lightbulb, Award, MessageCircle, Users, Heart];
 
 export const AboutUs = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const { t } = useLanguage();
+
+  const stats = Array.from({ length: 4 }, (_, i) => {
+    const num = i + 1;
+    return {
+      number: t(`about.stat.${num}.number`),
+      label: t(`about.stat.${num}.label`),
+    };
+  });
+
+  const values = Array.from({ length: 5 }, (_, i) => {
+    const num = i + 1;
+    return {
+      icon: valueIcons[i],
+      title: t(`about.value.${num}.title`),
+      description: t(`about.value.${num}.description`),
+    };
+  });
 
   return (
     <section id="nosotros" className="py-24 bg-background relative overflow-hidden">
@@ -58,14 +44,13 @@ export const AboutUs = () => {
           className="text-center mb-16"
         >
           <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
-            Sobre Nosotros
+            {t('about.badge')}
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-            Más de <span className="text-primary">10 años</span> transformando empresas
+            {t('about.title')} <span className="text-primary">{t('about.titleHighlight')}</span> {t('about.titleEnd')}
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-            Somos un equipo de profesionales con amplia experiencia en ingeniería, nuevas tecnologías 
-            y diseño de software, dedicados a impulsar la transformación digital de empresas en Canadá y Latinoamérica.
+            {t('about.subtitle')}
           </p>
         </motion.div>
 
@@ -102,11 +87,9 @@ export const AboutUs = () => {
               <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
                 <Target className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-2xl font-bold mb-4">Nuestra Misión</h3>
+              <h3 className="text-2xl font-bold mb-4">{t('about.mission.title')}</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Transformar digitalmente las empresas mediante soluciones tecnológicas innovadoras, 
-                brindando consultoría especializada que impulse su crecimiento, competitividad y 
-                sostenibilidad en el mercado global.
+                {t('about.mission.text')}
               </p>
             </div>
           </motion.div>
@@ -122,13 +105,9 @@ export const AboutUs = () => {
               <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mb-6">
                 <Eye className="w-8 h-8 text-accent" />
               </div>
-              <h3 className="text-2xl font-bold mb-4">Nuestra Visión</h3>
+              <h3 className="text-2xl font-bold mb-4">{t('about.vision.title')}</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Ser la empresa líder en transformación digital e innovación tecnológica en América, 
-                reconocida por la excelencia en nuestros servicios y por generar un impacto positivo 
-                en el crecimiento empresarial de nuestros clientes. Aspiramos a que RCW Innovation Inc 
-                sea el referente en el desarrollo de ideas innovadoras y ecosistemas digitales que 
-                transforman negocios y elevan la competitividad de nuestros clientes.
+                {t('about.vision.text')}
               </p>
             </div>
           </motion.div>
@@ -140,7 +119,7 @@ export const AboutUs = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <h3 className="text-2xl font-bold text-center mb-10">Nuestros Valores</h3>
+          <h3 className="text-2xl font-bold text-center mb-10">{t('about.values.title')}</h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {values.map((value, index) => (
               <motion.div

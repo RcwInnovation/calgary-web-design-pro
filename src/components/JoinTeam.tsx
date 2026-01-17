@@ -1,37 +1,16 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { Briefcase, Code, Palette, TrendingUp, ChevronRight, Sparkles, Users, Rocket } from 'lucide-react';
+import { Briefcase, Sparkles, Users, Rocket, TrendingUp, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
+import { useLanguage } from '@/contexts/LanguageContext';
 
-const benefits = [
-  {
-    icon: Rocket,
-    title: 'Proyectos Innovadores',
-    description: 'Trabaja con tecnologías de vanguardia como IA, automatización y cloud computing.',
-  },
-  {
-    icon: Users,
-    title: 'Equipo Global',
-    description: 'Colabora con profesionales en Canadá, Colombia y otros países de Latinoamérica.',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Crecimiento Profesional',
-    description: 'Capacitación continua, mentorías y oportunidades de desarrollo.',
-  },
-  {
-    icon: Sparkles,
-    title: 'Cultura de Innovación',
-    description: 'Un ambiente donde tus ideas son valoradas y pueden convertirse en realidad.',
-  },
-];
-
+const benefitIcons = [Rocket, Users, TrendingUp, Sparkles];
 
 export const JoinTeam = () => {
   const ref = useRef(null);
@@ -39,6 +18,16 @@ export const JoinTeam = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPosition, setSelectedPosition] = useState('');
   const { toast } = useToast();
+  const { t } = useLanguage();
+
+  const benefits = Array.from({ length: 4 }, (_, i) => {
+    const num = i + 1;
+    return {
+      icon: benefitIcons[i],
+      title: t(`joinTeam.benefit.${num}.title`),
+      description: t(`joinTeam.benefit.${num}.description`),
+    };
+  });
 
   const handleApply = (position: string) => {
     setSelectedPosition(position);
@@ -48,8 +37,8 @@ export const JoinTeam = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
-      title: '¡Aplicación enviada!',
-      description: 'Revisaremos tu perfil y te contactaremos pronto.',
+      title: t('joinTeam.toast.title'),
+      description: t('joinTeam.toast.description'),
     });
     setIsModalOpen(false);
   };
@@ -69,15 +58,13 @@ export const JoinTeam = () => {
           className="text-center mb-16"
         >
           <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
-            Únete al Equipo
+            {t('joinTeam.badge')}
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            ¿Quieres ser parte de <span className="text-primary">RCW Innovation</span>?
+            {t('joinTeam.title')} <span className="text-primary">{t('joinTeam.titleHighlight')}</span>{t('joinTeam.titleEnd')}
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-            Buscamos profesionales apasionados por la tecnología y la innovación. 
-            Con más de 10 años de experiencia, nuestro equipo está compuesto por ingenieros, 
-            diseñadores y estrategas que transforman ideas en soluciones de impacto.
+            {t('joinTeam.subtitle')}
           </p>
         </motion.div>
 
@@ -114,16 +101,16 @@ export const JoinTeam = () => {
             <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
               <Briefcase className="w-8 h-8 text-primary" />
             </div>
-            <h3 className="text-xl font-semibold mb-3">Únete al equipo</h3>
+            <h3 className="text-xl font-semibold mb-3">{t('joinTeam.professional')}</h3>
             <p className="text-muted-foreground text-sm mb-6">
-              ¿Buscas una oportunidad profesional? Envíanos tu CV y te contactaremos cuando haya una posición para ti.
+              {t('joinTeam.professionalDesc')}
             </p>
             <Button
               size="lg"
               className="w-full"
-              onClick={() => handleApply('Aplicación Profesional')}
+              onClick={() => handleApply(t('joinTeam.professional'))}
             >
-              Enviar aplicación
+              {t('joinTeam.applyProfessional')}
               <ChevronRight className="w-4 h-4 ml-2" />
             </Button>
           </div>
@@ -133,17 +120,17 @@ export const JoinTeam = () => {
             <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
               <Users className="w-8 h-8 text-accent" />
             </div>
-            <h3 className="text-xl font-semibold mb-3">Voluntariado</h3>
+            <h3 className="text-xl font-semibold mb-3">{t('joinTeam.volunteer')}</h3>
             <p className="text-muted-foreground text-sm mb-6">
-              ¿Quieres ganar experiencia y contribuir a proyectos innovadores? Únete como voluntario y aprende con nosotros.
+              {t('joinTeam.volunteerDesc')}
             </p>
             <Button
               size="lg"
               variant="outline"
               className="w-full border-accent/50 hover:bg-accent hover:text-accent-foreground"
-              onClick={() => handleApply('Voluntariado')}
+              onClick={() => handleApply(t('joinTeam.volunteer'))}
             >
-              Aplicar como voluntario
+              {t('joinTeam.applyVolunteer')}
               <ChevronRight className="w-4 h-4 ml-2" />
             </Button>
           </div>
@@ -154,42 +141,42 @@ export const JoinTeam = () => {
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Aplicar a: {selectedPosition}</DialogTitle>
+            <DialogTitle>{t('joinTeam.modal.title')} {selectedPosition}</DialogTitle>
             <DialogDescription>
-              Completa el formulario y nos pondremos en contacto contigo.
+              {t('joinTeam.modal.subtitle')}
             </DialogDescription>
           </DialogHeader>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="name">Nombre completo</Label>
-              <Input id="name" placeholder="Tu nombre" required />
+              <Label htmlFor="name">{t('joinTeam.form.name')}</Label>
+              <Input id="name" placeholder={t('joinTeam.form.namePlaceholder')} required />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="tu@email.com" required />
+              <Label htmlFor="email">{t('joinTeam.form.email')}</Label>
+              <Input id="email" type="email" placeholder={t('joinTeam.form.emailPlaceholder')} required />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="phone">Número de teléfono</Label>
-              <Input id="phone" type="tel" placeholder="+1 (555) 123-4567" required />
+              <Label htmlFor="phone">{t('joinTeam.form.phone')}</Label>
+              <Input id="phone" type="tel" placeholder={t('joinTeam.form.phonePlaceholder')} required />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="city">Ciudad</Label>
-              <Input id="city" placeholder="Ej: Calgary, Toronto, Bogotá..." required />
+              <Label htmlFor="city">{t('joinTeam.form.city')}</Label>
+              <Input id="city" placeholder={t('joinTeam.form.cityPlaceholder')} required />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="linkedin">LinkedIn / Portafolio</Label>
-              <Input id="linkedin" placeholder="https://linkedin.com/in/tu-perfil" />
+              <Label htmlFor="linkedin">{t('joinTeam.form.linkedin')}</Label>
+              <Input id="linkedin" placeholder={t('joinTeam.form.linkedinPlaceholder')} />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="message">¿Por qué quieres unirte a RCW Innovation?</Label>
+              <Label htmlFor="message">{t('joinTeam.form.message')}</Label>
               <Textarea
                 id="message"
-                placeholder="Cuéntanos sobre ti y tu motivación..."
+                placeholder={t('joinTeam.form.messagePlaceholder')}
                 rows={4}
               />
             </div>
             <Button type="submit" className="w-full">
-              Enviar aplicación
+              {t('joinTeam.form.submit')}
             </Button>
           </form>
         </DialogContent>

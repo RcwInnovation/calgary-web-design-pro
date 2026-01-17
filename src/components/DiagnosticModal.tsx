@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Zap, Send, AlertCircle } from 'lucide-react';
 import { z } from 'zod';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const diagnosticSchema = z.object({
   nombre: z.string().trim().min(2, 'Nombre debe tener al menos 2 caracteres').max(100),
@@ -21,24 +22,8 @@ interface DiagnosticModalProps {
   onClose: () => void;
 }
 
-const objetivos = [
-  'Generar más leads',
-  'Aumentar ventas',
-  'Mejorar presencia online',
-  'Rediseñar sitio existente',
-  'Crear tienda online',
-  'Otro',
-];
-
-const presupuestos = [
-  'Menos de $1,500 CAD',
-  '$1,500 - $3,000 CAD',
-  '$3,000 - $5,000 CAD',
-  '$5,000 - $10,000 CAD',
-  'Más de $10,000 CAD',
-];
-
 export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
+  const { language } = useLanguage();
   const [formData, setFormData] = useState<DiagnosticFormData>({
     nombre: '',
     email: '',
@@ -51,6 +36,73 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
   });
   const [errors, setErrors] = useState<Partial<Record<keyof DiagnosticFormData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const objetivos = language === 'es'
+    ? [
+        'Generar más leads',
+        'Aumentar ventas',
+        'Mejorar presencia online',
+        'Rediseñar sitio existente',
+        'Crear tienda online',
+        'Otro',
+      ]
+    : [
+        'Generate more leads',
+        'Increase sales',
+        'Improve online presence',
+        'Redesign existing site',
+        'Create online store',
+        'Other',
+      ];
+
+  const presupuestos = language === 'es'
+    ? [
+        'Menos de $1,500 CAD',
+        '$1,500 - $3,000 CAD',
+        '$3,000 - $5,000 CAD',
+        '$5,000 - $10,000 CAD',
+        'Más de $10,000 CAD',
+      ]
+    : [
+        'Less than $1,500 CAD',
+        '$1,500 - $3,000 CAD',
+        '$3,000 - $5,000 CAD',
+        '$5,000 - $10,000 CAD',
+        'More than $10,000 CAD',
+      ];
+
+  const labels = {
+    title: language === 'es' ? 'Generar Diagnóstico 5.0' : 'Generate Diagnostic 5.0',
+    subtitle: language === 'es' ? 'Análisis personalizado de tu proyecto' : 'Personalized analysis of your project',
+    name: language === 'es' ? 'Nombre completo *' : 'Full name *',
+    namePlaceholder: language === 'es' ? 'Tu nombre' : 'Your name',
+    email: 'Email *',
+    emailPlaceholder: language === 'es' ? 'tu@email.com' : 'you@email.com',
+    phone: language === 'es' ? 'Teléfono *' : 'Phone *',
+    phonePlaceholder: '+1 (587) 896-1997',
+    business: language === 'es' ? 'Nombre del negocio *' : 'Business name *',
+    businessPlaceholder: language === 'es' ? 'Nombre de tu empresa' : 'Your company name',
+    website: language === 'es' ? 'Sitio web actual (opcional)' : 'Current website (optional)',
+    websitePlaceholder: 'https://tusitio.com',
+    objective: language === 'es' ? 'Objetivo principal *' : 'Main objective *',
+    objectivePlaceholder: language === 'es' ? 'Selecciona un objetivo' : 'Select an objective',
+    budget: language === 'es' ? 'Rango de presupuesto *' : 'Budget range *',
+    budgetPlaceholder: language === 'es' ? 'Selecciona un rango' : 'Select a range',
+    notes: language === 'es' ? 'Notas adicionales (opcional)' : 'Additional notes (optional)',
+    notesPlaceholder: language === 'es' ? 'Cuéntanos más sobre tu proyecto...' : 'Tell us more about your project...',
+    diagnosticLabel: language === 'es' ? 'Diagnóstico 5.0' : 'Diagnostic 5.0',
+    important: language === 'es' ? 'Importante:' : 'Important:',
+    paymentNote: language === 'es' 
+      ? 'Al hacer clic en "Enviar y continuar al pago", serás redirigido a nuestra plataforma segura de Stripe para completar el pago de'
+      : 'By clicking "Submit and continue to payment", you will be redirected to our secure Stripe platform to complete the payment of',
+    paymentNote2: language === 'es'
+      ? 'Una vez confirmado, nuestro equipo te contactará para preparar tu diagnóstico personalizado.'
+      : 'Once confirmed, our team will contact you to prepare your personalized diagnostic.',
+    submit: language === 'es' ? 'Enviar y continuar al pago' : 'Submit and continue to payment',
+    processing: language === 'es' ? 'Procesando...' : 'Processing...',
+    disclaimer: language === 'es' ? 'Al enviar, aceptas que guardemos tus datos para contactarte.' : 'By submitting, you agree that we store your data to contact you.',
+    close: language === 'es' ? 'Cerrar modal' : 'Close modal',
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -119,14 +171,14 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
                   <Zap className="w-5 h-5 text-primary-foreground" />
                 </div>
                 <div>
-                  <h2 className="text-lg font-bold text-primary-foreground">Generar Diagnóstico 5.0</h2>
-                  <p className="text-sm text-primary-foreground/70">Análisis personalizado de tu proyecto</p>
+                  <h2 className="text-lg font-bold text-primary-foreground">{labels.title}</h2>
+                  <p className="text-sm text-primary-foreground/70">{labels.subtitle}</p>
                 </div>
               </div>
               <button
                 onClick={onClose}
                 className="w-8 h-8 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors"
-                aria-label="Cerrar modal"
+                aria-label={labels.close}
               >
                 <X className="w-4 h-4 text-primary-foreground" />
               </button>
@@ -137,7 +189,7 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
               {/* Nombre */}
               <div>
                 <label htmlFor="nombre" className="block text-sm font-medium mb-2">
-                  Nombre completo *
+                  {labels.name}
                 </label>
                 <input
                   type="text"
@@ -148,7 +200,7 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
                   className={`w-full bg-muted rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 ${
                     errors.nombre ? 'ring-2 ring-destructive' : ''
                   }`}
-                  placeholder="Tu nombre"
+                  placeholder={labels.namePlaceholder}
                 />
                 {errors.nombre && (
                   <p className="text-xs text-destructive mt-1">{errors.nombre}</p>
@@ -158,7 +210,7 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
               {/* Email */}
               <div>
                 <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Email *
+                  {labels.email}
                 </label>
                 <input
                   type="email"
@@ -169,7 +221,7 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
                   className={`w-full bg-muted rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 ${
                     errors.email ? 'ring-2 ring-destructive' : ''
                   }`}
-                  placeholder="tu@email.com"
+                  placeholder={labels.emailPlaceholder}
                 />
                 {errors.email && (
                   <p className="text-xs text-destructive mt-1">{errors.email}</p>
@@ -179,7 +231,7 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
               {/* Teléfono */}
               <div>
                 <label htmlFor="telefono" className="block text-sm font-medium mb-2">
-                  Teléfono *
+                  {labels.phone}
                 </label>
                 <input
                   type="tel"
@@ -190,7 +242,7 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
                   className={`w-full bg-muted rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 ${
                     errors.telefono ? 'ring-2 ring-destructive' : ''
                   }`}
-                  placeholder="+1 (587) 896-1997"
+                  placeholder={labels.phonePlaceholder}
                 />
                 {errors.telefono && (
                   <p className="text-xs text-destructive mt-1">{errors.telefono}</p>
@@ -200,7 +252,7 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
               {/* Nombre del Negocio */}
               <div>
                 <label htmlFor="negocio" className="block text-sm font-medium mb-2">
-                  Nombre del negocio *
+                  {labels.business}
                 </label>
                 <input
                   type="text"
@@ -211,7 +263,7 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
                   className={`w-full bg-muted rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 ${
                     errors.negocio ? 'ring-2 ring-destructive' : ''
                   }`}
-                  placeholder="Nombre de tu empresa"
+                  placeholder={labels.businessPlaceholder}
                 />
                 {errors.negocio && (
                   <p className="text-xs text-destructive mt-1">{errors.negocio}</p>
@@ -221,7 +273,7 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
               {/* Sitio Actual */}
               <div>
                 <label htmlFor="sitioActual" className="block text-sm font-medium mb-2">
-                  Sitio web actual (opcional)
+                  {labels.website}
                 </label>
                 <input
                   type="url"
@@ -230,14 +282,14 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
                   value={formData.sitioActual}
                   onChange={handleChange}
                   className="w-full bg-muted rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
-                  placeholder="https://tusitio.com"
+                  placeholder={labels.websitePlaceholder}
                 />
               </div>
 
               {/* Objetivo */}
               <div>
                 <label htmlFor="objetivo" className="block text-sm font-medium mb-2">
-                  Objetivo principal *
+                  {labels.objective}
                 </label>
                 <select
                   id="objetivo"
@@ -248,7 +300,7 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
                     errors.objetivo ? 'ring-2 ring-destructive' : ''
                   }`}
                 >
-                  <option value="">Selecciona un objetivo</option>
+                  <option value="">{labels.objectivePlaceholder}</option>
                   {objetivos.map((obj) => (
                     <option key={obj} value={obj}>
                       {obj}
@@ -263,7 +315,7 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
               {/* Presupuesto */}
               <div>
                 <label htmlFor="presupuesto" className="block text-sm font-medium mb-2">
-                  Rango de presupuesto *
+                  {labels.budget}
                 </label>
                 <select
                   id="presupuesto"
@@ -274,7 +326,7 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
                     errors.presupuesto ? 'ring-2 ring-destructive' : ''
                   }`}
                 >
-                  <option value="">Selecciona un rango</option>
+                  <option value="">{labels.budgetPlaceholder}</option>
                   {presupuestos.map((pres) => (
                     <option key={pres} value={pres}>
                       {pres}
@@ -289,7 +341,7 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
               {/* Notas */}
               <div>
                 <label htmlFor="notas" className="block text-sm font-medium mb-2">
-                  Notas adicionales (opcional)
+                  {labels.notes}
                 </label>
                 <textarea
                   id="notas"
@@ -298,22 +350,20 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
                   onChange={handleChange}
                   rows={3}
                   className="w-full bg-muted rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
-                  placeholder="Cuéntanos más sobre tu proyecto..."
+                  placeholder={labels.notesPlaceholder}
                 />
               </div>
 
               {/* Note before submit */}
               <div className="p-4 rounded-xl bg-accent/10 border border-accent/20 space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-foreground">Diagnóstico 5.0</span>
+                  <span className="text-sm font-medium text-foreground">{labels.diagnosticLabel}</span>
                   <span className="text-lg font-bold text-accent">$150 CAD</span>
                 </div>
                 <div className="flex gap-3">
                   <AlertCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                   <p className="text-sm text-muted-foreground">
-                    <strong className="text-foreground">Importante:</strong> Al hacer clic en "Enviar y continuar al pago", 
-                    serás redirigido a nuestra plataforma segura de Stripe para completar el pago de <strong className="text-accent">$150 CAD</strong>. 
-                    Una vez confirmado, nuestro equipo te contactará para preparar tu diagnóstico personalizado.
+                    <strong className="text-foreground">{labels.important}</strong> {labels.paymentNote} <strong className="text-accent">$150 CAD</strong>. {labels.paymentNote2}
                   </p>
                 </div>
               </div>
@@ -327,18 +377,18 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
                 {isSubmitting ? (
                   <>
                     <div className="w-5 h-5 border-2 border-accent-foreground/30 border-t-accent-foreground rounded-full animate-spin" />
-                    Procesando...
+                    {labels.processing}
                   </>
                 ) : (
                   <>
                     <Send className="w-5 h-5" />
-                    Enviar y continuar al pago
+                    {labels.submit}
                   </>
                 )}
               </button>
 
               <p className="text-xs text-center text-muted-foreground">
-                Al enviar, aceptas que guardemos tus datos para contactarte.
+                {labels.disclaimer}
               </p>
             </form>
           </motion.div>

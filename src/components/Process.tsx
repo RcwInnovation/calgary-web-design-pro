@@ -2,38 +2,23 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Search, Palette, Code2, Rocket, TrendingUp } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
-const steps = [
-  {
-    icon: Search,
-    title: 'Descubrimiento',
-    description: 'Definición de objetivos, audiencias y métricas. Diagnóstico de oportunidades.',
-  },
-  {
-    icon: Palette,
-    title: 'Diseño',
-    description: 'UX/UI premium, arquitectura técnica y roadmap de entregas.',
-  },
-  {
-    icon: Code2,
-    title: 'Desarrollo',
-    description: 'Implementación ágil con seguridad y pruebas automatizadas.',
-  },
-  {
-    icon: Rocket,
-    title: 'Implementación',
-    description: 'Despliegue escalable, monitoreo y entrenamiento de equipos.',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Optimización',
-    description: 'Medición de KPIs e iteración para crecimiento sostenido.',
-  },
-];
+const stepIcons = [Search, Palette, Code2, Rocket, TrendingUp];
 
 export const Process = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const { t } = useLanguage();
+
+  const steps = Array.from({ length: 5 }, (_, i) => {
+    const num = i + 1;
+    return {
+      icon: stepIcons[i],
+      title: t(`process.step.${num}.title`),
+      description: t(`process.step.${num}.description`),
+    };
+  });
 
   return (
     <section id="proceso" className="section relative overflow-hidden">
@@ -48,13 +33,13 @@ export const Process = () => {
           className="text-center mb-16"
         >
           <span className="text-primary text-sm font-semibold tracking-wider uppercase">
-            Cómo trabajamos
+            {t('process.badge')}
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">
-            Nuestro proceso
+            {t('process.title')}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Un proceso transparente y eficiente que garantiza resultados medibles en cada etapa.
+            {t('process.subtitle')}
           </p>
         </motion.div>
 
