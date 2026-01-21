@@ -124,9 +124,10 @@ export default {
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-premium": "linear-gradient(135deg, hsl(217, 91%, 50%), hsl(217, 91%, 35%))",
-        "gradient-gold": "linear-gradient(135deg, hsl(43, 74%, 49%), hsl(43, 100%, 60%))",
-        "shimmer": "linear-gradient(90deg, transparent, hsl(217, 91%, 50%, 0.1), transparent)",
+        "gradient-premium": "linear-gradient(135deg, hsl(217, 91%, 50%), hsl(217, 91%, 40%))",
+        "gradient-gold": "linear-gradient(135deg, hsl(43, 74%, 49%), hsl(43, 100%, 55%))",
+        "gradient-light": "linear-gradient(180deg, hsl(210, 40%, 98%), hsl(0, 0%, 100%))",
+        "shimmer": "linear-gradient(90deg, transparent, hsl(217, 91%, 50%, 0.08), transparent)",
       },
     },
   },
