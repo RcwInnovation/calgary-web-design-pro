@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle, Zap, Calendar, ArrowLeft, AlertTriangle, Lightbulb } from 'lucide-react';
+import { ArrowRight, CheckCircle, Zap, Calendar, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-
 import { Chatbot } from '@/components/Chatbot';
 import { DiagnosticModal } from '@/components/DiagnosticModal';
 import { ConsultationModal } from '@/components/ConsultationModal';
 import { Button } from '@/components/ui/button';
 import { LucideIcon } from 'lucide-react';
-
+import { useLanguage } from '@/contexts/LanguageContext';
+import { ProblemSolutionJourney } from '@/components/ProblemSolutionJourney';
 interface ServiceFeature {
   title: string;
   description: string;
@@ -94,6 +94,7 @@ export const ServicePageLayout = ({
   const [isDiagnosticOpen, setIsDiagnosticOpen] = useState(false);
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const { t, language, getLocalizedPath } = useLanguage();
 
   // Scroll to top when component mounts
   useEffect(() => {
@@ -103,7 +104,7 @@ export const ServicePageLayout = ({
   return (
     <>
       <Helmet>
-        <html lang="es" />
+        <html lang={language} />
         <title>{metaTitle}</title>
         <meta name="description" content={metaDescription} />
         <meta name="keywords" content={keywords} />
@@ -114,7 +115,7 @@ export const ServicePageLayout = ({
         <meta property="og:type" content="website" />
         <meta property="og:title" content={metaTitle} />
         <meta property="og:description" content={metaDescription} />
-        <meta property="og:locale" content="es_CA" />
+        <meta property="og:locale" content={language === 'en' ? 'en_CA' : 'es_CA'} />
         <meta property="og:site_name" content="RCW Innovation Inc" />
         
         <meta name="twitter:card" content="summary_large_image" />
@@ -140,11 +141,11 @@ export const ServicePageLayout = ({
                 className="mb-8"
               >
                 <Link 
-                  to="/" 
+                  to={getLocalizedPath('/')} 
                   className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
                 >
                   <ArrowLeft className="w-4 h-4" />
-                  Volver al inicio
+                  {t('servicePage.backToHome')}
                 </Link>
               </motion.div>
 
@@ -178,7 +179,7 @@ export const ServicePageLayout = ({
                       className="btn-gold gap-2 text-lg py-6"
                     >
                       <Calendar className="w-5 h-5" />
-                      Solicitar Asesoría 5.0
+                      {t('servicePage.requestAdvisory')}
                     </Button>
                     <Button 
                       onClick={() => setIsDiagnosticOpen(true)}
@@ -186,7 +187,7 @@ export const ServicePageLayout = ({
                       className="gap-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground py-6"
                     >
                       <Zap className="w-5 h-5" />
-                      Consultoría 5.0
+                      {t('servicePage.consulting')}
                     </Button>
                   </div>
                 </motion.div>
@@ -232,55 +233,14 @@ export const ServicePageLayout = ({
             </section>
           )}
 
-          {/* Problem / Solution Section */}
-          {(problemTitle || solutionTitle) && (
-            <section className="py-20 bg-card/30">
-              <div className="container-custom">
-                <div className="grid lg:grid-cols-2 gap-12">
-                  {/* Problem */}
-                  {problemTitle && (
-                    <motion.div
-                      initial={{ opacity: 0, x: -30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6 }}
-                      className="glass-strong p-8 rounded-3xl border-destructive/20"
-                    >
-                      <div className="w-14 h-14 rounded-xl bg-destructive/10 flex items-center justify-center mb-6">
-                        <AlertTriangle className="w-7 h-7 text-destructive" />
-                      </div>
-                      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-destructive">
-                        {problemTitle}
-                      </h2>
-                      <p className="text-muted-foreground leading-relaxed">
-                        {problemDescription}
-                      </p>
-                    </motion.div>
-                  )}
-
-                  {/* Solution */}
-                  {solutionTitle && (
-                    <motion.div
-                      initial={{ opacity: 0, x: 30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: 0.2 }}
-                      className="glass-strong p-8 rounded-3xl border-accent/20"
-                    >
-                      <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
-                        <Lightbulb className="w-7 h-7 text-accent" />
-                      </div>
-                      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-accent">
-                        {solutionTitle}
-                      </h2>
-                      <p className="text-muted-foreground leading-relaxed">
-                        {solutionDescription}
-                      </p>
-                    </motion.div>
-                  )}
-                </div>
-              </div>
-            </section>
+          {/* Problem / Solution Journey */}
+          {(problemTitle && problemDescription && solutionTitle && solutionDescription) && (
+            <ProblemSolutionJourney
+              problemTitle={problemTitle}
+              problemDescription={problemDescription}
+              solutionTitle={solutionTitle}
+              solutionDescription={solutionDescription}
+            />
           )}
 
           {/* Capabilities Section (for AI pages) */}
@@ -295,10 +255,10 @@ export const ServicePageLayout = ({
                   className="text-center mb-16"
                 >
                   <span className="text-primary text-sm font-semibold tracking-wider uppercase">
-                    Capacidades
+                    {t('servicePage.capabilities')}
                   </span>
                   <h2 className="text-3xl md:text-4xl font-bold mt-4">
-                    Capacidades de IA
+                    {t('servicePage.aiCapabilities')}
                   </h2>
                 </motion.div>
 
@@ -333,10 +293,10 @@ export const ServicePageLayout = ({
                   className="text-center mb-16"
                 >
                   <span className="text-accent text-sm font-semibold tracking-wider uppercase">
-                    Aplicaciones
+                    {t('servicePage.applications')}
                   </span>
                   <h2 className="text-3xl md:text-4xl font-bold mt-4">
-                    Aplicaciones de IA
+                    {t('servicePage.aiApplications')}
                   </h2>
                 </motion.div>
 
@@ -373,10 +333,10 @@ export const ServicePageLayout = ({
                 className="text-center mb-16"
               >
                 <span className="text-primary text-sm font-semibold tracking-wider uppercase">
-                  Características
+                  {t('servicePage.features')}
                 </span>
                 <h2 className="text-3xl md:text-4xl font-bold mt-4">
-                  Lo que incluye este servicio
+                  {t('servicePage.featuresTitle')}
                 </h2>
               </motion.div>
 
@@ -412,7 +372,7 @@ export const ServicePageLayout = ({
                   transition={{ duration: 0.6 }}
                 >
                   <span className="text-accent text-sm font-semibold tracking-wider uppercase">
-                    Ventajas
+                    {t('servicePage.advantages')}
                   </span>
                   <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-8">
                     {benefitsTitle}
@@ -442,7 +402,7 @@ export const ServicePageLayout = ({
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="glass-strong p-8 rounded-3xl"
                 >
-                  <h3 className="text-2xl font-bold mb-6">¿Listo para empezar?</h3>
+                  <h3 className="text-2xl font-bold mb-6">{t('servicePage.readyToStart')}</h3>
                   <p className="text-muted-foreground mb-8">
                     {ctaText}
                   </p>
@@ -450,7 +410,7 @@ export const ServicePageLayout = ({
                     onClick={() => setIsConsultationOpen(true)}
                     className="w-full btn-gold gap-2 py-6"
                   >
-                    Agendar Asesoría
+                    {t('servicePage.scheduleAdvisory')}
                     <ArrowRight className="w-5 h-5" />
                   </Button>
                 </motion.div>
@@ -470,10 +430,10 @@ export const ServicePageLayout = ({
                   className="text-center mb-16"
                 >
                   <span className="text-primary text-sm font-semibold tracking-wider uppercase">
-                    Planes
+                    {t('servicePage.plans')}
                   </span>
                   <h2 className="text-3xl md:text-4xl font-bold mt-4">
-                    Planes de Agentes de IA
+                    {t('servicePage.aiAgentsPlans')}
                   </h2>
                 </motion.div>
 
@@ -489,14 +449,14 @@ export const ServicePageLayout = ({
                     >
                       {plan.highlighted && (
                         <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-primary-foreground text-sm font-semibold rounded-full">
-                          Más Popular
+                          {t('servicePage.mostPopular')}
                         </div>
                       )}
                       <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
                       <p className="text-muted-foreground text-sm mb-4">{plan.description}</p>
                       <div className="text-4xl font-bold text-primary mb-6">
                         {plan.price}
-                        <span className="text-lg text-muted-foreground font-normal">/mes</span>
+                        <span className="text-lg text-muted-foreground font-normal">{t('servicePage.perMonth')}</span>
                       </div>
                       
                       <ul className="space-y-3 mb-6">
@@ -510,9 +470,9 @@ export const ServicePageLayout = ({
 
                       {(plan.capacity || plan.setup || plan.extraLanguage) && (
                         <div className="pt-4 border-t border-border/50 space-y-2 text-sm text-muted-foreground">
-                          {plan.capacity && <p><strong>Capacidad:</strong> {plan.capacity}</p>}
-                          {plan.setup && <p><strong>Configuración:</strong> {plan.setup}</p>}
-                          {plan.extraLanguage && <p><strong>Idioma extra:</strong> {plan.extraLanguage}</p>}
+                          {plan.capacity && <p><strong>{t('servicePage.capacity')}:</strong> {plan.capacity}</p>}
+                          {plan.setup && <p><strong>{t('servicePage.setup')}:</strong> {plan.setup}</p>}
+                          {plan.extraLanguage && <p><strong>{t('servicePage.extraLanguage')}:</strong> {plan.extraLanguage}</p>}
                         </div>
                       )}
 
@@ -521,7 +481,7 @@ export const ServicePageLayout = ({
                         className={`w-full mt-6 ${plan.highlighted ? 'btn-gold' : ''}`}
                         variant={plan.highlighted ? 'default' : 'outline'}
                       >
-                        Seleccionar Plan
+                        {t('servicePage.selectPlan')}
                       </Button>
                     </motion.div>
                   ))}
@@ -542,10 +502,10 @@ export const ServicePageLayout = ({
                   className="text-center mb-12"
                 >
                   <span className="text-primary text-sm font-semibold tracking-wider uppercase">
-                    Stack Tecnológico
+                    {t('servicePage.techStack')}
                   </span>
                   <h2 className="text-3xl md:text-4xl font-bold mt-4">
-                    Tecnologías utilizadas
+                    {t('servicePage.techUsed')}
                   </h2>
                 </motion.div>
 
@@ -578,10 +538,10 @@ export const ServicePageLayout = ({
                 className="text-center mb-16"
               >
                 <span className="text-primary text-sm font-semibold tracking-wider uppercase">
-                  Metodología
+                  {t('servicePage.methodology')}
                 </span>
                 <h2 className="text-3xl md:text-4xl font-bold mt-4">
-                  Cómo lo hacemos
+                  {t('servicePage.howWeDoIt')}
                 </h2>
               </motion.div>
 
@@ -624,10 +584,10 @@ export const ServicePageLayout = ({
                 className="text-center mb-16"
               >
                 <span className="text-accent text-sm font-semibold tracking-wider uppercase">
-                  FAQ
+                  {t('servicePage.faq')}
                 </span>
                 <h2 className="text-3xl md:text-4xl font-bold mt-4">
-                  Preguntas frecuentes
+                  {t('servicePage.faqTitle')}
                 </h2>
               </motion.div>
 
@@ -684,7 +644,7 @@ export const ServicePageLayout = ({
                   {ctaText}
                 </h2>
                 <p className="text-lg text-muted-foreground mb-8">
-                  Agenda una sesión y descubre cómo podemos transformar tu negocio con soluciones a medida.
+                  {t('servicePage.ctaDescription')}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button 
@@ -692,7 +652,7 @@ export const ServicePageLayout = ({
                     className="btn-gold gap-2 text-lg py-6 px-8"
                   >
                     <Calendar className="w-5 h-5" />
-                    Agendar Asesoría
+                    {t('servicePage.scheduleAdvisory')}
                   </Button>
                   <Button 
                     onClick={() => setIsDiagnosticOpen(true)}
@@ -700,7 +660,7 @@ export const ServicePageLayout = ({
                     className="gap-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground py-6 px-8"
                   >
                     <Zap className="w-5 h-5" />
-                    Diagnóstico Express
+                    {t('servicePage.diagnosticExpress')}
                   </Button>
                 </div>
               </motion.div>
@@ -718,7 +678,7 @@ export const ServicePageLayout = ({
                 className="text-center mb-12"
               >
                 <h2 className="text-3xl md:text-4xl font-bold">
-                  Servicios relacionados
+                  {t('servicePage.relatedServices')}
                 </h2>
               </motion.div>
 
@@ -742,7 +702,7 @@ export const ServicePageLayout = ({
                         {service.title}
                       </h3>
                       <span className="text-sm text-primary mt-2 inline-flex items-center gap-1">
-                        Ver más <ArrowRight className="w-4 h-4" />
+                        {t('servicePage.viewMore')} <ArrowRight className="w-4 h-4" />
                       </span>
                     </Link>
                   </motion.div>
