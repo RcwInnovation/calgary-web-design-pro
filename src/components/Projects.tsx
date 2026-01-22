@@ -1,10 +1,15 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Bot, ShoppingCart, LayoutDashboard, ArrowUpRight, Globe, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-const projectIcons = [Globe, Bot, ShoppingCart, LayoutDashboard];
+import projectServiciosLatinos from '@/assets/project-servicios-latinos.jpg';
+import projectAiChatbot from '@/assets/project-ai-chatbot.jpg';
+import projectEcommerce from '@/assets/project-ecommerce.jpg';
+import projectErpDashboard from '@/assets/project-erp-dashboard.jpg';
+
+const projectImages = [projectServiciosLatinos, projectAiChatbot, projectEcommerce, projectErpDashboard];
 const projectResults = ['#1', '2.8×', '+38%', '-31%'];
 const projectLinks = ['https://servicioslatinoscanada.com/', undefined, undefined, undefined];
 
@@ -16,7 +21,7 @@ export const Projects = () => {
   const projects = Array.from({ length: 4 }, (_, i) => {
     const num = i + 1;
     return {
-      icon: projectIcons[i],
+      image: projectImages[i],
       title: t(`project.${num}.title`),
       description: t(`project.${num}.description`),
       result: projectResults[i],
@@ -71,9 +76,14 @@ export const Projects = () => {
                 </a>
               )}
 
-              {/* Icon */}
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                <project.icon className="w-6 h-6 text-primary" />
+              {/* Project Image */}
+              <div className="relative w-full h-40 rounded-xl overflow-hidden mb-4">
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
               </div>
 
               {/* Title & Description */}
