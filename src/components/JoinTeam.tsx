@@ -126,8 +126,7 @@ export const JoinTeam = () => {
             </p>
             <Button
               size="lg"
-              variant="outline"
-              className="w-full border-accent/50 hover:bg-accent hover:text-accent-foreground"
+              className="w-full bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent/70 text-accent-foreground shadow-glow-gold"
               onClick={() => handleApply(t('joinTeam.volunteer'))}
             >
               {t('joinTeam.applyVolunteer')}
