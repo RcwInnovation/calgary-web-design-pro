@@ -62,9 +62,9 @@ export const Clients = () => {
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
         <motion.div
-          className="flex gap-12 md:gap-20"
-          animate={{ x: isPaused ? undefined : [0, -3200] }}
-          transition={{ x: { duration: 45, repeat: Infinity, ease: 'linear' } }}
+          className="flex gap-6 md:gap-10"
+          animate={{ x: isPaused ? undefined : [0, -2800] }}
+          transition={{ x: { duration: 40, repeat: Infinity, ease: 'linear' } }}
         >
           {[...clients, ...clients, ...clients].map((client, index) => (
             <a
@@ -72,7 +72,7 @@ export const Clients = () => {
               href={client.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-shrink-0 w-40 md:w-52 h-14 md:h-16 flex items-center justify-center px-4 py-2 transition-all duration-300 hover:scale-105"
+              className="flex-shrink-0 w-48 md:w-60 h-16 md:h-20 flex items-center justify-center px-4 py-2 transition-all duration-300 hover:scale-105"
               aria-label={`Visit ${client.name}`}
             >
               <img 
@@ -94,7 +94,7 @@ export const Clients = () => {
               href={client.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="h-14 flex items-center justify-center px-4 py-2 transition-all duration-300"
+              className="h-16 flex items-center justify-center px-4 py-2 transition-all duration-300"
               aria-label={`Visit ${client.name}`}
             >
               <img 
