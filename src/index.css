@@ -190,4 +190,9 @@
   .animation-delay-600 {
     animation-delay: 600ms;
   }
+
+  /* Process step progress ring animation */
+  .group:hover .group-hover\:stroke-dashoffset-0 {
+    stroke-dashoffset: 0 !important;
+  }
 }
