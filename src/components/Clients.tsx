@@ -2,29 +2,37 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
+// Client logos
+import hotelVasconia from '@/assets/clients/hotel-vasconia.png';
+import hwCleaning from '@/assets/clients/hw-cleaning.png';
+import lifasServices from '@/assets/clients/lifas-services.png';
+import ninaJean from '@/assets/clients/nina-jean.png';
+import serviciosLatinos from '@/assets/clients/servicios-latinos.png';
+import theChamasServices from '@/assets/clients/the-chamas-services.png';
+import theBurrito from '@/assets/clients/the-burrito.png';
+import tuMexicoEnLaPiel from '@/assets/clients/tu-mexico-en-la-piel.png';
+import xploreCanada from '@/assets/clients/xplore-canada.png';
+import canadaOneClick from '@/assets/clients/canada-one-click.png';
+
 interface Client {
   id: number;
   name: string;
+  logo: string;
   url: string;
 }
 
 const clients: Client[] = [
-  { id: 1, name: 'Cliente 1', url: 'https://rcwinnovation.com/' },
-  { id: 2, name: 'Cliente 2', url: 'https://rcwinnovation.com/' },
-  { id: 3, name: 'Cliente 3', url: 'https://rcwinnovation.com/' },
-  { id: 4, name: 'Cliente 4', url: 'https://rcwinnovation.com/' },
-  { id: 5, name: 'Cliente 5', url: 'https://rcwinnovation.com/' },
-  { id: 6, name: 'Cliente 6', url: 'https://rcwinnovation.com/' },
-  { id: 7, name: 'Cliente 7', url: 'https://rcwinnovation.com/' },
-  { id: 8, name: 'Cliente 8', url: 'https://rcwinnovation.com/' },
+  { id: 1, name: 'Hotel Vasconia', logo: hotelVasconia, url: 'https://rcwinnovation.com/' },
+  { id: 2, name: 'HW Cleaning and Painting Services', logo: hwCleaning, url: 'https://rcwinnovation.com/' },
+  { id: 3, name: 'Lifas Services', logo: lifasServices, url: 'https://rcwinnovation.com/' },
+  { id: 4, name: 'Nina Jean Maintenance Renovation', logo: ninaJean, url: 'https://rcwinnovation.com/' },
+  { id: 5, name: 'Servicios Latinos Marketplace', logo: serviciosLatinos, url: 'https://servicioslatinoscanada.com/' },
+  { id: 6, name: 'The Chamas Services Inc', logo: theChamasServices, url: 'https://rcwinnovation.com/' },
+  { id: 7, name: 'The Burrito Mexican Food', logo: theBurrito, url: 'https://rcwinnovation.com/' },
+  { id: 8, name: 'Tu México en la Piel', logo: tuMexicoEnLaPiel, url: 'https://rcwinnovation.com/' },
+  { id: 9, name: 'Xplore Canada', logo: xploreCanada, url: 'https://rcwinnovation.com/' },
+  { id: 10, name: 'Canada One Click', logo: canadaOneClick, url: 'https://rcwinnovation.com/' },
 ];
-
-const LogoPlaceholder = ({ name }: { name: string }) => (
-  <svg viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <rect width="120" height="40" rx="4" fill="currentColor" fillOpacity="0.1" />
-    <text x="60" y="24" textAnchor="middle" fill="currentColor" fillOpacity="0.5" fontSize="10" fontWeight="500">{name}</text>
-  </svg>
-);
 
 export const Clients = () => {
   const [isPaused, setIsPaused] = useState(false);
@@ -54,9 +62,9 @@ export const Clients = () => {
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
         <motion.div
-          className="flex gap-8 md:gap-12"
-          animate={{ x: isPaused ? undefined : [0, -1920] }}
-          transition={{ x: { duration: 30, repeat: Infinity, ease: 'linear' } }}
+          className="flex gap-8 md:gap-16"
+          animate={{ x: isPaused ? undefined : [0, -2400] }}
+          transition={{ x: { duration: 40, repeat: Infinity, ease: 'linear' } }}
         >
           {[...clients, ...clients, ...clients].map((client, index) => (
             <a
@@ -64,27 +72,36 @@ export const Clients = () => {
               href={client.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-shrink-0 w-32 md:w-40 h-12 md:h-14 flex items-center justify-center text-muted-foreground/60 hover:text-foreground/80 transition-all duration-300 hover:scale-110 filter grayscale hover:grayscale-0"
+              className="flex-shrink-0 w-28 md:w-36 h-16 md:h-20 flex items-center justify-center transition-all duration-300 hover:scale-110"
               aria-label={`Visit ${client.name}`}
             >
-              <LogoPlaceholder name={client.name} />
+              <img 
+                src={client.logo} 
+                alt={client.name}
+                className="max-w-full max-h-full object-contain"
+              />
             </a>
           ))}
         </motion.div>
       </div>
 
+      {/* Mobile grid fallback */}
       <div className="container-custom mt-8 md:hidden">
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 gap-6">
           {clients.map((client) => (
             <a
               key={client.id}
               href={client.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="h-10 flex items-center justify-center text-muted-foreground/60 hover:text-foreground/80 transition-all duration-300"
+              className="h-16 flex items-center justify-center transition-all duration-300"
               aria-label={`Visit ${client.name}`}
             >
-              <LogoPlaceholder name={client.name} />
+              <img 
+                src={client.logo} 
+                alt={client.name}
+                className="max-w-full max-h-full object-contain"
+              />
             </a>
           ))}
         </div>
