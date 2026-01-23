@@ -78,7 +78,7 @@ export const Clients = () => {
               <img 
                 src={client.logo} 
                 alt={client.name}
-                className="max-w-full max-h-full object-contain filter brightness-100 hover:brightness-110 transition-all"
+                className="max-w-full max-h-full object-contain rounded-lg filter brightness-100 hover:brightness-110 transition-all"
               />
             </a>
           ))}
@@ -100,7 +100,7 @@ export const Clients = () => {
               <img 
                 src={client.logo} 
                 alt={client.name}
-                className="max-w-full max-h-full object-contain"
+                className="max-w-full max-h-full object-contain rounded-lg"
               />
             </a>
           ))}
