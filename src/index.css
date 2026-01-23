@@ -6,60 +6,60 @@
 
 @layer base {
   :root {
-    /* Premium Light Theme - Blue & Gold Accents */
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    /* Premium Dark Theme - Blue & Gold Accents */
+    --background: 222 41% 7%;
+    --foreground: 0 0% 100%;
 
-    --card: 210 40% 98%;
-    --card-foreground: 222 47% 11%;
+    --card: 222 41% 12%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover: 222 41% 12%;
+    --popover-foreground: 0 0% 100%;
 
-    /* Blue Primary (from logo) */
-    --primary: 217 91% 50%;
+    /* Blue Primary (CTA primario) */
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 217 91% 60%;
+    --primary-glow: 217 91% 53%;
 
-    /* Gold Accent (from logo) */
-    --accent: 43 74% 49%;
-    --accent-foreground: 0 0% 100%;
-    --accent-glow: 43 100% 55%;
+    /* Gold Accent (CTA secundario) */
+    --accent: 42 75% 61%;
+    --accent-foreground: 222 41% 7%;
+    --accent-glow: 43 82% 46%;
 
-    --secondary: 217 32% 95%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 222 41% 12%;
+    --secondary-foreground: 220 25% 85%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 222 41% 15%;
+    --muted-foreground: 215 12% 65%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 217 91% 50%;
+    --border: 0 0% 100% / 0.08;
+    --input: 0 0% 100% / 0.08;
+    --ring: 217 91% 60%;
 
     --radius: 0.75rem;
 
     /* Custom Premium Variables */
-    --glass-bg: 0 0% 100% / 0.9;
-    --glass-border: 214 32% 91% / 0.5;
-    --gradient-primary: linear-gradient(135deg, hsl(217, 91%, 50%), hsl(217, 91%, 40%));
-    --gradient-gold: linear-gradient(135deg, hsl(43, 74%, 49%), hsl(43, 100%, 55%));
-    --gradient-light: linear-gradient(180deg, hsl(210, 40%, 98%), hsl(0, 0%, 100%));
-    --shadow-glow-blue: 0 0 40px hsl(217 91% 50% / 0.15);
-    --shadow-glow-gold: 0 0 40px hsl(43 74% 49% / 0.2);
-    --shadow-premium: 0 25px 50px -12px hsl(222 47% 11% / 0.1);
+    --glass-bg: 222 41% 12% / 0.9;
+    --glass-border: 0 0% 100% / 0.08;
+    --gradient-primary: linear-gradient(135deg, hsl(217, 91%, 60%), hsl(217, 91%, 53%));
+    --gradient-gold: linear-gradient(135deg, hsl(42, 75%, 61%), hsl(43, 82%, 46%));
+    --gradient-dark: linear-gradient(180deg, hsl(222, 41%, 7%), hsl(222, 41%, 12%));
+    --shadow-glow-blue: 0 0 40px hsl(217 91% 60% / 0.25);
+    --shadow-glow-gold: 0 0 40px hsl(42 75% 61% / 0.25);
+    --shadow-premium: 0 25px 50px -12px hsl(0 0% 0% / 0.5);
 
     /* Sidebar */
-    --sidebar-background: 210 40% 98%;
-    --sidebar-foreground: 222 47% 11%;
-    --sidebar-primary: 217 91% 50%;
+    --sidebar-background: 222 41% 12%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 217 91% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 217 32% 95%;
-    --sidebar-accent-foreground: 222 47% 11%;
-    --sidebar-border: 214 32% 91%;
-    --sidebar-ring: 217 91% 50%;
+    --sidebar-accent: 222 41% 15%;
+    --sidebar-accent-foreground: 220 25% 85%;
+    --sidebar-border: 0 0% 100% / 0.08;
+    --sidebar-ring: 217 91% 60%;
   }
 }
 
@@ -96,20 +96,20 @@
 }
 
 @layer components {
-  /* Glass morphism - Light theme */
+  /* Glass morphism - Dark theme */
   .glass {
-    @apply bg-white/80 backdrop-blur-xl border border-border shadow-sm;
+    @apply bg-card/80 backdrop-blur-xl border border-border shadow-sm;
   }
 
   .glass-strong {
-    @apply bg-white/95 backdrop-blur-2xl border border-border shadow-md;
+    @apply bg-card/95 backdrop-blur-2xl border border-border shadow-md;
   }
 
   /* Premium buttons */
   .btn-primary {
     @apply bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-lg
            shadow-lg transition-all duration-300 hover:shadow-glow-blue
-           hover:scale-105 active:scale-95 hover:bg-primary/90;
+           hover:scale-105 active:scale-95 hover:bg-primary-glow;
   }
 
   .btn-gold {
@@ -119,15 +119,16 @@
   }
 
   .btn-glass {
-    @apply bg-white/80 backdrop-blur-xl border border-border px-6 py-3 rounded-lg font-medium transition-all duration-300
-           hover:bg-muted hover:border-primary/50 shadow-sm;
+    @apply bg-card/80 backdrop-blur-xl border border-border px-6 py-3 rounded-lg font-medium transition-all duration-300
+           hover:bg-muted hover:border-primary/50 shadow-sm text-foreground;
   }
 
   /* Card premium */
   .card-premium {
-    @apply bg-white rounded-2xl p-6 transition-all duration-500 border border-border shadow-md
+    @apply bg-card rounded-2xl p-6 transition-all duration-500 border border-border shadow-md
            hover:border-primary/30 hover:shadow-glow-blue;
   }
+
   /* Gradient text */
   .text-gradient-blue {
     @apply bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent;
