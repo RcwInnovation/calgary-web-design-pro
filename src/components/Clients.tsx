@@ -62,9 +62,9 @@ export const Clients = () => {
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
         <motion.div
-          className="flex gap-8 md:gap-16"
-          animate={{ x: isPaused ? undefined : [0, -2400] }}
-          transition={{ x: { duration: 40, repeat: Infinity, ease: 'linear' } }}
+          className="flex gap-12 md:gap-20"
+          animate={{ x: isPaused ? undefined : [0, -3200] }}
+          transition={{ x: { duration: 45, repeat: Infinity, ease: 'linear' } }}
         >
           {[...clients, ...clients, ...clients].map((client, index) => (
             <a
@@ -72,13 +72,13 @@ export const Clients = () => {
               href={client.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-shrink-0 w-28 md:w-36 h-16 md:h-20 flex items-center justify-center transition-all duration-300 hover:scale-110"
+              className="flex-shrink-0 w-40 md:w-52 h-14 md:h-16 flex items-center justify-center px-4 py-2 rounded-xl bg-card/30 backdrop-blur-sm border border-border/30 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:bg-card/50"
               aria-label={`Visit ${client.name}`}
             >
               <img 
                 src={client.logo} 
                 alt={client.name}
-                className="max-w-full max-h-full object-contain"
+                className="max-w-full max-h-full object-contain filter brightness-100 hover:brightness-110 transition-all"
               />
             </a>
           ))}
@@ -87,14 +87,14 @@ export const Clients = () => {
 
       {/* Mobile grid fallback */}
       <div className="container-custom mt-8 md:hidden">
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 gap-4">
           {clients.map((client) => (
             <a
               key={client.id}
               href={client.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="h-16 flex items-center justify-center transition-all duration-300"
+              className="h-14 flex items-center justify-center px-4 py-2 rounded-xl bg-card/30 backdrop-blur-sm border border-border/30 transition-all duration-300"
               aria-label={`Visit ${client.name}`}
             >
               <img 
