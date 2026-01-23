@@ -12,10 +12,10 @@ interface ConsultationModalProps {
   onClose: () => void;
 }
 
-const WHATSAPP_NUMBER = '5878961997';
+const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/ceo@rcwinnovation.com';
 
 export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) => {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -43,7 +43,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
         'Other',
       ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -54,42 +54,52 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
       return;
     }
 
-    // Build WhatsApp message
-    const messageTemplate = language === 'es'
-      ? `Hola, quiero agendar una asesoría estratégica para mi proyecto web.\n\n👤 Nombre: ${formData.name}\n📧 Email: ${formData.email || 'No proporcionado'}\n📱 Teléfono: ${formData.phone}\n🏢 Negocio: ${formData.business || 'No especificado'}\n💡 Interés: ${formData.interest}`
-      : `Hello, I want to schedule a strategic consultation for my web project.\n\n👤 Name: ${formData.name}\n📧 Email: ${formData.email || 'Not provided'}\n📱 Phone: ${formData.phone}\n🏢 Business: ${formData.business || 'Not specified'}\n💡 Interest: ${formData.interest}`;
+    try {
+      const response = await fetch(FORMSUBMIT_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: language === 'es' 
+            ? `Nueva solicitud de asesoría - ${formData.name}` 
+            : `New consultation request - ${formData.name}`,
+          _replyto: formData.email || 'info@rcwinnovation.com',
+          Nombre: formData.name,
+          Email: formData.email || (language === 'es' ? 'No proporcionado' : 'Not provided'),
+          Teléfono: formData.phone,
+          Negocio: formData.business || (language === 'es' ? 'No especificado' : 'Not specified'),
+          Interés: formData.interest,
+          Idioma: language === 'es' ? 'Español' : 'English',
+          Fecha: new Date().toLocaleString(language === 'es' ? 'es-CO' : 'en-CA'),
+        }),
+      });
 
-    const message = encodeURIComponent(messageTemplate);
+      if (response.ok) {
+        toast.success(language === 'es' 
+          ? '¡Mensaje enviado! Te contactaremos pronto.' 
+          : 'Message sent! We will contact you soon.');
+        
+        // Save to localStorage
+        localStorage.setItem('rcw_consultation_data', JSON.stringify({
+          ...formData,
+          submittedAt: new Date().toISOString(),
+        }));
 
-    // Use intent:// for Android, whatsapp:// for iOS, fallback to wa.me for desktop
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    const isAndroid = /Android/i.test(navigator.userAgent);
-    
-    let whatsappUrl: string;
-    if (isMobile) {
-      if (isAndroid) {
-        whatsappUrl = `intent://send?phone=${WHATSAPP_NUMBER}&text=${message}#Intent;scheme=whatsapp;package=com.whatsapp;end`;
+        setFormData({ name: '', email: '', phone: '', business: '', interest: '' });
+        onClose();
       } else {
-        whatsappUrl = `whatsapp://send?phone=${WHATSAPP_NUMBER}&text=${message}`;
+        throw new Error('Failed to send');
       }
-    } else {
-      whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
-    }
-
-    // Save to localStorage
-    localStorage.setItem('rcw_consultation_data', JSON.stringify({
-      ...formData,
-      submittedAt: new Date().toISOString(),
-    }));
-
-    toast.success(language === 'es' ? '¡Redirigiendo a WhatsApp!' : 'Redirecting to WhatsApp!');
-
-    setTimeout(() => {
-      window.open(whatsappUrl, '_blank');
+    } catch (error) {
+      console.error('Error sending form:', error);
+      toast.error(language === 'es' 
+        ? 'Error al enviar. Por favor intenta de nuevo.' 
+        : 'Error sending. Please try again.');
+    } finally {
       setIsSubmitting(false);
-      onClose();
-      setFormData({ name: '', email: '', phone: '', business: '', interest: '' });
-    }, 500);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -101,7 +111,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
 
   const labels = {
     title: language === 'es' ? 'Asesoría' : 'Consultation',
-    subtitle: language === 'es' ? 'Completa tus datos y te contactaremos por WhatsApp' : 'Fill in your details and we will contact you via WhatsApp',
+    subtitle: language === 'es' ? 'Completa tus datos y te contactaremos pronto' : 'Fill in your details and we will contact you soon',
     name: language === 'es' ? 'Nombre completo *' : 'Full name *',
     namePlaceholder: language === 'es' ? 'Tu nombre' : 'Your name',
     email: language === 'es' ? 'Correo electrónico' : 'Email',
@@ -111,9 +121,9 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
     business: language === 'es' ? 'Nombre del negocio' : 'Business name',
     businessPlaceholder: language === 'es' ? 'Tu empresa o negocio' : 'Your company or business',
     interest: language === 'es' ? '¿En qué estás interesado? *' : 'What are you interested in? *',
-    submit: language === 'es' ? 'Continuar a WhatsApp' : 'Continue to WhatsApp',
-    processing: language === 'es' ? 'Procesando...' : 'Processing...',
-    disclaimer: language === 'es' ? 'Al enviar, serás redirigido a WhatsApp para confirmar tu asesoría' : 'By submitting, you will be redirected to WhatsApp to confirm your consultation',
+    submit: language === 'es' ? 'Quiero asesoría' : 'I want a consultation',
+    processing: language === 'es' ? 'Enviando...' : 'Sending...',
+    disclaimer: language === 'es' ? 'Tu información será enviada de forma segura a nuestro equipo' : 'Your information will be securely sent to our team',
   };
 
   return (
