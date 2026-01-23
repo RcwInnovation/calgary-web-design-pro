@@ -39,7 +39,7 @@ export const Clients = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-16 md:py-24 overflow-hidden border-y border-border/20">
+    <section className="py-16 md:py-24 overflow-hidden border-y border-background">
       <div className="container-custom mb-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -72,7 +72,7 @@ export const Clients = () => {
               href={client.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-shrink-0 w-40 md:w-52 h-14 md:h-16 flex items-center justify-center px-4 py-2 rounded-xl bg-card/30 backdrop-blur-sm border border-border/30 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:bg-card/50"
+              className="flex-shrink-0 w-40 md:w-52 h-14 md:h-16 flex items-center justify-center px-4 py-2 transition-all duration-300 hover:scale-105"
               aria-label={`Visit ${client.name}`}
             >
               <img 
@@ -94,7 +94,7 @@ export const Clients = () => {
               href={client.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="h-14 flex items-center justify-center px-4 py-2 rounded-xl bg-card/30 backdrop-blur-sm border border-border/30 transition-all duration-300"
+              className="h-14 flex items-center justify-center px-4 py-2 transition-all duration-300"
               aria-label={`Visit ${client.name}`}
             >
               <img 
