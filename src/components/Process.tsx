@@ -45,9 +45,6 @@ export const Process = () => {
 
         {/* Steps */}
         <div className="relative">
-          {/* Connection Line - Desktop */}
-          <div className="hidden lg:block absolute top-[72%] left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-accent to-primary" />
-
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4">
             {steps.map((step, index) => (
               <motion.div
@@ -55,20 +52,50 @@ export const Process = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="relative text-center group"
+                className="relative text-center group cursor-pointer"
+                whileHover={{ scale: 1.05 }}
               >
-                {/* Step Number Circle */}
-                <div className="relative z-10 w-16 h-16 mx-auto mb-4 rounded-full bg-card border-2 border-primary flex items-center justify-center group-hover:border-accent transition-colors duration-300">
-                  <step.icon className="w-7 h-7 text-primary group-hover:text-accent transition-colors duration-300" />
+                {/* Step Number Circle with loading animation */}
+                <div className="relative z-10 w-16 h-16 mx-auto mb-4">
+                  {/* Progress ring background */}
+                  <svg className="absolute inset-0 w-full h-full -rotate-90">
+                    <circle
+                      cx="32"
+                      cy="32"
+                      r="30"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      className="text-border/30"
+                    />
+                    <circle
+                      cx="32"
+                      cy="32"
+                      r="30"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeDasharray="188.5"
+                      strokeDashoffset="188.5"
+                      className="text-primary transition-all duration-700 ease-out group-hover:stroke-dashoffset-0"
+                      style={{ strokeDashoffset: 'var(--progress-offset, 188.5)' }}
+                    />
+                  </svg>
+                  {/* Inner circle */}
+                  <div className="absolute inset-1 rounded-full bg-card border border-border/50 flex items-center justify-center group-hover:border-primary/50 group-hover:bg-primary/10 transition-all duration-500">
+                    <step.icon className="w-7 h-7 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
+                  </div>
+                  {/* Glow effect on hover */}
+                  <div className="absolute inset-0 rounded-full bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
                 {/* Step Number Badge */}
-                <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center z-20">
+                <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-muted text-muted-foreground text-xs font-bold flex items-center justify-center z-20 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                   {index + 1}
                 </span>
 
-                <h3 className="font-semibold mb-2">{step.title}</h3>
-                <p className="text-sm text-muted-foreground">{step.description}</p>
+                <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors duration-300">{step.title}</h3>
+                <p className="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">{step.description}</p>
               </motion.div>
             ))}
           </div>
