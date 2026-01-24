@@ -57,12 +57,13 @@ export const Clients = () => {
         </motion.div>
       </div>
 
-      <div className="relative" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+      {/* Desktop: Infinite slider */}
+      <div className="hidden md:block relative" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
         <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
         <motion.div
-          className="flex gap-6 md:gap-10"
+          className="flex gap-10"
           animate={{ x: isPaused ? undefined : [0, -2800] }}
           transition={{ x: { duration: 40, repeat: Infinity, ease: 'linear' } }}
         >
@@ -72,7 +73,7 @@ export const Clients = () => {
               href={client.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-shrink-0 w-48 md:w-60 h-16 md:h-20 flex items-center justify-center px-4 py-2 transition-all duration-300 hover:scale-105"
+              className="flex-shrink-0 w-60 h-20 flex items-center justify-center px-4 py-2 transition-all duration-300 hover:scale-105"
               aria-label={`Visit ${client.name}`}
             >
               <img 
@@ -85,25 +86,30 @@ export const Clients = () => {
         </motion.div>
       </div>
 
-      {/* Mobile grid fallback */}
-      <div className="container-custom mt-8 md:hidden">
-        <div className="grid grid-cols-2 gap-4">
-          {clients.map((client) => (
-            <a
-              key={client.id}
-              href={client.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="h-16 flex items-center justify-center px-4 py-2 transition-all duration-300"
-              aria-label={`Visit ${client.name}`}
-            >
-              <img 
-                src={client.logo} 
-                alt={client.name}
-                className="max-w-full max-h-full object-contain rounded-lg"
-              />
-            </a>
-          ))}
+      {/* Mobile: Single line horizontal scroll */}
+      <div className="md:hidden relative">
+        <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+        
+        <div className="overflow-x-auto scrollbar-hide px-4">
+          <div className="flex gap-6 w-max py-2">
+            {clients.map((client) => (
+              <a
+                key={client.id}
+                href={client.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-shrink-0 w-32 h-12 flex items-center justify-center transition-all duration-300"
+                aria-label={`Visit ${client.name}`}
+              >
+                <img 
+                  src={client.logo} 
+                  alt={client.name}
+                  className="max-w-full max-h-full object-contain rounded-lg"
+                />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>

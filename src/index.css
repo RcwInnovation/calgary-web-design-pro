@@ -195,4 +195,13 @@
   .group:hover .group-hover\:stroke-dashoffset-0 {
     stroke-dashoffset: 0 !important;
   }
+
+  /* Hide scrollbar for horizontal scroll */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }

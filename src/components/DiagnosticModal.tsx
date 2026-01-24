@@ -153,17 +153,22 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-background/80 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-background/80 backdrop-blur-sm"
           onClick={onClose}
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.2 }}
-            className="w-full max-w-lg glass-strong rounded-2xl overflow-hidden max-h-[95vh] sm:max-h-[90vh] overflow-y-auto"
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 100 }}
+            transition={{ duration: 0.3, type: 'spring', damping: 25 }}
+            className="w-full sm:max-w-lg glass-strong rounded-t-3xl sm:rounded-2xl overflow-hidden max-h-[90vh] sm:max-h-[85vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Mobile drag indicator */}
+            <div className="sm:hidden flex justify-center pt-3 pb-1">
+              <div className="w-10 h-1 rounded-full bg-muted-foreground/30" />
+            </div>
+
             {/* Header */}
             <div className="bg-gradient-to-r from-primary to-primary/80 p-4 sm:p-6 flex items-center justify-between">
               <div className="flex items-center gap-3">
@@ -171,8 +176,8 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
                   <Zap className="w-5 h-5 text-primary-foreground" />
                 </div>
                 <div>
-                  <h2 className="text-lg font-bold text-primary-foreground">{labels.title}</h2>
-                  <p className="text-sm text-primary-foreground/70">{labels.subtitle}</p>
+                  <h2 className="text-base sm:text-lg font-bold text-primary-foreground">{labels.title}</h2>
+                  <p className="text-xs sm:text-sm text-primary-foreground/70">{labels.subtitle}</p>
                 </div>
               </div>
               <button
@@ -185,7 +190,7 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4 sm:space-y-5">
+            <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-3 sm:space-y-4">
               {/* Nombre */}
               <div>
                 <label htmlFor="nombre" className="block text-sm font-medium mb-2">
@@ -355,14 +360,14 @@ export const DiagnosticModal = ({ isOpen, onClose }: DiagnosticModalProps) => {
               </div>
 
               {/* Note before submit */}
-              <div className="p-4 rounded-xl bg-accent/10 border border-accent/20 space-y-3">
+              <div className="p-3 sm:p-4 rounded-xl bg-accent/10 border border-accent/20 space-y-2 sm:space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-foreground">{labels.diagnosticLabel}</span>
-                  <span className="text-lg font-bold text-accent">$150 CAD</span>
+                  <span className="text-xs sm:text-sm font-medium text-foreground">{labels.diagnosticLabel}</span>
+                  <span className="text-base sm:text-lg font-bold text-accent">$150 CAD</span>
                 </div>
-                <div className="flex gap-3">
-                  <AlertCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                  <p className="text-sm text-muted-foreground">
+                <div className="flex gap-2 sm:gap-3">
+                  <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-accent flex-shrink-0 mt-0.5" />
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                     <strong className="text-foreground">{labels.important}</strong> {labels.paymentNote} <strong className="text-accent">$150 CAD</strong>. {labels.paymentNote2}
                   </p>
                 </div>
