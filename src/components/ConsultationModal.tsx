@@ -173,30 +173,30 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="p-3 sm:p-5 space-y-2.5 sm:space-y-3">
-              {/* Two column layout */}
-              <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
-                {/* Name */}
-                <div className="space-y-1 sm:space-y-1.5">
-                  <Label htmlFor="name" className="flex items-center gap-1.5 text-xs sm:text-sm">
-                    <User className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
-                    {labels.name}
-                  </Label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder={labels.namePlaceholder}
-                    required
-                    className="bg-muted/30 border-border/50 focus:border-primary h-9 sm:h-10 text-sm"
-                  />
-                </div>
+            <form onSubmit={handleSubmit} className="p-4 sm:p-5 space-y-3 sm:space-y-4">
+              {/* Name - Full width on mobile */}
+              <div className="space-y-1.5">
+                <Label htmlFor="name" className="flex items-center gap-2 text-xs sm:text-sm">
+                  <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
+                  {labels.name}
+                </Label>
+                <Input
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder={labels.namePlaceholder}
+                  required
+                  className="bg-muted/30 border-border/50 focus:border-primary h-10 sm:h-11 text-sm"
+                />
+              </div>
 
+              {/* Email and Phone - Stack on mobile, side by side on desktop */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {/* Email */}
-                <div className="space-y-1 sm:space-y-1.5">
-                  <Label htmlFor="email" className="flex items-center gap-1.5 text-xs sm:text-sm">
-                    <Mail className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
+                <div className="space-y-1.5">
+                  <Label htmlFor="email" className="flex items-center gap-2 text-xs sm:text-sm">
+                    <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
                     {labels.email}
                   </Label>
                   <Input
@@ -206,17 +206,14 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
                     value={formData.email}
                     onChange={handleChange}
                     placeholder={labels.emailPlaceholder}
-                    className="bg-muted/30 border-border/50 focus:border-primary h-9 sm:h-10 text-sm"
+                    className="bg-muted/30 border-border/50 focus:border-primary h-10 sm:h-11 text-sm"
                   />
                 </div>
-              </div>
 
-              {/* Two column layout */}
-              <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
                 {/* Phone */}
-                <div className="space-y-1 sm:space-y-1.5">
-                  <Label htmlFor="phone" className="flex items-center gap-1.5 text-xs sm:text-sm">
-                    <Phone className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
+                <div className="space-y-1.5">
+                  <Label htmlFor="phone" className="flex items-center gap-2 text-xs sm:text-sm">
+                    <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
                     {labels.phone}
                   </Label>
                   <Input
@@ -227,39 +224,39 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
                     onChange={handleChange}
                     placeholder={labels.phonePlaceholder}
                     required
-                    className="bg-muted/30 border-border/50 focus:border-primary h-9 sm:h-10 text-sm"
-                  />
-                </div>
-
-                {/* Business */}
-                <div className="space-y-1 sm:space-y-1.5">
-                  <Label htmlFor="business" className="flex items-center gap-1.5 text-xs sm:text-sm">
-                    <Building2 className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
-                    {labels.business}
-                  </Label>
-                  <Input
-                    id="business"
-                    name="business"
-                    value={formData.business}
-                    onChange={handleChange}
-                    placeholder={labels.businessPlaceholder}
-                    className="bg-muted/30 border-border/50 focus:border-primary h-9 sm:h-10 text-sm"
+                    className="bg-muted/30 border-border/50 focus:border-primary h-10 sm:h-11 text-sm"
                   />
                 </div>
               </div>
 
-              {/* Interest */}
-              <div className="space-y-1.5 sm:space-y-2">
+              {/* Business - Full width */}
+              <div className="space-y-1.5">
+                <Label htmlFor="business" className="flex items-center gap-2 text-xs sm:text-sm">
+                  <Building2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
+                  {labels.business}
+                </Label>
+                <Input
+                  id="business"
+                  name="business"
+                  value={formData.business}
+                  onChange={handleChange}
+                  placeholder={labels.businessPlaceholder}
+                  className="bg-muted/30 border-border/50 focus:border-primary h-10 sm:h-11 text-sm"
+                />
+              </div>
+
+              {/* Interest - 2 cols on mobile, 3 on desktop */}
+              <div className="space-y-2">
                 <Label className="text-xs sm:text-sm">{labels.interest}</Label>
-                <div className="grid grid-cols-3 gap-1.5">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {interestOptions.map((option) => (
                     <button
                       key={option}
                       type="button"
                       onClick={() => setFormData(prev => ({ ...prev, interest: option }))}
-                      className={`p-1.5 sm:p-2 text-[10px] sm:text-xs rounded-lg border transition-all leading-tight ${
+                      className={`p-2.5 sm:p-2 text-xs sm:text-xs rounded-xl border transition-all leading-tight ${
                         formData.interest === option
-                          ? 'border-primary bg-primary/20 text-foreground'
+                          ? 'border-primary bg-primary/20 text-foreground font-medium'
                           : 'border-border/50 bg-muted/20 text-muted-foreground hover:border-primary/50'
                       }`}
                     >
@@ -273,7 +270,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full btn-gold py-2.5 sm:py-3 text-sm font-semibold mt-3"
+                className="w-full btn-gold py-3 sm:py-3 text-sm font-semibold mt-2"
               >
                 {isSubmitting ? (
                   <span className="flex items-center gap-2">
@@ -293,7 +290,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
                 )}
               </Button>
 
-              <p className="text-[10px] sm:text-xs text-center text-muted-foreground pb-1">
+              <p className="text-[10px] sm:text-xs text-center text-muted-foreground">
                 {labels.disclaimer}
               </p>
             </form>
