@@ -130,7 +130,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -146,117 +146,118 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
 
           {/* Modal */}
           <motion.div
-            className="relative w-full sm:max-w-md glass-strong rounded-t-3xl sm:rounded-2xl overflow-hidden max-h-[90vh] sm:max-h-[85vh] overflow-y-auto"
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 100 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+            className="relative w-full max-w-md glass-strong rounded-2xl overflow-hidden max-h-[80vh] overflow-y-auto"
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ duration: 0.2 }}
           >
-            {/* Mobile drag indicator */}
-            <div className="sm:hidden flex justify-center pt-3 pb-1">
-              <div className="w-10 h-1 rounded-full bg-muted-foreground/30" />
-            </div>
-
             {/* Header */}
-            <div className="relative p-4 sm:p-6 pb-3 sm:pb-4 border-b border-border/30">
+            <div className="relative p-3 sm:p-5 pb-2 sm:pb-3 border-b border-border/30">
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-accent to-primary" />
               
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 p-2 rounded-full hover:bg-muted/50 transition-colors"
+                className="absolute top-3 right-3 p-1.5 rounded-full hover:bg-muted/50 transition-colors"
                 aria-label={language === 'es' ? 'Cerrar modal' : 'Close modal'}
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
 
-              <h2 className="text-lg sm:text-xl md:text-2xl font-bold pr-8">
+              <h2 className="text-base sm:text-xl font-bold pr-8">
                 {language === 'es' ? 'Agenda tu' : 'Schedule your'} <span className="text-gradient-gold">{labels.title}</span>
               </h2>
-              <p className="text-xs sm:text-sm text-muted-foreground mt-1 sm:mt-2">
+              <p className="text-[10px] sm:text-sm text-muted-foreground mt-1">
                 {labels.subtitle}
               </p>
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-3">
-              {/* Name */}
-              <div className="space-y-2">
-                <Label htmlFor="name" className="flex items-center gap-2 text-sm">
-                  <User className="w-4 h-4 text-primary" />
-                  {labels.name}
-                </Label>
-                <Input
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder={labels.namePlaceholder}
-                  required
-                  className="bg-muted/30 border-border/50 focus:border-primary"
-                />
+            <form onSubmit={handleSubmit} className="p-3 sm:p-5 space-y-2.5 sm:space-y-3">
+              {/* Two column layout */}
+              <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
+                {/* Name */}
+                <div className="space-y-1 sm:space-y-1.5">
+                  <Label htmlFor="name" className="flex items-center gap-1.5 text-xs sm:text-sm">
+                    <User className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
+                    {labels.name}
+                  </Label>
+                  <Input
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder={labels.namePlaceholder}
+                    required
+                    className="bg-muted/30 border-border/50 focus:border-primary h-9 sm:h-10 text-sm"
+                  />
+                </div>
+
+                {/* Email */}
+                <div className="space-y-1 sm:space-y-1.5">
+                  <Label htmlFor="email" className="flex items-center gap-1.5 text-xs sm:text-sm">
+                    <Mail className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
+                    {labels.email}
+                  </Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder={labels.emailPlaceholder}
+                    className="bg-muted/30 border-border/50 focus:border-primary h-9 sm:h-10 text-sm"
+                  />
+                </div>
               </div>
 
-              {/* Email */}
-              <div className="space-y-2">
-                <Label htmlFor="email" className="flex items-center gap-2 text-sm">
-                  <Mail className="w-4 h-4 text-primary" />
-                  {labels.email}
-                </Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder={labels.emailPlaceholder}
-                  className="bg-muted/30 border-border/50 focus:border-primary"
-                />
-              </div>
+              {/* Two column layout */}
+              <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
+                {/* Phone */}
+                <div className="space-y-1 sm:space-y-1.5">
+                  <Label htmlFor="phone" className="flex items-center gap-1.5 text-xs sm:text-sm">
+                    <Phone className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
+                    {labels.phone}
+                  </Label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder={labels.phonePlaceholder}
+                    required
+                    className="bg-muted/30 border-border/50 focus:border-primary h-9 sm:h-10 text-sm"
+                  />
+                </div>
 
-              {/* Phone */}
-              <div className="space-y-2">
-                <Label htmlFor="phone" className="flex items-center gap-2 text-sm">
-                  <Phone className="w-4 h-4 text-primary" />
-                  {labels.phone}
-                </Label>
-                <Input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder={labels.phonePlaceholder}
-                  required
-                  className="bg-muted/30 border-border/50 focus:border-primary"
-                />
-              </div>
-
-              {/* Business */}
-              <div className="space-y-2">
-                <Label htmlFor="business" className="flex items-center gap-2 text-sm">
-                  <Building2 className="w-4 h-4 text-primary" />
-                  {labels.business}
-                </Label>
-                <Input
-                  id="business"
-                  name="business"
-                  value={formData.business}
-                  onChange={handleChange}
-                  placeholder={labels.businessPlaceholder}
-                  className="bg-muted/30 border-border/50 focus:border-primary"
-                />
+                {/* Business */}
+                <div className="space-y-1 sm:space-y-1.5">
+                  <Label htmlFor="business" className="flex items-center gap-1.5 text-xs sm:text-sm">
+                    <Building2 className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
+                    {labels.business}
+                  </Label>
+                  <Input
+                    id="business"
+                    name="business"
+                    value={formData.business}
+                    onChange={handleChange}
+                    placeholder={labels.businessPlaceholder}
+                    className="bg-muted/30 border-border/50 focus:border-primary h-9 sm:h-10 text-sm"
+                  />
+                </div>
               </div>
 
               {/* Interest */}
-              <div className="space-y-2">
+              <div className="space-y-1.5 sm:space-y-2">
                 <Label className="text-xs sm:text-sm">{labels.interest}</Label>
-                <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
+                <div className="grid grid-cols-3 gap-1.5">
                   {interestOptions.map((option) => (
                     <button
                       key={option}
                       type="button"
                       onClick={() => setFormData(prev => ({ ...prev, interest: option }))}
-                      className={`p-2 text-[11px] sm:text-xs rounded-lg border transition-all leading-tight ${
+                      className={`p-1.5 sm:p-2 text-[10px] sm:text-xs rounded-lg border transition-all leading-tight ${
                         formData.interest === option
                           ? 'border-primary bg-primary/20 text-foreground'
                           : 'border-border/50 bg-muted/20 text-muted-foreground hover:border-primary/50'
@@ -272,7 +273,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full btn-gold py-5 sm:py-6 text-sm sm:text-base font-semibold mt-4 sm:mt-6"
+                className="w-full btn-gold py-2.5 sm:py-3 text-sm font-semibold mt-3"
               >
                 {isSubmitting ? (
                   <span className="flex items-center gap-2">
@@ -280,19 +281,19 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
                       animate={{ rotate: 360 }}
                       transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
                     >
-                      <Send className="w-4 h-4 sm:w-5 sm:h-5" />
+                      <Send className="w-4 h-4" />
                     </motion.div>
                     {labels.processing}
                   </span>
                 ) : (
                   <span className="flex items-center gap-2">
-                    <Send className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <Send className="w-4 h-4" />
                     {labels.submit}
                   </span>
                 )}
               </Button>
 
-              <p className="text-[10px] sm:text-xs text-center text-muted-foreground mt-3 sm:mt-4 pb-2 sm:pb-0">
+              <p className="text-[10px] sm:text-xs text-center text-muted-foreground pb-1">
                 {labels.disclaimer}
               </p>
             </form>
