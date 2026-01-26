@@ -693,7 +693,7 @@ export const ServicePageLayout = ({
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                   >
                     <Link
-                      to={service.href}
+                      to={getLocalizedPath(service.href)}
                       className="block glass p-6 rounded-2xl hover:border-primary/30 transition-all duration-300 group"
                     >
                       <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
