@@ -133,7 +133,7 @@ const translations = {
     'whyUs.reason.4.title': 'Soporte Local',
     'whyUs.reason.4.description': 'Estamos en Calgary, listos para reunirnos contigo cuando lo necesites.',
     'whyUs.reason.5.title': 'Experiencia Comprobada',
-    'whyUs.reason.5.description': 'Más de 50 proyectos exitosos para empresas hispanas en Alberta.',
+    'whyUs.reason.5.description': 'Más de 50 proyectos exitosos para emprendedores y empresas.',
     'whyUs.reason.6.title': 'Resultados Medibles',
     'whyUs.reason.6.description': 'Enfocados en generar leads y conversiones reales para tu negocio.',
     'whyUs.testimonials.title': 'Lo que dicen nuestros clientes',
