@@ -67,31 +67,66 @@ export const serviceRoutes: ServiceRoute[] = [
   },
 ];
 
-// Section routes (anchors and pages)
+// SEO Pages with dedicated URLs (not anchors)
+export interface PageRoute {
+  key: string;
+  es: string;
+  en: string;
+}
+
+export const pageRoutes: PageRoute[] = [
+  {
+    key: 'projects',
+    es: 'proyectos',
+    en: 'projects',
+  },
+  {
+    key: 'value',
+    es: 'valor-diferencial',
+    en: 'value',
+  },
+  {
+    key: 'process',
+    es: 'proceso',
+    en: 'process',
+  },
+  {
+    key: 'faqs',
+    es: 'preguntas-frecuentes',
+    en: 'faqs',
+  },
+  {
+    key: 'contact',
+    es: 'contacto',
+    en: 'contact',
+  },
+];
+
+// Section routes (anchors for home page AND dedicated pages)
 export const sectionRoutes = {
   faq: {
-    es: '#faq',
-    en: '#faq',
+    es: 'preguntas-frecuentes',
+    en: 'faqs',
   },
   whyUs: {
-    es: '#por-que-nosotros',
-    en: '#why-us',
+    es: 'valor-diferencial',
+    en: 'value',
   },
   contact: {
-    es: '#contacto',
-    en: '#contact',
+    es: 'contacto',
+    en: 'contact',
   },
   services: {
     es: '#servicios',
     en: '#services',
   },
   projects: {
-    es: '#proyectos',
-    en: '#projects',
+    es: 'proyectos',
+    en: 'projects',
   },
   process: {
-    es: '#proceso',
-    en: '#process',
+    es: 'proceso',
+    en: 'process',
   },
   privacy: {
     es: 'politica-privacidad',
@@ -101,6 +136,12 @@ export const sectionRoutes = {
     es: 'terminos-servicio',
     en: 'terms-of-service',
   },
+};
+
+// Helper to get page path by key and language
+export const getPagePath = (key: string, language: 'es' | 'en'): string => {
+  const route = pageRoutes.find(r => r.key === key);
+  return route ? `/${language}/${route[language]}` : `/${language}`;
 };
 
 // Helper to get service path by key and language
