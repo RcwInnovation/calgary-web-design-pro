@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { LanguageLayout } from "@/components/LanguageLayout";
 import { LanguageRedirect } from "@/components/LanguageRedirect";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -70,6 +71,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           {/* Root redirect to language-prefixed route */}
           <Route path="/" element={<LanguageLayout><LanguageRedirect /></LanguageLayout>} />
