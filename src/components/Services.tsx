@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { serviceRoutes } from '@/config/routes';
 
 import serviceSoftwareCustom from '@/assets/service-software-custom.jpg';
 import serviceBrandingSocial from '@/assets/service-branding-social.jpg';
@@ -37,15 +38,16 @@ const serviceImages = [
   serviceMentoringTraining,
 ];
 
-const serviceHrefs = [
-  '/diseno-software-medida-premium-calgary',
-  '/branding-estrategia-redes-sociales-calgary',
-  '/automatizaciones-ia-operaciones-calgary',
-  '/creacion-agentes-ia-inteligencia-calgary',
-  '/sistemas-gestion-operaciones-calgary',
-  '/tarjeta-digital-profesional-calgary',
-  '/diseno-web-app-movil-calgary',
-  '/mentoria-capacitacion-digital-calgary',
+// Map service keys to their index for consistent ordering
+const serviceKeyOrder = [
+  'software',
+  'branding', 
+  'automatizaciones',
+  'agentesIA',
+  'sistemasGestion',
+  'tarjetaDigital',
+  'webApp',
+  'mentoria',
 ];
 
 const containerVariants = {
@@ -75,10 +77,13 @@ interface ServicesProps {
 export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const { t, basePath, language } = useLanguage();
+  const { t, language } = useLanguage();
 
-  const services = Array.from({ length: 8 }, (_, i) => {
+  const services = serviceKeyOrder.map((key, i) => {
     const num = i + 1;
+    const route = serviceRoutes.find(r => r.key === key);
+    const href = route ? `/${language}/${route[language]}` : `/${language}`;
+    
     return {
       icon: serviceIcons[i],
       title: t(`service.${num}.title`),
@@ -87,7 +92,7 @@ export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps
       features: t(`service.${num}.features`).split(','),
       image: serviceImages[i],
       imageAlt: t(`service.${num}.title`) + ' - Calgary',
-      href: serviceHrefs[i],
+      href,
     };
   });
 
@@ -128,7 +133,7 @@ export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps
               variants={itemVariants}
               className="card-premium group cursor-pointer overflow-hidden"
             >
-              <Link to={`${basePath}${service.href}`} className="block h-full">
+              <Link to={service.href} className="block h-full">
                 {/* Service Image */}
                 <div className="relative h-40 -mx-6 -mt-6 mb-4 overflow-hidden">
                   <img 
