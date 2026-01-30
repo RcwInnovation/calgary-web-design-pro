@@ -133,13 +133,13 @@ export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary text-sm font-semibold tracking-wider uppercase">
+          <span className="text-primary text-xs sm:text-sm font-semibold tracking-wider uppercase">
             {t('services.badge')}
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-3 sm:mt-4 mb-4 sm:mb-6">
             {t('services.title')}
           </h2>
-          <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
+          <p className="text-muted-foreground max-w-3xl mx-auto text-base sm:text-lg">
             {t('services.subtitle')}
           </p>
         </motion.div>
@@ -149,7 +149,7 @@ export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
         >
           {services.map((service) => (
             <motion.article

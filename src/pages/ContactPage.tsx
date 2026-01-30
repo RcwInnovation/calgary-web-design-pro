@@ -162,9 +162,9 @@ const ContactPage = () => {
       <div className="min-h-screen bg-background text-foreground">
         <Header onOpenConsultation={() => setIsConsultationOpen(true)} />
 
-        <main className="pt-32 pb-20">
+        <main className="pt-24 sm:pt-32 pb-16 sm:pb-20">
           {/* Hero Section */}
-          <section className="container-custom mb-16">
+          <section className="container-custom mb-12 sm:mb-16">
             <Link 
               to={basePath} 
               className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8"
@@ -182,10 +182,10 @@ const ContactPage = () => {
               <span className="text-accent text-sm font-semibold tracking-wider uppercase">
                 {language === 'es' ? 'Contacto' : 'Contact'}
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-4 sm:mb-6">
                 {language === 'es' ? 'Hablemos de tu Proyecto' : "Let's Talk About Your Project"}
               </h1>
-              <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
+              <p className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-3xl mx-auto">
                 {language === 'es'
                   ? 'Estamos listos para escucharte y ayudarte a transformar tu visión en una solución digital exitosa. Contáctanos hoy.'
                   : "We're ready to listen and help you transform your vision into a successful digital solution. Contact us today."}
@@ -194,8 +194,8 @@ const ContactPage = () => {
           </section>
 
           {/* Contact Methods */}
-          <section className="container-custom mb-16">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <section className="container-custom mb-12 sm:mb-16">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               {contactMethods[language].map((method, index) => (
                 <motion.div
                   key={method.title}
@@ -208,19 +208,19 @@ const ContactPage = () => {
                       href={method.href}
                       target={method.href.startsWith('http') ? '_blank' : undefined}
                       rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="block p-6 rounded-xl bg-card/50 border border-border/30 hover:border-primary/30 transition-all text-center h-full"
+                      className="block p-4 sm:p-6 rounded-xl bg-card/50 border border-border/30 hover:border-primary/30 transition-all text-center h-full min-h-[120px] sm:min-h-[140px]"
                     >
-                      <method.icon className="w-8 h-8 text-primary mx-auto mb-3" />
-                      <div className="font-semibold mb-1">{method.title}</div>
-                      <div className="text-primary font-medium text-sm mb-1">{method.value}</div>
-                      <div className="text-xs text-muted-foreground">{method.description}</div>
+                      <method.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary mx-auto mb-2 sm:mb-3" />
+                      <div className="font-semibold mb-0.5 sm:mb-1 text-sm sm:text-base">{method.title}</div>
+                      <div className="text-primary font-medium text-xs sm:text-sm mb-0.5 sm:mb-1 break-all">{method.value}</div>
+                      <div className="text-[10px] sm:text-xs text-muted-foreground">{method.description}</div>
                     </a>
                   ) : (
-                    <div className="p-6 rounded-xl bg-card/50 border border-border/30 text-center h-full">
-                      <method.icon className="w-8 h-8 text-primary mx-auto mb-3" />
-                      <div className="font-semibold mb-1">{method.title}</div>
-                      <div className="text-primary font-medium text-sm mb-1">{method.value}</div>
-                      <div className="text-xs text-muted-foreground">{method.description}</div>
+                    <div className="p-4 sm:p-6 rounded-xl bg-card/50 border border-border/30 text-center h-full min-h-[120px] sm:min-h-[140px]">
+                      <method.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary mx-auto mb-2 sm:mb-3" />
+                      <div className="font-semibold mb-0.5 sm:mb-1 text-sm sm:text-base">{method.title}</div>
+                      <div className="text-primary font-medium text-xs sm:text-sm mb-0.5 sm:mb-1">{method.value}</div>
+                      <div className="text-[10px] sm:text-xs text-muted-foreground">{method.description}</div>
                     </div>
                   )}
                 </motion.div>
@@ -236,16 +236,16 @@ const ContactPage = () => {
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
-                className="p-8 rounded-2xl bg-card/50 border border-border/30"
+                className="p-5 sm:p-8 rounded-xl sm:rounded-2xl bg-card/50 border border-border/30"
               >
-                <h2 className="text-2xl font-bold mb-6">
+                <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">
                   {language === 'es' ? 'Envíanos un Mensaje' : 'Send Us a Message'}
                 </h2>
 
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid sm:grid-cols-2 gap-4">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+                  <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium mb-2">
+                      <label htmlFor="name" className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2">
                         {language === 'es' ? 'Nombre completo *' : 'Full name *'}
                       </label>
                       <input
@@ -255,12 +255,12 @@ const ContactPage = () => {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-sm"
                         placeholder={language === 'es' ? 'Tu nombre' : 'Your name'}
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium mb-2">
+                      <label htmlFor="email" className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2">
                         {language === 'es' ? 'Email *' : 'Email *'}
                       </label>
                       <input
@@ -270,15 +270,15 @@ const ContactPage = () => {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-sm"
                         placeholder="tu@email.com"
                       />
                     </div>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium mb-2">
+                      <label htmlFor="phone" className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2">
                         {language === 'es' ? 'Teléfono' : 'Phone'}
                       </label>
                       <input
@@ -287,12 +287,12 @@ const ContactPage = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-sm"
                         placeholder="+1 (555) 123-4567"
                       />
                     </div>
                     <div>
-                      <label htmlFor="company" className="block text-sm font-medium mb-2">
+                      <label htmlFor="company" className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2">
                         {language === 'es' ? 'Empresa' : 'Company'}
                       </label>
                       <input
@@ -301,14 +301,14 @@ const ContactPage = () => {
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-sm"
                         placeholder={language === 'es' ? 'Tu empresa' : 'Your company'}
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="service" className="block text-sm font-medium mb-2">
+                    <label htmlFor="service" className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2">
                       {language === 'es' ? 'Servicio de interés *' : 'Service of interest *'}
                     </label>
                     <select
@@ -317,7 +317,7 @@ const ContactPage = () => {
                       required
                       value={formData.service}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-sm"
                     >
                       <option value="">{language === 'es' ? 'Selecciona un servicio' : 'Select a service'}</option>
                       {services[language].map(service => (
@@ -327,7 +327,7 @@ const ContactPage = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-2">
+                    <label htmlFor="message" className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2">
                       {language === 'es' ? 'Cuéntanos sobre tu proyecto *' : 'Tell us about your project *'}
                     </label>
                     <textarea
@@ -337,7 +337,7 @@ const ContactPage = () => {
                       rows={4}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors resize-none"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors resize-none text-sm"
                       placeholder={language === 'es' 
                         ? 'Describe tu proyecto, objetivos y cualquier detalle relevante...'
                         : 'Describe your project, goals, and any relevant details...'}
@@ -346,7 +346,7 @@ const ContactPage = () => {
 
                   <button
                     type="submit"
-                    className="w-full btn-primary flex items-center justify-center gap-2"
+                    className="w-full btn-primary flex items-center justify-center gap-2 min-h-[48px]"
                   >
                     <Send className="w-5 h-5" />
                     {language === 'es' ? 'Enviar vía WhatsApp' : 'Send via WhatsApp'}

@@ -115,10 +115,10 @@ export const Header = ({ onOpenConsultation }: HeaderProps) => {
         </motion.div>
 
         {/* Mobile Menu Button + Language */}
-        <div className="lg:hidden flex items-center gap-3">
+        <div className="lg:hidden flex items-center gap-2 sm:gap-3">
           <LanguageSwitcher />
           <button
-            className="p-2 text-foreground hover:text-primary transition-colors"
+            className="p-2.5 text-foreground hover:text-primary transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
             aria-expanded={isMobileMenuOpen}
@@ -137,12 +137,12 @@ export const Header = ({ onOpenConsultation }: HeaderProps) => {
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <ul className="flex flex-col py-6 px-4">
+              <ul className="flex flex-col py-4 sm:py-6 px-4">
                 {navLinks.map((link, index) => (
                   <li key={link.href}>
                     <motion.button
                       onClick={() => handleNavClick(link)}
-                      className="block w-full text-left py-3 text-muted-foreground hover:text-foreground transition-colors border-b border-border/30 bg-transparent cursor-pointer"
+                      className="block w-full text-left py-3.5 text-muted-foreground hover:text-foreground transition-colors border-b border-border/30 bg-transparent cursor-pointer min-h-[48px] text-base"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
@@ -157,7 +157,7 @@ export const Header = ({ onOpenConsultation }: HeaderProps) => {
                       setIsMobileMenuOpen(false);
                       onOpenConsultation?.();
                     }}
-                    className="btn-primary block text-center w-full"
+                    className="btn-primary block text-center w-full min-h-[48px]"
                   >
                     {t('nav.cta')}
                   </button>
