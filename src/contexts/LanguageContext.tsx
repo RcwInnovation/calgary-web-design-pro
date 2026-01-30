@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { serviceRoutes, pageRoutes } from '@/config/routes';
 
 type Language = 'es' | 'en';
 
@@ -704,16 +705,39 @@ export const LanguageProvider = ({ children }: LanguageProviderProps) => {
     document.documentElement.lang = lang;
     localStorage.setItem('language', lang);
     
-    // Navigate to the same page but with new language prefix
+    // Navigate to the translated page path
     const currentPath = location.pathname;
     let newPath: string;
     
-    if (currentPath.startsWith('/es') || currentPath.startsWith('/en')) {
-      // Replace the language prefix
-      newPath = `/${lang}${currentPath.substring(3)}`;
+    // Extract the path without language prefix
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/es/')) {
+      pathWithoutLang = currentPath.substring(3); // Remove /es
+    } else if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3); // Remove /en
+    } else if (currentPath === '/es' || currentPath === '/en') {
+      pathWithoutLang = ''; // Home page
+    }
+    
+    // Try to find the translated path for service routes
+    const serviceRoute = serviceRoutes.find(
+      r => `/${r.es}` === pathWithoutLang || `/${r.en}` === pathWithoutLang
+    );
+    
+    if (serviceRoute) {
+      newPath = `/${lang}/${serviceRoute[lang]}`;
     } else {
-      // Add language prefix to root or other paths
-      newPath = `/${lang}${currentPath === '/' ? '' : currentPath}`;
+      // Try to find the translated path for page routes
+      const pageRoute = pageRoutes.find(
+        r => `/${r.es}` === pathWithoutLang || `/${r.en}` === pathWithoutLang
+      );
+      
+      if (pageRoute) {
+        newPath = `/${lang}/${pageRoute[lang]}`;
+      } else {
+        // Default: just replace the language prefix (for home or unknown routes)
+        newPath = `/${lang}${pathWithoutLang}`;
+      }
     }
     
     navigate(newPath, { replace: true });
