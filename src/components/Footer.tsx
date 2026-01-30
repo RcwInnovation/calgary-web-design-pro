@@ -1,6 +1,7 @@
 import { Facebook, Instagram, Linkedin, Phone, Mail, Youtube } from 'lucide-react';
 import logo from '@/assets/logo.png';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { serviceRoutes, sectionRoutes } from '@/config/routes';
 
 const TikTokIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -27,24 +28,30 @@ const socialLinks = [
 ];
 
 export const Footer = () => {
-  const { t, getLocalizedPath } = useLanguage();
+  const { t, language } = useLanguage();
+
+  // Get localized service paths
+  const getServicePath = (key: string) => {
+    const route = serviceRoutes.find(r => r.key === key);
+    return route ? `/${language}/${route[language]}` : `/${language}`;
+  };
 
   const footerLinks = {
     servicios: [
-      { label: t('footer.service.1'), href: getLocalizedPath('/diseno-software-medida-premium-calgary') },
-      { label: t('footer.service.2'), href: getLocalizedPath('/diseno-web-app-movil-calgary') },
-      { label: t('footer.service.3'), href: getLocalizedPath('/automatizaciones-ia-operaciones-calgary') },
-      { label: t('footer.service.4'), href: getLocalizedPath('/agentes-ia-avanzados-calgary') },
+      { label: t('footer.service.1'), href: getServicePath('software') },
+      { label: t('footer.service.2'), href: getServicePath('webApp') },
+      { label: t('footer.service.3'), href: getServicePath('automatizaciones') },
+      { label: t('footer.service.4'), href: getServicePath('agentesIAAvanzados') },
     ],
     empresa: [
-      { label: t('footer.link.about'), href: getLocalizedPath('/#por-que-nosotros') },
-      { label: t('footer.link.process'), href: getLocalizedPath('/#proceso') },
-      { label: t('footer.link.faq'), href: getLocalizedPath('/#faq') },
-      { label: t('footer.link.contact'), href: getLocalizedPath('/#contacto') },
+      { label: t('footer.link.about'), href: `/${language}/${sectionRoutes.whyUs[language]}` },
+      { label: t('footer.link.process'), href: `/${language}/${sectionRoutes.process[language]}` },
+      { label: t('footer.link.faq'), href: `/${language}/${sectionRoutes.faq[language]}` },
+      { label: t('footer.link.contact'), href: `/${language}/${sectionRoutes.contact[language]}` },
     ],
     legal: [
-      { label: t('footer.link.privacy'), href: getLocalizedPath('/politica-privacidad') },
-      { label: t('footer.link.terms'), href: getLocalizedPath('/terminos-servicio') },
+      { label: t('footer.link.privacy'), href: `/${language}/${sectionRoutes.privacy[language]}` },
+      { label: t('footer.link.terms'), href: `/${language}/${sectionRoutes.terms[language]}` },
     ],
   };
 

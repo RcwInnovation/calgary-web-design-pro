@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import serviceErpSystems from '@/assets/service-erp-systems.jpg';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { serviceTranslations } from '@/i18n/serviceTranslations';
+import { serviceRoutes } from '@/config/routes';
+import { serviceFeatureImages } from '@/config/featureImages';
 
 const featureIcons = [LayoutDashboard, Users, Shield, TrendingUp, BarChart3, Database];
 const isoIcons = [Award, Leaf, HardHat];
@@ -13,6 +15,12 @@ const isoColors = ['primary', 'accent', 'primary'];
 const SistemasGestion = forwardRef<HTMLDivElement>((_, ref) => {
   const { language } = useLanguage();
   const t = (key: string) => serviceTranslations[language][key as keyof typeof serviceTranslations['es']] || key;
+
+  // Helper to get localized service path
+  const getServiceHref = (key: string) => {
+    const route = serviceRoutes.find(r => r.key === key);
+    return route ? `/${language}/${route[language]}` : `/${language}`;
+  };
 
   const isoStandards = Array.from({ length: 3 }, (_, i) => ({
     icon: isoIcons[i],
@@ -26,6 +34,7 @@ const SistemasGestion = forwardRef<HTMLDivElement>((_, ref) => {
     title: t(`sistemas.feature.${i + 1}.title`),
     description: t(`sistemas.feature.${i + 1}.description`),
     icon: featureIcons[i],
+    image: serviceFeatureImages.sistemasGestion[i],
   }));
 
   const processSteps = Array.from({ length: 5 }, (_, i) => ({
@@ -39,10 +48,15 @@ const SistemasGestion = forwardRef<HTMLDivElement>((_, ref) => {
   }));
 
   const relatedServices = [
-    { title: t('sistemas.relatedService.1'), href: '/automatizaciones-ia-operaciones-calgary', icon: Bot },
-    { title: t('sistemas.relatedService.2'), href: '/diseno-software-medida-premium-calgary', icon: Code2 },
-    { title: t('sistemas.relatedService.3'), href: '/creacion-agentes-ia-inteligencia-calgary', icon: Brain },
+    { title: t('sistemas.relatedService.1'), href: getServiceHref('automatizaciones'), icon: Bot },
+    { title: t('sistemas.relatedService.2'), href: getServiceHref('software'), icon: Code2 },
+    { title: t('sistemas.relatedService.3'), href: getServiceHref('agentesIA'), icon: Brain },
   ];
+
+  // Canonical URL based on language
+  const canonicalUrl = language === 'es' 
+    ? 'https://www.rcwinnovation.com/es/servicios/sistemas-gestion'
+    : 'https://www.rcwinnovation.com/en/services/management-systems';
 
   return (
     <div ref={ref}>
@@ -51,7 +65,7 @@ const SistemasGestion = forwardRef<HTMLDivElement>((_, ref) => {
         metaTitle={t('sistemas.metaTitle')}
         metaDescription={t('sistemas.metaDescription')}
         keywords={t('sistemas.keywords')}
-        canonicalUrl="https://www.rcwinnovation.com/sistemas-gestion-operaciones-calgary"
+        canonicalUrl={canonicalUrl}
         heroImage={serviceErpSystems}
         heroImageAlt={t('sistemas.heroImageAlt')}
         tag={t('sistemas.tag')}
