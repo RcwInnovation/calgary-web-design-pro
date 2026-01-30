@@ -57,8 +57,8 @@ export const Footer = () => {
 
   return (
     <footer className="border-t border-border/30 bg-card/30">
-      <div className="container-custom py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="container-custom py-12 sm:py-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
           <div>
             <a href="#" className="flex items-center gap-3 mb-6">
               <img src={logo} alt="RCW Innovation Inc Logo" className="h-10 w-10 object-contain" />
@@ -117,9 +117,9 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-border/30 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} RCW Innovation Inc. {t('footer.rights')}</p>
-          <p className="text-sm text-muted-foreground">{t('footer.tagline')}</p>
+        <div className="border-t border-border/30 mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+          <p className="text-xs sm:text-sm text-muted-foreground">© {new Date().getFullYear()} RCW Innovation Inc. {t('footer.rights')}</p>
+          <p className="text-xs sm:text-sm text-muted-foreground">{t('footer.tagline')}</p>
         </div>
       </div>
     </footer>
