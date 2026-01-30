@@ -19,7 +19,14 @@ import TarjetaDigital from "./pages/services/TarjetaDigital";
 import DisenoWebApp from "./pages/services/DisenoWebApp";
 import MentoriaCapacitacion from "./pages/services/MentoriaCapacitacion";
 
-import { serviceRoutes, legacyUrlMappings } from "./config/routes";
+// SEO Pages
+import ProjectsPage from "./pages/ProjectsPage";
+import ValuePage from "./pages/ValuePage";
+import ProcessPage from "./pages/ProcessPage";
+import FAQsPage from "./pages/FAQsPage";
+import ContactPage from "./pages/ContactPage";
+
+import { serviceRoutes, pageRoutes, legacyUrlMappings } from "./config/routes";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +41,15 @@ const serviceComponents: Record<string, React.ReactNode> = {
   TarjetaDigital: <TarjetaDigital />,
   DisenoWebApp: <DisenoWebApp />,
   MentoriaCapacitacion: <MentoriaCapacitacion />,
+};
+
+// Component map for SEO pages
+const pageComponents: Record<string, React.ReactNode> = {
+  projects: <ProjectsPage />,
+  value: <ValuePage />,
+  process: <ProcessPage />,
+  faqs: <FAQsPage />,
+  contact: <ContactPage />,
 };
 
 // Legacy redirect component
@@ -62,6 +78,15 @@ const App = () => (
           <Route path="/es" element={<LanguageLayout />}>
             <Route index element={<Index />} />
             
+            {/* SEO Pages - Spanish */}
+            {pageRoutes.map(route => (
+              <Route 
+                key={`es-page-${route.key}`} 
+                path={route.es} 
+                element={pageComponents[route.key]} 
+              />
+            ))}
+            
             {/* New semantic service routes - Spanish */}
             {serviceRoutes.map(route => (
               <Route 
@@ -84,6 +109,15 @@ const App = () => (
           {/* English Routes */}
           <Route path="/en" element={<LanguageLayout />}>
             <Route index element={<Index />} />
+            
+            {/* SEO Pages - English */}
+            {pageRoutes.map(route => (
+              <Route 
+                key={`en-page-${route.key}`} 
+                path={route.en} 
+                element={pageComponents[route.key]} 
+              />
+            ))}
             
             {/* New semantic service routes - English */}
             {serviceRoutes.map(route => (

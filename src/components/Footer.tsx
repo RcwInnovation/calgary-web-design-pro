@@ -87,7 +87,9 @@ export const Footer = () => {
             <h4 className="font-semibold mb-4">{t('footer.services')}</h4>
             <ul className="space-y-3">
               {footerLinks.servicios.map((link) => (
-                <li key={link.label}><a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">{link.label}</a></li>
+                <li key={link.label}>
+                  <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">{link.label}</a>
+                </li>
               ))}
             </ul>
           </div>
@@ -96,7 +98,9 @@ export const Footer = () => {
             <h4 className="font-semibold mb-4">{t('footer.company')}</h4>
             <ul className="space-y-3">
               {footerLinks.empresa.map((link) => (
-                <li key={link.label}><a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">{link.label}</a></li>
+                <li key={link.label}>
+                  <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">{link.label}</a>
+                </li>
               ))}
             </ul>
           </div>
@@ -105,7 +109,9 @@ export const Footer = () => {
             <h4 className="font-semibold mb-4">{t('footer.legal')}</h4>
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
-                <li key={link.label}><a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">{link.label}</a></li>
+                <li key={link.label}>
+                  <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">{link.label}</a>
+                </li>
               ))}
             </ul>
           </div>

@@ -79,6 +79,30 @@ export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const { t, language } = useLanguage();
 
+  // SEO-optimized alt descriptions for service images
+  const serviceAlts = {
+    es: [
+      'Desarrollo de software a medida - Arquitecturas modulares y APIs Calgary',
+      'Branding y estrategia redes sociales - Marketing digital Calgary',
+      'Automatizaciones con inteligencia artificial - Workflows integrados CRM',
+      'Creación de agentes IA conversacionales - Aprendizaje automático Calgary',
+      'Sistemas de gestión ERP CRM - Dashboards en tiempo real Calgary',
+      'Tarjeta digital profesional QR NFC - Networking Calgary',
+      'Diseño web y aplicaciones móviles PWA - SEO técnico Calgary',
+      'Mentoría y capacitación digital - IA productividad automatización'
+    ],
+    en: [
+      'Custom software development - Modular architectures and APIs Calgary',
+      'Branding and social media strategy - Digital marketing Calgary',
+      'AI automations - Integrated CRM workflows Calgary',
+      'AI conversational agents creation - Machine learning Calgary',
+      'ERP CRM management systems - Real-time dashboards Calgary',
+      'Professional digital business card QR NFC - Networking Calgary',
+      'Web design and mobile PWA applications - Technical SEO Calgary',
+      'Digital mentoring and training - AI productivity automation'
+    ]
+  };
+
   const services = serviceKeyOrder.map((key, i) => {
     const num = i + 1;
     const route = serviceRoutes.find(r => r.key === key);
@@ -91,7 +115,7 @@ export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps
       description: t(`service.${num}.description`),
       features: t(`service.${num}.features`).split(','),
       image: serviceImages[i],
-      imageAlt: t(`service.${num}.title`) + ' - Calgary',
+      imageAlt: serviceAlts[language][i],
       href,
     };
   });
@@ -140,6 +164,7 @@ export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps
                     src={service.image} 
                     alt={service.imageAlt}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
                   {/* Tag positioned on image */}
