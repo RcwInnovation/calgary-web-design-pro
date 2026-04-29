@@ -128,6 +128,10 @@ export const sectionRoutes = {
     es: 'proceso',
     en: 'process',
   },
+  founder: {
+    es: 'fundador',
+    en: 'founder',
+  },
   privacy: {
     es: 'politica-privacidad',
     en: 'privacy-policy',
