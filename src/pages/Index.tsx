@@ -8,6 +8,7 @@ import { Metrics } from '@/components/Metrics';
 import { Projects } from '@/components/Projects';
 import { WhyUs } from '@/components/WhyUs';
 import { AboutUs } from '@/components/AboutUs';
+import { Founder } from '@/components/Founder';
 import { JoinTeam } from '@/components/JoinTeam';
 import { Process } from '@/components/Process';
 import { FAQ } from '@/components/FAQ';
@@ -98,6 +99,7 @@ const Index = () => {
           <Projects />
           <WhyUs />
           <AboutUs />
+          <Founder />
           <JoinTeam />
           <Process />
           <FAQ />
