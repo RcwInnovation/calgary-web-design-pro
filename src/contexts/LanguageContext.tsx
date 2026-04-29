@@ -349,9 +349,9 @@ const translations = {
     
     // Hero
     'hero.badge': 'Innovation, Engineering & Automation 5.0',
-    'hero.title.words1': 'We,drive,innovation,,',
-    'hero.title.highlight': 'web design',
-    'hero.title.words2': 'and,intelligent,automation,in,Canada',
+    'hero.title.words1': 'AI,Automation,,Custom,Software,&',
+    'hero.title.highlight': 'Web Design',
+    'hero.title.words2': 'Solutions,in,Canada',
     'hero.subtitle': 'We design engineering, AI and automation 5.0 solutions from Calgary for businesses across Canada.',
     'hero.cta.consultation': 'Request Consultation',
     'hero.cta.diagnostic': 'Consulting 5.0',
