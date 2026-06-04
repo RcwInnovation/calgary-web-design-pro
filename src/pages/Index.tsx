@@ -31,14 +31,14 @@ const Index = () => {
   const seoData = {
     es: {
       title: 'Diseño de Páginas Web en Calgary | RCW Innovation Canadá',
-      description: 'Líder en desarrollo web en Calgary y Colombia. Servicios de software a medida, automatización con IA, diseño web profesional y transformación digital con visión global e innovación.',
+      description: 'Desarrollo web, software a medida y automatización con IA en Calgary y Colombia. Transformación digital con visión global.',
       keywords: 'diseño web Calgary, marketing digital Calgary, desarrollo de software Calgary, automatización con IA, ERP CRM Calgary, transformación digital, RCW Innovation, páginas web Calgary, landing pages Calgary, agentes IA Calgary',
       locale: 'es_CA',
       canonicalUrl: 'https://www.rcwinnovation.com/es',
     },
     en: {
       title: 'Web Design in Calgary | RCW Innovation Canada',
-      description: 'Leader in web development in Calgary and Colombia. Custom software services, AI automation, professional web design and digital transformation with global vision and innovation.',
+      description: 'Web development, custom software and AI automation in Calgary and Colombia. Digital transformation with global vision.',
       keywords: 'web design Calgary, digital marketing Calgary, software development Calgary, AI automation, ERP CRM Calgary, digital transformation, RCW Innovation, websites Calgary, landing pages Calgary, AI agents Calgary',
       locale: 'en_CA',
       canonicalUrl: 'https://www.rcwinnovation.com/en',

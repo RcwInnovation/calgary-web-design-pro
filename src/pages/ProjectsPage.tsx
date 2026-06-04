@@ -59,13 +59,13 @@ const ProjectsPage = () => {
   const seoData = {
     es: {
       title: 'Proyectos y Casos de Éxito | RCW Innovation Calgary',
-      description: 'Descubre nuestros proyectos exitosos: marketplaces, automatización con IA, e-commerce y sistemas de gestión. Soluciones digitales que generan resultados reales para empresas en Calgary.',
+      description: 'Proyectos exitosos: marketplaces, automatización con IA, e-commerce y sistemas de gestión que generan resultados reales en Calgary.',
       keywords: 'proyectos web Calgary, casos de éxito diseño web, portfolio desarrollo software, automatización IA Calgary, marketplace hispano Canadá',
       canonicalUrl: 'https://www.rcwinnovation.com/es/proyectos',
     },
     en: {
       title: 'Projects and Success Stories | RCW Innovation Calgary',
-      description: 'Discover our successful projects: marketplaces, AI automation, e-commerce and management systems. Digital solutions that generate real results for Calgary businesses.',
+      description: 'Successful projects: marketplaces, AI automation, e-commerce and management systems delivering real results for Calgary businesses.',
       keywords: 'Calgary web projects, web design success stories, software development portfolio, AI automation Calgary, Hispanic marketplace Canada',
       canonicalUrl: 'https://www.rcwinnovation.com/en/projects',
     }
