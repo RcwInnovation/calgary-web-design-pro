@@ -1,7 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Code2, Bot, Brain, Workflow, Database, Sparkles } from 'lucide-react';
+import { Code2, Brain } from 'lucide-react';
 
 interface TechItem {
   name: string;
@@ -9,28 +9,29 @@ interface TechItem {
   color: string;
   borderColor: string;
   bgColor: string;
-  icon?: React.ElementType;
+  slug: string;
 }
 
 const techItems: TechItem[] = [
   // Code / Development
-  { name: 'React', category: 'code', color: '#61DAFB', borderColor: 'rgba(97, 218, 251, 0.3)', bgColor: 'rgba(97, 218, 251, 0.08)', icon: Code2 },
-  { name: 'TypeScript', category: 'code', color: '#3178C6', borderColor: 'rgba(49, 120, 198, 0.3)', bgColor: 'rgba(49, 120, 198, 0.08)', icon: Code2 },
-  { name: 'Node.js', category: 'code', color: '#68A063', borderColor: 'rgba(104, 160, 99, 0.3)', bgColor: 'rgba(104, 160, 99, 0.08)', icon: Code2 },
-  { name: 'Python', category: 'code', color: '#FFD43B', borderColor: 'rgba(255, 212, 59, 0.3)', bgColor: 'rgba(255, 212, 59, 0.08)', icon: Code2 },
-  { name: 'Next.js', category: 'code', color: '#FFFFFF', borderColor: 'rgba(255, 255, 255, 0.3)', bgColor: 'rgba(255, 255, 255, 0.06)', icon: Code2 },
-  { name: 'Tailwind CSS', category: 'code', color: '#38BDF8', borderColor: 'rgba(56, 189, 248, 0.3)', bgColor: 'rgba(56, 189, 248, 0.08)', icon: Code2 },
-  { name: 'PostgreSQL', category: 'code', color: '#336791', borderColor: 'rgba(51, 103, 145, 0.3)', bgColor: 'rgba(51, 103, 145, 0.08)', icon: Database },
-  { name: 'Supabase', category: 'code', color: '#3ECF8E', borderColor: 'rgba(62, 207, 142, 0.3)', bgColor: 'rgba(62, 207, 142, 0.08)', icon: Database },
-  { name: 'Vite', category: 'code', color: '#646CFF', borderColor: 'rgba(100, 108, 255, 0.3)', bgColor: 'rgba(100, 108, 255, 0.08)', icon: Code2 },
-  { name: 'Git', category: 'code', color: '#F05032', borderColor: 'rgba(240, 80, 50, 0.3)', bgColor: 'rgba(240, 80, 50, 0.08)', icon: Code2 },
+  { name: 'React', category: 'code', color: '#61DAFB', borderColor: 'rgba(97, 218, 251, 0.3)', bgColor: 'rgba(97, 218, 251, 0.08)', slug: 'react' },
+  { name: 'TypeScript', category: 'code', color: '#3178C6', borderColor: 'rgba(49, 120, 198, 0.3)', bgColor: 'rgba(49, 120, 198, 0.08)', slug: 'typescript' },
+  { name: 'Node.js', category: 'code', color: '#5FA04E', borderColor: 'rgba(95, 160, 78, 0.3)', bgColor: 'rgba(95, 160, 78, 0.08)', slug: 'nodedotjs' },
+  { name: 'Python', category: 'code', color: '#FFD43B', borderColor: 'rgba(255, 212, 59, 0.3)', bgColor: 'rgba(255, 212, 59, 0.08)', slug: 'python' },
+  { name: 'Next.js', category: 'code', color: '#FFFFFF', borderColor: 'rgba(255, 255, 255, 0.3)', bgColor: 'rgba(255, 255, 255, 0.06)', slug: 'nextdotjs' },
+  { name: 'Tailwind CSS', category: 'code', color: '#38BDF8', borderColor: 'rgba(56, 189, 248, 0.3)', bgColor: 'rgba(56, 189, 248, 0.08)', slug: 'tailwindcss' },
+  { name: 'PostgreSQL', category: 'code', color: '#4169E1', borderColor: 'rgba(65, 105, 225, 0.3)', bgColor: 'rgba(65, 105, 225, 0.08)', slug: 'postgresql' },
+  { name: 'Supabase', category: 'code', color: '#3ECF8E', borderColor: 'rgba(62, 207, 142, 0.3)', bgColor: 'rgba(62, 207, 142, 0.08)', slug: 'supabase' },
+  { name: 'Vite', category: 'code', color: '#646CFF', borderColor: 'rgba(100, 108, 255, 0.3)', bgColor: 'rgba(100, 108, 255, 0.08)', slug: 'vite' },
+  { name: 'Git', category: 'code', color: '#F05032', borderColor: 'rgba(240, 80, 50, 0.3)', bgColor: 'rgba(240, 80, 50, 0.08)', slug: 'git' },
   // AI / Automation
-  { name: 'OpenAI', category: 'ai', color: '#10A37F', borderColor: 'rgba(16, 163, 127, 0.3)', bgColor: 'rgba(16, 163, 127, 0.08)', icon: Brain },
-  { name: 'ElevenLabs', category: 'ai', color: '#3B82F6', borderColor: 'rgba(59, 130, 246, 0.3)', bgColor: 'rgba(59, 130, 246, 0.08)', icon: Sparkles },
-  { name: 'Claude', category: 'ai', color: '#D97757', borderColor: 'rgba(217, 119, 87, 0.3)', bgColor: 'rgba(217, 119, 87, 0.08)', icon: Bot },
-  { name: 'Make', category: 'ai', color: '#6D00CC', borderColor: 'rgba(109, 0, 204, 0.3)', bgColor: 'rgba(109, 0, 204, 0.08)', icon: Workflow },
-  { name: 'n8n', category: 'ai', color: '#FF6D5A', borderColor: 'rgba(255, 109, 90, 0.3)', bgColor: 'rgba(255, 109, 90, 0.08)', icon: Workflow },
-  { name: 'Zapier', category: 'ai', color: '#FF4A00', borderColor: 'rgba(255, 74, 0, 0.3)', bgColor: 'rgba(255, 74, 0, 0.08)', icon: Workflow },
+  { name: 'OpenAI', category: 'ai', color: '#10A37F', borderColor: 'rgba(16, 163, 127, 0.3)', bgColor: 'rgba(16, 163, 127, 0.08)', slug: 'openai' },
+  { name: 'ElevenLabs', category: 'ai', color: '#FFFFFF', borderColor: 'rgba(255, 255, 255, 0.3)', bgColor: 'rgba(255, 255, 255, 0.06)', slug: 'elevenlabs' },
+  { name: 'Claude', category: 'ai', color: '#D97757', borderColor: 'rgba(217, 119, 87, 0.3)', bgColor: 'rgba(217, 119, 87, 0.08)', slug: 'claude' },
+  { name: 'Gemini', category: 'ai', color: '#4796E3', borderColor: 'rgba(71, 150, 227, 0.3)', bgColor: 'rgba(71, 150, 227, 0.08)', slug: 'googlegemini' },
+  { name: 'Make', category: 'ai', color: '#6D00CC', borderColor: 'rgba(109, 0, 204, 0.3)', bgColor: 'rgba(109, 0, 204, 0.08)', slug: 'make' },
+  { name: 'n8n', category: 'ai', color: '#EA4B71', borderColor: 'rgba(234, 75, 113, 0.3)', bgColor: 'rgba(234, 75, 113, 0.08)', slug: 'n8n' },
+  { name: 'Zapier', category: 'ai', color: '#FF4F00', borderColor: 'rgba(255, 79, 0, 0.3)', bgColor: 'rgba(255, 79, 0, 0.08)', slug: 'zapier' },
 ];
 
 const codeTechs = techItems.filter(t => t.category === 'code');
@@ -59,12 +60,14 @@ export const TechStack = () => {
         width: itemWidth,
       }}
     >
-      {tech.icon && (
-        <tech.icon
-          className="w-4 h-4 shrink-0"
-          style={{ color: tech.color }}
-        />
-      )}
+      <img
+        src={`https://cdn.simpleicons.org/${tech.slug}/${tech.color.replace('#', '')}`}
+        alt={`${tech.name} logo`}
+        className="w-5 h-5 shrink-0"
+        loading="lazy"
+        width={20}
+        height={20}
+      />
       <span
         className="font-semibold text-sm whitespace-nowrap"
         style={{ color: tech.color }}
