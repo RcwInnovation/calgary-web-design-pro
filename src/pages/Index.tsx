@@ -95,6 +95,7 @@ const Index = () => {
             onOpenConsultation={() => setIsConsultationOpen(true)}
           />
           <Clients />
+          <TechStack />
           <Services onOpenConsultation={() => setIsConsultationOpen(true)} onOpenDiagnostic={() => setIsDiagnosticOpen(true)} />
           <Metrics />
           <Projects />
