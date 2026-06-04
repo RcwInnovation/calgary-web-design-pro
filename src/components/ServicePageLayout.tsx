@@ -117,6 +117,7 @@ export const ServicePageLayout = ({
         <meta property="og:type" content="website" />
         <meta property="og:title" content={metaTitle} />
         <meta property="og:description" content={metaDescription} />
+        <meta property="og:url" content={canonicalUrl || `https://www.rcwinnovation.com${location.pathname}`} />
         <meta property="og:locale" content={language === 'en' ? 'en_CA' : 'es_CA'} />
         <meta property="og:site_name" content="RCW Innovation Inc" />
         

@@ -65,6 +65,9 @@ export const TechStack = () => {
         alt={`${tech.name} logo`}
         className="w-5 h-5 shrink-0"
         loading="lazy"
+        decoding="async"
+        // @ts-expect-error fetchpriority not in React types yet
+        fetchpriority="low"
         width={20}
         height={20}
       />
