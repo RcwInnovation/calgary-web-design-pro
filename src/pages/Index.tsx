@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
 import { Clients } from '@/components/Clients';
+import { TechStack } from '@/components/TechStack';
 import { Services } from '@/components/Services';
 import { Metrics } from '@/components/Metrics';
 import { Projects } from '@/components/Projects';
@@ -94,6 +95,7 @@ const Index = () => {
             onOpenConsultation={() => setIsConsultationOpen(true)}
           />
           <Clients />
+          <TechStack />
           <Services onOpenConsultation={() => setIsConsultationOpen(true)} onOpenDiagnostic={() => setIsDiagnosticOpen(true)} />
           <Metrics />
           <Projects />
