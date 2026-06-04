@@ -44,6 +44,14 @@ const translations = {
     'clients.title': 'Empresas que han crecido con',
     'clients.titleHighlight': 'RCW Innovation',
     
+    // Tech Stack
+    'techStack.badge': 'Tecnologías que dominamos',
+    'techStack.title': 'Stack tecnológico y herramientas',
+    'techStack.titleHighlight': 'de IA',
+    'techStack.subtitle': 'Trabajamos con las tecnologías de desarrollo y las plataformas de inteligencia artificial más avanzadas del mercado para entregar soluciones robustas, escalables y futuristas.',
+    'techStack.codeLabel': 'Desarrollo',
+    'techStack.aiLabel': 'Inteligencia Artificial & Automatización',
+    
     // Services
     'services.badge': 'Servicios principales',
     'services.title': 'Soluciones que impulsan tu negocio',
@@ -400,6 +408,14 @@ const translations = {
     'clients.badge': 'Clients who trust us',
     'clients.title': 'Companies that have grown with',
     'clients.titleHighlight': 'RCW Innovation',
+    
+    // Tech Stack
+    'techStack.badge': 'Technologies we master',
+    'techStack.title': 'Tech stack and',
+    'techStack.titleHighlight': 'AI tools',
+    'techStack.subtitle': 'We work with the most advanced development technologies and artificial intelligence platforms on the market to deliver robust, scalable and future-proof solutions.',
+    'techStack.codeLabel': 'Development',
+    'techStack.aiLabel': 'Artificial Intelligence & Automation',
     
     // Services
     'services.badge': 'Main Services',
