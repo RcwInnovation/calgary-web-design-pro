@@ -51,6 +51,18 @@ const translations = {
     'techStack.subtitle': 'Trabajamos con las tecnologías de desarrollo y las plataformas de inteligencia artificial más avanzadas del mercado para entregar soluciones robustas, escalables y futuristas.',
     'techStack.codeLabel': 'Desarrollo',
     'techStack.aiLabel': 'Inteligencia Artificial & Automatización',
+
+    // Featured In / Press
+    'featured.badge': 'Presencia y colaboraciones',
+    'featured.title': 'Empresas y plataformas donde',
+    'featured.titleHighlight': 'hemos colaborado',
+    'featured.subtitle': 'Plataformas, directorios y medios donde nuestros proyectos han sido publicados, referenciados o desarrollados por RCW Innovation.',
+    'featured.visit': 'Visitar plataforma',
+    'featured.altSuffix': 'plataforma donde RCW Innovation ha colaborado',
+    'featured.tag.directory': 'Directorio Nacional',
+    'featured.tag.marketplace': 'Marketplace Hispano',
+    'featured.canadaOneClick.description': 'Directorio nacional canadiense donde RCW Innovation aparece referenciado como empresa de desarrollo tecnológico, IA y transformación digital con sede en Calgary.',
+    'featured.latinosCalgary.description': 'Primer marketplace para la comunidad hispana en Calgary, desarrollado por RCW Innovation. Caso de éxito en e-commerce, SEO local y posicionamiento orgánico.',
     
     // Services
     'services.badge': 'Servicios principales',
@@ -416,6 +428,18 @@ const translations = {
     'techStack.subtitle': 'We work with the most advanced development technologies and artificial intelligence platforms on the market to deliver robust, scalable and future-proof solutions.',
     'techStack.codeLabel': 'Development',
     'techStack.aiLabel': 'Artificial Intelligence & Automation',
+
+    // Featured In / Press
+    'featured.badge': 'Featured in & collaborations',
+    'featured.title': 'Platforms where',
+    'featured.titleHighlight': 'we have collaborated',
+    'featured.subtitle': 'Platforms, directories and media where our projects have been published, referenced or built by RCW Innovation.',
+    'featured.visit': 'Visit platform',
+    'featured.altSuffix': 'platform where RCW Innovation has collaborated',
+    'featured.tag.directory': 'National Directory',
+    'featured.tag.marketplace': 'Hispanic Marketplace',
+    'featured.canadaOneClick.description': 'Canadian national directory where RCW Innovation is listed as a technology, AI and digital transformation company based in Calgary.',
+    'featured.latinosCalgary.description': 'First marketplace for the Hispanic community in Calgary, built by RCW Innovation. A success case in e-commerce, local SEO and organic positioning.',
     
     // Services
     'services.badge': 'Main Services',
