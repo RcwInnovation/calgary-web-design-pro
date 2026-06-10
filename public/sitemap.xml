@@ -29,6 +29,18 @@
   <url><loc>https://www.rcwinnovation.com/es/contacto</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.rcwinnovation.com/en/contact</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
+  <!-- Blog -->
+  <url><loc>https://www.rcwinnovation.com/es/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rcwinnovation.com/en/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.rcwinnovation.com/es/blog/caso-exito-servicios-latinos-marketplace-calgary</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rcwinnovation.com/en/blog/case-study-servicios-latinos-marketplace-calgary</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rcwinnovation.com/es/blog/agentes-ia-conversacionales-empresas-calgary</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rcwinnovation.com/en/blog/conversational-ai-agents-calgary-businesses</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rcwinnovation.com/es/blog/transformacion-digital-pymes-canada-2026</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rcwinnovation.com/en/blog/digital-transformation-canadian-smbs-2026</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rcwinnovation.com/es/blog/rcw-innovation-listado-canada-one-click</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.rcwinnovation.com/en/blog/rcw-innovation-featured-canada-one-click</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
   <!-- Services ES -->
   <url><loc>https://www.rcwinnovation.com/es/servicios/software-a-medida</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.rcwinnovation.com/es/servicios/branding-redes-sociales</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>

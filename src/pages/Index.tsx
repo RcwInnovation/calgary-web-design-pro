@@ -14,6 +14,7 @@ import { Founder } from '@/components/Founder';
 import { JoinTeam } from '@/components/JoinTeam';
 import { Process } from '@/components/Process';
 import { FAQ } from '@/components/FAQ';
+import { BlogSection } from '@/components/BlogSection';
 import { CTA } from '@/components/CTA';
 import { Footer } from '@/components/Footer';
 
@@ -107,6 +108,7 @@ const Index = () => {
           <JoinTeam />
           <Process />
           <FAQ />
+          <BlogSection />
           <CTA onOpenDiagnostic={() => setIsDiagnosticOpen(true)} />
         </main>
 
