@@ -7,6 +7,7 @@ import { TechStack } from '@/components/TechStack';
 import { Services } from '@/components/Services';
 import { Metrics } from '@/components/Metrics';
 import { Projects } from '@/components/Projects';
+import { FeaturedIn } from '@/components/FeaturedIn';
 import { WhyUs } from '@/components/WhyUs';
 import { AboutUs } from '@/components/AboutUs';
 import { Founder } from '@/components/Founder';
@@ -99,6 +100,7 @@ const Index = () => {
           <Services onOpenConsultation={() => setIsConsultationOpen(true)} onOpenDiagnostic={() => setIsDiagnosticOpen(true)} />
           <Metrics />
           <Projects />
+          <FeaturedIn />
           <WhyUs />
           <AboutUs />
           <Founder />
