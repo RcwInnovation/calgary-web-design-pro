@@ -63,6 +63,18 @@ const translations = {
     'featured.tag.marketplace': 'Marketplace Hispano',
     'featured.canadaOneClick.description': 'Directorio nacional canadiense donde RCW Innovation aparece referenciado como empresa de desarrollo tecnológico, IA y transformación digital con sede en Calgary.',
     'featured.latinosCalgary.description': 'Primer marketplace para la comunidad hispana en Calgary, desarrollado por RCW Innovation. Caso de éxito en e-commerce, SEO local y posicionamiento orgánico.',
+
+    // Blog
+    'blog.badge': 'Blog & Prensa',
+    'blog.title': 'Insights, casos de éxito y',
+    'blog.titleHighlight': 'menciones en prensa',
+    'blog.subtitle': 'Artículos sobre desarrollo, IA y transformación digital, y publicaciones donde RCW Innovation ha sido mencionada.',
+    'blog.readMore': 'Leer artículo',
+    'blog.viewAll': 'Ver todos los artículos',
+    'blog.category.case-study': 'Caso de éxito',
+    'blog.category.ai': 'Inteligencia Artificial',
+    'blog.category.web-development': 'Desarrollo Web',
+    'blog.category.press': 'Prensa',
     
     // Services
     'services.badge': 'Servicios principales',
@@ -440,6 +452,18 @@ const translations = {
     'featured.tag.marketplace': 'Hispanic Marketplace',
     'featured.canadaOneClick.description': 'Canadian national directory where RCW Innovation is listed as a technology, AI and digital transformation company based in Calgary.',
     'featured.latinosCalgary.description': 'First marketplace for the Hispanic community in Calgary, built by RCW Innovation. A success case in e-commerce, local SEO and organic positioning.',
+
+    // Blog
+    'blog.badge': 'Blog & Press',
+    'blog.title': 'Insights, case studies and',
+    'blog.titleHighlight': 'press mentions',
+    'blog.subtitle': 'Articles on development, AI and digital transformation, plus publications where RCW Innovation has been featured.',
+    'blog.readMore': 'Read article',
+    'blog.viewAll': 'View all articles',
+    'blog.category.case-study': 'Case Study',
+    'blog.category.ai': 'Artificial Intelligence',
+    'blog.category.web-development': 'Web Development',
+    'blog.category.press': 'Press',
     
     // Services
     'services.badge': 'Main Services',

@@ -26,6 +26,8 @@ import ValuePage from "./pages/ValuePage";
 import ProcessPage from "./pages/ProcessPage";
 import FAQsPage from "./pages/FAQsPage";
 import ContactPage from "./pages/ContactPage";
+import BlogPage from "./pages/BlogPage";
+import BlogPostPage from "./pages/BlogPostPage";
 
 import { serviceRoutes, pageRoutes, legacyUrlMappings } from "./config/routes";
 
@@ -79,6 +81,10 @@ const App = () => (
           {/* Spanish Routes */}
           <Route path="/es" element={<LanguageLayout />}>
             <Route index element={<Index />} />
+
+            {/* Blog - Spanish */}
+            <Route path="blog" element={<BlogPage />} />
+            <Route path="blog/:slug" element={<BlogPostPage />} />
             
             {/* SEO Pages - Spanish */}
             {pageRoutes.map(route => (
@@ -111,6 +117,10 @@ const App = () => (
           {/* English Routes */}
           <Route path="/en" element={<LanguageLayout />}>
             <Route index element={<Index />} />
+
+            {/* Blog - English */}
+            <Route path="blog" element={<BlogPage />} />
+            <Route path="blog/:slug" element={<BlogPostPage />} />
             
             {/* SEO Pages - English */}
             {pageRoutes.map(route => (
