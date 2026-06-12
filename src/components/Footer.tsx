@@ -48,6 +48,7 @@ export const Footer = () => {
       { label: t('footer.link.process'), href: `/${language}/${sectionRoutes.process[language]}` },
       { label: t('footer.link.faq'), href: `/${language}/${sectionRoutes.faq[language]}` },
       { label: t('footer.link.contact'), href: `/${language}/${sectionRoutes.contact[language]}` },
+      { label: t('footer.link.blog'), href: `/${language}/blog` },
     ],
     legal: [
       { label: t('footer.link.privacy'), href: `/${language}/${sectionRoutes.privacy[language]}` },

@@ -22,6 +22,7 @@ export const Header = ({ onOpenConsultation }: HeaderProps) => {
   const navLinks = [
     { href: `/${language}/#servicios`, label: t('nav.services'), isAnchor: true, anchor: '#servicios' },
     { href: `/${language}/${sectionRoutes.projects[language]}`, label: t('nav.projects'), isAnchor: false },
+    { href: `/${language}/blog`, label: t('nav.blog'), isAnchor: false },
     { href: `/${language}/${sectionRoutes.whyUs[language]}`, label: t('nav.whyUs'), isAnchor: false },
     { href: `/${language}/${sectionRoutes.process[language]}`, label: t('nav.process'), isAnchor: false },
     { href: `/${language}/#founder`, label: t('nav.founder'), isAnchor: true, anchor: '#founder' },
