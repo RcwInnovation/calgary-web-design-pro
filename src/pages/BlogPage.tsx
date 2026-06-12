@@ -44,17 +44,43 @@ const BlogPage = () => {
           '@context': 'https://schema.org',
           '@type': 'Blog',
           name: seo.title,
+          description: seo.description,
           url: seo.canonical,
           inLanguage: language,
-          publisher: { '@type': 'Organization', name: 'RCW Innovation Inc' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'RCW Innovation Inc',
+            url: 'https://www.rcwinnovation.com',
+            logo: {
+              '@type': 'ImageObject',
+              url: 'https://www.rcwinnovation.com/icon-512.png',
+            },
+          },
           blogPost: blogPosts.map((p) => ({
             '@type': 'BlogPosting',
             headline: p.title[language],
             description: p.excerpt[language],
+            image: `https://www.rcwinnovation.com${p.cover}`,
             datePublished: p.publishedAt,
+            dateModified: p.publishedAt,
+            inLanguage: language,
+            articleSection: p.category,
+            keywords: p.keywords[language],
             author: { '@type': 'Person', name: p.author },
             url: `https://www.rcwinnovation.com/${language}/blog/${p.slug[language]}`,
+            mainEntityOfPage: {
+              '@type': 'WebPage',
+              '@id': `https://www.rcwinnovation.com/${language}/blog/${p.slug[language]}`,
+            },
           })),
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: language === 'es' ? 'Inicio' : 'Home', item: `https://www.rcwinnovation.com/${language}` },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: seo.canonical },
+          ],
         })}</script>
       </Helmet>
 
