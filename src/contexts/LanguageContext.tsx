@@ -22,6 +22,7 @@ const translations = {
     'nav.founder': 'Fundador',
     'nav.faq': 'FAQ',
     'nav.contact': 'Contacto',
+    'nav.blog': 'Blog',
     'nav.cta': 'Agenda tu Asesoría',
     
     // Hero
@@ -349,6 +350,7 @@ const translations = {
     'footer.link.process': 'Proceso',
     'footer.link.faq': 'FAQ',
     'footer.link.contact': 'Contacto',
+    'footer.link.blog': 'Blog',
     'footer.link.privacy': 'Política de Privacidad',
     'footer.link.terms': 'Términos de Servicio',
     'footer.rights': 'Todos los derechos reservados.',
@@ -411,6 +413,7 @@ const translations = {
     'nav.founder': 'Founder',
     'nav.faq': 'FAQ',
     'nav.contact': 'Contact',
+    'nav.blog': 'Blog',
     'nav.cta': 'Book Consultation',
     
     // Hero
@@ -738,6 +741,7 @@ const translations = {
     'footer.link.process': 'Process',
     'footer.link.faq': 'FAQ',
     'footer.link.contact': 'Contact',
+    'footer.link.blog': 'Blog',
     'footer.link.privacy': 'Privacy Policy',
     'footer.link.terms': 'Terms of Service',
     'footer.rights': 'All rights reserved.',
