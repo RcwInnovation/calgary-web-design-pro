@@ -48,17 +48,30 @@ const BlogPostPage = () => {
           '@type': 'BlogPosting',
           headline: post.title[language],
           description: post.excerpt[language],
+          image: [`https://www.rcwinnovation.com${post.cover}`],
           datePublished: post.publishedAt,
           dateModified: post.publishedAt,
           inLanguage: language,
           keywords: post.keywords[language],
+          articleSection: post.category,
+          wordCount: post.content[language].join(' ').split(/\s+/).filter(Boolean).length,
+          timeRequired: `PT${post.readingMinutes}M`,
           author: { '@type': 'Person', name: post.author },
           publisher: {
             '@type': 'Organization',
             name: 'RCW Innovation Inc',
             url: 'https://www.rcwinnovation.com',
+            logo: {
+              '@type': 'ImageObject',
+              url: 'https://www.rcwinnovation.com/icon-512.png',
+            },
           },
           mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+          isPartOf: {
+            '@type': 'Blog',
+            '@id': `https://www.rcwinnovation.com/${language}/blog`,
+            name: language === 'es' ? 'Blog RCW Innovation' : 'RCW Innovation Blog',
+          },
         })}</script>
         <script type="application/ld+json">{JSON.stringify({
           '@context': 'https://schema.org',
