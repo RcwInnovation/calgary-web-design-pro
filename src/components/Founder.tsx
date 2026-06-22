@@ -59,7 +59,7 @@ export const Founder = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="lg:col-span-2 relative group"
+            className="lg:col-span-2 relative group mx-auto w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-none"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500" />
             <div className="relative rounded-3xl overflow-hidden border border-primary/20 bg-card/50 backdrop-blur-sm">
@@ -69,7 +69,7 @@ export const Founder = () => {
                 width={768}
                 height={896}
                 loading="lazy"
-                className="w-full h-auto object-cover"
+                className="w-full h-auto max-h-[360px] sm:max-h-[400px] lg:max-h-[420px] object-cover object-top"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-card via-card/80 to-transparent p-6">
                 <h3 className="text-2xl font-bold text-foreground">{t('founder.name')}</h3>
