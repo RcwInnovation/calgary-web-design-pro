@@ -28,6 +28,8 @@ import FAQsPage from "./pages/FAQsPage";
 import ContactPage from "./pages/ContactPage";
 import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import TermsOfServicePage from "./pages/TermsOfServicePage";
 
 import { serviceRoutes, pageRoutes, legacyUrlMappings } from "./config/routes";
 
@@ -85,6 +87,10 @@ const App = () => (
             {/* Blog - Spanish */}
             <Route path="blog" element={<BlogPage />} />
             <Route path="blog/:slug" element={<BlogPostPage />} />
+
+            {/* Legal - Spanish */}
+            <Route path="politica-privacidad" element={<PrivacyPolicyPage />} />
+            <Route path="terminos-servicio" element={<TermsOfServicePage />} />
             
             {/* SEO Pages - Spanish */}
             {pageRoutes.map(route => (
@@ -121,6 +127,10 @@ const App = () => (
             {/* Blog - English */}
             <Route path="blog" element={<BlogPage />} />
             <Route path="blog/:slug" element={<BlogPostPage />} />
+
+            {/* Legal - English */}
+            <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="terms-of-service" element={<TermsOfServicePage />} />
             
             {/* SEO Pages - English */}
             {pageRoutes.map(route => (
