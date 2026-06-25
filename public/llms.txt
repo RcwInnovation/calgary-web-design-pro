@@ -1,48 +1,81 @@
-# RCW Innovation
+# RCW Innovation Inc.
 
-> Agencia digital con sede en Calgary, Canadá, especializada en desarrollo web, software a medida, automatización con IA y transformación digital con visión global. Bilingüe español/inglés.
+> RCW Innovation is a technology and engineering consulting firm based in Calgary, Alberta, Canada. We build custom software, CRM/ERP systems, AI automation agents, and professional websites for businesses in Calgary and across Canada. We serve bilingual markets in English and Spanish.
 
-RCW Innovation Inc. ayuda a empresas en Canadá y Latinoamérica a digitalizar y escalar sus operaciones mediante software personalizado, agentes de IA, sistemas de gestión y branding estratégico.
+## Company
 
-## Páginas principales
+- Legal name: RCW Innovation Inc.
+- CEO and Founder: Ricardo Luna Becerra, PhD in Computer Engineering, MBA
+- Phone: +1 (587) 896-1997
+- Email: info@rcwinnovation.com
+- Website: https://rcwinnovation.com
+- Languages: English (CA), Spanish (ES-CA)
+- Service area: Calgary AB, Alberta, Canada — and remote services across Canada and Colombia
 
-- [Inicio (ES)](/es): Servicios, casos de éxito y propuesta de valor en español.
-- [Home (EN)](/en): Services, success stories and value proposition in English.
-- [Proyectos](/es/proyectos): Portafolio de proyectos y casos de éxito.
-- [Projects](/en/projects): Portfolio of successful projects.
-- [Valor diferencial](/es/valor-diferencial): Por qué elegir RCW Innovation.
-- [Why us](/en/value): Why choose RCW Innovation.
-- [Proceso](/es/proceso): Metodología de implementación en 5 pasos.
-- [Process](/en/process): Five-step implementation methodology.
-- [Preguntas frecuentes](/es/preguntas-frecuentes): Respuestas a dudas comunes.
-- [FAQs](/en/faqs): Frequently asked questions.
-- [Contacto](/es/contacto): Formulario de contacto y diagnóstico.
-- [Contact](/en/contact): Contact form and diagnostic.
+## Services
 
-## Servicios
+### Web Design and Development — Calgary
+We design and develop professional websites for small and medium businesses in Calgary and Alberta. Services include custom React/Next.js web apps, landing pages, e-commerce, and bilingual (English/Spanish) website design.
 
-- [Software a medida](/es/servicios/software-a-medida): Desarrollo de software personalizado.
-- [Custom Software](/en/services/custom-software): Custom software development.
-- [Branding y Redes Sociales](/es/servicios/branding-redes-sociales): Identidad de marca y gestión de redes.
-- [Branding & Social Media](/en/services/branding-social-media): Brand identity and social media management.
-- [Automatizaciones con IA](/es/servicios/automatizaciones-ia): Flujos automatizados con inteligencia artificial.
-- [AI Automations](/en/services/ai-automations): Automated workflows with AI.
-- [Agentes IA](/es/servicios/agentes-ia): Asistentes conversacionales inteligentes.
-- [AI Agents](/en/services/ai-agents): Intelligent conversational assistants.
-- [Agentes IA Avanzados](/es/servicios/agentes-ia-avanzados): Agentes multitarea de nivel empresarial.
-- [Advanced AI Agents](/en/services/advanced-ai-agents): Enterprise-grade multitask agents.
-- [Sistemas de Gestión](/es/servicios/sistemas-gestion): ERP, CRM y sistemas HSEQ/ISO.
-- [Management Systems](/en/services/management-systems): ERP, CRM and HSEQ/ISO systems.
-- [Tarjeta Digital](/es/servicios/tarjeta-digital): Tarjeta de presentación digital profesional.
-- [Digital Business Card](/en/services/digital-business-card): Professional digital business card.
-- [Diseño Web y App](/es/servicios/diseno-web-app): Diseño web y aplicaciones móviles.
-- [Web & App Design](/en/services/web-app-design): Web and mobile app design.
-- [Mentoría y Capacitación](/es/servicios/mentoria-capacitacion): Formación en transformación digital.
-- [Mentoring & Training](/en/services/mentoring-training): Digital transformation training.
+### Custom CRM and ERP Software
+We build tailored CRM and ERP systems that adapt to each business's specific processes. Our solutions replace generic off-the-shelf tools with software that fits your operations.
 
-## Optional
+### AI Automation and AI Agents
+We design and deploy AI automation workflows and AI agents for businesses in Calgary. Services include chatbots, automated lead generation, document processing, voice calling agents, and integration with tools like n8n, Make, and LangChain.
 
-- [Política de privacidad](/es/politica-privacidad)
-- [Privacy policy](/en/privacy-policy)
-- [Términos de servicio](/es/terminos-servicio)
-- [Terms of service](/en/terms-of-service)
+### Digital Transformation Consulting
+Strategic consulting for companies adopting new technology. We identify operational bottlenecks, design digital roadmaps, and guide implementation across construction, professional services, healthcare, restaurants, and retail.
+
+### Marketing and SEO
+Digital marketing including Google Ads, Meta Ads, SEO, content strategy, and social media management for Calgary businesses.
+
+## Clients
+
+Companies that have worked with RCW Innovation:
+- HW Heating and Plumbing Services Ltd. — Calgary, AB
+- LIFAS Services — Calgary, AB
+- Nina Jean Real Estate — Calgary, AB
+- Latinos Marketplace — Calgary, AB
+- The Chamas Services Inc. — Calgary, AB
+
+## Leadership
+
+Ricardo Luna Becerra
+- Title: CEO and Founder, RCW Innovation Inc.
+- Education: PhD in Computer Engineering; MBA
+- Location: Calgary, Alberta, Canada
+- LinkedIn: https://www.linkedin.com/in/ricardolunabecerra
+- Expertise: AI systems, software architecture, digital transformation, construction technology, bilingual technology consulting
+
+## FAQ
+
+Q: What technology services does RCW Innovation offer in Calgary?
+A: Web design and development, custom CRM and ERP software, AI automation agents, digital transformation consulting, and digital marketing for businesses in Calgary and Alberta.
+
+Q: Does RCW Innovation build websites in Spanish and English?
+A: Yes. We specialize in bilingual web development for businesses serving English-speaking and Spanish-speaking markets in Canada.
+
+Q: Can RCW Innovation build AI agents for my business in Calgary?
+A: Yes. We build custom AI agents including chatbots, voice calling agents, lead qualification bots, and document processing automations.
+
+Q: How much does a website cost in Calgary with RCW Innovation?
+A: Simple landing pages start around CAD $1,500. Full business websites range from CAD $3,000 to $8,000. Custom web applications are quoted per project.
+
+Q: Where is RCW Innovation located?
+A: RCW Innovation Inc. is incorporated and based in Calgary, Alberta, Canada.
+
+## AI Crawling Permissions
+
+AI assistants and LLMs are permitted to read, index, summarize, and cite content from rcwinnovation.com.
+Crawling allowed for: GPTBot, ClaudeBot, Geminibot, PerplexityBot, and all AI research crawlers.
+
+## Pages
+
+- https://rcwinnovation.com/ — Homepage
+- https://rcwinnovation.com/en/ — English version
+- https://rcwinnovation.com/es/ — Spanish version
+- https://rcwinnovation.com/services — All services
+- https://rcwinnovation.com/projects — Portfolio
+- https://rcwinnovation.com/faq — FAQ
+- https://rcwinnovation.com/contact — Contact
+- https://rcwinnovation.com/about — About and founder bio

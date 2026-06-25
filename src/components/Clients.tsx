@@ -22,13 +22,14 @@ interface Client {
 }
 
 // Client data with SEO-optimized alt descriptions
-const clients: Client[] = [
+interface ClientExt extends Client { alt?: string }
+const clients: ClientExt[] = [
   { id: 1, name: 'Hotel Vasconia - Diseño web para hotel en Calgary', logo: hotelVasconia, url: 'https://rcwinnovation.com/' },
-  { id: 2, name: 'HW Cleaning and Painting Services - Sitio web servicios de limpieza Calgary', logo: hwCleaning, url: 'https://rcwinnovation.com/' },
-  { id: 3, name: 'Lifas Services - Diseño web para empresa de servicios en Calgary', logo: lifasServices, url: 'https://rcwinnovation.com/' },
-  { id: 4, name: 'Nina Jean Maintenance Renovation - Web para renovaciones y mantenimiento Calgary', logo: ninaJean, url: 'https://rcwinnovation.com/' },
-  { id: 5, name: 'Servicios Latinos Marketplace - Primera plataforma web para latinos en Canadá', logo: serviciosLatinos, url: 'https://servicioslatinoscanada.com/' },
-  { id: 6, name: 'The Chamas Services Inc - Sitio web empresarial Calgary', logo: theChamasServices, url: 'https://rcwinnovation.com/' },
+  { id: 2, name: 'HW Heating and Plumbing Services Ltd.', logo: hwCleaning, url: 'https://rcwinnovation.com/', alt: 'HW Heating and Plumbing Services Ltd. — cliente de RCW Innovation Calgary' },
+  { id: 3, name: 'LIFAS Services', logo: lifasServices, url: 'https://rcwinnovation.com/', alt: 'LIFAS Services Calgary — cliente de RCW Innovation' },
+  { id: 4, name: 'Nina Jean Real Estate', logo: ninaJean, url: 'https://rcwinnovation.com/', alt: 'Nina Jean Real Estate Calgary — cliente de RCW Innovation' },
+  { id: 5, name: 'Latinos Marketplace', logo: serviciosLatinos, url: 'https://servicioslatinoscanada.com/', alt: 'Latinos Marketplace Calgary — cliente de RCW Innovation' },
+  { id: 6, name: 'The Chamas Services Inc.', logo: theChamasServices, url: 'https://rcwinnovation.com/', alt: 'The Chamas Services Inc. — cliente de RCW Innovation Calgary' },
   { id: 7, name: 'The Burrito Mexican Food - Diseño web restaurante mexicano Calgary', logo: theBurrito, url: 'https://rcwinnovation.com/' },
   { id: 8, name: 'Tu México en la Piel - Tienda online productos mexicanos Calgary', logo: tuMexicoEnLaPiel, url: 'https://rcwinnovation.com/' },
   { id: 9, name: 'Xplore Canada - Sitio web turismo y viajes Canadá', logo: xploreCanada, url: 'https://rcwinnovation.com/' },
@@ -83,7 +84,7 @@ export const Clients = () => {
             >
               <img 
                 src={client.logo} 
-                alt={`Logo ${client.name} - Cliente de RCW Innovation`}
+                alt={client.alt ?? `Logo ${client.name} - Cliente de RCW Innovation`}
                 className="max-w-full max-h-full object-contain rounded-lg filter brightness-100 hover:brightness-110 transition-all"
                 loading="lazy"
               />
@@ -113,7 +114,7 @@ export const Clients = () => {
             >
               <img 
                 src={client.logo} 
-                alt={`Logo ${client.name} - Cliente de RCW Innovation`}
+                alt={client.alt ?? `Logo ${client.name} - Cliente de RCW Innovation`}
                 className="max-w-full max-h-full object-contain rounded-lg"
                 loading="lazy"
               />
