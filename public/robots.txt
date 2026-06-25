@@ -1,16 +1,26 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
 User-agent: *
 Allow: /
 
-Sitemap: https://www.rcwinnovation.com/sitemap.xml
+User-agent: Googlebot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Geminibot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://rcwinnovation.com/sitemap.xml
+LLMs: https://rcwinnovation.com/llms.txt

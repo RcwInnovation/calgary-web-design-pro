@@ -30,6 +30,7 @@ import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsOfServicePage from "./pages/TermsOfServicePage";
+import AboutPage from "./pages/AboutPage";
 
 import { serviceRoutes, pageRoutes, legacyUrlMappings } from "./config/routes";
 
@@ -79,10 +80,14 @@ const App = () => (
         <Routes>
           {/* Root redirect to language-prefixed route */}
           <Route path="/" element={<LanguageLayout><LanguageRedirect /></LanguageLayout>} />
-          
+
+          {/* About — bilingual top-level route */}
+          <Route path="/about" element={<LanguageLayout><AboutPage /></LanguageLayout>} />
+
           {/* Spanish Routes */}
           <Route path="/es" element={<LanguageLayout />}>
             <Route index element={<Index />} />
+            <Route path="about" element={<AboutPage />} />
 
             {/* Blog - Spanish */}
             <Route path="blog" element={<BlogPage />} />
@@ -123,6 +128,7 @@ const App = () => (
           {/* English Routes */}
           <Route path="/en" element={<LanguageLayout />}>
             <Route index element={<Index />} />
+            <Route path="about" element={<AboutPage />} />
 
             {/* Blog - English */}
             <Route path="blog" element={<BlogPage />} />
