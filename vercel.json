@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/((?!llms.txt|robots.txt|sitemap.xml).*)",
+      "destination": "/index.html"
+    }
+  ]
+}
