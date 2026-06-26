@@ -74,10 +74,18 @@ export const Header = ({ onOpenConsultation }: HeaderProps) => {
         >
           <Link
             to={basePath}
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-2 sm:gap-3 group shrink-0"
           >
-            <img src={logo} alt="RCW Innovation Inc Logo" className="h-12 w-12 object-contain" />
-            <span className="text-xl font-bold hidden sm:block group-hover:text-gradient-blue transition-all">
+            <img
+              src={logo}
+              alt="RCW Innovation Inc Logo"
+              className="h-10 w-10 sm:h-11 sm:w-11 object-contain shrink-0"
+              width={44}
+              height={44}
+              loading="eager"
+              decoding="async"
+            />
+            <span className="hidden sm:inline lg:hidden xl:inline text-base xl:text-lg font-bold whitespace-nowrap leading-none group-hover:text-gradient-blue transition-all">
               RCW Innovation
             </span>
           </Link>
