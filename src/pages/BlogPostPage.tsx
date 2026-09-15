@@ -35,12 +35,14 @@ const BlogPostPage = () => {
         <meta name="keywords" content={post.keywords[language]} />
         <meta name="author" content={post.author} />
         <link rel="canonical" href={url} />
-        <link rel="alternate" hrefLang={language} href={url} />
-        <link rel="alternate" hrefLang={altLang} href={altUrl} />
+        <link rel="alternate" hrefLang={language === 'es' ? 'es-CA' : 'en-CA'} href={url} />
+        <link rel="alternate" hrefLang={altLang === 'es' ? 'es-CA' : 'en-CA'} href={altUrl} />
+        <link rel="alternate" hrefLang="x-default" href={language === 'es' ? url : altUrl} />
         <meta property="og:type" content="article" />
         <meta property="og:title" content={post.title[language]} />
         <meta property="og:description" content={post.excerpt[language]} />
         <meta property="og:url" content={url} />
+        <meta property="og:locale" content={language === 'es' ? 'es_CA' : 'en_CA'} />
         <meta property="article:published_time" content={post.publishedAt} />
         <meta property="article:author" content={post.author} />
         <script type="application/ld+json">{JSON.stringify({

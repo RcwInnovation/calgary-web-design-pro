@@ -16,7 +16,7 @@ export const LanguageSwitcher = () => {
         }`}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
-        aria-label="Cambiar a español"
+        aria-label={language === 'es' ? 'Español seleccionado' : 'Switch to Spanish'}
       >
         <span className="text-base">🇪🇸</span>
         <span className="hidden sm:inline">ES</span>
@@ -30,7 +30,7 @@ export const LanguageSwitcher = () => {
         }`}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
-        aria-label="Switch to English"
+        aria-label={language === 'es' ? 'Cambiar a inglés' : 'English selected'}
       >
         <span className="text-base">🇨🇦</span>
         <span className="hidden sm:inline">EN</span>

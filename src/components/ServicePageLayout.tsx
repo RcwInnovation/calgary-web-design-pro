@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button';
 import { LucideIcon } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ProblemSolutionJourney } from '@/components/ProblemSolutionJourney';
+import { serviceRoutes } from '@/config/routes';
 interface ServiceFeature {
   title: string;
   description: string;
@@ -97,6 +98,11 @@ export const ServicePageLayout = ({
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const { t, language, getLocalizedPath } = useLanguage();
   const location = useLocation();
+  const activeServiceRoute = serviceRoutes.find((route) =>
+    location.pathname === `/es/${route.es}` || location.pathname === `/en/${route.en}`
+  );
+  const spanishUrl = activeServiceRoute ? `https://www.rcwinnovation.com/es/${activeServiceRoute.es}` : undefined;
+  const englishUrl = activeServiceRoute ? `https://www.rcwinnovation.com/en/${activeServiceRoute.en}` : undefined;
 
   // Scroll to top when navigating to this page
   useEffect(() => {
@@ -113,6 +119,9 @@ export const ServicePageLayout = ({
         <meta name="author" content="RCW Innovation Inc" />
         <meta name="robots" content="index, follow" />
         {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+        {spanishUrl && <link rel="alternate" hrefLang="es-CA" href={spanishUrl} />}
+        {englishUrl && <link rel="alternate" hrefLang="en-CA" href={englishUrl} />}
+        {spanishUrl && <link rel="alternate" hrefLang="x-default" href={spanishUrl} />}
         
         <meta property="og:type" content="website" />
         <meta property="og:title" content={metaTitle} />

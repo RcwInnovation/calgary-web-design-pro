@@ -5,37 +5,56 @@ import { useState } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { ConsultationModal } from '@/components/ConsultationModal';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const AboutPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { language, basePath } = useLanguage();
+  const isSpanish = language === 'es';
+  const canonical = `https://rcwinnovation.com/${language}/about`;
+  const seo = isSpanish
+    ? {
+        title: 'Sobre RCW Innovation | Tecnología en español en Calgary',
+        description: 'Conoce a RCW Innovation y a su fundador Ricardo Luna Becerra. Desarrollo web, software a medida y automatización con IA en Calgary.',
+        heading: 'Sobre RCW Innovation',
+        summary: 'Consultoría tecnológica y de ingeniería desde Calgary, Alberta, para empresas de Canadá y Colombia.',
+      }
+    : {
+        title: 'About RCW Innovation | Calgary Technology Consulting',
+        description: 'Meet RCW Innovation and founder Ricardo Luna Becerra. Custom software, AI automation, CRM/ERP, and bilingual web design in Calgary.',
+        heading: 'About RCW Innovation',
+        summary: 'Technology and engineering consulting from Calgary, Alberta, for businesses across Canada and Colombia.',
+      };
 
   return (
     <>
       <Helmet>
-        <title>About RCW Innovation — Calgary Technology Consulting | Ricardo Luna Becerra</title>
-        <meta
-          name="description"
-          content="About RCW Innovation Inc., a Calgary-based technology and engineering consulting firm led by Ricardo Luna Becerra (PhD, MBA). Custom software, AI automation, CRM/ERP, and bilingual web design."
-        />
-        <link rel="canonical" href="https://rcwinnovation.com/about" />
-        <link rel="alternate" hrefLang="en-CA" href="https://rcwinnovation.com/about" />
-        <link rel="alternate" hrefLang="es-CA" href="https://rcwinnovation.com/about" />
-        <link rel="alternate" hrefLang="x-default" href="https://rcwinnovation.com/about" />
-        <meta property="og:title" content="About RCW Innovation — Calgary Technology Consulting" />
-        <meta property="og:description" content="Led by Ricardo Luna Becerra (PhD, MBA). Custom software, AI automation, CRM/ERP, and bilingual web design in Calgary, Alberta, Canada." />
-        <meta property="og:url" content="https://rcwinnovation.com/about" />
+        <html lang={language} />
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <link rel="canonical" href={canonical} />
+        <link rel="alternate" hrefLang="es-CA" href="https://rcwinnovation.com/es/about" />
+        <link rel="alternate" hrefLang="en-CA" href="https://rcwinnovation.com/en/about" />
+        <link rel="alternate" hrefLang="x-default" href="https://rcwinnovation.com/es/about" />
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
+        <meta property="og:url" content={canonical} />
         <meta property="og:type" content="profile" />
+        <meta property="og:locale" content={isSpanish ? 'es_CA' : 'en_CA'} />
         <script type="application/ld+json">{JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'AboutPage',
-          url: 'https://rcwinnovation.com/about',
+          url: canonical,
+          inLanguage: language,
           mainEntity: {
             '@type': 'Person',
-            '@id': 'https://rcwinnovation.com/about#founder',
+            '@id': `${canonical}#founder`,
             name: 'Ricardo Luna Becerra',
-            jobTitle: 'CEO and Founder',
-            description: 'CEO and Founder of RCW Innovation Inc. PhD in Computer Engineering, MBA. Expert in AI systems, software architecture, and digital transformation.',
-            sameAs: 'https://www.linkedin.com/in/ricardolunabecerra',
+            jobTitle: isSpanish ? 'Director ejecutivo y fundador' : 'CEO and Founder',
+            description: isSpanish
+              ? 'Fundador de RCW Innovation Inc. e ingeniero especializado en innovación, transformación digital y soluciones tecnológicas para negocios.'
+              : 'Founder of RCW Innovation Inc. and engineer specializing in innovation, digital transformation, and technology solutions for businesses.',
+            sameAs: 'https://www.linkedin.com/in/consultoricardolunab/',
             worksFor: { '@id': 'https://rcwinnovation.com/#organization' },
             address: {
               '@type': 'PostalAddress',
@@ -52,64 +71,61 @@ const AboutPage = () => {
       <main className="min-h-screen bg-background pt-28 pb-20">
         <article className="container-custom max-w-4xl">
           <Link
-            to="/"
+            to={basePath}
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to home / Volver al inicio
+            {isSpanish ? 'Volver al inicio' : 'Back to home'}
           </Link>
 
           <header className="mb-12">
             <span className="text-xs sm:text-sm text-primary font-medium tracking-wider uppercase mb-3 block">
-              About / Sobre nosotros
+              {isSpanish ? 'Sobre nosotros' : 'About us'}
             </span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              About RCW Innovation <span className="text-muted-foreground font-normal">/ Sobre RCW Innovation</span>
+              {seo.heading}
             </h1>
             <p className="text-lg text-muted-foreground">
-              Technology and engineering consulting from Calgary, Alberta — bilingual (EN / ES) for businesses across Canada and Colombia.
+              {seo.summary}
             </p>
           </header>
 
           <section className="mb-16 rounded-2xl border border-border bg-card/40 p-6 sm:p-10">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-6">Our Founder / Nuestro Fundador</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-6">{isSpanish ? 'Nuestro fundador' : 'Our founder'}</h2>
 
             <div className="space-y-3 mb-6">
               <p className="text-xl font-semibold">Ricardo Luna Becerra</p>
-              <p className="text-primary font-medium">CEO and Founder, RCW Innovation Inc.</p>
+              <p className="text-primary font-medium">{isSpanish ? 'Director ejecutivo y fundador de RCW Innovation Inc.' : 'CEO and Founder, RCW Innovation Inc.'}</p>
               <p className="flex items-center gap-2 text-muted-foreground">
-                <GraduationCap className="w-4 h-4" /> PhD in Computer Engineering · MBA
+                <GraduationCap className="w-4 h-4" /> {isSpanish ? 'Ingeniero Industrial y de Proyectos' : 'Industrial and Project Engineer'}
               </p>
               <p className="flex items-center gap-2 text-muted-foreground">
-                <MapPin className="w-4 h-4" /> Calgary, Alberta, Canada
+                <MapPin className="w-4 h-4" /> Calgary, Alberta, {isSpanish ? 'Canadá' : 'Canada'}
               </p>
             </div>
 
-            <p className="text-base sm:text-lg leading-relaxed mb-4">
-              Ricardo Luna Becerra is the CEO and Founder of RCW Innovation Inc., a technology and engineering consulting firm based in Calgary, Alberta. With a PhD in Computer Engineering and an MBA, Ricardo leads a team delivering custom software, AI automation, CRM/ERP systems, and bilingual web design for businesses across Canada and Colombia.
-            </p>
-
             <p className="text-base sm:text-lg leading-relaxed text-muted-foreground mb-6">
-              Ricardo Luna Becerra es el CEO y Fundador de RCW Innovation Inc., una firma de consultoría tecnológica y de ingeniería con sede en Calgary, Alberta. Con un PhD en Ingeniería de Computación y un MBA, Ricardo lidera un equipo que entrega software a medida, automatización con IA, sistemas CRM/ERP y diseño web bilingüe para empresas en Canadá y Colombia.
+              {isSpanish
+                ? 'Ricardo Luna Becerra lidera RCW Innovation Inc., una firma de consultoría tecnológica y de ingeniería con sede en Calgary. Su experiencia integra innovación, transformación digital, dirección de proyectos y soluciones tecnológicas aplicadas a negocios en Canadá y Colombia.'
+                : 'Ricardo Luna Becerra leads RCW Innovation Inc., a technology and engineering consulting firm based in Calgary. His experience combines innovation, digital transformation, project leadership, and technology solutions for businesses in Canada and Colombia.'}
             </p>
 
             <a
-              href="https://www.linkedin.com/in/ricardolunabecerra"
+              href="https://www.linkedin.com/in/consultoricardolunab/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
             >
-              <Linkedin className="w-4 h-4" /> linkedin.com/in/ricardolunabecerra
+              <Linkedin className="w-4 h-4" /> {isSpanish ? 'Conecta con el fundador en LinkedIn' : 'Connect with the founder on LinkedIn'}
             </a>
           </section>
 
           <section className="rounded-2xl border border-border bg-card/40 p-6 sm:p-10">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-6">Our Company / Nuestra Empresa</h2>
-            <p className="text-base sm:text-lg leading-relaxed mb-4">
-              RCW Innovation Inc. is incorporated in Calgary, Alberta, Canada. We serve businesses in English and Spanish across Canada and Colombia. Our services include web design, custom software development, AI automation, and digital transformation consulting.
-            </p>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-6">{isSpanish ? 'Nuestra empresa' : 'Our company'}</h2>
             <p className="text-base sm:text-lg leading-relaxed text-muted-foreground mb-8">
-              RCW Innovation Inc. está constituida en Calgary, Alberta, Canadá. Atendemos empresas en inglés y español en Canadá y Colombia. Nuestros servicios incluyen diseño web, desarrollo de software a medida, automatización con IA y consultoría en transformación digital.
+              {isSpanish
+                ? 'RCW Innovation Inc. está constituida en Calgary, Alberta, Canadá. Atendemos empresas en español e inglés en Canadá y Colombia. Nuestros servicios incluyen diseño web, desarrollo de software a medida, automatización con IA y consultoría en transformación digital.'
+                : 'RCW Innovation Inc. is incorporated in Calgary, Alberta, Canada. We serve businesses in English and Spanish across Canada and Colombia. Our services include web design, custom software development, AI automation, and digital transformation consulting.'}
             </p>
 
             <ul className="space-y-3 text-base">
@@ -123,7 +139,7 @@ const AboutPage = () => {
               </li>
               <li className="flex items-center gap-3">
                 <MapPin className="w-4 h-4 text-primary" />
-                Calgary, Alberta, Canada
+                Calgary, Alberta, {isSpanish ? 'Canadá' : 'Canada'}
               </li>
             </ul>
           </section>
