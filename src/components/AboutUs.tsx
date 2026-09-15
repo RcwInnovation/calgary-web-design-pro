@@ -5,6 +5,10 @@ import { Target, Eye, Lightbulb, Award, MessageCircle, Users, Heart } from 'luci
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const valueIcons = [Lightbulb, Award, MessageCircle, Users, Heart];
+const publicPlatforms = [
+  { name: 'Servicios Latinos Canada', url: 'https://servicioslatinoscanada.com/' },
+  { name: 'Canada One Click', url: 'https://canadaoneclick.ca/' },
+];
 
 export const AboutUs = () => {
   const ref = useRef(null);
@@ -73,6 +77,21 @@ export const AboutUs = () => {
             </div>
           ))}
         </motion.div>
+
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 -mt-12 mb-20 text-sm text-muted-foreground">
+          <span>{t('about.platformsEvidence')}:</span>
+          {publicPlatforms.map((platform) => (
+            <a
+              key={platform.name}
+              href={platform.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline"
+            >
+              {platform.name}
+            </a>
+          ))}
+        </div>
 
         {/* Mission & Vision */}
         <div className="grid md:grid-cols-2 gap-8 mb-20">
