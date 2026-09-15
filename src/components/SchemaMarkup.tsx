@@ -1,21 +1,48 @@
+// Schema JSON-LD global de RCW Innovation.
+// Dominio canónico: https://rcwinnovation.com (sin www).
+//
+// PLANTILLA COMENTADA — AggregateRating / Review:
+// Rellenar únicamente con reseñas reales; marcar reseñas falsas viola las políticas de Google.
+// Cuando existan reseñas verificables (p. ej. Google Business Profile), descomentar y completar:
+//
+// "aggregateRating": {
+//   "@type": "AggregateRating",
+//   "ratingValue": "REEMPLAZAR_CON_PROMEDIO_REAL",
+//   "reviewCount": "REEMPLAZAR_CON_TOTAL_REAL",
+//   "bestRating": "5",
+//   "worstRating": "1"
+// },
+// "review": [
+//   {
+//     "@type": "Review",
+//     "author": { "@type": "Person", "name": "NOMBRE_REAL_DEL_CLIENTE" },
+//     "datePublished": "AAAA-MM-DD",
+//     "reviewBody": "TEXTO_REAL_DE_LA_RESENA",
+//     "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" }
+//   }
+// ]
+
+const SITE_URL = "https://rcwinnovation.com";
+
 export const SchemaMarkup = () => {
-  const professionalServiceSchema = {
+  const organizationSchema = {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "RCW Innovation",
-    "url": "https://www.rcwinnovation.com/",
-    "description": "Líder en desarrollo web en Calgary y Colombia. Servicios de software a medida, automatización con IA, diseño web profesional y transformación digital con visión global e innovación.",
-    "areaServed": [
-      { "@type": "City", "name": "Calgary" },
-      { "@type": "AdministrativeArea", "name": "Alberta" },
-      { "@type": "Country", "name": "CA" },
-      { "@type": "Country", "name": "CO" }
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Calgary",
-      "addressRegion": "AB",
-      "addressCountry": "CA"
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    "name": "RCW Innovation Inc.",
+    "alternateName": "RCW Innovation",
+    "url": `${SITE_URL}/`,
+    "logo": `${SITE_URL}/favicon.png`,
+    "description": "Empresa de tecnología en Calgary, Alberta. Desarrollo de páginas web, software a medida, automatización con inteligencia artificial y branding digital, con atención en español e inglés en Canadá y Colombia.",
+    "foundingDate": "2023",
+    "founder": { "@id": `${SITE_URL}/#founder` },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-587-896-1997",
+      "email": "info@rcwinnovation.com",
+      "contactType": "customer service",
+      "areaServed": ["CA", "CO"],
+      "availableLanguage": ["es", "en"]
     },
     "sameAs": [
       "https://www.facebook.com/rcwinnovationai/",
@@ -25,6 +52,60 @@ export const SchemaMarkup = () => {
       "https://www.youtube.com/@rcwinnovationai",
       "https://www.tiktok.com/@rcwinnovationai"
     ]
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": `${SITE_URL}/#localbusiness`,
+    "name": "RCW Innovation Inc.",
+    "image": `${SITE_URL}/favicon.png`,
+    "url": `${SITE_URL}/`,
+    "telephone": "+1-587-896-1997",
+    "email": "info@rcwinnovation.com",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      // TODO: añadir "streetAddress" con la dirección física real cuando esté disponible.
+      "addressLocality": "Calgary",
+      "addressRegion": "AB",
+      "addressCountry": "CA"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 51.0447,
+      "longitude": -114.0719
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "17:00"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Calgary" },
+      { "@type": "AdministrativeArea", "name": "Alberta" },
+      { "@type": "Country", "name": "CA" },
+      { "@type": "Country", "name": "CO" }
+    ],
+    "parentOrganization": { "@id": `${SITE_URL}/#organization` }
+  };
+
+  const founderSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${SITE_URL}/#founder`,
+    "name": "Ricardo Luna Becerra",
+    "jobTitle": "Fundador y Consultor Principal",
+    "description": "Ingeniero Industrial y de Proyectos especializado en innovación, transformación digital y soluciones tecnológicas para negocios. Fundador de RCW Innovation Inc. y de las plataformas Servicios Latinos Canada y Canada One Click.",
+    "url": `${SITE_URL}/es/about`,
+    "sameAs": [
+      "https://www.linkedin.com/in/consultoricardolunab/",
+      "https://servicioslatinoscanada.com/",
+      "https://canadaoneclick.ca/"
+    ],
+    "worksFor": { "@id": `${SITE_URL}/#organization` },
+    "knowsLanguage": ["es", "en"]
   };
 
   const faqSchema = {
@@ -44,7 +125,7 @@ export const SchemaMarkup = () => {
         "name": "¿Cómo pueden ayudar a mi negocio?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Unimos tecnología, automatización y estrategia para eliminar tareas repetitivas, fortalecer tu marca y convertir más leads en clientes."
+          "text": "Unimos tecnología, automatización y estrategia para eliminar tareas repetitivas, fortalecer tu marca y convertir más leads en clientes. Todo respaldado por métricas y resultados medibles."
         }
       },
       {
@@ -52,7 +133,7 @@ export const SchemaMarkup = () => {
         "name": "¿Se integran con sistemas existentes?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sí, nos integramos con CRM, ERP y otras suites como Kommo, HubSpot, Odoo, Zoho y SAP. Nuestro enfoque es potenciar lo que ya funciona."
+          "text": "Sí, nos integramos con CRM, ERP y otras suites como Kommo, HubSpot, Odoo, Zoho y SAP. Nuestro enfoque es potenciar lo que ya funciona, no reemplazarlo."
         }
       },
       {
@@ -60,7 +141,7 @@ export const SchemaMarkup = () => {
         "name": "¿Cuánto tiempo toma ver resultados?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Prometemos quick wins en 2-3 semanas, un MVP funcional en 4-8 semanas y despliegues completos en 8-12 semanas."
+          "text": "Quick wins en 2-3 semanas, un MVP funcional en 4-8 semanas y despliegues completos en 8-12 semanas, dependiendo de la complejidad del proyecto."
         }
       },
       {
@@ -69,6 +150,14 @@ export const SchemaMarkup = () => {
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Usamos NDA, cifrado de datos, control de acceso estricto y nunca utilizamos los datos de clientes para entrenar modelos sin permiso expreso."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuáles son las opciones de inversión y pago?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ofrecemos proyectos por hitos o retainers mensuales, con opciones de financiamiento disponibles para proyectos de mayor envergadura."
         }
       },
       {
@@ -84,7 +173,15 @@ export const SchemaMarkup = () => {
         "name": "¿Qué los diferencia de otras agencias?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No vendemos servicios, diseñamos sistemas que generan resultados reales. Combinamos branding, tecnología de punta e innovación con un enfoque 100% orientado a métricas."
+          "text": "Diseñamos sistemas orientados a resultados medibles, combinando branding, tecnología e innovación con un enfoque en métricas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo puedo empezar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Agenda una Asesoría o Consultoría 5.0. Analizaremos tus objetivos, identificaremos oportunidades y crearemos un roadmap personalizado para tu negocio."
         }
       }
     ]
@@ -94,10 +191,7 @@ export const SchemaMarkup = () => {
     "@context": "https://schema.org",
     "@type": "Service",
     "serviceType": "Desarrollo Web y Automatización con IA",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "RCW Innovation Inc"
-    },
+    "provider": { "@id": `${SITE_URL}/#localbusiness` },
     "areaServed": {
       "@type": "City",
       "name": "Calgary"
@@ -170,7 +264,15 @@ export const SchemaMarkup = () => {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(founderSchema) }}
       />
       <script
         type="application/ld+json"
