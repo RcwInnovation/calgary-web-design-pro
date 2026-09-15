@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode, Context } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { serviceRoutes, pageRoutes } from '@/config/routes';
 
