@@ -126,12 +126,14 @@ const ProcessPage = () => {
         <meta name="description" content={currentSeo.description} />
         <meta name="keywords" content={currentSeo.keywords} />
         <link rel="canonical" href={currentSeo.canonicalUrl} />
-        <link rel="alternate" hrefLang="es" href="https://www.rcwinnovation.com/es/proceso" />
-        <link rel="alternate" hrefLang="en" href="https://www.rcwinnovation.com/en/process" />
+        <link rel="alternate" hrefLang="es-CA" href="https://www.rcwinnovation.com/es/proceso" />
+        <link rel="alternate" hrefLang="en-CA" href="https://www.rcwinnovation.com/en/process" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.rcwinnovation.com/es/proceso" />
         <meta property="og:title" content={currentSeo.title} />
         <meta property="og:description" content={currentSeo.description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={currentSeo.canonicalUrl} />
+        <meta property="og:locale" content={language === 'es' ? 'es_CA' : 'en_CA'} />
       </Helmet>
 
       <div className="min-h-screen bg-background text-foreground">
