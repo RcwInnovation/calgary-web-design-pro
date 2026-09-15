@@ -34,8 +34,10 @@ const BlogPage = () => {
         <title>{seo.title}</title>
         <meta name="description" content={seo.description} />
         <link rel="canonical" href={seo.canonical} />
-        <link rel="alternate" hrefLang="es" href="https://www.rcwinnovation.com/es/blog" />
-        <link rel="alternate" hrefLang="en" href="https://www.rcwinnovation.com/en/blog" />
+        <link rel="alternate" hrefLang="es-CA" href="https://www.rcwinnovation.com/es/blog" />
+        <link rel="alternate" hrefLang="en-CA" href="https://www.rcwinnovation.com/en/blog" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.rcwinnovation.com/es/blog" />
+        <meta property="og:locale" content={language === 'es' ? 'es_CA' : 'en_CA'} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={seo.title} />
         <meta property="og:description" content={seo.description} />

@@ -52,7 +52,7 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <html lang={language} />
+        <html lang={language === 'es' ? 'es' : 'en'} />
         <title>{currentSeo.title}</title>
         <meta 
           name="description" 
@@ -64,8 +64,8 @@ const Index = () => {
         <link rel="canonical" href={currentSeo.canonicalUrl} />
         
         {/* Alternate language links for SEO */}
-        <link rel="alternate" hrefLang="es" href="https://www.rcwinnovation.com/es" />
-        <link rel="alternate" hrefLang="en" href="https://www.rcwinnovation.com/en" />
+        <link rel="alternate" hrefLang="es-CA" href="https://www.rcwinnovation.com/es" />
+        <link rel="alternate" hrefLang="en-CA" href="https://www.rcwinnovation.com/en" />
         <link rel="alternate" hrefLang="x-default" href="https://www.rcwinnovation.com/es" />
         
         {/* Open Graph */}

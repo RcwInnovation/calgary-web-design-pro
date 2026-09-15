@@ -1,22 +1,14 @@
 import { useLocation, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const NotFound = () => {
   const location = useLocation();
-  const [preferredLang, setPreferredLang] = useState('es');
+  const pathLanguage = location.pathname.split('/')[1];
+  const preferredLang = pathLanguage === 'en' ? 'en' : 'es';
 
   useEffect(() => {
     console.error("404 Error: User attempted to access non-existent route:", location.pathname);
     
-    // Detect preferred language
-    const savedLang = localStorage.getItem('language');
-    const browserLang = navigator.language.toLowerCase();
-    
-    if (savedLang === 'en' || savedLang === 'es') {
-      setPreferredLang(savedLang);
-    } else if (browserLang.startsWith('en')) {
-      setPreferredLang('en');
-    }
   }, [location.pathname]);
 
   const content = {
@@ -32,7 +24,7 @@ const NotFound = () => {
     }
   };
 
-  const t = content[preferredLang as keyof typeof content];
+  const t = content[preferredLang];
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background">

@@ -144,12 +144,14 @@ const PrivacyPolicyPage = () => {
         <title>{c.title}</title>
         <meta name="description" content={c.description} />
         <link rel="canonical" href={c.canonical} />
-        <link rel="alternate" hrefLang="es" href="https://www.rcwinnovation.com/es/politica-privacidad" />
-        <link rel="alternate" hrefLang="en" href="https://www.rcwinnovation.com/en/privacy-policy" />
+        <link rel="alternate" hrefLang="es-CA" href="https://www.rcwinnovation.com/es/politica-privacidad" />
+        <link rel="alternate" hrefLang="en-CA" href="https://www.rcwinnovation.com/en/privacy-policy" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.rcwinnovation.com/es/politica-privacidad" />
         <meta property="og:title" content={c.title} />
         <meta property="og:description" content={c.description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={c.canonical} />
+        <meta property="og:locale" content={language === 'es' ? 'es_CA' : 'en_CA'} />
       </Helmet>
 
       <div className="min-h-screen bg-background text-foreground">
