@@ -17,7 +17,7 @@ const AboutPage = () => {
         title: 'Sobre RCW Innovation | Tecnología en español en Calgary',
         description: 'Conoce a RCW Innovation y a su fundador Ricardo Luna Becerra. Desarrollo web, software a medida y automatización con IA en Calgary.',
         heading: 'Sobre RCW Innovation',
-        summary: 'Consultoría tecnológica y de ingeniería desde Calgary, Alberta, para empresas de Canadá y Colombia.',
+        summary: 'RCW Innovation Inc. presta servicios de desarrollo web, software y automatización desde Calgary, Alberta, para empresas de Canadá y Colombia.',
       }
     : {
         title: 'About RCW Innovation | Calgary Technology Consulting',
@@ -127,6 +127,19 @@ const AboutPage = () => {
                 ? 'RCW Innovation Inc. está constituida en Calgary, Alberta, Canadá. Atendemos empresas en español e inglés en Canadá y Colombia. Nuestros servicios incluyen diseño web, desarrollo de software a medida, automatización con IA y consultoría en transformación digital.'
                 : 'RCW Innovation Inc. is incorporated in Calgary, Alberta, Canada. We serve businesses in English and Spanish across Canada and Colombia. Our services include web design, custom software development, AI automation, and digital transformation consulting.'}
             </p>
+
+            {isSpanish && (
+              <p className="text-sm text-muted-foreground mb-8">
+                Proyectos públicos desarrollados:{' '}
+                <a href="https://servicioslatinoscanada.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                  Servicios Latinos Canada
+                </a>
+                {' y '}
+                <a href="https://canadaoneclick.ca/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                  Canada One Click
+                </a>.
+              </p>
+            )}
 
             <ul className="space-y-3 text-base">
               <li className="flex items-center gap-3">

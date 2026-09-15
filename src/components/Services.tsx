@@ -79,17 +79,17 @@ export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const { t, language } = useLanguage();
 
-  // SEO-optimized alt descriptions for service images
+  // Descriptions of what each image depicts, without keyword repetition.
   const serviceAlts = {
     es: [
-      'Desarrollo de software a medida - Arquitecturas modulares y APIs Calgary',
-      'Branding y estrategia redes sociales - Marketing digital Calgary',
-      'Automatizaciones con inteligencia artificial - Workflows integrados CRM',
-      'Creación de agentes IA conversacionales - Aprendizaje automático Calgary',
-      'Sistemas de gestión ERP CRM - Dashboards en tiempo real Calgary',
-      'Tarjeta digital profesional QR NFC - Networking Calgary',
-      'Diseño web y aplicaciones móviles PWA - SEO técnico Calgary',
-      'Mentoría y capacitación digital - IA productividad automatización'
+      'Interfaz de una plataforma de software a medida',
+      'Mesa de trabajo para identidad visual y contenido digital',
+      'Diagrama de un flujo de automatización conectado',
+      'Interfaz de un asistente conversacional con inteligencia artificial',
+      'Panel de un sistema de gestión CRM y ERP',
+      'Tarjeta digital profesional con código QR y NFC',
+      'Diseño de un sitio web y una aplicación PWA',
+      'Sesión de capacitación sobre herramientas digitales'
     ],
     en: [
       'Custom software development - Modular architectures and APIs Calgary',
