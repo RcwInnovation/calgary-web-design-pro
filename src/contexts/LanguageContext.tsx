@@ -802,7 +802,7 @@ const translations = {
 // Keep a single context instance across hot-module reloads to avoid
 // "useLanguage must be used within a LanguageProvider" during dev HMR.
 const globalScope = globalThis as unknown as {
-  __rcwLanguageContext?: React.Context<LanguageContextType | undefined>;
+  __rcwLanguageContext?: Context<LanguageContextType | undefined>;
 };
 
 const LanguageContext =
