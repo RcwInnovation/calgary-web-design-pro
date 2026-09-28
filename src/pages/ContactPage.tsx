@@ -1,13 +1,18 @@
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { ArrowLeft, Phone, Mail, MapPin, Clock, MessageCircle, Calendar, Send, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Phone, Mail, MapPin, Clock, MessageCircle, Calendar, CalendarIcon, Send, CheckCircle } from 'lucide-react';
+import { format } from 'date-fns';
+import { es as esLocale, enCA } from 'date-fns/locale';
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { DiagnosticModal } from '@/components/DiagnosticModal';
 import { ConsultationModal } from '@/components/ConsultationModal';
+import { Calendar as CalendarPicker } from '@/components/ui/calendar';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 
 const ContactPage = () => {
@@ -23,6 +28,10 @@ const ContactPage = () => {
     service: '',
     message: ''
   });
+  const [preferredDate, setPreferredDate] = useState<Date | undefined>(undefined);
+  const dateLocale = language === 'es' ? esLocale : enCA;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
   const seoData = {
     es: {
