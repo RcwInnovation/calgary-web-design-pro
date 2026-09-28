@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send, User, Mail, Phone, Building2 } from 'lucide-react';
+import { X, Send, User, Mail, Phone, Building2, CalendarIcon } from 'lucide-react';
+import { format } from 'date-fns';
+import { es as esLocale, enCA } from 'date-fns/locale';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Calendar } from '@/components/ui/calendar';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -23,7 +28,11 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
     business: '',
     interest: '',
   });
+  const [preferredDate, setPreferredDate] = useState<Date | undefined>(undefined);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const dateLocale = language === 'es' ? esLocale : enCA;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
   const interestOptions = language === 'es' 
     ? [
@@ -71,6 +80,9 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
           Teléfono: formData.phone,
           Negocio: formData.business || (language === 'es' ? 'No especificado' : 'Not specified'),
           Interés: formData.interest,
+          'Fecha preferida': preferredDate
+            ? format(preferredDate, 'PPP', { locale: dateLocale })
+            : (language === 'es' ? 'No especificada' : 'Not specified'),
           Idioma: language === 'es' ? 'Español' : 'English',
           Fecha: new Date().toLocaleString(language === 'es' ? 'es-CO' : 'en-CA'),
         }),
@@ -88,6 +100,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
         }));
 
         setFormData({ name: '', email: '', phone: '', business: '', interest: '' });
+        setPreferredDate(undefined);
         onClose();
       } else {
         throw new Error('Failed to send');
@@ -121,6 +134,8 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
     business: language === 'es' ? 'Nombre del negocio' : 'Business name',
     businessPlaceholder: language === 'es' ? 'Tu empresa o negocio' : 'Your company or business',
     interest: language === 'es' ? '¿En qué estás interesado? *' : 'What are you interested in? *',
+    date: language === 'es' ? 'Fecha preferida para la llamada' : 'Preferred date for the call',
+    datePlaceholder: language === 'es' ? 'Elige una fecha' : 'Pick a date',
     submit: language === 'es' ? 'Quiero asesoría' : 'I want a consultation',
     processing: language === 'es' ? 'Enviando...' : 'Sending...',
     disclaimer: language === 'es' ? 'Tu información será enviada de forma segura a nuestro equipo' : 'Your information will be securely sent to our team',
@@ -264,6 +279,41 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
                     </button>
                   ))}
                 </div>
+              </div>
+
+              {/* Preferred Date Picker */}
+              <div className="space-y-1.5">
+                <Label className="flex items-center gap-2 text-xs sm:text-sm">
+                  <CalendarIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
+                  {labels.date}
+                </Label>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className={cn(
+                        'w-full justify-start text-left font-normal h-10 sm:h-11 text-sm bg-muted/30 border-border/50 hover:bg-muted/50',
+                        !preferredDate && 'text-muted-foreground'
+                      )}
+                    >
+                      <CalendarIcon className="mr-2 h-4 w-4" />
+                      {preferredDate
+                        ? format(preferredDate, 'PPP', { locale: dateLocale })
+                        : labels.datePlaceholder}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={preferredDate}
+                      onSelect={setPreferredDate}
+                      disabled={(date) => date < today}
+                      locale={dateLocale}
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
               </div>
 
               {/* Submit Button */}

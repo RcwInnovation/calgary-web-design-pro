@@ -1,13 +1,18 @@
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { ArrowLeft, Phone, Mail, MapPin, Clock, MessageCircle, Calendar, Send, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Phone, Mail, MapPin, Clock, MessageCircle, Calendar, CalendarIcon, Send, CheckCircle } from 'lucide-react';
+import { format } from 'date-fns';
+import { es as esLocale, enCA } from 'date-fns/locale';
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { DiagnosticModal } from '@/components/DiagnosticModal';
 import { ConsultationModal } from '@/components/ConsultationModal';
+import { Calendar as CalendarPicker } from '@/components/ui/calendar';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 
 const ContactPage = () => {
@@ -23,6 +28,10 @@ const ContactPage = () => {
     service: '',
     message: ''
   });
+  const [preferredDate, setPreferredDate] = useState<Date | undefined>(undefined);
+  const dateLocale = language === 'es' ? esLocale : enCA;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
   const seoData = {
     es: {
@@ -85,9 +94,12 @@ const ContactPage = () => {
     e.preventDefault();
     
     // Build WhatsApp message
+    const dateText = preferredDate
+      ? format(preferredDate, 'PPP', { locale: dateLocale })
+      : (language === 'es' ? 'Por definir' : 'To be defined');
     const message = language === 'es'
-      ? `Hola, soy ${formData.name} de ${formData.company || 'N/A'}. Me interesa: ${formData.service}. ${formData.message}`
-      : `Hello, I'm ${formData.name} from ${formData.company || 'N/A'}. I'm interested in: ${formData.service}. ${formData.message}`;
+      ? `Hola, soy ${formData.name} de ${formData.company || 'N/A'}. Me interesa: ${formData.service}. Fecha preferida para la llamada: ${dateText}. ${formData.message}`
+      : `Hello, I'm ${formData.name} from ${formData.company || 'N/A'}. I'm interested in: ${formData.service}. Preferred date for the call: ${dateText}. ${formData.message}`;
     
     const whatsappUrl = `https://wa.me/15878961997?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
@@ -326,6 +338,38 @@ const ContactPage = () => {
                         <option key={service} value={service}>{service}</option>
                       ))}
                     </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2">
+                      {language === 'es' ? 'Fecha preferida para la llamada' : 'Preferred date for the call'}
+                    </label>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <button
+                          type="button"
+                          className={cn(
+                            'w-full flex items-center gap-2 px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-sm text-left',
+                            !preferredDate && 'text-muted-foreground'
+                          )}
+                        >
+                          <CalendarIcon className="w-4 h-4 text-primary flex-shrink-0" />
+                          {preferredDate
+                            ? format(preferredDate, 'PPP', { locale: dateLocale })
+                            : (language === 'es' ? 'Elige una fecha' : 'Pick a date')}
+                        </button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <CalendarPicker
+                          mode="single"
+                          selected={preferredDate}
+                          onSelect={setPreferredDate}
+                          disabled={(date) => date < today}
+                          locale={dateLocale}
+                          initialFocus
+                        />
+                      </PopoverContent>
+                    </Popover>
                   </div>
 
                   <div>
