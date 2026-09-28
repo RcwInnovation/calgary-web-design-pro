@@ -100,6 +100,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
         }));
 
         setFormData({ name: '', email: '', phone: '', business: '', interest: '' });
+        setPreferredDate(undefined);
         onClose();
       } else {
         throw new Error('Failed to send');
@@ -133,6 +134,8 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
     business: language === 'es' ? 'Nombre del negocio' : 'Business name',
     businessPlaceholder: language === 'es' ? 'Tu empresa o negocio' : 'Your company or business',
     interest: language === 'es' ? '¿En qué estás interesado? *' : 'What are you interested in? *',
+    date: language === 'es' ? 'Fecha preferida para la llamada' : 'Preferred date for the call',
+    datePlaceholder: language === 'es' ? 'Elige una fecha' : 'Pick a date',
     submit: language === 'es' ? 'Quiero asesoría' : 'I want a consultation',
     processing: language === 'es' ? 'Enviando...' : 'Sending...',
     disclaimer: language === 'es' ? 'Tu información será enviada de forma segura a nuestro equipo' : 'Your information will be securely sent to our team',
