@@ -281,6 +281,41 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
                 </div>
               </div>
 
+              {/* Preferred Date Picker */}
+              <div className="space-y-1.5">
+                <Label className="flex items-center gap-2 text-xs sm:text-sm">
+                  <CalendarIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
+                  {labels.date}
+                </Label>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className={cn(
+                        'w-full justify-start text-left font-normal h-10 sm:h-11 text-sm bg-muted/30 border-border/50 hover:bg-muted/50',
+                        !preferredDate && 'text-muted-foreground'
+                      )}
+                    >
+                      <CalendarIcon className="mr-2 h-4 w-4" />
+                      {preferredDate
+                        ? format(preferredDate, 'PPP', { locale: dateLocale })
+                        : labels.datePlaceholder}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={preferredDate}
+                      onSelect={setPreferredDate}
+                      disabled={(date) => date < today}
+                      locale={dateLocale}
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
+              </div>
+
               {/* Submit Button */}
               <Button
                 type="submit"
