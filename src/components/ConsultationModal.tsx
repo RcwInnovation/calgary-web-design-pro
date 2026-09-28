@@ -28,7 +28,11 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
     business: '',
     interest: '',
   });
+  const [preferredDate, setPreferredDate] = useState<Date | undefined>(undefined);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const dateLocale = language === 'es' ? esLocale : enCA;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
   const interestOptions = language === 'es' 
     ? [
@@ -76,6 +80,9 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
           Teléfono: formData.phone,
           Negocio: formData.business || (language === 'es' ? 'No especificado' : 'Not specified'),
           Interés: formData.interest,
+          'Fecha preferida': preferredDate
+            ? format(preferredDate, 'PPP', { locale: dateLocale })
+            : (language === 'es' ? 'No especificada' : 'Not specified'),
           Idioma: language === 'es' ? 'Español' : 'English',
           Fecha: new Date().toLocaleString(language === 'es' ? 'es-CO' : 'en-CA'),
         }),
