@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-export const ElevenLabsWidget = () => {
+export const ElevenLabsWidget = ({ mobileDock = false }: { mobileDock?: boolean }) => {
   useEffect(() => {
     // Load ElevenLabs script
     const script = document.createElement('script');
@@ -21,7 +21,7 @@ export const ElevenLabsWidget = () => {
 
   return (
     <motion.div
-      className="fixed bottom-6 left-6 z-50"
+      className={`${mobileDock ? 'hidden md:block' : ''} fixed bottom-6 left-6 z-50`}
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay: 1.2, type: 'spring', stiffness: 200 }}
