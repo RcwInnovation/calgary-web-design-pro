@@ -20,7 +20,7 @@ export const MobileVoiceAgent = ({ onClose }: { onClose: () => void }) => {
           connectionType: 'webrtc',
           overrides: { agent: { language } },
           onConnect: () => { if (!cancelled) setStatus('connected'); },
-          onDisconnect: () => { if (!cancelled) setStatus('ended'); },
+          onDisconnect: () => { if (!cancelled) setStatus((current) => current === 'error' ? 'error' : 'ended'); },
           onError: () => {
             if (!cancelled) {
               setStatus('error');

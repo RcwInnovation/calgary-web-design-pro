@@ -1,4 +1,5 @@
 # Mobile consultation dock
-- [ ] Update the hero's free 30-minute discovery offer in Spanish and English.
-- [ ] Add the mobile voice/chat/consultation dock and hide standalone mobile launchers.
-- [ ] Verify controls and layout on mobile and unchanged desktop access.
+- [x] Update the hero's free 30-minute discovery offer in Spanish and English.
+- [x] Add the mobile voice/chat/consultation dock and hide standalone mobile launchers.
+- [x] Verify controls and layout at 320–430px and unchanged desktop access; chat answers and consultation/calendar open correctly.
+- [ ] Complete a sustained voice conversation: ElevenLabs connects then returns “Server error: Unknown error”; depends on the external agent service.
