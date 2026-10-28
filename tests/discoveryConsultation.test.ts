@@ -1,6 +1,6 @@
 import { describe, test } from 'node:test';
 import { strict as assert } from 'node:assert';
-import { discoveryConsultation } from './discoveryConsultation';
+import { discoveryConsultation } from '../src/config/discoveryConsultation';
 
 describe('initial discovery consultation', () => {
   test('is free', () => assert.equal(discoveryConsultation.priceCAD, 0));
