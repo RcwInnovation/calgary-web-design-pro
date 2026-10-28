@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles, Zap, Lightbulb, Target, TrendingUp } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Button } from '@/components/ui/button';
+import { getDiscoveryConsultationCopy } from '@/config/discoveryConsultation';
 
 interface HeroProps {
   onOpenDiagnostic: () => void;
@@ -20,7 +22,8 @@ const glowAnimation = {
 };
 
 export const Hero = ({ onOpenDiagnostic, onOpenConsultation }: HeroProps) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const consultationCopy = getDiscoveryConsultationCopy(language);
   
   const words1 = t('hero.title.words1').split(',');
   const words2 = t('hero.title.words2').split(',');
@@ -138,14 +141,17 @@ export const Hero = ({ onOpenDiagnostic, onOpenConsultation }: HeroProps) => {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-12 sm:mb-16"
           >
-            <button onClick={onOpenConsultation} className="btn-gold flex items-center justify-center gap-2 text-base sm:text-lg w-full sm:w-auto min-h-[48px]">
-              {t('hero.cta.consultation')}
-              <ArrowRight className="w-5 h-5" />
-            </button>
-            <button onClick={onOpenDiagnostic} className="btn-glass flex items-center justify-center gap-2 w-full sm:w-auto min-h-[48px]">
+            <div className="w-full sm:w-auto">
+              <Button onClick={onOpenConsultation} className="btn-gold gap-2 text-base sm:text-lg w-full min-h-[48px] h-auto whitespace-normal">
+                {consultationCopy.hero}
+                <ArrowRight className="w-5 h-5" />
+              </Button>
+              <p className="mt-2 text-xs text-muted-foreground leading-relaxed max-w-sm mx-auto">{consultationCopy.detail}</p>
+            </div>
+            <Button variant="ghost" onClick={onOpenDiagnostic} className="btn-glass gap-2 w-full sm:w-auto min-h-[48px] h-auto">
               <Zap className="w-5 h-5 text-primary" />
               {t('hero.cta.diagnostic')}
-            </button>
+            </Button>
           </motion.div>
 
           <motion.div

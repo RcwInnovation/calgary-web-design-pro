@@ -12,6 +12,9 @@ interface Message {
 
 interface ChatbotProps {
   onOpenConsultation?: () => void;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  mobileDock?: boolean;
 }
 
 const siteInfo = {
@@ -37,8 +40,13 @@ const siteInfo = {
   }
 };
 
-export const Chatbot = ({ onOpenConsultation }: ChatbotProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+export const Chatbot = ({ onOpenConsultation, open, onOpenChange, mobileDock = false }: ChatbotProps) => {
+  const [internalOpen, setInternalOpen] = useState(false);
+  const isOpen = open ?? internalOpen;
+  const setIsOpen = (value: boolean) => {
+    setInternalOpen(value);
+    onOpenChange?.(value);
+  };
   const { language, t } = useLanguage();
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -172,13 +180,13 @@ export const Chatbot = ({ onOpenConsultation }: ChatbotProps) => {
       {/* Chat Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-24 right-6 z-50 w-14 h-14 bg-primary rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow"
+        className={`${mobileDock ? 'hidden md:flex' : 'flex'} fixed bottom-24 right-6 z-50 w-14 h-14 bg-primary rounded-full items-center justify-center shadow-lg hover:shadow-xl transition-shadow`}
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 1.2, type: 'spring', stiffness: 200 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        aria-label={isOpen ? 'Cerrar chatbot' : 'Abrir chatbot'}
+        aria-label={language === 'es' ? (isOpen ? 'Cerrar chatbot' : 'Abrir chatbot') : (isOpen ? 'Close chatbot' : 'Open chatbot')}
       >
         {isOpen ? (
           <X className="w-6 h-6 text-primary-foreground" />
@@ -220,6 +228,8 @@ export const Chatbot = ({ onOpenConsultation }: ChatbotProps) => {
                 /* Desktop (1024px+): slightly larger */
                 lg:w-[480px] lg:max-h-[75vh]
               "
+              role="dialog"
+              aria-label={t('chatbot.title')}
             >
               {/* Header */}
               <div className="bg-primary p-4 flex items-center gap-3 shrink-0">
@@ -234,7 +244,7 @@ export const Chatbot = ({ onOpenConsultation }: ChatbotProps) => {
                 <button
                   onClick={() => setIsOpen(false)}
                   className="w-8 h-8 rounded-full bg-primary-foreground/20 flex items-center justify-center hover:bg-primary-foreground/30 transition-colors"
-                  aria-label="Cerrar chatbot"
+                  aria-label={language === 'es' ? 'Cerrar chatbot' : 'Close chatbot'}
                 >
                   <X className="w-4 h-4 text-primary-foreground" />
                 </button>

@@ -24,10 +24,14 @@ import { DiagnosticModal } from '@/components/DiagnosticModal';
 import { ConsultationModal } from '@/components/ConsultationModal';
 import { SchemaMarkup } from '@/components/SchemaMarkup';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { FloatingActionDock } from '@/components/FloatingActionDock';
+import { MobileVoiceAgent } from '@/components/MobileVoiceAgent';
 
 const Index = () => {
   const [isDiagnosticOpen, setIsDiagnosticOpen] = useState(false);
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isVoiceOpen, setIsVoiceOpen] = useState(false);
   const { language } = useLanguage();
 
   const seoData = {
@@ -112,11 +116,18 @@ const Index = () => {
           <CTA onOpenDiagnostic={() => setIsDiagnosticOpen(true)} />
         </main>
 
-        <Footer />
+        <div className="pb-28 md:pb-0"><Footer /></div>
 
         {/* Floating Elements */}
-        <ElevenLabsWidget />
-        <Chatbot onOpenConsultation={() => setIsConsultationOpen(true)} />
+        <ElevenLabsWidget mobileDock />
+        <Chatbot mobileDock open={isChatOpen} onOpenChange={setIsChatOpen} onOpenConsultation={() => setIsConsultationOpen(true)} />
+        <FloatingActionDock
+          hidden={isChatOpen || isVoiceOpen || isConsultationOpen || isDiagnosticOpen}
+          onOpenVoice={() => setIsVoiceOpen(true)}
+          onOpenChat={() => setIsChatOpen(true)}
+          onOpenConsultation={() => setIsConsultationOpen(true)}
+        />
+        {isVoiceOpen && <MobileVoiceAgent onClose={() => setIsVoiceOpen(false)} />}
         
         {/* Modals */}
         <DiagnosticModal 
