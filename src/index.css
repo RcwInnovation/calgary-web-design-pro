@@ -50,6 +50,13 @@
     --shadow-glow-blue: 0 0 40px hsl(217 91% 60% / 0.25);
     --shadow-glow-gold: 0 0 40px hsl(42 75% 61% / 0.25);
     --shadow-premium: 0 25px 50px -12px hsl(0 0% 0% / 0.5);
+    --dock-background: 221 42% 7%;
+    --dock-button: 215 28% 17%;
+    --dock-cyan: 187 85% 60%;
+    --dock-free: 160 84% 39%;
+    --dock-gold-start: 42 77% 56%;
+    --dock-gold-end: 42 86% 66%;
+    --gradient-dock-gold: linear-gradient(to right, hsl(var(--dock-gold-start)), hsl(var(--dock-gold-end)));
 
     /* Sidebar */
     --sidebar-background: 222 41% 12%;
@@ -97,6 +104,32 @@
 }
 
 @layer components {
+  .action-dock {
+    bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+    max-width: calc(100vw - 1.5rem);
+    background: hsl(var(--dock-background) / 0.9);
+    backdrop-filter: blur(24px);
+    border: 1px solid hsl(var(--accent) / 0.3);
+    box-shadow: var(--shadow-premium);
+  }
+  .dock-icon {
+    color: hsl(var(--foreground));
+    background: hsl(var(--dock-button) / 0.8);
+    border: 1px solid hsl(var(--foreground) / 0.1);
+  }
+  .dock-icon:hover { background: hsl(var(--muted)); }
+  .dock-sparkle { color: hsl(var(--dock-cyan)); }
+  .dock-consultation {
+    background: var(--gradient-dock-gold);
+    color: hsl(var(--accent-foreground));
+    box-shadow: var(--shadow-glow-gold);
+  }
+  .dock-consultation:hover { filter: brightness(1.08); }
+  .dock-free { background: hsl(var(--dock-free)); color: hsl(var(--accent-foreground)); }
+  @media (max-width: 359px) {
+    .action-dock { gap: 0.375rem; }
+    .dock-consultation { padding-inline: 0.625rem; font-size: 0.75rem; }
+  }
   /* Glass morphism - Dark theme */
   .glass {
     @apply bg-card/80 backdrop-blur-xl border border-border shadow-sm;

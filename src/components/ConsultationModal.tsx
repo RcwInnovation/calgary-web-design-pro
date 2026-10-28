@@ -11,6 +11,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { getDiscoveryConsultationCopy } from '@/config/discoveryConsultation';
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -124,7 +125,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
 
   const labels = {
     title: language === 'es' ? 'Asesoría' : 'Consultation',
-    subtitle: language === 'es' ? 'Completa tus datos y te contactaremos pronto' : 'Fill in your details and we will contact you soon',
+    subtitle: getDiscoveryConsultationCopy(language).detail,
     name: language === 'es' ? 'Nombre completo *' : 'Full name *',
     namePlaceholder: language === 'es' ? 'Tu nombre' : 'Your name',
     email: language === 'es' ? 'Correo electrónico' : 'Email',
