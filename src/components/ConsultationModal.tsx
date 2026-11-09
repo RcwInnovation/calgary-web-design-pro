@@ -169,21 +169,23 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
             transition={{ duration: 0.2 }}
           >
             {/* Header */}
-            <div className="relative p-3 sm:p-5 pb-2 sm:pb-3 border-b border-border/30">
+            <div className="relative p-4 sm:p-5 pb-3 border-b border-border/30">
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-accent to-primary" />
               
-              <button
+              <Button
+                variant="ghost"
+                size="icon"
                 onClick={onClose}
-                className="absolute top-3 right-3 p-1.5 rounded-full hover:bg-muted/50 transition-colors"
+                className="absolute top-2 right-2 rounded-full hover:bg-muted/50 transition-colors"
                 aria-label={language === 'es' ? 'Cerrar modal' : 'Close modal'}
               >
                 <X className="w-4 h-4 sm:w-5 sm:h-5" />
-              </button>
+              </Button>
 
-              <h2 className="text-base sm:text-xl font-bold pr-8">
+              <h2 className="text-xl font-bold pr-12">
                 {language === 'es' ? 'Agenda tu' : 'Schedule your'} <span className="text-gradient-gold">{labels.title}</span>
               </h2>
-              <p className="text-[10px] sm:text-sm text-muted-foreground mt-1">
+              <p className="text-sm leading-relaxed text-muted-foreground mt-2 pr-8">
                 {labels.subtitle}
               </p>
             </div>
@@ -192,7 +194,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
             <form onSubmit={handleSubmit} className="p-4 sm:p-5 space-y-3 sm:space-y-4">
               {/* Name - Full width on mobile */}
               <div className="space-y-1.5">
-                <Label htmlFor="name" className="flex items-center gap-2 text-xs sm:text-sm">
+                <Label htmlFor="name" className="flex items-center gap-2 text-sm">
                   <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
                   {labels.name}
                 </Label>
@@ -211,7 +213,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {/* Email */}
                 <div className="space-y-1.5">
-                  <Label htmlFor="email" className="flex items-center gap-2 text-xs sm:text-sm">
+                  <Label htmlFor="email" className="flex items-center gap-2 text-sm">
                     <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
                     {labels.email}
                   </Label>
@@ -228,7 +230,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
 
                 {/* Phone */}
                 <div className="space-y-1.5">
-                  <Label htmlFor="phone" className="flex items-center gap-2 text-xs sm:text-sm">
+                  <Label htmlFor="phone" className="flex items-center gap-2 text-sm">
                     <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
                     {labels.phone}
                   </Label>
@@ -247,7 +249,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
 
               {/* Business - Full width */}
               <div className="space-y-1.5">
-                <Label htmlFor="business" className="flex items-center gap-2 text-xs sm:text-sm">
+                <Label htmlFor="business" className="flex items-center gap-2 text-sm">
                   <Building2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
                   {labels.business}
                 </Label>
@@ -263,28 +265,30 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
 
               {/* Interest - 2 cols on mobile, 3 on desktop */}
               <div className="space-y-2">
-                <Label className="text-xs sm:text-sm">{labels.interest}</Label>
+                <Label className="text-sm">{labels.interest}</Label>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {interestOptions.map((option) => (
-                    <button
+                    <Button
+                      variant="outline"
                       key={option}
                       type="button"
+                      aria-pressed={formData.interest === option}
                       onClick={() => setFormData(prev => ({ ...prev, interest: option }))}
-                      className={`p-2.5 sm:p-2 text-xs sm:text-xs rounded-xl border transition-all leading-tight ${
+                      className={`p-2.5 sm:p-2 text-sm sm:text-xs h-auto whitespace-normal rounded-lg border transition-all leading-relaxed ${
                         formData.interest === option
                           ? 'border-primary bg-primary/20 text-foreground font-medium'
                           : 'border-border/50 bg-muted/20 text-muted-foreground hover:border-primary/50'
                       }`}
                     >
                       {option}
-                    </button>
+                    </Button>
                   ))}
                 </div>
               </div>
 
               {/* Preferred Date Picker */}
               <div className="space-y-1.5">
-                <Label className="flex items-center gap-2 text-xs sm:text-sm">
+                <Label className="flex items-center gap-2 text-sm">
                   <CalendarIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
                   {labels.date}
                 </Label>
@@ -341,7 +345,7 @@ export const ConsultationModal = ({ isOpen, onClose }: ConsultationModalProps) =
                 )}
               </Button>
 
-              <p className="text-[10px] sm:text-xs text-center text-muted-foreground">
+              <p className="text-sm sm:text-xs leading-relaxed text-center text-muted-foreground">
                 {labels.disclaimer}
               </p>
             </form>

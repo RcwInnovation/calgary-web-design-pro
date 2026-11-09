@@ -29,7 +29,7 @@ export const Hero = ({ onOpenDiagnostic, onOpenConsultation }: HeroProps) => {
   const words2 = t('hero.title.words2').split(',');
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 px-4 sm:px-6 lg:px-8">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-28 sm:pt-20 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8">
       <div className="absolute inset-0 bg-gradient-radial from-primary/10 via-transparent to-transparent" />
       
       <motion.div 
@@ -64,13 +64,13 @@ export const Hero = ({ onOpenDiagnostic, onOpenConsultation }: HeroProps) => {
         />
       ))}
 
-      <div className="container-custom relative z-10">
+      <div className="container-custom !px-0 sm:!px-6 lg:!px-8 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.6, type: 'spring', stiffness: 100 }}
-            className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-8 relative overflow-hidden"
+            className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6 sm:mb-8 relative overflow-hidden"
           >
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/20 to-transparent"
@@ -83,7 +83,7 @@ export const Hero = ({ onOpenDiagnostic, onOpenConsultation }: HeroProps) => {
             <span className="text-sm text-muted-foreground relative z-10">{t('hero.badge')}</span>
           </motion.div>
 
-          <motion.h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6">
+          <motion.h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-4 sm:mb-6">
             {words1.map((word, i) => (
               <motion.span
                 key={i}
@@ -130,7 +130,7 @@ export const Hero = ({ onOpenDiagnostic, onOpenConsultation }: HeroProps) => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground mb-10 max-w-3xl mx-auto"
+            className="text-base sm:text-lg md:text-xl leading-relaxed text-muted-foreground mb-6 sm:mb-10 max-w-3xl mx-auto"
           >
             {t('hero.subtitle')}
           </motion.p>
@@ -146,7 +146,7 @@ export const Hero = ({ onOpenDiagnostic, onOpenConsultation }: HeroProps) => {
                 {consultationCopy.hero}
                 <ArrowRight className="w-5 h-5" />
               </Button>
-              <p className="mt-2 text-xs text-muted-foreground leading-relaxed max-w-sm mx-auto">{consultationCopy.detail}</p>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-sm mx-auto">{consultationCopy.detail}</p>
             </div>
             <Button variant="ghost" onClick={onOpenDiagnostic} className="btn-glass gap-2 w-full sm:w-auto min-h-[48px] h-auto">
               <Zap className="w-5 h-5 text-primary" />
@@ -164,31 +164,31 @@ export const Hero = ({ onOpenDiagnostic, onOpenConsultation }: HeroProps) => {
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-3 sm:mb-4">
                 <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
               </div>
-              <h2 className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base">{t('hero.card.innovation')}</h2>
-              <p className="text-xs sm:text-sm text-muted-foreground">{t('hero.card.innovationDesc')}</p>
+              <h2 className="font-semibold mb-2 text-base">{t('hero.card.innovation')}</h2>
+              <p className="text-sm text-muted-foreground leading-relaxed">{t('hero.card.innovationDesc')}</p>
             </div>
             
             <div className="glass p-4 sm:p-6 rounded-2xl text-left hover:border-accent/30 transition-all duration-300">
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-3 sm:mb-4">
                 <Target className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
               </div>
-              <h2 className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base">{t('hero.card.strategy')}</h2>
-              <p className="text-xs sm:text-sm text-muted-foreground">{t('hero.card.strategyDesc')}</p>
+              <h2 className="font-semibold mb-2 text-base">{t('hero.card.strategy')}</h2>
+              <p className="text-sm text-muted-foreground leading-relaxed">{t('hero.card.strategyDesc')}</p>
             </div>
             
             <div className="glass p-4 sm:p-6 rounded-2xl text-left hover:border-primary/30 transition-all duration-300 sm:col-span-2 md:col-span-1">
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-3 sm:mb-4">
                 <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
               </div>
-              <h2 className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base">{t('hero.card.results')}</h2>
-              <p className="text-xs sm:text-sm text-muted-foreground">{t('hero.card.resultsDesc')}</p>
+              <h2 className="font-semibold mb-2 text-base">{t('hero.card.results')}</h2>
+              <p className="text-sm text-muted-foreground leading-relaxed">{t('hero.card.resultsDesc')}</p>
             </div>
           </motion.div>
         </div>
       </div>
 
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="hidden sm:block absolute bottom-8 left-1/2 -translate-x-1/2"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 1.5, repeat: Infinity }}
       >

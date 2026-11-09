@@ -3,3 +3,4 @@
 - The homepage owns mobile dock and chat/voice open state; reuse the existing consultation modal and preserve standalone desktop launchers.
 - Use the official ElevenLabs client SDK for custom voice launchers and terminate sessions on close; the embedded widget has no supported external start-call API.
 - Define dock colors, gradients and shadows in global CSS tokens and use the shared Button component for new controls.
+- Keep mobile readability defaults in global CSS and scope calendar controls separately so larger touch targets do not break seven-column date grids.

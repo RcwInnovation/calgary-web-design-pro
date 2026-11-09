@@ -141,7 +141,7 @@ export const Header = ({ onOpenConsultation }: HeaderProps) => {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              className="absolute top-full left-0 right-0 glass-strong lg:hidden"
+              className="absolute top-full left-0 right-0 glass-strong lg:hidden max-h-[calc(100dvh-6rem)] overflow-y-auto overscroll-contain"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}

@@ -179,7 +179,7 @@ export const Services = ({ onOpenConsultation, onOpenDiagnostic }: ServicesProps
                 <h3 className="text-lg font-semibold mb-3 group-hover:text-primary transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
+                <p className="text-sm text-muted-foreground mb-4 sm:line-clamp-3 leading-relaxed">
                   {service.description}
                 </p>
 

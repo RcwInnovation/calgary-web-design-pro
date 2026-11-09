@@ -73,7 +73,7 @@ export const JoinTeam = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-20"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-20"
         >
           {benefits.map((benefit, index) => (
             <div
@@ -83,8 +83,8 @@ export const JoinTeam = () => {
               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-primary/20 transition-colors">
                 <benefit.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
               </div>
-              <h3 className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base">{benefit.title}</h3>
-              <p className="text-muted-foreground text-xs sm:text-sm">{benefit.description}</p>
+              <h3 className="font-semibold mb-2 text-base">{benefit.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{benefit.description}</p>
             </div>
           ))}
         </motion.div>

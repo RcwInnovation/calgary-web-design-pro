@@ -72,21 +72,21 @@ export const WhyUs = () => {
         </motion.div>
 
         {/* Reasons Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 mb-12 md:mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 mb-12 md:mb-20">
           {reasons.map((reason, index) => (
             <motion.div
               key={reason.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="flex flex-col sm:flex-row gap-2 sm:gap-4 p-3 sm:p-4 md:p-6 rounded-xl md:rounded-2xl border border-border/30 bg-card/50 hover:border-accent/30 transition-all duration-300"
+              className="flex flex-row gap-4 p-4 md:p-6 rounded-xl md:rounded-2xl border border-border/30 bg-card/50 hover:border-accent/30 transition-all duration-300"
             >
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
                 <reason.icon className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
               </div>
               <div>
-                <h3 className="font-semibold text-sm sm:text-base mb-1 sm:mb-2">{reason.title}</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{reason.description}</p>
+                <h3 className="font-semibold text-base mb-2">{reason.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{reason.description}</p>
               </div>
             </motion.div>
           ))}
