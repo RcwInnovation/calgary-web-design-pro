@@ -205,7 +205,7 @@ export const Chatbot = ({ onOpenConsultation, open, onOpenChange, mobileDock = f
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/40 z-40 md:hidden"
+              className="fixed inset-0 bg-[hsl(var(--overlay))] z-40 md:hidden"
               aria-hidden="true"
             />
             

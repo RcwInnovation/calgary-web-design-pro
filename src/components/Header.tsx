@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '@/assets/logo.png';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { sectionRoutes } from '@/config/routes';
 
@@ -63,7 +64,7 @@ export const Header = ({ onOpenConsultation }: HeaderProps) => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? 'glass-strong py-3' : 'bg-transparent py-5'
+        isScrolled ? 'glass-strong py-3 border-x-0 border-t-0' : 'bg-transparent py-5'
       }`}
     >
       <nav className="container-custom flex items-center justify-between" aria-label="Navegación principal">
@@ -113,11 +114,12 @@ export const Header = ({ onOpenConsultation }: HeaderProps) => {
 
         {/* Desktop CTA + Language Switcher */}
         <motion.div
-          className="hidden lg:flex items-center gap-4"
+          className="hidden lg:flex items-center gap-2 xl:gap-3 shrink-0"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
+          <ThemeToggle />
           <LanguageSwitcher />
           <button onClick={onOpenConsultation} className="btn-primary text-sm">
             {t('nav.cta')}
@@ -126,6 +128,7 @@ export const Header = ({ onOpenConsultation }: HeaderProps) => {
 
         {/* Mobile Menu Button + Language */}
         <div className="lg:hidden flex items-center gap-2 sm:gap-3">
+          <ThemeToggle />
           <LanguageSwitcher />
           <button
             className="p-2.5 text-foreground hover:text-primary transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"

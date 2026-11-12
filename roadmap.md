@@ -7,3 +7,7 @@
 # Mobile readability
 - [x] Improve mobile text hierarchy, spacing and touch targets while preserving content and the existing design.
 - [x] Verify Spanish/English layouts at 320, 394 and 430px, desktop at 1280px, and mobile menu, consultation fields and calendar.
+## Liquid Glass redesign
+- [x] Light + dark tokens, system font, glass utilities, theme toggle
+## Support chat
+- [ ] AI support chat from help docs + order data with human handoff (blocked: needs help docs, order data source, handoff channel)

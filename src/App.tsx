@@ -1,4 +1,5 @@
 import { Toaster } from "@/components/ui/toaster";
+import { ThemeProvider } from "next-themes";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -71,6 +72,7 @@ const LegacyRedirect = ({ legacyPath, lang }: { legacyPath: string; lang: 'es' |
 };
 
 const App = () => (
+  <ThemeProvider attribute="class" defaultTheme="system" enableSystem storageKey="rcw-theme" disableTransitionOnChange>
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
@@ -172,6 +174,7 @@ const App = () => (
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
+  </ThemeProvider>
 );
 
 export default App;
