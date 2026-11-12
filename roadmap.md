@@ -10,4 +10,4 @@
 ## Liquid Glass redesign
 - [x] Light + dark tokens, system font, glass utilities, theme toggle
 ## Support chat
-- [ ] AI support chat from help docs + order data with human handoff (blocked: needs help docs, order data source, handoff channel)
+- [ ] AI support chat from help docs + order data with human handoff — answers: site content, no orders, email handoff to ceo@; next: enable Lovable Cloud + AI chat
